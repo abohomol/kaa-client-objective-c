@@ -1,0 +1,49 @@
+//
+//  ConfigurationTransport.h
+//  Kaa
+//
+//  Created by Anton Bohomol on 9/9/15.
+//  Copyright (c) 2015 CYBERVISION INC. All rights reserved.
+//
+
+#ifndef Kaa_ConfigurationTransport_h
+#define Kaa_ConfigurationTransport_h
+
+#import "KaaTransport.h"
+#import "EndpointGen.h"
+#import "ConfigurationCommon.h"
+#import "SchemaProcessor.h"
+
+/**
+ * KaaTransport for the Configuration service.
+ * Updates the Configuration manager state.
+ */
+@protocol ConfigurationTransport <KaaTransport>
+
+/**
+ * Creates the configuration request.
+ *
+ * @return the configuration request object.
+ * @see ConfigurationSyncRequest
+ */
+- (ConfigurationSyncRequest *)createConfigurationRequest;
+
+/**
+ * Updates the state of the Configuration manager according to the given response.
+ *
+ * @param response the configuration response.
+ * @see ConfigurationSyncResponse
+ */
+- (void)onConfigurationResponse:(ConfigurationSyncResponse *)response;
+
+- (void)setConfigurationHashContainer:(id<ConfigurationHashContainer>)container;
+
+- (void)setConfigurationProcessor:(id<ConfigurationProcessor>)processor;
+
+- (void)setSchemaProcessor:(id<SchemaProcessor>)processor;
+
+- (void)setResyncOnly:(BOOL)resyncOnly;
+
+@end
+
+#endif
