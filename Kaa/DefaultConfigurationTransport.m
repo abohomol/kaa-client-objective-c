@@ -9,6 +9,7 @@
 #import "DefaultConfigurationTransport.h"
 #import "ConfigurationCommon.h"
 #import "SchemaProcessor.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultConfigurationTransport >>>"
 

@@ -9,6 +9,7 @@
 #import "DefaultUserTransport.h"
 #import "EndpointRegistrationProcessor.h"
 #import "EndpointAccessToken.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultUserTransport >>>"
 

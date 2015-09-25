@@ -9,6 +9,7 @@
 #import "DefaultNotificationManager.h"
 #import "NotificationCommon.h"
 #import "EndpointGen.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultNotificationManager >>>"
 

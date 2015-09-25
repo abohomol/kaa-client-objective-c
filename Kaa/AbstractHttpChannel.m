@@ -9,6 +9,7 @@
 #import "AbstractHttpChannel.h"
 #import "IPTransportInfo.h"
 #import "TransportProtocolIdHolder.h"
+#import "KaaLogging.h"
 
 #define TAG @"AbstractHttpChannel >>>"
 

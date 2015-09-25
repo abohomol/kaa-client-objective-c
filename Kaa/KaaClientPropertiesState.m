@@ -15,6 +15,7 @@
 #import "NSData+Conversion.h"
 #import "UUID.h"
 #import "KeyUtils.h"
+#import "KaaLogging.h"
 
 #define TAG @"KaaClientPropertiesState >>>"
 

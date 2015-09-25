@@ -21,13 +21,11 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
-#include "../utilities/kaa_mem.h"
-
 #include "avro_private.h"
 
 avro_reader_t avro_reader_memory(const char *buf, int64_t len)
 {
-    struct avro_reader_t_ *mem_reader = (struct avro_reader_t_ *) KAA_CALLOC(1,
+    struct avro_reader_t_ *mem_reader = (struct avro_reader_t_ *) calloc(1,
             sizeof(struct avro_reader_t_));
     if (!mem_reader) {
         return NULL;
@@ -40,7 +38,7 @@ avro_reader_t avro_reader_memory(const char *buf, int64_t len)
 
 avro_writer_t avro_writer_memory(const char *buf, int64_t len)
 {
-    struct avro_writer_t_ *mem_writer = (struct avro_writer_t_ *) KAA_CALLOC(1,
+    struct avro_writer_t_ *mem_writer = (struct avro_writer_t_ *) calloc(1,
             sizeof(struct avro_writer_t_));
     if (!mem_writer) {
         return NULL;

@@ -7,6 +7,7 @@
 //
 
 #import "DefaultEventTransport.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultEventTransport >>>"
 

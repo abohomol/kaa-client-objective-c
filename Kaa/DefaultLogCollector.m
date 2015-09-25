@@ -17,6 +17,7 @@
 #import "DefaultLogCollector.h"
 #import "AvroBytesConverter.h"
 #import "LogRecord.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultLogCollector >>>"
 

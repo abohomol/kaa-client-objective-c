@@ -7,6 +7,7 @@
 //
 
 #import "DefaultMetaDataTransport.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultMetaDataTransport >>>"
 

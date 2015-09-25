@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <KaaTransport.h>
+#import "KaaTransport.h"
 #import "KaaChannelManager.h"
 #import "KaaClientState.h"
 #import "EndpointGen.h"

@@ -26,6 +26,7 @@
 #import "DefaultBootstrapDataProcessor.h"
 #import "DefaultOperationDataProcessor.h"
 #import "DefaultBootstrapChannel.h"
+#import "KaaLogging.h"
 
 #define TAG @"AbstractKaaClient >>>"
 #define LONG_POLL_TIMEOUT 60000

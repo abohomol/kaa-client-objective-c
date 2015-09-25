@@ -8,6 +8,7 @@
 
 #import "MemLogStorage.h"
 #import "MemBucket.h"
+#import "KaaLogging.h"
 
 #define TAG @"MemLogStorage >>>"
 

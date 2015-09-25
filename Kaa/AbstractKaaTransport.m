@@ -7,6 +7,7 @@
 //
 
 #import "AbstractKaaTransport.h"
+#import "KaaLogging.h"
 
 #define TAG @"AbstractKaaTransport >>>"
 

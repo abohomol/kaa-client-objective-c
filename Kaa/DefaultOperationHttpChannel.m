@@ -8,6 +8,7 @@
 
 #import "DefaultOperationHttpChannel.h"
 #import "HttpRequestCreator.h"
+#import "KaaLogging.h"
 
 #define TAG         @"DefaultOperationHttpChannel >>>"
 #define CHANNEL_ID  @"default_operations_http_channel"

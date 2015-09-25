@@ -10,6 +10,7 @@
 #import "NSData+CommonCrypto.h"
 #import "NSData+Conversion.h"
 #import "KeyUtils.h"
+#import "KaaLogging.h"
 
 #define TAG @"MessageEncoderDecoder"
 

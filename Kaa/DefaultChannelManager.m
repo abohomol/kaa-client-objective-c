@@ -11,6 +11,7 @@
 #import "BlockingQueue.h"
 #import "TransportConnectionInfo.h"
 #import "FailoverDecision.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultChannelManager >>>"
 

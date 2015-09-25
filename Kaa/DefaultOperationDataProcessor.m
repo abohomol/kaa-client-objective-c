@@ -8,6 +8,7 @@
 
 #import "DefaultOperationDataProcessor.h"
 #import "AvroBytesConverter.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultOperationDataProcessor >>>"
 

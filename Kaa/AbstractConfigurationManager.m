@@ -7,7 +7,7 @@
 //
 
 #import "AbstractConfigurationManager.h"
-#import "DDLog.h"
+#import "KaaLogging.h"
 
 #define TAG @"AbstractConfigurationManager >>>"
 

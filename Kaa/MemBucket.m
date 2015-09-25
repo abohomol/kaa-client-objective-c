@@ -7,6 +7,7 @@
 //
 
 #import "MemBucket.h"
+#import "KaaLogging.h"
 
 #define TAG @"MemBucket >>>"
 

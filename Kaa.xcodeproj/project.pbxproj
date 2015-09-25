@@ -51,7 +51,6 @@
 		B824A2341B149F050076C753 /* KaaClientState.h in Headers */ = {isa = PBXBuildFile; fileRef = B824A2331B149F050076C753 /* KaaClientState.h */; };
 		B825A9A21B5664E800D35F01 /* GenericLogCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = B825A9A11B5664E800D35F01 /* GenericLogCollector.h */; };
 		B8330C3F1B38051B00D1A573 /* GenericKaaClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B8330C3E1B38051B00D1A573 /* GenericKaaClient.h */; };
-		B83CCCF71B8B1EB6003D4B0B /* Logging-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = B83CCCF61B8B1EB6003D4B0B /* Logging-Prefix.pch */; };
 		B83CCCFA1B8B2B86003D4B0B /* AbstractLogCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = B83CCCF81B8B2B86003D4B0B /* AbstractLogCollector.h */; };
 		B83CCCFB1B8B2B86003D4B0B /* AbstractLogCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = B83CCCF91B8B2B86003D4B0B /* AbstractLogCollector.m */; };
 		B83CCCFE1B8B30A2003D4B0B /* DefaultLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = B83CCCFC1B8B30A2003D4B0B /* DefaultLogUploadStrategy.h */; };
@@ -68,6 +67,14 @@
 		B840CF361B172016001D0F74 /* EndpointAccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = B840CF341B172016001D0F74 /* EndpointAccessToken.m */; };
 		B840CF3A1B172B75001D0F74 /* AbstractKaaTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B840CF381B172B75001D0F74 /* AbstractKaaTransport.h */; };
 		B840CF3B1B172B75001D0F74 /* AbstractKaaTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = B840CF391B172B75001D0F74 /* AbstractKaaTransport.m */; };
+		B84462301BB5BAD4009826FC /* io.h in Headers */ = {isa = PBXBuildFile; fileRef = B844622A1BB5BAD4009826FC /* io.h */; };
+		B84462311BB5BAD4009826FC /* platform.h in Headers */ = {isa = PBXBuildFile; fileRef = B844622B1BB5BAD4009826FC /* platform.h */; };
+		B84462321BB5BAD4009826FC /* avro_private.h in Headers */ = {isa = PBXBuildFile; fileRef = B844622C1BB5BAD4009826FC /* avro_private.h */; };
+		B84462331BB5BAD4009826FC /* encoding.h in Headers */ = {isa = PBXBuildFile; fileRef = B844622D1BB5BAD4009826FC /* encoding.h */; };
+		B84462341BB5BAD4009826FC /* encoding_binary.c in Sources */ = {isa = PBXBuildFile; fileRef = B844622E1BB5BAD4009826FC /* encoding_binary.c */; };
+		B84462351BB5BAD4009826FC /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = B844622F1BB5BAD4009826FC /* io.c */; };
+		B844623C1BB5C377009826FC /* KaaLogging.h in Headers */ = {isa = PBXBuildFile; fileRef = B844623A1BB5C377009826FC /* KaaLogging.h */; };
+		B844623D1BB5C377009826FC /* KaaLogging.m in Sources */ = {isa = PBXBuildFile; fileRef = B844623B1BB5C377009826FC /* KaaLogging.m */; };
 		B848227A1B8DAE78004E370B /* ProfileManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B84822791B8DAE78004E370B /* ProfileManager.h */; };
 		B848227E1B8DAECA004E370B /* ProfileCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = B848227C1B8DAECA004E370B /* ProfileCommon.h */; };
 		B848227F1B8DAECA004E370B /* ProfileCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B848227D1B8DAECA004E370B /* ProfileCommon.m */; };
@@ -288,7 +295,6 @@
 		B824A2331B149F050076C753 /* KaaClientState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaClientState.h; sourceTree = "<group>"; };
 		B825A9A11B5664E800D35F01 /* GenericLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericLogCollector.h; sourceTree = "<group>"; };
 		B8330C3E1B38051B00D1A573 /* GenericKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericKaaClient.h; sourceTree = "<group>"; };
-		B83CCCF61B8B1EB6003D4B0B /* Logging-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Logging-Prefix.pch"; sourceTree = "<group>"; };
 		B83CCCF81B8B2B86003D4B0B /* AbstractLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLogCollector.h; sourceTree = "<group>"; };
 		B83CCCF91B8B2B86003D4B0B /* AbstractLogCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractLogCollector.m; sourceTree = "<group>"; };
 		B83CCCFC1B8B30A2003D4B0B /* DefaultLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultLogUploadStrategy.h; sourceTree = "<group>"; };
@@ -301,16 +307,18 @@
 		B83CCD0A1B8B52CE003D4B0B /* MemLogStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemLogStorage.m; sourceTree = "<group>"; };
 		B83CCD171B8CAB3B003D4B0B /* TransactionId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionId.h; path = transact/TransactionId.h; sourceTree = "<group>"; };
 		B83CCD181B8CAB3B003D4B0B /* TransactionId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionId.m; path = transact/TransactionId.m; sourceTree = "<group>"; };
-		B83FD6FF1BB1594B000C9FB8 /* libPods-libKaa.a-AFNetworking-Synchronous.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking-Synchronous.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking-Synchronous.a"; sourceTree = "<group>"; };
-		B83FD7011BB15950000C9FB8 /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
-		B83FD7031BB159EC000C9FB8 /* libPods-libKaa.a-AFNetworking-Synchronous.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking-Synchronous.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking-Synchronous.a"; sourceTree = "<group>"; };
-		B83FD7041BB159EC000C9FB8 /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
 		B840CF331B172016001D0F74 /* EndpointAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointAccessToken.h; sourceTree = "<group>"; };
 		B840CF341B172016001D0F74 /* EndpointAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndpointAccessToken.m; sourceTree = "<group>"; };
 		B840CF381B172B75001D0F74 /* AbstractKaaTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractKaaTransport.h; sourceTree = "<group>"; };
 		B840CF391B172B75001D0F74 /* AbstractKaaTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractKaaTransport.m; sourceTree = "<group>"; };
-		B840FBC31BB15C8800E7A817 /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
-		B840FBC51BB15CA000E7A817 /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
+		B844622A1BB5BAD4009826FC /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
+		B844622B1BB5BAD4009826FC /* platform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = platform.h; sourceTree = "<group>"; };
+		B844622C1BB5BAD4009826FC /* avro_private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = avro_private.h; sourceTree = "<group>"; };
+		B844622D1BB5BAD4009826FC /* encoding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encoding.h; sourceTree = "<group>"; };
+		B844622E1BB5BAD4009826FC /* encoding_binary.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = encoding_binary.c; sourceTree = "<group>"; };
+		B844622F1BB5BAD4009826FC /* io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = io.c; sourceTree = "<group>"; };
+		B844623A1BB5C377009826FC /* KaaLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaLogging.h; sourceTree = "<group>"; };
+		B844623B1BB5C377009826FC /* KaaLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaLogging.m; sourceTree = "<group>"; };
 		B84822791B8DAE78004E370B /* ProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileManager.h; sourceTree = "<group>"; };
 		B848227C1B8DAECA004E370B /* ProfileCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCommon.h; sourceTree = "<group>"; };
 		B848227D1B8DAECA004E370B /* ProfileCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCommon.m; sourceTree = "<group>"; };
@@ -323,9 +331,6 @@
 		B848228B1B8DBB54004E370B /* NotificationCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCommon.m; sourceTree = "<group>"; };
 		B848228E1B8DC269004E370B /* DefaultNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultNotificationManager.h; sourceTree = "<group>"; };
 		B848228F1B8DC269004E370B /* DefaultNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultNotificationManager.m; sourceTree = "<group>"; };
-		B84E173C1BB15EF10023AFE0 /* libPods-libKaa.a-AFNetworking-Synchronous.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking-Synchronous.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking-Synchronous.a"; sourceTree = "<group>"; };
-		B84E173D1BB15EF10023AFE0 /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
-		B84E17401BB15FFF0023AFE0 /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
 		B84E17421BB163870023AFE0 /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
 		B856C0021B90C7B100A9F65D /* BootstrapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapManager.h; sourceTree = "<group>"; };
 		B856C0041B90D4C000A9F65D /* KaaInternalChannelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaInternalChannelManager.h; sourceTree = "<group>"; };
@@ -344,7 +349,6 @@
 		B860B12A1BB2AB60001A89E1 /* TimeCommons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeCommons.m; sourceTree = "<group>"; };
 		B863B3291B3D7B3D00E58F50 /* AvroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvroUtils.h; sourceTree = "<group>"; };
 		B863B32A1B3D7B3D00E58F50 /* AvroUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroUtils.m; sourceTree = "<group>"; };
-		B863B32E1B3D7C3100E58F50 /* avro_src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = avro_src; sourceTree = "<group>"; };
 		B86D7F0A1BA2BD4700563592 /* EndpointGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointGen.h; sourceTree = "<group>"; };
 		B86D7F0B1BA2BD4700563592 /* EndpointGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndpointGen.m; sourceTree = "<group>"; };
 		B86D7F0C1BA2BD4700563592 /* KAAConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAAConfiguration.h; sourceTree = "<group>"; };
@@ -381,7 +385,6 @@
 		B87D498D1B94AF0300AD7CFC /* MessageEncoderDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageEncoderDecoder.m; sourceTree = "<group>"; };
 		B8807C1A1BA33B0F00F78BFC /* BlockingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockingQueue.h; sourceTree = "<group>"; };
 		B8807C1B1BA33B0F00F78BFC /* BlockingQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockingQueue.m; sourceTree = "<group>"; };
-		B8821A891BB154120038756C /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
 		B888361E1BA0930600ACAB4F /* AbstractKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractKaaClient.h; sourceTree = "<group>"; };
 		B888361F1BA0930600ACAB4F /* AbstractKaaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractKaaClient.m; sourceTree = "<group>"; };
 		B88836241BA0981C00ACAB4F /* KaaClientStateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaClientStateDelegate.h; sourceTree = "<group>"; };
@@ -611,7 +614,6 @@
 				B824A1EC1B1452C50076C753 /* Products */,
 				D52D551C6A09083F2656BDB7 /* Pods */,
 				DC516A0F99C6ED7A58E70F4C /* Frameworks */,
-				B83CCCF61B8B1EB6003D4B0B /* Logging-Prefix.pch */,
 			);
 			sourceTree = "<group>";
 		};
@@ -653,6 +655,8 @@
 				B888361E1BA0930600ACAB4F /* AbstractKaaClient.h */,
 				B888361F1BA0930600ACAB4F /* AbstractKaaClient.m */,
 				B88836241BA0981C00ACAB4F /* KaaClientStateDelegate.h */,
+				B844623A1BB5C377009826FC /* KaaLogging.h */,
+				B844623B1BB5C377009826FC /* KaaLogging.m */,
 			);
 			path = Kaa;
 			sourceTree = "<group>";
@@ -750,6 +754,27 @@
 			name = impl;
 			sourceTree = "<group>";
 		};
+		B84462281BB5BAD4009826FC /* avro_src */ = {
+			isa = PBXGroup;
+			children = (
+				B84462291BB5BAD4009826FC /* avro */,
+				B844622C1BB5BAD4009826FC /* avro_private.h */,
+				B844622D1BB5BAD4009826FC /* encoding.h */,
+				B844622E1BB5BAD4009826FC /* encoding_binary.c */,
+				B844622F1BB5BAD4009826FC /* io.c */,
+			);
+			path = avro_src;
+			sourceTree = "<group>";
+		};
+		B84462291BB5BAD4009826FC /* avro */ = {
+			isa = PBXGroup;
+			children = (
+				B844622A1BB5BAD4009826FC /* io.h */,
+				B844622B1BB5BAD4009826FC /* platform.h */,
+			);
+			path = avro;
+			sourceTree = "<group>";
+		};
 		B848227B1B8DAEA9004E370B /* profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -775,7 +800,7 @@
 		B863B32D1B3D7B4900E58F50 /* avro */ = {
 			isa = PBXGroup;
 			children = (
-				B863B32E1B3D7C3100E58F50 /* avro_src */,
+				B84462281BB5BAD4009826FC /* avro_src */,
 				B86D7F091BA2BD3E00563592 /* gen */,
 				B863B3291B3D7B3D00E58F50 /* AvroUtils.h */,
 				B863B32A1B3D7B3D00E58F50 /* AvroUtils.m */,
@@ -945,16 +970,6 @@
 			isa = PBXGroup;
 			children = (
 				B84E17421BB163870023AFE0 /* libPods-libKaa.a-AFNetworking.a */,
-				B84E17401BB15FFF0023AFE0 /* libPods-libKaa.a-AFNetworking.a */,
-				B84E173C1BB15EF10023AFE0 /* libPods-libKaa.a-AFNetworking-Synchronous.a */,
-				B84E173D1BB15EF10023AFE0 /* libPods-libKaa.a-AFNetworking.a */,
-				B840FBC51BB15CA000E7A817 /* libPods-libKaa.a-AFNetworking.a */,
-				B840FBC31BB15C8800E7A817 /* libPods-libKaa.a-AFNetworking.a */,
-				B83FD7031BB159EC000C9FB8 /* libPods-libKaa.a-AFNetworking-Synchronous.a */,
-				B83FD7041BB159EC000C9FB8 /* libPods-libKaa.a-AFNetworking.a */,
-				B83FD7011BB15950000C9FB8 /* libPods-libKaa.a-AFNetworking.a */,
-				B83FD6FF1BB1594B000C9FB8 /* libPods-libKaa.a-AFNetworking-Synchronous.a */,
-				B8821A891BB154120038756C /* libPods-libKaa.a-AFNetworking.a */,
 				B80C53F91B343873004C6D4D /* libPods-libKaa.a-CocoaLumberjack.a */,
 				DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */,
 			);
@@ -992,7 +1007,6 @@
 				B8D1D10E1B945FF10097E64A /* KeyPair.h in Headers */,
 				B856EFB71B9D61D200C065D9 /* UUID.h in Headers */,
 				B84822851B8DB031004E370B /* ProfileTransport.h in Headers */,
-				B83CCCF71B8B1EB6003D4B0B /* Logging-Prefix.pch in Headers */,
 				B8B8ED231BA2D0640067BC4C /* DefaultMetaDataTransport.h in Headers */,
 				B811611F1B4BC75100C4E0C6 /* LogBlock.h in Headers */,
 				B85E35661B860218008B663E /* AbstractConfigurationManager.h in Headers */,
@@ -1037,6 +1051,7 @@
 				B876298C1B8CB28C006AD5EF /* EventDelegates.h in Headers */,
 				B86D7F141BA2BD4700563592 /* EndpointGen.h in Headers */,
 				B87629A41B8DA6E8006AD5EF /* KaaClient.h in Headers */,
+				B84462311BB5BAD4009826FC /* platform.h in Headers */,
 				B8FBD9F71B9E35B4009A2BA3 /* KaaClientPlatformContext.h in Headers */,
 				B88D00B51BA8835D002E0144 /* DefaultLogTransport.h in Headers */,
 				B88D00C11BA8AE9F002E0144 /* DefaultEventTransport.h in Headers */,
@@ -1068,13 +1083,16 @@
 				B8C055C21B56B9ED00F5AA1C /* FailoverManager.h in Headers */,
 				B803FD381B9EF52300187E61 /* TransportProtocolIdHolder.h in Headers */,
 				B8A13B091BAFE93A00265729 /* DefaultOperationDataProcessor.h in Headers */,
+				B84462301BB5BAD4009826FC /* io.h in Headers */,
 				B88836321BA17C0100ACAB4F /* DefaultUserTransport.h in Headers */,
+				B84462331BB5BAD4009826FC /* encoding.h in Headers */,
 				B824A22E1B148F1A0076C753 /* KaaChannelManager.h in Headers */,
 				B8A13B111BB0198F00265729 /* HttpRequestCreator.h in Headers */,
 				B8FBD9EF1B9E0243009A2BA3 /* SimpleConfigurationStorage.h in Headers */,
 				B8807C1C1BA33B0F00F78BFC /* BlockingQueue.h in Headers */,
 				B803FD3B1B9EF65600187E61 /* RedirectionTransport.h in Headers */,
 				B84822891B8DBB05004E370B /* NotificationManager.h in Headers */,
+				B84462321BB5BAD4009826FC /* avro_private.h in Headers */,
 				B824A2251B1489FE0076C753 /* ConnectivityChecker.h in Headers */,
 				B8A8DF9D1BA02878002CEF3E /* SyncTask.h in Headers */,
 				B8D415AF1B8476A600B0D551 /* SHAMessageDigest.h in Headers */,
@@ -1083,6 +1101,7 @@
 				B81161261B4BCFF600C4E0C6 /* LogFailoverCommand.h in Headers */,
 				B87629971B8CCFD5006AD5EF /* DefaultEventManager.h in Headers */,
 				B86D7F161BA2BD4700563592 /* KAAConfiguration.h in Headers */,
+				B844623C1BB5C377009826FC /* KaaLogging.h in Headers */,
 				B8E68AA31B8E241A00EE1065 /* NotificationTransport.h in Headers */,
 				B856C00C1B9360EB00A9F65D /* NSMutableArray+Shuffling.h in Headers */,
 				B848227A1B8DAE78004E370B /* ProfileManager.h in Headers */,
@@ -1260,6 +1279,7 @@
 				B824A1F11B1452C50076C753 /* Kaa.m in Sources */,
 				B85B33CA1BB04B1300B5785F /* DefaultBootstrapChannel.m in Sources */,
 				B88836371BA1F15000ACAB4F /* LogRecord.m in Sources */,
+				B84462341BB5BAD4009826FC /* encoding_binary.c in Sources */,
 				B8FBD9F01B9E0243009A2BA3 /* SimpleConfigurationStorage.m in Sources */,
 				B81C0DCF1BAB1C970038CCA0 /* DefaultNotificationTransport.m in Sources */,
 				B88D00B61BA8835D002E0144 /* DefaultLogTransport.m in Sources */,
@@ -1272,10 +1292,12 @@
 				B88D00B21BA87F8D002E0144 /* DefaultRedirectionTransport.m in Sources */,
 				B8A13B121BB0198F00265729 /* HttpRequestCreator.m in Sources */,
 				B824A2261B1489FE0076C753 /* ConnectivityChecker.m in Sources */,
+				B84462351BB5BAD4009826FC /* io.c in Sources */,
 				B83CCD081B8B3F96003D4B0B /* DefaultLogCollector.m in Sources */,
 				B8B8ED281BA2D43C0067BC4C /* DefaultChannelManager.m in Sources */,
 				B8C8BD3C1B83236400D2C016 /* GenericTransportInfo.m in Sources */,
 				B83CCCFB1B8B2B86003D4B0B /* AbstractLogCollector.m in Sources */,
+				B844623D1BB5C377009826FC /* KaaLogging.m in Sources */,
 				B8A13B1A1BB0221B00265729 /* AbstractHttpChannel.m in Sources */,
 				B8A13B061BAFE47A00265729 /* DefaultBootstrapDataProcessor.m in Sources */,
 				B83CCD1A1B8CAB3B003D4B0B /* TransactionId.m in Sources */,
@@ -1399,12 +1421,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4CAC4D1133C2E2FBC990B5AC /* Pods-libKaa.a.debug.xcconfig */;
 			buildSettings = {
-				GCC_PREFIX_HEADER = "Logging-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Kaa;
 				SKIP_INSTALL = YES;
 			};
@@ -1414,12 +1436,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 34B3F556DC3121F3AFA8ECC3 /* Pods-libKaa.a.release.xcconfig */;
 			buildSettings = {
-				GCC_PREFIX_HEADER = "Logging-Prefix.pch";
+				GCC_PREFIX_HEADER = "";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Kaa;
 				SKIP_INSTALL = YES;
 			};

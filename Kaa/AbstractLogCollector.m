@@ -12,6 +12,7 @@
 #import "LogFailoverCommand.h"
 #import "KaaChannelManager.h"
 #import "FailoverManager.h"
+#import "KaaLogging.h"
 
 #define TAG @"AbstractLogCollector >>>"
 

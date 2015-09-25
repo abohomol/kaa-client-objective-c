@@ -7,6 +7,7 @@
 //
 
 #import "DefaultFailoverManager.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultFailoverManager >>>"
 

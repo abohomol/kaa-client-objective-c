@@ -9,6 +9,7 @@
 #import "HttpRequestCreator.h"
 #import "NSData+Conversion.h"
 #import "CommonEPConstants.h"
+#import "KaaLogging.h"
 
 #define TAG @"HTTPRequestCreator >>>"
 

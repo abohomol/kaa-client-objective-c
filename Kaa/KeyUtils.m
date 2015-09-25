@@ -11,6 +11,7 @@
 #import <CommonCrypto/CommonDigest.h>
 #import <CommonCrypto/CommonCryptor.h>
 #import "NSData+Conversion.h"
+#import "KaaLogging.h"
 
 #define TAG @"KeyUtil >>>"
 

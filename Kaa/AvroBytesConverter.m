@@ -8,6 +8,7 @@
 
 #import "AvroBytesConverter.h"
 #import "AvroUtils.h"
+#import "KaaLogging.h"
 
 #define TAG @"AvroBytesConverter >>>"
 

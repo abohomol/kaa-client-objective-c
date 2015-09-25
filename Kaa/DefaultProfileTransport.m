@@ -8,6 +8,7 @@
 
 #import "DefaultProfileTransport.h"
 #import "KeyUtils.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultProfileTransport >>>"
 

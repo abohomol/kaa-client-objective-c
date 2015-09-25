@@ -15,6 +15,7 @@
  */
 
 #import "ResyncConfigurationManager.h"
+#import "KaaLogging.h"
 
 #define TAG @"ResyncConfigurationManager >>>"
 

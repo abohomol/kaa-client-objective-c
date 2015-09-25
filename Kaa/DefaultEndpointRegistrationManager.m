@@ -11,6 +11,7 @@
 #import "EndpointGen.h"
 #import "UserVerifierConstants.h"
 #include <stdlib.h>
+#import "KaaLogging.h"
 
 #define TAG @"DefaultEndpointRegistrationManager >>>"
 

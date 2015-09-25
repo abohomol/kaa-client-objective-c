@@ -10,6 +10,7 @@
 #import "EventListenersRequestBinding.h"
 #import "EndpointGen.h"
 #include <stdlib.h>
+#import "KaaLogging.h"
 
 #define TAG @"DefaultEventManager >>>"
 

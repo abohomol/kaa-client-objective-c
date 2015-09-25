@@ -8,6 +8,7 @@
 
 #import "SimpleConfigurationStorage.h"
 #import "NSData+Conversion.h"
+#import "KaaLogging.h"
 
 #define TAG @"SimpleConfigurationStorage >>>"
 #define _8KB (1024 * 8)

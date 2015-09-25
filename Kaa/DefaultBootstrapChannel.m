@@ -8,6 +8,7 @@
 
 #import "DefaultBootstrapChannel.h"
 #import "HttpRequestCreator.h"
+#import "KaaLogging.h"
 
 #define TAG         @"DefaultBootstrapChannel >>>"
 #define CHANNEL_ID  @"default_bootstrap_channel"

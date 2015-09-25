@@ -8,6 +8,7 @@
 
 #import "DefaultBootstrapDataProcessor.h"
 #import "AvroBytesConverter.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultBootstrapDataProcessor >>>"
 

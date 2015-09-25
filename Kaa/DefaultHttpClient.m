@@ -9,6 +9,7 @@
 #import "DefaultHttpClient.h"
 #import <AFNetworking/AFNetworking.h>
 #import "CommonEPConstants.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultHttpClient >>>"
 

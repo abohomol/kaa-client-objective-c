@@ -7,7 +7,7 @@
 //
 
 #import "DefaultLogUploadStrategy.h"
-#import "DDLog.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultLogUploadStrategy >>>"
 

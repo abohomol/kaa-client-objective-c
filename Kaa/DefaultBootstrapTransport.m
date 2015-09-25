@@ -7,6 +7,7 @@
 //
 
 #import "DefaultBootstrapTransport.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultBootstrapTransport >>>"
 

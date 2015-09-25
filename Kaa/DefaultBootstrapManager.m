@@ -10,6 +10,7 @@
 #import "GenericTransportInfo.h"
 #import "NSMutableArray+Shuffling.h"
 #import "TransportConnectionInfo.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultBootstrapManager"
 #define EXIT_FAILURE 1

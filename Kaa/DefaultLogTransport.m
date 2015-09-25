@@ -7,6 +7,7 @@
 //
 
 #import "DefaultLogTransport.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultLogTransport >>>"
 

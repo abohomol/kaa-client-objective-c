@@ -7,6 +7,7 @@
 //
 
 #import "DefaultNotificationTransport.h"
+#import "KaaLogging.h"
 
 #define TAG @"DefaultNotificationTransport >>>"
 
