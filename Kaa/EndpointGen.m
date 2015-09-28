@@ -135,7 +135,7 @@
 }
 
 - (size_t)getErrorCodeSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_USER_ATTACH_ERROR_CODE_OR_NULL_BRANCH_0:
@@ -192,7 +192,7 @@
 }
 
 - (size_t)getErrorReasonSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_STRING_OR_NULL_BRANCH_0:
@@ -341,7 +341,7 @@
 }
 
 - (size_t)getEndpointKeyHashSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_STRING_OR_NULL_BRANCH_0:
@@ -476,7 +476,7 @@
 }
 
 - (size_t)getSourceSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_STRING_OR_NULL_BRANCH_0:
@@ -533,7 +533,7 @@
 }
 
 - (size_t)getTargetSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_STRING_OR_NULL_BRANCH_0:
@@ -639,7 +639,7 @@
 }
 
 - (size_t)getListenersSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_0:
@@ -765,7 +765,7 @@
 }
 
 - (size_t)getUidSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_STRING_OR_NULL_BRANCH_0:
@@ -822,7 +822,7 @@
 }
 
 - (size_t)getSeqNumberSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_INT_OR_NULL_BRANCH_0:
@@ -954,7 +954,7 @@
 }
 
 - (size_t)getEndpointPublicKeyHashSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BYTES_OR_NULL_BRANCH_0:
@@ -1011,7 +1011,7 @@
 }
 
 - (size_t)getProfileHashSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BYTES_OR_NULL_BRANCH_0:
@@ -1068,7 +1068,7 @@
 }
 
 - (size_t)getTimeoutSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_LONG_OR_NULL_BRANCH_0:
@@ -1151,7 +1151,7 @@
 }
 
 - (size_t)getEndpointPublicKeySize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BYTES_OR_NULL_BRANCH_0:
@@ -1208,7 +1208,7 @@
 }
 
 - (size_t)getEndpointAccessTokenSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_STRING_OR_NULL_BRANCH_0:
@@ -1338,7 +1338,7 @@
 }
 
 - (size_t)getConfigurationHashSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BYTES_OR_NULL_BRANCH_0:
@@ -1395,7 +1395,7 @@
 }
 
 - (size_t)getResyncOnlySize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BOOLEAN_OR_NULL_BRANCH_0:
@@ -1484,7 +1484,7 @@
 }
 
 - (size_t)getTopicListHashSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BYTES_OR_NULL_BRANCH_0:
@@ -1541,7 +1541,7 @@
 }
 
 - (size_t)getTopicStatesSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_TOPIC_STATE_OR_NULL_BRANCH_0:
@@ -1599,7 +1599,7 @@
 }
 
 - (size_t)getAcceptedUnicastNotificationsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_0:
@@ -1656,7 +1656,7 @@
 }
 
 - (size_t)getSubscriptionCommandsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_SUBSCRIPTION_COMMAND_OR_NULL_BRANCH_0:
@@ -1740,7 +1740,7 @@
 }
 
 - (size_t)getUserAttachRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_USER_ATTACH_REQUEST_OR_NULL_BRANCH_0:
@@ -1797,7 +1797,7 @@
 }
 
 - (size_t)getEndpointAttachRequestsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_ENDPOINT_ATTACH_REQUEST_OR_NULL_BRANCH_0:
@@ -1855,7 +1855,7 @@
 }
 
 - (size_t)getEndpointDetachRequestsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_ENDPOINT_DETACH_REQUEST_OR_NULL_BRANCH_0:
@@ -1932,7 +1932,7 @@
 }
 
 - (size_t)getEventSequenceNumberRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         default:
@@ -1982,7 +1982,7 @@
 }
 
 - (size_t)getEventListenersRequestsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_EVENT_LISTENERS_REQUEST_OR_NULL_BRANCH_0:
@@ -2040,7 +2040,7 @@
 }
 
 - (size_t)getEventsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_0:
@@ -2121,7 +2121,7 @@
 }
 
 - (size_t)getLogEntriesSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_0:
@@ -2278,7 +2278,7 @@
 }
 
 - (size_t)getConfSchemaBodySize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BYTES_OR_NULL_BRANCH_0:
@@ -2335,7 +2335,7 @@
 }
 
 - (size_t)getConfDeltaBodySize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BYTES_OR_NULL_BRANCH_0:
@@ -2421,7 +2421,7 @@
 }
 
 - (size_t)getNotificationsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_NOTIFICATION_OR_NULL_BRANCH_0:
@@ -2479,7 +2479,7 @@
 }
 
 - (size_t)getAvailableTopicsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_TOPIC_OR_NULL_BRANCH_0:
@@ -2569,7 +2569,7 @@
 }
 
 - (size_t)getUserAttachResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_USER_ATTACH_RESPONSE_OR_NULL_BRANCH_0:
@@ -2626,7 +2626,7 @@
 }
 
 - (size_t)getUserAttachNotificationSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_USER_ATTACH_NOTIFICATION_OR_NULL_BRANCH_0:
@@ -2683,7 +2683,7 @@
 }
 
 - (size_t)getUserDetachNotificationSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_USER_DETACH_NOTIFICATION_OR_NULL_BRANCH_0:
@@ -2740,7 +2740,7 @@
 }
 
 - (size_t)getEndpointAttachResponsesSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_ENDPOINT_ATTACH_RESPONSE_OR_NULL_BRANCH_0:
@@ -2798,7 +2798,7 @@
 }
 
 - (size_t)getEndpointDetachResponsesSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_ENDPOINT_DETACH_RESPONSE_OR_NULL_BRANCH_0:
@@ -2882,7 +2882,7 @@
 }
 
 - (size_t)getEventSequenceNumberResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_0:
@@ -2939,7 +2939,7 @@
 }
 
 - (size_t)getEventListenersResponsesSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_EVENT_LISTENERS_RESPONSE_OR_NULL_BRANCH_0:
@@ -2997,7 +2997,7 @@
 }
 
 - (size_t)getEventsSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_0:
@@ -3081,7 +3081,7 @@
 }
 
 - (size_t)getErrorCodeSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_LOG_DELIVERY_ERROR_CODE_OR_NULL_BRANCH_0:
@@ -3158,7 +3158,7 @@
 }
 
 - (size_t)getDeliveryStatusesSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_ARRAY_LOG_DELIVERY_STATUS_OR_NULL_BRANCH_0:
@@ -3280,7 +3280,7 @@
 }
 
 - (size_t)getSyncRequestMetaDataSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_0:
@@ -3337,7 +3337,7 @@
 }
 
 - (size_t)getBootstrapSyncRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BOOTSTRAP_SYNC_REQUEST_OR_NULL_BRANCH_0:
@@ -3394,7 +3394,7 @@
 }
 
 - (size_t)getProfileSyncRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_0:
@@ -3451,7 +3451,7 @@
 }
 
 - (size_t)getConfigurationSyncRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_CONFIGURATION_SYNC_REQUEST_OR_NULL_BRANCH_0:
@@ -3508,7 +3508,7 @@
 }
 
 - (size_t)getNotificationSyncRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_0:
@@ -3565,7 +3565,7 @@
 }
 
 - (size_t)getUserSyncRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0:
@@ -3622,7 +3622,7 @@
 }
 
 - (size_t)getEventSyncRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0:
@@ -3679,7 +3679,7 @@
 }
 
 - (size_t)getLogSyncRequestSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0:
@@ -3783,7 +3783,7 @@
 }
 
 - (size_t)getBootstrapSyncResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_BOOTSTRAP_SYNC_RESPONSE_OR_NULL_BRANCH_0:
@@ -3840,7 +3840,7 @@
 }
 
 - (size_t)getProfileSyncResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_PROFILE_SYNC_RESPONSE_OR_NULL_BRANCH_0:
@@ -3897,7 +3897,7 @@
 }
 
 - (size_t)getConfigurationSyncResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_0:
@@ -3954,7 +3954,7 @@
 }
 
 - (size_t)getNotificationSyncResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_NOTIFICATION_SYNC_RESPONSE_OR_NULL_BRANCH_0:
@@ -4011,7 +4011,7 @@
 }
 
 - (size_t)getUserSyncResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_USER_SYNC_RESPONSE_OR_NULL_BRANCH_0:
@@ -4068,7 +4068,7 @@
 }
 
 - (size_t)getEventSyncResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_EVENT_SYNC_RESPONSE_OR_NULL_BRANCH_0:
@@ -4125,7 +4125,7 @@
 }
 
 - (size_t)getRedirectSyncResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_REDIRECT_SYNC_RESPONSE_OR_NULL_BRANCH_0:
@@ -4182,7 +4182,7 @@
 }
 
 - (size_t)getLogSyncResponseSize:(KAAUnion *)kaaUnion {
-    size_t unionSize = 0;
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
     if (kaaUnion) {
         switch (kaaUnion.branch) {
         case KAA_UNION_LOG_SYNC_RESPONSE_OR_NULL_BRANCH_0:
