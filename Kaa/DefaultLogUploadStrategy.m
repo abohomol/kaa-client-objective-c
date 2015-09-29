@@ -18,16 +18,12 @@
 #define DEFAULT_UPLOAD_COUNT_THRESHOLD  (64)
 #define DEFAULT_BATCH_SIZE              (8 * 1024)
 #define DEFAULT_BATCH_COUNT             (256)
+#define DEFAULT_TIME_LIMIT              (5 * 60)
+#define DEFAULT_UPLOAD_LOCKED           NO;
+
 
 @interface DefaultLogUploadStrategy ()
 
-@property (nonatomic) NSInteger timeout;
-@property (nonatomic) NSInteger uploadCheckPeriod;
-@property (nonatomic) NSInteger retryPeriod;
-@property (nonatomic) NSInteger volumeThreshold;
-@property (nonatomic) NSInteger countThreshold;
-@property (nonatomic) NSInteger batchSize;
-@property (nonatomic) NSInteger batchCount;
 
 @end
 
@@ -43,11 +39,23 @@
         self.countThreshold = DEFAULT_UPLOAD_COUNT_THRESHOLD;
         self.batchSize = DEFAULT_BATCH_SIZE;
         self.batchCount = DEFAULT_BATCH_COUNT;
+        self.timeLimit = DEFAULT_TIME_LIMIT;
+        self.isUploadLocked = DEFAULT_UPLOAD_LOCKED;
     }
     return self;
 }
 
 - (LogUploadStrategyDecision)isUploadNeeded:(id<LogStorageStatus>)status {
+    LogUploadStrategyDecision decision;
+    if (!self.isUploadLocked) {
+        decision = [self checkUploadNeeded:status];
+    } else {
+        decision = LOG_UPLOAD_STRATEGY_DECISION_NOOP;
+    }
+    return decision;
+}
+
+- (LogUploadStrategyDecision)checkUploadNeeded:(id<LogStorageStatus>)status {
     LogUploadStrategyDecision decision = LOG_UPLOAD_STRATEGY_DECISION_NOOP;
     if ([status getConsumedVolume] >= self.volumeThreshold) {
         DDLogInfo(@"%@ Need to upload logs - current size: %li, threshold: %li",
@@ -120,6 +128,14 @@
 
 - (void)setUploadCheckPeriod:(NSInteger)uploadCheckPeriod {
     self.uploadCheckPeriod = uploadCheckPeriod;
+}
+
+- (void) lockUpload {
+    self.isUploadLocked = YES;
+}
+
+- (void) unlockUpload {
+    self.isUploadLocked = NO;
 }
 
 @end

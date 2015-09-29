@@ -27,4 +27,14 @@
 
 - (void)setUploadCheckPeriod:(NSInteger)uploadCheckPeriod;
 
+@property (nonatomic) NSInteger timeout;
+@property (nonatomic) NSInteger uploadCheckPeriod;
+@property (nonatomic) NSInteger retryPeriod;
+@property (nonatomic) NSInteger volumeThreshold;
+@property (nonatomic) NSInteger countThreshold;
+@property (nonatomic) NSInteger batchSize;
+@property (nonatomic) NSInteger batchCount;
+@property (nonatomic) BOOL      isUploadLocked;
+@property (nonatomic) long      timeLimit;
+
 @end

@@ -10,12 +10,13 @@
 #import "ConfigurationCommon.h"
 #import "KaaClientProperties.h"
 #import "ConfigurationDeserializer.h"
+#import "KaaClientState.h"
 
 @interface AbstractConfigurationManager : NSObject <ConfigurationManager>
 
 @property(nonatomic,strong,readonly) ConfigurationDeserializer *deserializer;
 
-- (instancetype)initWithClientProperties:(KaaClientProperties *)properties;
+- (instancetype)initWithClientProperties:(KaaClientProperties *)properties andState:(id<KaaClientState>)state;
 
 - (NSData *)getConfigurationData;
 

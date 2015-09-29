@@ -7,6 +7,5 @@
 //
 
 #import "KaaLogging.h"
-#import "DDLog.h"
 
-const DDLogLevel ddLogLevel = LOG_LEVEL_VERBOSE;
+const DDLogLevel ddLogLevel = DDLogLevelVerbose;

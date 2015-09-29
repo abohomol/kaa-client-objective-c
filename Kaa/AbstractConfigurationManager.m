@@ -14,6 +14,7 @@
 @interface AbstractConfigurationManager ()
 
 @property(nonatomic,strong) KaaClientProperties *properties;
+@property(nonatomic,strong) id<KaaClientState> state;
 @property(nonatomic,strong) id<ConfigurationStorage> storage;
 @property(nonatomic,strong) NSData *configurationData;
 
@@ -26,11 +27,12 @@
 
 @implementation AbstractConfigurationManager
 
-- (instancetype)initWithClientProperties:(KaaClientProperties *)properties {
+- (instancetype)initWithClientProperties:(KaaClientProperties *)properties andState:(id<KaaClientState>)state {
     self = [super init];
     if (self) {
         self.delegates = [NSMutableSet set];
         self.properties = properties;
+        self.state = state;
         _deserializer = [[ConfigurationDeserializer alloc] init];
     }
     return self;
@@ -91,12 +93,22 @@
 
 - (NSData *)loadConfigurationData {
     if (self.storage) {
-        DDLogDebug(@"%@ Loading configuration data from storage: %@", TAG, self.storage);
-        @try {
-            self.configurationData = [self.storage loadConfiguration];
-        }
-        @catch (NSException *exception) {
-            DDLogError(@"%@ Failed to load configuration from storage: %@", TAG, exception);
+        if ([self.state isConfigurationVersionUpdated]) {
+            DDLogDebug(@"%@ Clearing old configuration data from storage: %@", TAG, self.storage);
+            @try {
+                [self.storage clearConfiguration];
+            }
+            @catch (NSException *exception) {
+                DDLogError(@"%@ Failed to clear configuration from storage: %@", TAG, exception);
+            }
+        } else {
+            DDLogDebug(@"%@ Loading configuration data from storage: %@", TAG, self.storage);
+            @try {
+                self.configurationData = [self.storage loadConfiguration];
+            }
+            @catch (NSException *exception) {
+                DDLogError(@"%@ Failed to load configuration from storage: %@", TAG, exception);
+            }
         }
     }
     if (!self.configurationData) {
