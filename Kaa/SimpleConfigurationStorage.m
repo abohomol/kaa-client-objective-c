@@ -38,6 +38,19 @@
     [self.fileManager createFileAtPath:self.path contents:buffer attributes:nil];
 }
 
+- (void)clearConfiguration {
+    NSError *error;
+    if ([self.fileManager isDeletableFileAtPath:self.path]) {
+        BOOL success = [self.fileManager removeItemAtPath:self.path error:&error];
+        if (!success) {
+            DDLogInfo(@"%@ Deleting failed with error: %@", TAG, error);
+        }
+    } else {
+        DDLogInfo(@"%@ File doesn't exist at path or doesn't have delete privileges", TAG);
+    }
+    
+}
+
 - (NSData *)loadConfiguration {
     if (![self.fileManager fileExistsAtPath:self.path]) {
         DDLogInfo(@"%@ There is no configuration in storage yet", TAG);

@@ -446,7 +446,7 @@
 
 - (ResyncConfigurationManager *)buildConfigurationManager:(KaaClientProperties *)properties
                                               clientState:(id<KaaClientState>)state transport:(TransportContext *)context {
-    return [[ResyncConfigurationManager alloc] initWithClientProperties:properties];
+    return [[ResyncConfigurationManager alloc] initWithClientProperties:properties andState:state];
 }
 
 - (DefaultLogCollector *)buildLogCollector:(KaaClientProperties *)properties

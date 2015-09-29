@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
+		39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
+		39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
+		39AEB27D1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2731BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
+		39AEB27E1BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2741BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
+		39AEB27F1BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2751BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
+		39AEB2801BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2761BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
+		39AEB2811BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2771BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
+		39AEB2821BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2781BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
+		39AEB2831BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2791BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
+		39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */; settings = {ASSET_TAGS = (); }; };
+		39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */; settings = {ASSET_TAGS = (); }; };
 		6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */; };
 		B800844F1B7B2DDD003A3D5E /* ResyncConfigurationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */; };
 		B80084501B7B2DDD003A3D5E /* ResyncConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */; };
@@ -249,6 +261,18 @@
 
 /* Begin PBXFileReference section */
 		34B3F556DC3121F3AFA8ECC3 /* Pods-libKaa.a.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.release.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.release.xcconfig"; sourceTree = "<group>"; };
+		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
+		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
+		39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCountLogUploadStrategy.h; sourceTree = "<group>"; };
+		39AEB2731BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCountLogUploadStrategy.m; sourceTree = "<group>"; };
+		39AEB2741BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCountWithTimeLimitLogUploadStrategy.h; sourceTree = "<group>"; };
+		39AEB2751BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordCountWithTimeLimitLogUploadStrategy.m; sourceTree = "<group>"; };
+		39AEB2761BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageSizeLogUploadStrategy.h; sourceTree = "<group>"; };
+		39AEB2771BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageSizeLogUploadStrategy.m; sourceTree = "<group>"; };
+		39AEB2781BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StorageSizeWithTimeLimitLogUploadStrategy.h; sourceTree = "<group>"; };
+		39AEB2791BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageSizeWithTimeLimitLogUploadStrategy.m; sourceTree = "<group>"; };
+		39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroBytesConverterTests.m; sourceTree = "<group>"; };
+		39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroUtilsTests.m; sourceTree = "<group>"; };
 		4CAC4D1133C2E2FBC990B5AC /* Pods-libKaa.a.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.debug.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.debug.xcconfig"; sourceTree = "<group>"; };
 		B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResyncConfigurationManager.h; sourceTree = "<group>"; };
 		B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResyncConfigurationManager.m; sourceTree = "<group>"; };
@@ -494,6 +518,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39AEB2841BBA6A440045FB32 /* strategy */ = {
+			isa = PBXGroup;
+			children = (
+				39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */,
+				39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */,
+				39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */,
+				39AEB2731BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.m */,
+				39AEB2741BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.h */,
+				39AEB2751BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.m */,
+				39AEB2761BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.h */,
+				39AEB2771BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.m */,
+				39AEB2781BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.h */,
+				39AEB2791BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.m */,
+			);
+			name = strategy;
+			sourceTree = "<group>";
+		};
 		B81161101B4BBB1400C4E0C6 /* configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +578,7 @@
 		B81161171B4BC59E00C4E0C6 /* logging */ = {
 			isa = PBXGroup;
 			children = (
+				39AEB2841BBA6A440045FB32 /* strategy */,
 				B83CCD001B8B37A6003D4B0B /* memory */,
 				B81161191B4BC5B700C4E0C6 /* LogStorage.h */,
 				B811611D1B4BC75100C4E0C6 /* LogBlock.h */,
@@ -664,6 +706,8 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */,
+				39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */,
 				B824A1FB1B1452C50076C753 /* Supporting Files */,
 			);
 			path = KaaTests;
@@ -1002,6 +1046,7 @@
 				B86D7F181BA2BD4700563592 /* KAALog.h in Headers */,
 				B8FBD9EC1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h in Headers */,
 				B876298E1B8CB45B006AD5EF /* EndpointRegistrationProcessor.h in Headers */,
+				39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */,
 				B85B33C91BB04B1300B5785F /* DefaultBootstrapChannel.h in Headers */,
 				B87629901B8CB660006AD5EF /* EventManger.h in Headers */,
 				B8D1D10E1B945FF10097E64A /* KeyPair.h in Headers */,
@@ -1055,6 +1100,7 @@
 				B8FBD9F71B9E35B4009A2BA3 /* KaaClientPlatformContext.h in Headers */,
 				B88D00B51BA8835D002E0144 /* DefaultLogTransport.h in Headers */,
 				B88D00C11BA8AE9F002E0144 /* DefaultEventTransport.h in Headers */,
+				39AEB27E1BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.h in Headers */,
 				B840CF3A1B172B75001D0F74 /* AbstractKaaTransport.h in Headers */,
 				B87629A11B8DA20A006AD5EF /* EventFamilyFactory.h in Headers */,
 				B824A2221B1488830076C753 /* TransportConnectionInfo.h in Headers */,
@@ -1062,6 +1108,7 @@
 				B825A9A21B5664E800D35F01 /* GenericLogCollector.h in Headers */,
 				B8A13B191BB0221B00265729 /* AbstractHttpChannel.h in Headers */,
 				B83CCD0B1B8B52CE003D4B0B /* MemLogStorage.h in Headers */,
+				39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */,
 				B888362C1BA09B5000ACAB4F /* SchemaProcessor.h in Headers */,
 				B8D47D881B4FF8490003BAF3 /* AvroBytesConverter.h in Headers */,
 				B81161131B4BBB3D00C4E0C6 /* ConfigurationStorage.h in Headers */,
@@ -1069,11 +1116,13 @@
 				B8FBD9F41B9E02DB009A2BA3 /* AbstractHttpClient.h in Headers */,
 				B840CF351B172016001D0F74 /* EndpointAccessToken.h in Headers */,
 				B88836391BA1F1FD00ACAB4F /* LogCollector.h in Headers */,
+				39AEB2821BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.h in Headers */,
 				B84822901B8DC269004E370B /* DefaultNotificationManager.h in Headers */,
 				B8C055CD1B57ACD500F5AA1C /* LogTransport.h in Headers */,
 				B88D00BD1BA88CAD002E0144 /* DefaultProfileTransport.h in Headers */,
 				B8C055C51B56BB2A00F5AA1C /* FailoverDecision.h in Headers */,
 				B8A8DF991B9F4871002CEF3E /* IPTransportInfo.h in Headers */,
+				39AEB2801BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.h in Headers */,
 				B84822821B8DAFC0004E370B /* DefaultProfileManager.h in Headers */,
 				B8C8BD371B83153400D2C016 /* NSString+Commons.h in Headers */,
 				B8DBE35E1BB1448D0036058B /* DefaultHttpClient.h in Headers */,
@@ -1248,6 +1297,7 @@
 				B8FC09531B904CFD002109A4 /* DefaultEndpointRegistrationManager.m in Sources */,
 				B8A8DF9A1B9F4871002CEF3E /* IPTransportInfo.m in Sources */,
 				B848228D1B8DBB54004E370B /* NotificationCommon.m in Sources */,
+				39AEB2831BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.m in Sources */,
 				B83CCD0C1B8B52CE003D4B0B /* MemLogStorage.m in Sources */,
 				B88D00BA1BA88533002E0144 /* DefaultConfigurationTransport.m in Sources */,
 				B8D1D10B1B9442940097E64A /* KeyUtils.m in Sources */,
@@ -1261,6 +1311,7 @@
 				B856EFB41B9C82CC00C065D9 /* KaaClientPropertiesState.m in Sources */,
 				B8807C1D1BA33B0F00F78BFC /* BlockingQueue.m in Sources */,
 				B803FD391B9EF52300187E61 /* TransportProtocolIdHolder.m in Sources */,
+				39AEB2811BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.m in Sources */,
 				B824A2191B1461DC0076C753 /* TransportProtocolId.m in Sources */,
 				B8A8DFA41BA03BA0002CEF3E /* DefaultBootstrapTransport.m in Sources */,
 				B8DBE3591BB138550036058B /* DefaultFailoverManager.m in Sources */,
@@ -1271,6 +1322,7 @@
 				B856EFB81B9D61D200C065D9 /* UUID.m in Sources */,
 				B87D498F1B94AF0300AD7CFC /* MessageEncoderDecoder.m in Sources */,
 				B88836291BA09A5F00ACAB4F /* TransportContext.m in Sources */,
+				39AEB27F1BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.m in Sources */,
 				B88836331BA17C0100ACAB4F /* DefaultUserTransport.m in Sources */,
 				B87A74311B95AF120052858F /* NSData+CommonCrypto.m in Sources */,
 				B8DBE35F1BB1448D0036058B /* DefaultHttpClient.m in Sources */,
@@ -1311,9 +1363,11 @@
 				B876299C1B8CD026006AD5EF /* EventListenersRequestBinding.m in Sources */,
 				B83CCCFF1B8B30A2003D4B0B /* DefaultLogUploadStrategy.m in Sources */,
 				B80084501B7B2DDD003A3D5E /* ResyncConfigurationManager.m in Sources */,
+				39AEB27D1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.m in Sources */,
 				B88D00BE1BA88CAD002E0144 /* DefaultProfileTransport.m in Sources */,
 				B86D7F171BA2BD4700563592 /* KAAConfiguration.m in Sources */,
 				B8A8DF9E1BA02878002CEF3E /* SyncTask.m in Sources */,
+				39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */,
 				B87629981B8CCFD5006AD5EF /* DefaultEventManager.m in Sources */,
 				B8B4CDC61B8215C4007FE20D /* KAABase64.m in Sources */,
 				B84822911B8DC269004E370B /* DefaultNotificationManager.m in Sources */,
@@ -1325,6 +1379,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */,
+				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,9 +11,10 @@
 
 #import <Foundation/Foundation.h>
 
-@protocol ConfigurationStorage <NSObject>
+@protocol ConfigurationStorage
 
 - (void)saveConfiguration:(NSData *)buffer;
+- (void)clearConfiguration;
 - (NSData *)loadConfiguration;
 
 @end
