@@ -8,6 +8,7 @@
 
 @import UIKit;
 #import "AvroUtils.h"
+#import "EndpointGen.h"
 #import <XCTest/XCTest.h>
 
 @interface AvroUtilsTests : XCTestCase
@@ -20,10 +21,11 @@
 
 - (void)setUp {
     [super setUp];
-    self.utils = [[AvroUtils alloc] init];
 }
 
 - (void)testPrimitives {
+    
+    self.utils = [[AvroUtils alloc] init];
     
     typedef enum {
         ANACONDA,
@@ -78,6 +80,9 @@
 }
 
 - (void)testString {
+    
+    self.utils = [[AvroUtils alloc] init];
+    
     NSString *origin = @"Avro Utils Tests";
     char *buffer = (char *)malloc(([self.utils getStringSize:origin]) * sizeof(char));
     avro_writer_t writer = avro_writer_memory(buffer, [self.utils getStringSize:origin]);
@@ -92,6 +97,66 @@
     NSString *deserialized = [self.utils deserializeString:reader];
     avro_reader_free(reader);
     XCTAssertTrue([origin isEqualToString:deserialized]);
+}
+
+
+- (void)testBasicArray {
+    
+    self.utils = [[AvroUtils alloc] init];
+    
+    NSArray *array = [NSArray arrayWithObjects:@"Object1", @"Object2", @"Object3", nil];
+    size_t size = [self.utils getArraySize:array withSelector:@selector(getStringSize:) parameterized:YES target:self.utils];
+    char *buffer = (char *)malloc(size * sizeof(char));
+    avro_writer_t writer = avro_writer_memory(buffer, size);
+    if (!writer) {
+        XCTFail(@"Can't allocate memory!");
+    }
+    [self.utils serializeArray:array to:writer withSelector:@selector(serializeString:to:) target:self.utils];
+    NSData *serialized = [NSData dataWithBytes:writer->buf length:writer->written];
+    avro_writer_free(writer);
+    
+    avro_reader_t reader = avro_reader_memory([serialized bytes], [serialized length]);
+    NSArray *desirealized = [self.utils deserializeArray:reader withSelector:@selector(deserializeString:) andParam:nil target:self.utils];
+    avro_reader_free(reader);
+    XCTAssertEqual([array count], [desirealized count]);
+    for (int i = 0; i < [array count]; i++) {
+        [[array objectAtIndex:i] isEqualToString:[desirealized objectAtIndex:i]];
+    }
+}
+
+
+- (void)testArrayWithAvroObjects {
+    
+    self.utils = [[AvroUtils alloc] init];
+
+    //creating 3 objects
+    
+    SubscriptionCommand *command1 = [[SubscriptionCommand alloc] init];
+    command1.topicId = @"TestSubscriptionCommand1";
+    command1.command = SUBSCRIPTION_COMMAND_TYPE_REMOVE;
+    SubscriptionCommand *command2 = [[SubscriptionCommand alloc] init];
+    command2.topicId = @"TestSubscriptionCommand2";
+    command2.command = SUBSCRIPTION_COMMAND_TYPE_REMOVE;
+    SubscriptionCommand *command3 = [[SubscriptionCommand alloc] init];
+    command3.topicId = @"TestSubscriptionCommand3";
+    command3.command = SUBSCRIPTION_COMMAND_TYPE_REMOVE;
+    
+    NSArray *array = [NSArray arrayWithObjects:command1, command2, command3,nil];
+    
+    size_t size = [self.utils getArraySize:array withSelector:@selector(getSize) parameterized:NO target:nil];
+    char *buffer = (char *)malloc(size * sizeof(char));
+    avro_writer_t writer = avro_writer_memory(buffer, size);
+    if (!writer) {
+        XCTFail(@"Can't allocate memory!");
+    }
+    [self.utils serializeArray:array to:writer withSelector:@selector(serializeRecord:to:) target:nil];
+    NSData *serialized = [NSData dataWithBytes:writer->buf length:writer->written];
+    avro_writer_free(writer);
+    
+    avro_reader_t reader = avro_reader_memory([serialized bytes], [serialized length]);
+    NSArray *desirealized = [self.utils deserializeArray:reader withSelector:@selector(deserializeRecord:as:) andParam:[SubscriptionCommand class] target:nil];
+    avro_reader_free(reader);
+    XCTAssertEqual([array count], [desirealized count]);
 }
 
 @end

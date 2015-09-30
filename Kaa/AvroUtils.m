@@ -1,4 +1,3 @@
-//
 //  AvroUtils.m
 //  Kaa
 //
@@ -187,10 +186,12 @@
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:
                                     [targetClass instanceMethodSignatureForSelector:sizeFunc]];
         [invocation setSelector:sizeFunc];
-        for (id object in array) {
-            [invocation setTarget:(target ? target : object)];
-            [invocation setArgument:(parameterized ? (__bridge void *)(object) : nil) atIndex:2];
-            [invocation invoke];
+        for (int i = 0; i < array.count; i++) {
+            id object = array[i];
+            if (parameterized) {
+                [invocation setArgument:&object atIndex:2];
+            }
+            [invocation invokeWithTarget:(target ? target : object)];
             //TODO check whether it's better to create new invocation or not
             size_t objSize;
             [invocation getReturnValue:&objSize];
@@ -215,9 +216,9 @@
         NSUInteger argsCount = [signature numberOfArguments];
         [invocation setSelector:deserializeFunc];
         [invocation setTarget:(target ? target : self)];
-        [invocation setArgument:reader atIndex:2];
+        [invocation setArgument:&reader atIndex:2];
         if (argsCount > 3 && param) {
-            [invocation setArgument:(__bridge void *)(param) atIndex:3];
+            [invocation setArgument:&param atIndex:3];
         }
         id object;
         int index;
