@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		391A91A01BBD6CCD00DBA851 /* SingleThreadExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */; settings = {ASSET_TAGS = (); }; };
+		391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
 		39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
@@ -19,6 +21,10 @@
 		39AEB2831BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2791BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */; settings = {ASSET_TAGS = (); }; };
+		39E404D11BBC31F900A5B833 /* AbstractExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 39E404CF1BBC31F900A5B833 /* AbstractExecutorContext.h */; settings = {ASSET_TAGS = (); }; };
+		39E404D21BBC31F900A5B833 /* AbstractExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
+		39E404D51BBD0FF500A5B833 /* SimpleExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */; settings = {ASSET_TAGS = (); }; };
+		39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */; };
 		B800844F1B7B2DDD003A3D5E /* ResyncConfigurationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */; };
 		B80084501B7B2DDD003A3D5E /* ResyncConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */; };
@@ -261,6 +267,8 @@
 
 /* Begin PBXFileReference section */
 		34B3F556DC3121F3AFA8ECC3 /* Pods-libKaa.a.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.release.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.release.xcconfig"; sourceTree = "<group>"; };
+		391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleThreadExecutorContext.h; sourceTree = "<group>"; };
+		391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleThreadExecutorContext.m; sourceTree = "<group>"; };
 		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
 		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
 		39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCountLogUploadStrategy.h; sourceTree = "<group>"; };
@@ -273,6 +281,10 @@
 		39AEB2791BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StorageSizeWithTimeLimitLogUploadStrategy.m; sourceTree = "<group>"; };
 		39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroBytesConverterTests.m; sourceTree = "<group>"; };
 		39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroUtilsTests.m; sourceTree = "<group>"; };
+		39E404CF1BBC31F900A5B833 /* AbstractExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractExecutorContext.h; sourceTree = "<group>"; };
+		39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractExecutorContext.m; sourceTree = "<group>"; };
+		39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleExecutorContext.h; sourceTree = "<group>"; };
+		39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleExecutorContext.m; sourceTree = "<group>"; };
 		4CAC4D1133C2E2FBC990B5AC /* Pods-libKaa.a.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.debug.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.debug.xcconfig"; sourceTree = "<group>"; };
 		B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResyncConfigurationManager.h; sourceTree = "<group>"; };
 		B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResyncConfigurationManager.m; sourceTree = "<group>"; };
@@ -987,6 +999,12 @@
 				B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */,
 				B88836261BA09A5F00ACAB4F /* TransportContext.h */,
 				B88836271BA09A5F00ACAB4F /* TransportContext.m */,
+				39E404CF1BBC31F900A5B833 /* AbstractExecutorContext.h */,
+				39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */,
+				39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */,
+				39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */,
+				391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */,
+				391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */,
 			);
 			name = context;
 			sourceTree = "<group>";
@@ -1037,6 +1055,7 @@
 				B81935C31B15D0660053486A /* EndpointObjectHash.h in Headers */,
 				B8A13B161BB01AD000265729 /* CommonEPConstants.h in Headers */,
 				B8C055D01B57AF1E00F5AA1C /* ExecutorContext.h in Headers */,
+				39E404D51BBD0FF500A5B833 /* SimpleExecutorContext.h in Headers */,
 				B8FC094F1B904BD2002109A4 /* UserTransport.h in Headers */,
 				B803F8EE1B7A5AA8009C2C28 /* ConfigurationCommon.h in Headers */,
 				B811611A1B4BC5B700C4E0C6 /* LogStorage.h in Headers */,
@@ -1075,6 +1094,7 @@
 				B8C8BD3B1B83236400D2C016 /* GenericTransportInfo.h in Headers */,
 				B88836361BA1F15000ACAB4F /* LogRecord.h in Headers */,
 				B86D7F1C1BA2BD4700563592 /* KAAProfile.h in Headers */,
+				391A91A01BBD6CCD00DBA851 /* SingleThreadExecutorContext.h in Headers */,
 				B81161241B4BCFA100C4E0C6 /* AccessPointCommand.h in Headers */,
 				B856EFB31B9C82CC00C065D9 /* KaaClientPropertiesState.h in Headers */,
 				B8B8ED271BA2D43C0067BC4C /* DefaultChannelManager.h in Headers */,
@@ -1124,6 +1144,7 @@
 				B8A8DF991B9F4871002CEF3E /* IPTransportInfo.h in Headers */,
 				39AEB2801BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.h in Headers */,
 				B84822821B8DAFC0004E370B /* DefaultProfileManager.h in Headers */,
+				39E404D11BBC31F900A5B833 /* AbstractExecutorContext.h in Headers */,
 				B8C8BD371B83153400D2C016 /* NSString+Commons.h in Headers */,
 				B8DBE35E1BB1448D0036058B /* DefaultHttpClient.h in Headers */,
 				B856C0081B9337F700A9F65D /* DefaultBootstrapManager.h in Headers */,
@@ -1210,7 +1231,7 @@
 		B824A1E31B1452C50076C753 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "CYBERVISION INC";
 				TargetAttributes = {
 					B824A1EA1B1452C50076C753 = {
@@ -1309,6 +1330,7 @@
 				B88D00C21BA8AE9F002E0144 /* DefaultEventTransport.m in Sources */,
 				B86D7F1B1BA2BD4700563592 /* KAANotification.m in Sources */,
 				B856EFB41B9C82CC00C065D9 /* KaaClientPropertiesState.m in Sources */,
+				391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */,
 				B8807C1D1BA33B0F00F78BFC /* BlockingQueue.m in Sources */,
 				B803FD391B9EF52300187E61 /* TransportProtocolIdHolder.m in Sources */,
 				39AEB2811BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.m in Sources */,
@@ -1345,10 +1367,12 @@
 				B8A13B121BB0198F00265729 /* HttpRequestCreator.m in Sources */,
 				B824A2261B1489FE0076C753 /* ConnectivityChecker.m in Sources */,
 				B84462351BB5BAD4009826FC /* io.c in Sources */,
+				39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */,
 				B83CCD081B8B3F96003D4B0B /* DefaultLogCollector.m in Sources */,
 				B8B8ED281BA2D43C0067BC4C /* DefaultChannelManager.m in Sources */,
 				B8C8BD3C1B83236400D2C016 /* GenericTransportInfo.m in Sources */,
 				B83CCCFB1B8B2B86003D4B0B /* AbstractLogCollector.m in Sources */,
+				39E404D21BBC31F900A5B833 /* AbstractExecutorContext.m in Sources */,
 				B844623D1BB5C377009826FC /* KaaLogging.m in Sources */,
 				B8A13B1A1BB0221B00265729 /* AbstractHttpChannel.m in Sources */,
 				B8A13B061BAFE47A00265729 /* DefaultBootstrapDataProcessor.m in Sources */,
@@ -1415,6 +1439,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1517,6 +1542,7 @@
 				);
 				INFOPLIST_FILE = KaaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kaaproject.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -1531,6 +1557,7 @@
 				);
 				INFOPLIST_FILE = KaaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kaaproject.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
