@@ -22,11 +22,6 @@
 #define DEFAULT_UPLOAD_LOCKED           NO;
 
 
-@interface DefaultLogUploadStrategy ()
-
-
-@end
-
 @implementation DefaultLogUploadStrategy
 
 - (instancetype)initWithDefaults {

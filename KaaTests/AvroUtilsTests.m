@@ -21,11 +21,10 @@
 
 - (void)setUp {
     [super setUp];
+    self.utils = [[AvroUtils alloc] init];
 }
 
 - (void)testPrimitives {
-    
-    self.utils = [[AvroUtils alloc] init];
     
     typedef enum {
         ANACONDA,
@@ -81,8 +80,6 @@
 
 - (void)testString {
     
-    self.utils = [[AvroUtils alloc] init];
-    
     NSString *origin = @"Avro Utils Tests";
     char *buffer = (char *)malloc(([self.utils getStringSize:origin]) * sizeof(char));
     avro_writer_t writer = avro_writer_memory(buffer, [self.utils getStringSize:origin]);
@@ -101,8 +98,6 @@
 
 
 - (void)testBasicArray {
-    
-    self.utils = [[AvroUtils alloc] init];
     
     NSArray *array = [NSArray arrayWithObjects:@"Object1", @"Object2", @"Object3", nil];
     size_t size = [self.utils getArraySize:array withSelector:@selector(getStringSize:) parameterized:YES target:self.utils];
@@ -126,8 +121,6 @@
 
 
 - (void)testArrayWithAvroObjects {
-    
-    self.utils = [[AvroUtils alloc] init];
 
     //creating 3 objects
     

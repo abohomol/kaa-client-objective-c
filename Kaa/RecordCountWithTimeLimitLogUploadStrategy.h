@@ -12,7 +12,7 @@
 #import "TimeCommons.h"
 @interface RecordCountWithTimeLimitLogUploadStrategy : DefaultLogUploadStrategy
 
-@property (assign, nonatomic) long lastUploadTime;
+@property (nonatomic) long lastUploadTime;
 
 - (instancetype) initWithCountThreshold:(NSInteger)countThreshold TimeLimit:(long)timeLimit andTimeUnit:(TimeUnit)timeUnit;
 

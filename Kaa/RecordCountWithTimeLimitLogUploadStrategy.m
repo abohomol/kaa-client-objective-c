@@ -39,9 +39,8 @@
 
 - (instancetype) initWithCountThreshold:(NSInteger)countThreshold TimeLimit:(long)timeLimit andTimeUnit:(TimeUnit)timeUnit
 {
-    self = [super init];
+    self = [self init];
     if (self) {
-        [self setLastUploadTime:[[NSDate alloc] timeIntervalSince1970] * 1000];
         [self setCountThreshold:countThreshold];
         [self setUploadCheckPeriod:[TimeUtils convert:timeLimit from:timeUnit to:TIME_UNIT_SECONDS]];
     }

@@ -31,6 +31,7 @@
     }
     NSData *utf8Data = [data dataUsingEncoding:NSUTF8StringEncoding];
     NSData *encodedData = [[NSData alloc] initWithBase64EncodedData:utf8Data options:0];
+    EndpointObjectHash *hash = [[super alloc] initWithData: encodedData];
     return [[super alloc] initWithData: encodedData];
 }
 
@@ -48,7 +49,7 @@
     unsigned char hashedChars[20];
     CC_SHA1([data bytes], [data length], hashedChars);
     NSData *hashedData = [NSData dataWithBytes:hashedChars length:20];
-    return [[super alloc] initWithData: hashedData];
+    return [[super alloc] initWithData:hashedData];
 }
 
 - (NSUInteger)hash {

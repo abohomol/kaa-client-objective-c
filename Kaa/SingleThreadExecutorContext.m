@@ -13,7 +13,7 @@
 
 @interface SingleThreadExecutorContext ()
 
-@property (nonatomic) NSOperationQueue *singleThreadExecutor;
+@property (strong, nonatomic) NSOperationQueue *singleThreadExecutor;
 
 @end
 
@@ -22,7 +22,7 @@
 - (void)initiate
 {
     DDLogDebug(@"%@ Creating executor service", TAG);
-    [self.singleThreadExecutor setName:@"singleThreadExecutor queue"];
+    self.singleThreadExecutor = [[NSOperationQueue alloc] init];
     DDLogDebug(@"%@ Created executor service", TAG);
 }
 

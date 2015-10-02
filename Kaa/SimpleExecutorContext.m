@@ -20,10 +20,10 @@
 @property (nonatomic) NSInteger callbackThreadCount;
 @property (nonatomic) NSInteger scheduledThreadCount;
 
-@property (nonatomic) NSOperationQueue *lifeCycleExecutor;
-@property (nonatomic) NSOperationQueue *apiExecutor;
-@property (nonatomic) NSOperationQueue *callBackExecutor;
-@property (nonatomic) NSOperationQueue *scheduledExecutor;
+@property (strong, nonatomic) NSOperationQueue *lifeCycleExecutor;
+@property (strong, nonatomic) NSOperationQueue *apiExecutor;
+@property (strong, nonatomic) NSOperationQueue *callBackExecutor;
+@property (strong, nonatomic) NSOperationQueue *scheduledExecutor;
 
 @end
 
@@ -32,13 +32,10 @@
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
-        self = [self initWithlifeCycleThreadCount:SINGLE_THREAD
-                                andApiThreadCount:SINGLE_THREAD
-                           andCallbackThreadCount:SINGLE_THREAD
-                          andScheduledThreadCount:SINGLE_THREAD];
-    }
-    return self;
+    return [self initWithlifeCycleThreadCount:SINGLE_THREAD
+                            andApiThreadCount:SINGLE_THREAD
+                       andCallbackThreadCount:SINGLE_THREAD
+                      andScheduledThreadCount:SINGLE_THREAD];
 }
 
 - (instancetype)initWithlifeCycleThreadCount:(NSInteger)lifeCycleThreadCount
@@ -57,10 +54,10 @@
 
 - (void) initiate {
     DDLogDebug(@"%@ Creating executor services", TAG);
-    [self.lifeCycleExecutor setName:@"lifeCycleExecutor queue"];
-    [self.apiExecutor setName:@"apiExecutor queue"];
-    [self.callBackExecutor setName:@"callBackExecutor queue"];
-    [self.scheduledExecutor setName:@"scheduledExecutor queue"];
+    self.lifeCycleExecutor = [[NSOperationQueue alloc] init];
+    self.apiExecutor = [[NSOperationQueue alloc] init];
+    self.callBackExecutor = [[NSOperationQueue alloc] init];
+    self.scheduledExecutor = [[NSOperationQueue alloc] init];
     
     [self.lifeCycleExecutor setMaxConcurrentOperationCount:self.lifeCycleThreadCount];
     [self.apiExecutor setMaxConcurrentOperationCount:self.apiThreadCount];
