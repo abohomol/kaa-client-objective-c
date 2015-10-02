@@ -72,4 +72,20 @@
     [self.scheduledExecutor cancelAllOperations];
 }
 
+- (NSOperationQueue*) getLifeCycleExecutor {
+    return self.lifeCycleExecutor;
+}
+
+- (NSOperationQueue*) getApiExecutor {
+    return self.apiExecutor;
+}
+
+- (NSOperationQueue*) getCallbackExecutor {
+    return self.callBackExecutor;
+}
+
+- (dispatch_queue_t) getSheduledExecutor {
+    return [self.scheduledExecutor underlyingQueue];
+}
+
 @end
