@@ -31,7 +31,6 @@
 
 - (instancetype)init
 {
-    self = [super init];
     return [self initWithlifeCycleThreadCount:SINGLE_THREAD
                             andApiThreadCount:SINGLE_THREAD
                        andCallbackThreadCount:SINGLE_THREAD

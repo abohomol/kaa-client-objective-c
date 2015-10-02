@@ -21,8 +21,7 @@
 
 - (instancetype)init
 {
-    self = [self initWithTimeOut:DEFAULT_TIMEOUT andTimeUnit:DEFAULT_TIMEUNIT];
-    return self;
+    return [self initWithTimeOut:DEFAULT_TIMEOUT andTimeUnit:DEFAULT_TIMEUNIT];
 }
 
 - (instancetype) initWithTimeOut:(NSInteger)timeOut andTimeUnit:(TimeUnit)timeUnit {
@@ -45,8 +44,8 @@
     [queue cancelAllOperations];
     DDLogDebug(@"%@ Waiting for executor service to shutdown for %ld %u", TAG, (long)self.timeOut, self.timeUnit);
     @try {
-        double time = CACurrentMediaTime();
-        while ([queue operationCount] && (time < (time + self.timeOut))) {
+        double fixedTime = CACurrentMediaTime();
+        while ([queue operationCount] && (CACurrentMediaTime() < (fixedTime + self.timeOut))) {
             sleep(100);
         }
     }
