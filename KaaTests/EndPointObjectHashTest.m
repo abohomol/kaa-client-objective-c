@@ -24,18 +24,18 @@
 
 - (void) testDeltaSameEndpointObjectHash {
     
-    EndpointObjectHash *hash1 = [EndpointObjectHash fromString:@"test"];
-    EndpointObjectHash *hash2 = [EndpointObjectHash fromString:@"test"];
-    
-    XCTAssertEqual(hash1.data, hash2.data);
+    EndpointObjectHash *hash1 = [EndpointObjectHash fromString:@"ttt"];
+    EndpointObjectHash *hash2 = [EndpointObjectHash fromString:@"ttt"];
+
+    XCTAssertEqualObjects(hash1, hash2);
 }
 
 - (void) testDeltaDifferentEndpointObjectHash {
     
-    EndpointObjectHash *hash1 = [EndpointObjectHash fromSHA1:@"test1"];
-    EndpointObjectHash *hash2 = [EndpointObjectHash fromSHA1:@"test2"];
+    EndpointObjectHash *hash1 = [EndpointObjectHash fromString:@"test1"];
+    EndpointObjectHash *hash2 = [EndpointObjectHash fromString:@"test2"];
     
-    XCTAssertNotEqual(hash1.data, hash2.data);
+    XCTAssertNotEqualObjects(hash1, hash2);
 }
 
 
