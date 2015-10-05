@@ -477,8 +477,12 @@
 		B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecutorContext.h; sourceTree = "<group>"; };
 		B8C10A081BC279A6001A2236 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		B8C10A091BC279A6001A2236 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
+<<<<<<< HEAD
 		B8C10A0E1BC28748001A2236 /* KaaClientPropertiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesTest.m; sourceTree = "<group>"; };
 		B8C10A101BC28E7A001A2236 /* client_test_properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = client_test_properties.plist; sourceTree = "<group>"; };
+=======
+		B8C10A0D1BC281FE001A2236 /* client_properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = client_properties.plist; sourceTree = "<group>"; };
+>>>>>>> 4ee57d86e8cbac28cc52f9294619fc41e57936e6
 		B8C8BD351B83153400D2C016 /* NSString+Commons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Commons.h"; sourceTree = "<group>"; };
 		B8C8BD361B83153400D2C016 /* NSString+Commons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Commons.m"; sourceTree = "<group>"; };
 		B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTransportInfo.h; sourceTree = "<group>"; };
@@ -717,6 +721,7 @@
 				B88836241BA0981C00ACAB4F /* KaaClientStateDelegate.h */,
 				B844623A1BB5C377009826FC /* KaaLogging.h */,
 				B844623B1BB5C377009826FC /* KaaLogging.m */,
+				B8C10A0D1BC281FE001A2236 /* client_properties.plist */,
 			);
 			path = Kaa;
 			sourceTree = "<group>";
