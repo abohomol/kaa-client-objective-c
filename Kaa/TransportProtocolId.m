@@ -40,7 +40,7 @@
     if ([object isKindOfClass:[TransportProtocolId class]]) {
         TransportProtocolId *other = (TransportProtocolId*)object;
         if (other.protocolId == self.protocolId && other.protocolVersion == self.protocolVersion) {
-            YES;
+            return YES;
         }
     }
     

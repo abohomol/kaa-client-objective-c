@@ -18,6 +18,8 @@
     if (self) {
         _serverType = serverType;
         self.meta = meta;
+        _transportId = [[TransportProtocolId alloc] initWithId:meta.protocolVersionInfo.id
+                                                        andVersion:meta.protocolVersionInfo.version];
     }
     return self;
 }
@@ -34,7 +36,7 @@
     if ([object isKindOfClass:[GenericTransportInfo class]]) {
         GenericTransportInfo *other = (GenericTransportInfo*)object;
         if (other.serverType == _serverType && [other.transportId isEqual:_transportId] && [[other connectionInfo] isEqualToData:[self connectionInfo]]) {
-            YES;
+            return YES;
         }
     }
     
@@ -51,7 +53,8 @@
 }
 
 - (NSString *)description {
-    return [NSString stringWithFormat:@"GenericTransportInfo [serverType = %i] [transportId = %@] [meta = %@]", _serverType, _transportId, _meta];
+    return [NSString stringWithFormat:@"GenericTransportInfo [serverType = %i] [transportId = %@] [meta = %@]",
+            _serverType, _transportId, _meta];
 }
 
 @end

@@ -80,7 +80,7 @@
     NSMutableDictionary *servers = [NSMutableDictionary dictionary];
     NSArray *splittedServers = [serversStr componentsSeparatedByString:@";"];
     for (NSString *server in splittedServers) {
-        if (server && ![server isEmpty]) {
+        if (server && server.length > 0) {
             NSArray *tokens = [server componentsSeparatedByString:@":"];
             ProtocolMetaData *metaData = [[ProtocolMetaData alloc] init];
             [metaData setAccessPointId:[[tokens objectAtIndex:0] intValue]];
@@ -93,7 +93,7 @@
             NSMutableArray *serverList = [servers objectForKey:key];
             if (!serverList) {
                 serverList = [NSMutableArray array];
-                [servers setObject:serverList forKey:(id)key];
+                [servers setObject:serverList forKey:key];
             }
             [serverList addObject:[[GenericTransportInfo alloc] initWithServerType:SERVER_BOOTSTRAP andMeta:metaData]];
         }
@@ -131,11 +131,17 @@
 
 - (NSData *)defaultConfigData {
     NSString *schema = [self.properties stringForKey:CONFIG_DATA_DEFAULT];
+    if (!schema) {
+        return nil;
+    }
     return [self.base64 decodeBase64:[schema dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
 - (NSData *)defaultConfigSchema {
     NSString *schema = [self.properties stringForKey:CONFIG_SCHEMA_DEFAULT];
+    if (!schema) {
+        return nil;
+    }
     return [schema dataUsingEncoding:NSUTF8StringEncoding]; 
 }
 
