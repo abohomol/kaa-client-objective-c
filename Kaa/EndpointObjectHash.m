@@ -30,8 +30,7 @@
         return nil;
     }
     NSData *utf8Data = [data dataUsingEncoding:NSUTF8StringEncoding];
-    NSData *encodedData = [[NSData alloc] initWithBase64EncodedData:utf8Data options:0];
-    EndpointObjectHash *hash = [[super alloc] initWithData: encodedData];
+    NSData *encodedData = [utf8Data base64EncodedDataWithOptions:0];
     return [[super alloc] initWithData: encodedData];
 }
 
