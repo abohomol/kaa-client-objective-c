@@ -211,6 +211,8 @@
 		B8C055D01B57AF1E00F5AA1C /* ExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */; };
 		B8C10A0A1BC279A6001A2236 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A081BC279A6001A2236 /* libAFNetworking.a */; };
 		B8C10A0B1BC279A6001A2236 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A091BC279A6001A2236 /* libCocoaLumberjack.a */; };
+		B8C10A0F1BC28748001A2236 /* KaaClientPropertiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C10A0E1BC28748001A2236 /* KaaClientPropertiesTest.m */; settings = {ASSET_TAGS = (); }; };
+		B8C10A111BC28E7A001A2236 /* client_test_properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8C10A101BC28E7A001A2236 /* client_test_properties.plist */; settings = {ASSET_TAGS = (); }; };
 		B8C8BD371B83153400D2C016 /* NSString+Commons.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD351B83153400D2C016 /* NSString+Commons.h */; };
 		B8C8BD381B83153400D2C016 /* NSString+Commons.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C8BD361B83153400D2C016 /* NSString+Commons.m */; };
 		B8C8BD3B1B83236400D2C016 /* GenericTransportInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */; };
@@ -475,6 +477,8 @@
 		B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecutorContext.h; sourceTree = "<group>"; };
 		B8C10A081BC279A6001A2236 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		B8C10A091BC279A6001A2236 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
+		B8C10A0E1BC28748001A2236 /* KaaClientPropertiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesTest.m; sourceTree = "<group>"; };
+		B8C10A101BC28E7A001A2236 /* client_test_properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = client_test_properties.plist; sourceTree = "<group>"; };
 		B8C8BD351B83153400D2C016 /* NSString+Commons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Commons.h"; sourceTree = "<group>"; };
 		B8C8BD361B83153400D2C016 /* NSString+Commons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Commons.m"; sourceTree = "<group>"; };
 		B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTransportInfo.h; sourceTree = "<group>"; };
@@ -723,6 +727,7 @@
 				39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */,
 				39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */,
 				391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */,
+				B8C10A0E1BC28748001A2236 /* KaaClientPropertiesTest.m */,
 				B824A1FB1B1452C50076C753 /* Supporting Files */,
 			);
 			path = KaaTests;
@@ -731,6 +736,7 @@
 		B824A1FB1B1452C50076C753 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B8C10A101BC28E7A001A2236 /* client_test_properties.plist */,
 				B824A1FC1B1452C50076C753 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -1268,6 +1274,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8C10A111BC28E7A001A2236 /* client_test_properties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1407,6 +1414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */,
+				B8C10A0F1BC28748001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 			);
