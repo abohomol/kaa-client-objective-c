@@ -211,8 +211,9 @@
 		B8C055D01B57AF1E00F5AA1C /* ExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */; };
 		B8C10A141BC2BBBF001A2236 /* client_test_properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8C10A121BC2BBBF001A2236 /* client_test_properties.plist */; settings = {ASSET_TAGS = (); }; };
 		B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */; settings = {ASSET_TAGS = (); }; };
-		B8C10A181BC2BBE2001A2236 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A161BC2BBE2001A2236 /* libAFNetworking.a */; };
-		B8C10A191BC2BBE2001A2236 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A171BC2BBE2001A2236 /* libCocoaLumberjack.a */; };
+		B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */; settings = {ASSET_TAGS = (); }; };
+		B8C10A291BC2E672001A2236 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A271BC2E672001A2236 /* libAFNetworking.a */; };
+		B8C10A2A1BC2E672001A2236 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A281BC2E672001A2236 /* libCocoaLumberjack.a */; };
 		B8C8BD371B83153400D2C016 /* NSString+Commons.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD351B83153400D2C016 /* NSString+Commons.h */; };
 		B8C8BD381B83153400D2C016 /* NSString+Commons.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C8BD361B83153400D2C016 /* NSString+Commons.m */; };
 		B8C8BD3B1B83236400D2C016 /* GenericTransportInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */; };
@@ -477,8 +478,9 @@
 		B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecutorContext.h; sourceTree = "<group>"; };
 		B8C10A121BC2BBBF001A2236 /* client_test_properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = client_test_properties.plist; sourceTree = "<group>"; };
 		B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesTest.m; sourceTree = "<group>"; };
-		B8C10A161BC2BBE2001A2236 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
-		B8C10A171BC2BBE2001A2236 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
+		B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTaskTest.m; sourceTree = "<group>"; };
+		B8C10A271BC2E672001A2236 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
+		B8C10A281BC2E672001A2236 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		B8C8BD351B83153400D2C016 /* NSString+Commons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Commons.h"; sourceTree = "<group>"; };
 		B8C8BD361B83153400D2C016 /* NSString+Commons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Commons.m"; sourceTree = "<group>"; };
 		B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTransportInfo.h; sourceTree = "<group>"; };
@@ -517,8 +519,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C10A181BC2BBE2001A2236 /* libAFNetworking.a in Frameworks */,
-				B8C10A191BC2BBE2001A2236 /* libCocoaLumberjack.a in Frameworks */,
 				B81935B91B15C3880053486A /* Security.framework in Frameworks */,
 				B824A22C1B148CFA0076C753 /* SystemConfiguration.framework in Frameworks */,
 				6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */,
@@ -529,6 +529,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8C10A291BC2E672001A2236 /* libAFNetworking.a in Frameworks */,
+				B8C10A2A1BC2E672001A2236 /* libCocoaLumberjack.a in Frameworks */,
 				B824A1F71B1452C50076C753 /* libKaa.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -724,6 +726,7 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				B8C10A1A1BC2DE00001A2236 /* channel */,
 				B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */,
 				39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */,
 				39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */,
@@ -1018,6 +1021,14 @@
 			name = context;
 			sourceTree = "<group>";
 		};
+		B8C10A1A1BC2DE00001A2236 /* channel */ = {
+			isa = PBXGroup;
+			children = (
+				B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */,
+			);
+			name = channel;
+			sourceTree = "<group>";
+		};
 		B8D1D1071B9441EE0097E64A /* persistance */ = {
 			isa = PBXGroup;
 			children = (
@@ -1040,8 +1051,8 @@
 		DC516A0F99C6ED7A58E70F4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B8C10A161BC2BBE2001A2236 /* libAFNetworking.a */,
-				B8C10A171BC2BBE2001A2236 /* libCocoaLumberjack.a */,
+				B8C10A271BC2E672001A2236 /* libAFNetworking.a */,
+				B8C10A281BC2E672001A2236 /* libCocoaLumberjack.a */,
 				DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */,
 			);
 			name = Frameworks;
@@ -1417,6 +1428,7 @@
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
+				B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1554,6 +1566,10 @@
 				);
 				INFOPLIST_FILE = KaaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.kaaproject.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1569,6 +1585,10 @@
 				);
 				INFOPLIST_FILE = KaaTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/build/Debug-iphoneos",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.kaaproject.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
