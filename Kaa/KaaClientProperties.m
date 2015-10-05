@@ -14,7 +14,7 @@
 #import "TransportCommon.h"
 #import "SHAMessageDigest.h"
 
-#define DEFAULT_CLIENT_PROPERTIES @"client.properties"
+#define DEFAULT_CLIENT_PROPERTIES @"client_properties"
 
 @interface KaaClientProperties ()
 
@@ -69,9 +69,9 @@
 }
 
 - (NSDictionary *)loadProperties {
-    NSString *clientProperties = [[NSBundle mainBundle] pathForResource:DEFAULT_CLIENT_PROPERTIES ofType:@"plist"];
-    if ([[[NSProcessInfo processInfo] environment] objectForKey:KAA_CLIENT_PROPERTIES_FILE]) {
-        clientProperties = [[[NSProcessInfo processInfo] environment] objectForKey:KAA_CLIENT_PROPERTIES_FILE];
+    NSString *clientProperties = [[NSBundle mainBundle] pathForResource:KAA_CLIENT_PROPERTIES_FILE ofType:@"plist"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:clientProperties]) {
+        clientProperties = [[NSBundle mainBundle] pathForResource:DEFAULT_CLIENT_PROPERTIES ofType:@"plist"];
     }
     return [NSMutableDictionary dictionaryWithContentsOfFile:clientProperties];
 }
