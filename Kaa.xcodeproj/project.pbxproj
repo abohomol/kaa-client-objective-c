@@ -35,7 +35,6 @@
 		B803FD381B9EF52300187E61 /* TransportProtocolIdHolder.h in Headers */ = {isa = PBXBuildFile; fileRef = B803FD361B9EF52300187E61 /* TransportProtocolIdHolder.h */; };
 		B803FD391B9EF52300187E61 /* TransportProtocolIdHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = B803FD371B9EF52300187E61 /* TransportProtocolIdHolder.m */; };
 		B803FD3B1B9EF65600187E61 /* RedirectionTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B803FD3A1B9EF65600187E61 /* RedirectionTransport.h */; };
-		B80C53FA1B343873004C6D4D /* libPods-libKaa.a-CocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B80C53F91B343873004C6D4D /* libPods-libKaa.a-CocoaLumberjack.a */; };
 		B81161131B4BBB3D00C4E0C6 /* ConfigurationStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = B81161121B4BBB3D00C4E0C6 /* ConfigurationStorage.h */; };
 		B81161161B4BC23A00C4E0C6 /* NotificationTopicListDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = B81161151B4BC23A00C4E0C6 /* NotificationTopicListDelegate.h */; };
 		B811611A1B4BC5B700C4E0C6 /* LogStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = B81161191B4BC5B700C4E0C6 /* LogStorage.h */; };
@@ -106,7 +105,6 @@
 		B848228D1B8DBB54004E370B /* NotificationCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = B848228B1B8DBB54004E370B /* NotificationCommon.m */; };
 		B84822901B8DC269004E370B /* DefaultNotificationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B848228E1B8DC269004E370B /* DefaultNotificationManager.h */; };
 		B84822911B8DC269004E370B /* DefaultNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B848228F1B8DC269004E370B /* DefaultNotificationManager.m */; };
-		B84E17431BB163870023AFE0 /* libPods-libKaa.a-AFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B84E17421BB163870023AFE0 /* libPods-libKaa.a-AFNetworking.a */; };
 		B856C0031B90C7B100A9F65D /* BootstrapManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B856C0021B90C7B100A9F65D /* BootstrapManager.h */; };
 		B856C0051B90D4C000A9F65D /* KaaInternalChannelManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B856C0041B90D4C000A9F65D /* KaaInternalChannelManager.h */; };
 		B856C0081B9337F700A9F65D /* DefaultBootstrapManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B856C0061B9337F700A9F65D /* DefaultBootstrapManager.h */; };
@@ -211,6 +209,8 @@
 		B8C055C61B56BB2A00F5AA1C /* FailoverDecision.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C055C41B56BB2A00F5AA1C /* FailoverDecision.m */; };
 		B8C055CD1B57ACD500F5AA1C /* LogTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C055CC1B57ACD500F5AA1C /* LogTransport.h */; };
 		B8C055D01B57AF1E00F5AA1C /* ExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */; };
+		B8C10A0A1BC279A6001A2236 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A081BC279A6001A2236 /* libAFNetworking.a */; };
+		B8C10A0B1BC279A6001A2236 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A091BC279A6001A2236 /* libCocoaLumberjack.a */; };
 		B8C8BD371B83153400D2C016 /* NSString+Commons.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD351B83153400D2C016 /* NSString+Commons.h */; };
 		B8C8BD381B83153400D2C016 /* NSString+Commons.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C8BD361B83153400D2C016 /* NSString+Commons.m */; };
 		B8C8BD3B1B83236400D2C016 /* GenericTransportInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */; };
@@ -296,7 +296,6 @@
 		B803FD361B9EF52300187E61 /* TransportProtocolIdHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportProtocolIdHolder.h; sourceTree = "<group>"; };
 		B803FD371B9EF52300187E61 /* TransportProtocolIdHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportProtocolIdHolder.m; sourceTree = "<group>"; };
 		B803FD3A1B9EF65600187E61 /* RedirectionTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedirectionTransport.h; sourceTree = "<group>"; };
-		B80C53F91B343873004C6D4D /* libPods-libKaa.a-CocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-CocoaLumberjack.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-CocoaLumberjack.a"; sourceTree = "<group>"; };
 		B81161121B4BBB3D00C4E0C6 /* ConfigurationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationStorage.h; sourceTree = "<group>"; };
 		B81161151B4BC23A00C4E0C6 /* NotificationTopicListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTopicListDelegate.h; sourceTree = "<group>"; };
 		B81161191B4BC5B700C4E0C6 /* LogStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogStorage.h; sourceTree = "<group>"; };
@@ -369,7 +368,6 @@
 		B848228B1B8DBB54004E370B /* NotificationCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCommon.m; sourceTree = "<group>"; };
 		B848228E1B8DC269004E370B /* DefaultNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultNotificationManager.h; sourceTree = "<group>"; };
 		B848228F1B8DC269004E370B /* DefaultNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultNotificationManager.m; sourceTree = "<group>"; };
-		B84E17421BB163870023AFE0 /* libPods-libKaa.a-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-libKaa.a-AFNetworking.a"; path = "Pods/../build/Debug-iphoneos/libPods-libKaa.a-AFNetworking.a"; sourceTree = "<group>"; };
 		B856C0021B90C7B100A9F65D /* BootstrapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapManager.h; sourceTree = "<group>"; };
 		B856C0041B90D4C000A9F65D /* KaaInternalChannelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaInternalChannelManager.h; sourceTree = "<group>"; };
 		B856C0061B9337F700A9F65D /* DefaultBootstrapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultBootstrapManager.h; sourceTree = "<group>"; };
@@ -475,6 +473,8 @@
 		B8C055C41B56BB2A00F5AA1C /* FailoverDecision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailoverDecision.m; sourceTree = "<group>"; };
 		B8C055CC1B57ACD500F5AA1C /* LogTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTransport.h; sourceTree = "<group>"; };
 		B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecutorContext.h; sourceTree = "<group>"; };
+		B8C10A081BC279A6001A2236 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
+		B8C10A091BC279A6001A2236 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		B8C8BD351B83153400D2C016 /* NSString+Commons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Commons.h"; sourceTree = "<group>"; };
 		B8C8BD361B83153400D2C016 /* NSString+Commons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Commons.m"; sourceTree = "<group>"; };
 		B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTransportInfo.h; sourceTree = "<group>"; };
@@ -513,8 +513,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B84E17431BB163870023AFE0 /* libPods-libKaa.a-AFNetworking.a in Frameworks */,
-				B80C53FA1B343873004C6D4D /* libPods-libKaa.a-CocoaLumberjack.a in Frameworks */,
+				B8C10A0A1BC279A6001A2236 /* libAFNetworking.a in Frameworks */,
+				B8C10A0B1BC279A6001A2236 /* libCocoaLumberjack.a in Frameworks */,
 				B81935B91B15C3880053486A /* Security.framework in Frameworks */,
 				B824A22C1B148CFA0076C753 /* SystemConfiguration.framework in Frameworks */,
 				6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */,
@@ -1034,8 +1034,8 @@
 		DC516A0F99C6ED7A58E70F4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B84E17421BB163870023AFE0 /* libPods-libKaa.a-AFNetworking.a */,
-				B80C53F91B343873004C6D4D /* libPods-libKaa.a-CocoaLumberjack.a */,
+				B8C10A081BC279A6001A2236 /* libAFNetworking.a */,
+				B8C10A091BC279A6001A2236 /* libCocoaLumberjack.a */,
 				DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */,
 			);
 			name = Frameworks;
