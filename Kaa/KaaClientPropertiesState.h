@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "KaaClientState.h"
 #import "KAABase64.h"
-#import "KaaClientProperties.m"
+#import "KaaClientProperties.h"
 
 #define STATE_FILE_LOCATION @"state.file_location"
 #define STATE_FILE_DEFAULT  @"state.properties"
