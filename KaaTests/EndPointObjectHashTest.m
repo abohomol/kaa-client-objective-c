@@ -9,7 +9,7 @@
 @import UIKit;
 #import <XCTest/XCTest.h>
 #import "EndpointObjectHash.h"
-#import "NSDataUtils.h"
+#import "NSData+Conversion.h"
 
 @interface EndPointObjectHashTest : XCTestCase
 
@@ -63,7 +63,7 @@
     
     EndpointObjectHash *hash1 = [EndpointObjectHash fromBytes:[@"test" dataUsingEncoding:NSUTF8StringEncoding]];
     XCTAssertNotNil(hash1);
-    XCTAssertTrue([[hash1 description] isEqualToString:[NSDataUtils toHex:dat]]);
+    XCTAssertTrue([[hash1 description] isEqualToString:[dat hexadecimalString]]);
     
 }
 
