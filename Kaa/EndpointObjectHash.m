@@ -8,7 +8,7 @@
 
 #import "EndpointObjectHash.h"
 #import <CommonCrypto/CommonCrypto.h>
-#import "NSDataUtils.h"
+#import "NSData+Conversion.h"
 
 
 @interface EndpointObjectHash ()
@@ -70,7 +70,7 @@
 }
 
 - (NSString *)description {
-    return [NSDataUtils toHex:self.data];
+    return [self.data hexadecimalString];
 }
 
 @end
