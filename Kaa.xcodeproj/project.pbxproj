@@ -212,8 +212,6 @@
 		B8C10A141BC2BBBF001A2236 /* client_test_properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8C10A121BC2BBBF001A2236 /* client_test_properties.plist */; settings = {ASSET_TAGS = (); }; };
 		B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */; settings = {ASSET_TAGS = (); }; };
 		B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */; settings = {ASSET_TAGS = (); }; };
-		B8C10A291BC2E672001A2236 /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A271BC2E672001A2236 /* libAFNetworking.a */; };
-		B8C10A2A1BC2E672001A2236 /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8C10A281BC2E672001A2236 /* libCocoaLumberjack.a */; };
 		B8C8BD371B83153400D2C016 /* NSString+Commons.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD351B83153400D2C016 /* NSString+Commons.h */; };
 		B8C8BD381B83153400D2C016 /* NSString+Commons.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C8BD361B83153400D2C016 /* NSString+Commons.m */; };
 		B8C8BD3B1B83236400D2C016 /* GenericTransportInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */; };
@@ -235,6 +233,9 @@
 		B8DBE35E1BB1448D0036058B /* DefaultHttpClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B8DBE35C1BB1448D0036058B /* DefaultHttpClient.h */; };
 		B8DBE35F1BB1448D0036058B /* DefaultHttpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B8DBE35D1BB1448D0036058B /* DefaultHttpClient.m */; };
 		B8E68AA31B8E241A00EE1065 /* NotificationTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E68AA21B8E241A00EE1065 /* NotificationTransport.h */; };
+		B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */; settings = {ASSET_TAGS = (); }; };
+		B8EC91BF1BC4058600D3723B /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BD1BC4058600D3723B /* libAFNetworking.a */; };
+		B8EC91C01BC4058600D3723B /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */; };
 		B8FBD9EC1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */; };
 		B8FBD9EF1B9E0243009A2BA3 /* SimpleConfigurationStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */; };
 		B8FBD9F01B9E0243009A2BA3 /* SimpleConfigurationStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FBD9EE1B9E0243009A2BA3 /* SimpleConfigurationStorage.m */; };
@@ -479,8 +480,6 @@
 		B8C10A121BC2BBBF001A2236 /* client_test_properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = client_test_properties.plist; sourceTree = "<group>"; };
 		B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesTest.m; sourceTree = "<group>"; };
 		B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTaskTest.m; sourceTree = "<group>"; };
-		B8C10A271BC2E672001A2236 /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
-		B8C10A281BC2E672001A2236 /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		B8C8BD351B83153400D2C016 /* NSString+Commons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Commons.h"; sourceTree = "<group>"; };
 		B8C8BD361B83153400D2C016 /* NSString+Commons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Commons.m"; sourceTree = "<group>"; };
 		B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTransportInfo.h; sourceTree = "<group>"; };
@@ -502,6 +501,9 @@
 		B8DBE35C1BB1448D0036058B /* DefaultHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultHttpClient.h; sourceTree = "<group>"; };
 		B8DBE35D1BB1448D0036058B /* DefaultHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultHttpClient.m; sourceTree = "<group>"; };
 		B8E68AA21B8E241A00EE1065 /* NotificationTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTransport.h; sourceTree = "<group>"; };
+		B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesStateTest.m; sourceTree = "<group>"; };
+		B8EC91BD1BC4058600D3723B /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
+		B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationPersistenceManager.h; sourceTree = "<group>"; };
 		B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleConfigurationStorage.h; sourceTree = "<group>"; };
 		B8FBD9EE1B9E0243009A2BA3 /* SimpleConfigurationStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleConfigurationStorage.m; sourceTree = "<group>"; };
@@ -519,6 +521,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8EC91BF1BC4058600D3723B /* libAFNetworking.a in Frameworks */,
+				B8EC91C01BC4058600D3723B /* libCocoaLumberjack.a in Frameworks */,
 				B81935B91B15C3880053486A /* Security.framework in Frameworks */,
 				B824A22C1B148CFA0076C753 /* SystemConfiguration.framework in Frameworks */,
 				6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */,
@@ -529,8 +533,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C10A291BC2E672001A2236 /* libAFNetworking.a in Frameworks */,
-				B8C10A2A1BC2E672001A2236 /* libCocoaLumberjack.a in Frameworks */,
 				B824A1F71B1452C50076C753 /* libKaa.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -731,6 +733,7 @@
 				39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */,
 				39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */,
 				391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */,
+				B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */,
 				B824A1FB1B1452C50076C753 /* Supporting Files */,
 			);
 			path = KaaTests;
@@ -1051,8 +1054,8 @@
 		DC516A0F99C6ED7A58E70F4C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B8C10A271BC2E672001A2236 /* libAFNetworking.a */,
-				B8C10A281BC2E672001A2236 /* libCocoaLumberjack.a */,
+				B8EC91BD1BC4058600D3723B /* libAFNetworking.a */,
+				B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */,
 				DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */,
 			);
 			name = Frameworks;
@@ -1425,6 +1428,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */,
+				B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */,
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
