@@ -21,7 +21,7 @@
 #define CONFIG_SCHEMA_DEFAULT @"config.schema.default"
 #define SDK_TOKEN @"sdk_token"
 
-@interface KaaClientProperties : NSUserDefaults
+@interface KaaClientProperties : NSObject
 
 - (instancetype)initWithDictionary:(NSDictionary *)defaults base64:(id<KAABase64>)base64;
 
@@ -48,5 +48,7 @@
 - (NSDictionary *)bootstrapServers; //<TransportProtocolId, NSArray<TransportConnectionInfo>> as key-value
 
 - (NSString *)stringForKey:(NSString *)key;
+
+- (void)setString:(NSString *)object forKey:(NSString *)key;
 
 @end

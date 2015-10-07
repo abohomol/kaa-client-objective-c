@@ -72,10 +72,12 @@
         self.attachedEndpoints = [NSMutableDictionary dictionary];
         self.isConfigVersionUpdated = NO;
         
-        self.stateFileLocation = [properties stringForKey:STATE_FILE_LOCATION];
-        if (!self.stateFileLocation) {
-            self.stateFileLocation = STATE_FILE_DEFAULT;
+        NSString *storage = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
+        NSString *stateFileName = [properties stringForKey:STATE_FILE_LOCATION];
+        if (!stateFileName) {
+            stateFileName = STATE_FILE_DEFAULT;
         }
+        self.stateFileLocation = [[[NSURL fileURLWithPath:storage] URLByAppendingPathComponent:stateFileName] path];
         DDLogInfo(@"%@ Version: [%@], commit hash: [%@]", TAG, [properties buildVersion], [properties commitHash]);
         
         self.state = [NSMutableDictionary dictionary];
@@ -179,7 +181,8 @@
     @try {
         NSFileManager *fileManager = [NSFileManager defaultManager];
         NSString *backup = [NSString stringWithFormat:@"%@_bckp", self.stateFileLocation];
-        [fileManager copyItemAtPath:self.stateFileLocation toPath:backup error:nil];
+        BOOL backupResult = [fileManager copyItemAtPath:self.stateFileLocation toPath:backup error:nil];
+        DDLogDebug(@"%@ Backup created: %d", TAG, backupResult);
         
         BOOL result = [self.state writeToFile:self.stateFileLocation atomically:YES];
         DDLogDebug(@"%@ Persist finished with result: %d", TAG, result);
@@ -289,10 +292,6 @@
     [self.attachedEndpoints addEntriesFromDictionary:attachedEndpoints];
 }
 
-- (NSMutableDictionary *)attachedEndpoints {
-    return self.attachedEndpoints;
-}
-
 - (void)setEndpointAccessToken:(NSString *)endpointAccessToken {
     [self.state setObject:endpointAccessToken forKey:ENDPOINT_ACCESS_TOKEN];
 }
@@ -364,6 +363,7 @@
         avro_reader_t reader = avro_reader_memory([data bytes], [data length]);
         @try {
             while (reader->read < reader->len) {
+                decodedInfo = [[TopicSubscriptionInfo alloc] init];
                 [decodedInfo deserialize:reader];
                 DDLogDebug(@"%@ Loaded %@", TAG, decodedInfo);
                 if (decodedInfo) {

@@ -33,7 +33,9 @@
     self = [super init];
     if (self) {
         self.properties = [NSUserDefaults standardUserDefaults];
-        [self.properties registerDefaults:defaults];
+        for (NSString *key in defaults) {
+            [self.properties setObject:[defaults objectForKey:key] forKey:key];
+        }
         self.base64 = base64;
     }
     return self;
@@ -147,6 +149,10 @@
 
 - (NSString *)stringForKey:(NSString *)key {
     return [self.properties stringForKey:key];
+}
+
+- (void)setString:(NSString *)object forKey:(NSString *)key {
+    [self.properties setObject:object forKey:key];
 }
 
 @end
