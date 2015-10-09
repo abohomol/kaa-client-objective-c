@@ -15,25 +15,28 @@
 @interface KeyUtils : NSObject
 
 /**
- * Generate key pair.
+ * Used to generate key pair with custom tag or default one.
  */
 + (KeyPair *)generateKeyPair;
 + (KeyPair *)generateKeyPairWithPrivateTag:(NSData *)privateTag andPublicTag:(NSData *)publicTag;
 
 /**
- * Gets reference to the public key from keychain.
+ * Gets reference to default public key from keychain.
  */
 + (SecKeyRef)getPublicKeyRef;
-+ (SecKeyRef)getPublicKeyRefByTag:(NSData *)tag;
 
 /**
- * Gets reference to the private key from keychain.
+ * Gets reference to default private key from keychain.
  */
 + (SecKeyRef)getPrivateKeyRef;
-+ (SecKeyRef)getPrivateKeyRefByTag:(NSData *)tag;
 
 /**
- * Gets raw public key from keychain.
+ * Used to get key ref by selected tag from keychain.
+ */
++ (SecKeyRef)getKeyRefByTag:(NSData *)tag;
+
+/**
+ * Gets default raw public key from keychain.
  */
 + (NSData *)getPublicKey;
 + (NSData *)getPublicKeyByTag:(NSData *)tag;
@@ -44,14 +47,14 @@
 + (SecKeyRef)storePublicKey:(NSData *)publicKey withTag:(NSData *)tag;
 
 /**
- * Used to remove stored remote key from keychain.
+ * Used to remove stored key from keychain.
  */
 + (void)removeKeyByTag:(NSData *)tag;
 
 /**
- * Used to remove key pair from keychain.
+ * Used to remove default key pair from keychain.
+ * NOTE: for removing key pair with custom tags use (removeKeyByTag:) for each key.
  */
 + (void)deleteExistingKeyPair;
-+ (void)deleteExistingKeyPairWithPrivateTag:(NSData *)privateTag andPublicTag:(NSData *)publicTag;
 
 @end

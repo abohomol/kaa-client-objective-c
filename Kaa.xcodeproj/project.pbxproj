@@ -49,6 +49,7 @@
 		B81935BE1B15CC7C0053486A /* EndpointKeyHash.m in Sources */ = {isa = PBXBuildFile; fileRef = B81935BC1B15CC7C0053486A /* EndpointKeyHash.m */; };
 		B81935C31B15D0660053486A /* EndpointObjectHash.h in Headers */ = {isa = PBXBuildFile; fileRef = B81935C11B15D0660053486A /* EndpointObjectHash.h */; };
 		B81935C41B15D0660053486A /* EndpointObjectHash.m in Sources */ = {isa = PBXBuildFile; fileRef = B81935C21B15D0660053486A /* EndpointObjectHash.m */; };
+		B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B81B98BE1BC7A29100C2DFF4 /* KeyUtilsTests.m */; settings = {ASSET_TAGS = (); }; };
 		B81C0DCE1BAB1C970038CCA0 /* DefaultNotificationTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B81C0DCC1BAB1C970038CCA0 /* DefaultNotificationTransport.h */; };
 		B81C0DCF1BAB1C970038CCA0 /* DefaultNotificationTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = B81C0DCD1BAB1C970038CCA0 /* DefaultNotificationTransport.m */; };
 		B824A1EF1B1452C50076C753 /* Kaa.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B824A1EE1B1452C50076C753 /* Kaa.h */; };
@@ -314,6 +315,7 @@
 		B81935BC1B15CC7C0053486A /* EndpointKeyHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndpointKeyHash.m; sourceTree = "<group>"; };
 		B81935C11B15D0660053486A /* EndpointObjectHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointObjectHash.h; sourceTree = "<group>"; };
 		B81935C21B15D0660053486A /* EndpointObjectHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndpointObjectHash.m; sourceTree = "<group>"; };
+		B81B98BE1BC7A29100C2DFF4 /* KeyUtilsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyUtilsTests.m; sourceTree = "<group>"; };
 		B81C0DCC1BAB1C970038CCA0 /* DefaultNotificationTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultNotificationTransport.h; sourceTree = "<group>"; };
 		B81C0DCD1BAB1C970038CCA0 /* DefaultNotificationTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultNotificationTransport.m; sourceTree = "<group>"; };
 		B824A1EB1B1452C50076C753 /* libKaa.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libKaa.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -668,6 +670,14 @@
 			name = common;
 			sourceTree = "<group>";
 		};
+		B81B98BD1BC7A27600C2DFF4 /* security */ = {
+			isa = PBXGroup;
+			children = (
+				B81B98BE1BC7A29100C2DFF4 /* KeyUtilsTests.m */,
+			);
+			name = security;
+			sourceTree = "<group>";
+		};
 		B824A1E21B1452C50076C753 = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +738,7 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				B81B98BD1BC7A27600C2DFF4 /* security */,
 				B8C10A1A1BC2DE00001A2236 /* channel */,
 				B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */,
 				39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */,
@@ -1427,6 +1438,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */,
 				39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */,
 				B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */,
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
