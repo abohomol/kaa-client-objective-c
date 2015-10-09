@@ -28,11 +28,11 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
 
 @interface KeyUtils ()
 
-+ (void)deleteExisticKeyPair;
-+ (NSData *)publicKeyTag;
-+ (NSData *)privateKeyTag;
++ (NSData *)defaultPublicKeyTag;
++ (NSData *)defaultPrivateKeyTag;
 
 + (SecKeyRef)getKeyRefWithPersistentKeyRef:(CFTypeRef)persistentRef;
+
 + (NSData *)stripPublicKeyHeader:(NSData *)theKey;
 
 @end
@@ -40,11 +40,15 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
 @implementation KeyUtils
 
 + (KeyPair *)generateKeyPair {
+    return [self generateKeyPairWithPrivateTag:[self defaultPrivateKeyTag] andPublicTag:[self defaultPublicKeyTag]];
+}
+
++ (KeyPair *)generateKeyPairWithPrivateTag:(NSData *)privateTag andPublicTag:(NSData *)publicTag {
     OSStatus sanityCheck = noErr;
     SecKeyRef publicKeyRef = NULL;
     SecKeyRef privateKeyRef = NULL;
     
-    [KeyUtils deleteExisticKeyPair];
+    [KeyUtils deleteExistingKeyPairWithPrivateTag:privateTag andPublicTag:publicTag];
     
     NSMutableDictionary * privateKeyAttr = [[NSMutableDictionary alloc] init];
     NSMutableDictionary * publicKeyAttr = [[NSMutableDictionary alloc] init];
@@ -54,10 +58,10 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     [keyPairAttr setObject:[NSNumber numberWithUnsignedInteger:KEY_PAIR_SIZE] forKey:(__bridge id)kSecAttrKeySizeInBits];
     
     [privateKeyAttr setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecAttrIsPermanent];
-    [privateKeyAttr setObject:[self privateKeyTag] forKey:(__bridge id)kSecAttrApplicationTag];
+    [privateKeyAttr setObject:privateTag forKey:(__bridge id)kSecAttrApplicationTag];
     
     [publicKeyAttr setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecAttrIsPermanent];
-    [publicKeyAttr setObject:[self publicKeyTag] forKey:(__bridge id)kSecAttrApplicationTag];
+    [publicKeyAttr setObject:publicTag forKey:(__bridge id)kSecAttrApplicationTag];
     
     [keyPairAttr setObject:privateKeyAttr forKey:(__bridge id)kSecPrivateKeyAttrs];
     [keyPairAttr setObject:publicKeyAttr forKey:(__bridge id)kSecPublicKeyAttrs];
@@ -72,22 +76,28 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
         [NSException raise:@"KeyPairGenerationException" format:@"Failed to generate new key pair!"];
         return nil;
     }
+
 }
 
 + (SecKeyRef)getPublicKeyRef {
+    return [self getPublicKeyRefByTag:[self defaultPublicKeyTag]];
+}
+
++ (SecKeyRef)getPublicKeyRefByTag:(NSData *)tag {
     OSStatus sanityCheck = noErr;
     SecKeyRef publicKeyReference = NULL;
     
     NSMutableDictionary * queryPublicKey = [[NSMutableDictionary alloc] init];
     
     [queryPublicKey setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
-    [queryPublicKey setObject:[self publicKeyTag] forKey:(__bridge id)kSecAttrApplicationTag];
+    [queryPublicKey setObject:tag forKey:(__bridge id)kSecAttrApplicationTag];
     [queryPublicKey setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
     [queryPublicKey setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnRef];
     
     sanityCheck = SecItemCopyMatching((__bridge CFDictionaryRef)queryPublicKey, (CFTypeRef *)&publicKeyReference);
     
     if (sanityCheck != noErr) {
+        DDLogWarn(@"%@ Can't get public key ref by tag. OSStatus: %i", TAG, (int)sanityCheck);
         publicKeyReference = NULL;
     }
     
@@ -95,19 +105,24 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
 }
 
 + (SecKeyRef)getPrivateKeyRef {
+    return [self getPrivateKeyRefByTag:[self defaultPrivateKeyTag]];
+}
+
++ (SecKeyRef)getPrivateKeyRefByTag:(NSData *)tag {
     OSStatus sanityCheck = noErr;
     SecKeyRef privateKeyReference = NULL;
     
     NSMutableDictionary * queryPrivateKey = [[NSMutableDictionary alloc] init];
     
     [queryPrivateKey setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
-    [queryPrivateKey setObject:[self privateKeyTag] forKey:(__bridge id)kSecAttrApplicationTag];
+    [queryPrivateKey setObject:tag forKey:(__bridge id)kSecAttrApplicationTag];
     [queryPrivateKey setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
     [queryPrivateKey setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnRef];
     
     sanityCheck = SecItemCopyMatching((__bridge CFDictionaryRef)queryPrivateKey, (CFTypeRef *)&privateKeyReference);
     
     if (sanityCheck != noErr) {
+        DDLogWarn(@"%@ Can't get private key ref by tag. OSStatus: %i", TAG, (int)sanityCheck);
         privateKeyReference = NULL;
     }
     
@@ -115,12 +130,16 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
 }
 
 + (NSData *)getPublicKey {
+    return [self getPublicKeyByTag:[self defaultPublicKeyTag]];
+}
+
++ (NSData *)getPublicKeyByTag:(NSData *)tag {
     OSStatus sanityCheck = noErr;
     
     NSMutableDictionary * queryPublicKey = [[NSMutableDictionary alloc] init];
     
     [queryPublicKey setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
-    [queryPublicKey setObject:[self publicKeyTag] forKey:(__bridge id)kSecAttrApplicationTag];
+    [queryPublicKey setObject:tag forKey:(__bridge id)kSecAttrApplicationTag];
     [queryPublicKey setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
     [queryPublicKey setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnData];
     
@@ -129,17 +148,18 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     NSData * publicKeyBits = (__bridge_transfer NSData *)data;
 
     if (sanityCheck != noErr) {
+        DDLogWarn(@"%@ Can't get public key bytes by tag. OSStatus: %i", TAG, (int)sanityCheck);
         publicKeyBits = nil;
     }
     
     return publicKeyBits;
 }
 
-+ (NSData *)privateKeyTag {
++ (NSData *)defaultPrivateKeyTag {
     return [[NSData alloc] initWithBytes:privateKeyIdentifier length:sizeof(privateKeyIdentifier)];
 }
 
-+ (NSData *)publicKeyTag {
++ (NSData *)defaultPublicKeyTag {
     return [[NSData alloc] initWithBytes:publicKeyIdentifier length:sizeof(publicKeyIdentifier)];
 }
 
@@ -163,7 +183,7 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     [peerPublicKeyAttr setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnData];
     sanityCheck = SecItemAdd((__bridge CFDictionaryRef) peerPublicKeyAttr, (CFTypeRef *)&persistPeer);
     
-    if(sanityCheck == noErr || sanityCheck == errSecDuplicateItem){
+    if(sanityCheck != noErr){
         DDLogError(@"%@ Problem adding the remote public key to the keychain. OSStatus: %i", TAG, (int)sanityCheck);
         return NULL;
     }
@@ -174,6 +194,7 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
         [peerPublicKeyAttr removeObjectForKey:(__bridge id)kSecValueData];
         [peerPublicKeyAttr setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnRef];
         sanityCheck = SecItemCopyMatching((__bridge CFDictionaryRef) peerPublicKeyAttr, (CFTypeRef *)&remoteKeyRef);
+        DDLogError(@"%@ Getting key ref for stored key. OSStatus: %i", TAG, (int)sanityCheck);
     }
     if (persistPeer) {
         CFRelease(persistPeer);
@@ -196,19 +217,21 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     }
 }
 
-+ (void)deleteExisticKeyPair {
++ (void)deleteExistingKeyPair {
+    [self deleteExistingKeyPairWithPrivateTag:[self defaultPublicKeyTag] andPublicTag:[self defaultPrivateKeyTag]];
+}
+
++ (void)deleteExistingKeyPairWithPrivateTag:(NSData *)privateTag andPublicTag:(NSData *)publicTag {
     OSStatus sanityCheck = noErr;
     NSMutableDictionary * queryPublicKey = [[NSMutableDictionary alloc] init];
     NSMutableDictionary * queryPrivateKey = [[NSMutableDictionary alloc] init];
     
-    NSData *publicKeyTag = [[NSData alloc] initWithBytes:publicKeyIdentifier length:sizeof(publicKeyIdentifier)];
     [queryPublicKey setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
-    [queryPublicKey setObject:publicKeyTag forKey:(__bridge id)kSecAttrApplicationTag];
+    [queryPublicKey setObject:publicTag forKey:(__bridge id)kSecAttrApplicationTag];
     [queryPublicKey setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
 
-    NSData *privateKeyTag = [[NSData alloc] initWithBytes:privateKeyIdentifier length:sizeof(privateKeyIdentifier)];
     [queryPrivateKey setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
-    [queryPrivateKey setObject:privateKeyTag forKey:(__bridge id)kSecAttrApplicationTag];
+    [queryPrivateKey setObject:privateTag forKey:(__bridge id)kSecAttrApplicationTag];
     [queryPrivateKey setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
     
     sanityCheck = SecItemDelete((__bridge CFDictionaryRef)queryPrivateKey);
@@ -240,6 +263,9 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     SecKeyRef keyRef = NULL;
     OSStatus sanityCheck = noErr;
     sanityCheck = SecItemCopyMatching((__bridge CFDictionaryRef)queryKey, (CFTypeRef *)&keyRef);
+    if (sanityCheck != noErr) {
+        DDLogWarn(@"%@ Can't get key ref with persistent key ref, status: %i", TAG, (int)sanityCheck);
+    }
     
     return keyRef;
 }
@@ -247,7 +273,7 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
 + (NSData *)stripPublicKeyHeader:(NSData *)theKey {
     if (theKey == nil) return nil;
     
-    unsigned int len = [theKey length];
+    NSUInteger len = [theKey length];
     if (!len) return nil;
     
     unsigned char *c_key = (unsigned char *)[theKey bytes];
