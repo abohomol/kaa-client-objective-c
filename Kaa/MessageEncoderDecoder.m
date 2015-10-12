@@ -50,6 +50,17 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
     return self;
 }
 
+- (instancetype)initWithKeyPair:(KeyPair *)keys andRemotePublicKeyRef:(SecKeyRef)remoteKeyRef {
+    self = [super init];
+    if (self) {
+        self.keys = keys;
+        self.remoteKey = remoteKeyRef;
+        self.rawRemoteKey = nil;
+        DDLogVerbose(@"%@ Initialized with key pair: [%@] and remote key ref", TAG, self.keys);
+    }
+    return self;
+}
+
 - (NSData *)getSessionKey {
     if (!self.sessionKey) {
         OSStatus sanityCheck = noErr;
@@ -200,13 +211,13 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
         return nil;
     }
     
-    SecKeyRawSign([self getPrivateKey],
-                  kSecPaddingPKCS1SHA1,
-                  hashBytes,
-                  hashBytesSize,
-                  signedHashBytes,
-                  &signedHashBytesSize);
-    
+    OSStatus status = SecKeyRawSign([self getPrivateKey],
+                                    kSecPaddingPKCS1SHA1,
+                                    hashBytes,
+                                    hashBytesSize,
+                                    signedHashBytes,
+                                    &signedHashBytesSize);
+    DDLogVerbose(@"%@ Signing data status: %i", TAG, (int)status);
     NSData *signedHash = [NSData dataWithBytes:signedHashBytes length:(NSUInteger)signedHashBytesSize];
     
     if (hashBytes)
@@ -233,7 +244,9 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
                                       hashBytesSize,
                                       signedHashBytes,
                                       signedHashBytesSize);
-    
+    if (hashBytes) {
+        free(hashBytes);
+    }
     return status == errSecSuccess;
 }
 

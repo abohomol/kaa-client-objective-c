@@ -19,6 +19,8 @@
 
 - (instancetype)initWithKeyPair:(KeyPair *)keys andRemotePublicKey:(NSData *)remoteKey;
 
+- (instancetype)initWithKeyPair:(KeyPair *)keys andRemotePublicKeyRef:(SecKeyRef)remoteKeyRef;
+
 - (NSData *)getSessionKey;
 
 - (NSData *)getEncodedSessionKey;
