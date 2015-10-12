@@ -180,6 +180,8 @@
 		B88D00BE1BA88CAD002E0144 /* DefaultProfileTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D00BC1BA88CAD002E0144 /* DefaultProfileTransport.m */; };
 		B88D00C11BA8AE9F002E0144 /* DefaultEventTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B88D00BF1BA8AE9F002E0144 /* DefaultEventTransport.h */; };
 		B88D00C21BA8AE9F002E0144 /* DefaultEventTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D00C01BA8AE9F002E0144 /* DefaultEventTransport.m */; };
+		B8A066B41BCBE63D00F4E357 /* BaseKaaClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A066B21BCBE63D00F4E357 /* BaseKaaClient.h */; settings = {ASSET_TAGS = (); }; };
+		B8A066B51BCBE63D00F4E357 /* BaseKaaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A066B31BCBE63D00F4E357 /* BaseKaaClient.m */; settings = {ASSET_TAGS = (); }; };
 		B8A13B051BAFE47A00265729 /* DefaultBootstrapDataProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A13B031BAFE47A00265729 /* DefaultBootstrapDataProcessor.h */; };
 		B8A13B061BAFE47A00265729 /* DefaultBootstrapDataProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A13B041BAFE47A00265729 /* DefaultBootstrapDataProcessor.m */; };
 		B8A13B091BAFE93A00265729 /* DefaultOperationDataProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A13B071BAFE93A00265729 /* DefaultOperationDataProcessor.h */; };
@@ -450,6 +452,8 @@
 		B88D00BC1BA88CAD002E0144 /* DefaultProfileTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileTransport.m; sourceTree = "<group>"; };
 		B88D00BF1BA8AE9F002E0144 /* DefaultEventTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEventTransport.h; sourceTree = "<group>"; };
 		B88D00C01BA8AE9F002E0144 /* DefaultEventTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEventTransport.m; sourceTree = "<group>"; };
+		B8A066B21BCBE63D00F4E357 /* BaseKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseKaaClient.h; sourceTree = "<group>"; };
+		B8A066B31BCBE63D00F4E357 /* BaseKaaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseKaaClient.m; sourceTree = "<group>"; };
 		B8A13B031BAFE47A00265729 /* DefaultBootstrapDataProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultBootstrapDataProcessor.h; sourceTree = "<group>"; };
 		B8A13B041BAFE47A00265729 /* DefaultBootstrapDataProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultBootstrapDataProcessor.m; sourceTree = "<group>"; };
 		B8A13B071BAFE93A00265729 /* DefaultOperationDataProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOperationDataProcessor.h; sourceTree = "<group>"; };
@@ -734,6 +738,8 @@
 				B88836241BA0981C00ACAB4F /* KaaClientStateDelegate.h */,
 				B844623A1BB5C377009826FC /* KaaLogging.h */,
 				B844623B1BB5C377009826FC /* KaaLogging.m */,
+				B8A066B21BCBE63D00F4E357 /* BaseKaaClient.h */,
+				B8A066B31BCBE63D00F4E357 /* BaseKaaClient.m */,
 			);
 			path = Kaa;
 			sourceTree = "<group>";
@@ -1098,6 +1104,7 @@
 				B87A74341B95BBDC0052858F /* NSData+Conversion.h in Headers */,
 				B878C2981B45730700453947 /* AvroBased.h in Headers */,
 				B81935C31B15D0660053486A /* EndpointObjectHash.h in Headers */,
+				B8A066B41BCBE63D00F4E357 /* BaseKaaClient.h in Headers */,
 				B8A13B161BB01AD000265729 /* CommonEPConstants.h in Headers */,
 				B8C055D01B57AF1E00F5AA1C /* ExecutorContext.h in Headers */,
 				39E404D51BBD0FF500A5B833 /* SimpleExecutorContext.h in Headers */,
@@ -1374,6 +1381,7 @@
 				B81161201B4BC75100C4E0C6 /* LogBlock.m in Sources */,
 				B840CF361B172016001D0F74 /* EndpointAccessToken.m in Sources */,
 				B88D00C21BA8AE9F002E0144 /* DefaultEventTransport.m in Sources */,
+				B8A066B51BCBE63D00F4E357 /* BaseKaaClient.m in Sources */,
 				B86D7F1B1BA2BD4700563592 /* KAANotification.m in Sources */,
 				B856EFB41B9C82CC00C065D9 /* KaaClientPropertiesState.m in Sources */,
 				391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */,

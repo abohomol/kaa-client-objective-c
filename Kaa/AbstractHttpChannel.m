@@ -28,7 +28,7 @@
 @property (nonatomic) volatile BOOL isShutdown;
 @property (nonatomic) volatile BOOL isPaused;
 
-@property (nonatomic,strong) AbstractHttpClient *kaaHttpClient;
+@property (nonatomic,weak) AbstractHttpClient *kaaHttpClient;
 @property (nonatomic,strong) id<KaaDataDemultiplexer> chDemultiplexer;
 @property (nonatomic,strong) id<KaaDataMultiplexer> chMultiplexer;
 
