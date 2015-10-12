@@ -187,12 +187,11 @@
                                     [targetClass instanceMethodSignatureForSelector:sizeFunc]];
         [invocation setSelector:sizeFunc];
         for (int i = 0; i < array.count; i++) {
-            id object = array[i];
+            __unsafe_unretained id object = array[i];
             if (parameterized) {
                 [invocation setArgument:&object atIndex:2];
             }
             [invocation invokeWithTarget:(target ? target : object)];
-            //TODO check whether it's better to create new invocation or not
             size_t objSize;
             [invocation getReturnValue:&objSize];
             size += objSize;
@@ -211,16 +210,17 @@
     avro_binary_encoding.read_long(reader, &size);
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:size];
     if (size > 0 && [(target ? target : self) respondsToSelector:deserializeFunc]) {
+        __unsafe_unretained id parameter = param;
         NSMethodSignature *signature = [(target ? target : self) methodSignatureForSelector:deserializeFunc];
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         NSUInteger argsCount = [signature numberOfArguments];
         [invocation setSelector:deserializeFunc];
         [invocation setTarget:(target ? target : self)];
         [invocation setArgument:&reader atIndex:2];
-        if (argsCount > 3 && param) {
-            [invocation setArgument:&param atIndex:3];
+        if (argsCount > 3 && parameter) {
+            [invocation setArgument:&parameter atIndex:3];
         }
-        id object;
+        __unsafe_unretained id object;
         int index;
         for (index = 0; index < size; index++) {
             [invocation invoke];
@@ -239,8 +239,14 @@
         long size = [array count];
         if (size > 0 && [(target ? target : self) respondsToSelector:serializeFunc]) {
             avro_binary_encoding.write_long(writer, size);
-            for (id object in array) {
-                [(target ? target : self) performSelector:serializeFunc withObject:object withObject:(__bridge id)(writer)];
+            for (int i = 0; i < size; i++) {
+                __unsafe_unretained id object = array[i];
+                NSMethodSignature *signature = [(target ? target : self) methodSignatureForSelector:serializeFunc];
+                NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
+                [invocation setSelector:serializeFunc];
+                [invocation setArgument:&object atIndex:2];
+                [invocation setArgument:&writer atIndex:3];
+                [invocation invokeWithTarget:(target ? target : self)];
             }
         }
         avro_binary_encoding.write_long(writer, 0);
