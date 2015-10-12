@@ -229,7 +229,7 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
 }
 
 - (BOOL)verify:(NSData *)message withSignature:(NSData *)signature {
-    size_t signedHashBytesSize = SecKeyGetBlockSize([self getPublicKey]);
+    size_t signedHashBytesSize = SecKeyGetBlockSize([self getRemotePublicKey]);
     const void* signedHashBytes = [signature bytes];
     
     size_t hashBytesSize = CC_SHA1_DIGEST_LENGTH;
@@ -238,7 +238,7 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
         return nil;
     }
     
-    OSStatus status = SecKeyRawVerify([self getPublicKey],
+    OSStatus status = SecKeyRawVerify([self getRemotePublicKey],
                                       kSecPaddingPKCS1SHA1,
                                       hashBytes,
                                       hashBytesSize,
@@ -247,7 +247,8 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
     if (hashBytes) {
         free(hashBytes);
     }
-    return status == errSecSuccess;
+    BOOL verified = status == errSecSuccess;
+    return verified;
 }
 
 - (void)setRemotePublicKey:(NSData *)remotePublicKey {
