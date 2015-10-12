@@ -25,6 +25,9 @@
     [object serialize:writer];
     NSData *bytes = [NSData dataWithBytes:writer->buf length:writer->written];
     avro_writer_free(writer);
+    if (buffer) {
+        free(buffer);
+    }
     return bytes;
 }
 
