@@ -257,4 +257,7 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
     self.remoteKey = [KeyUtils storePublicKey:remotePublicKey withTag:tag];
 }
 
+- (void)setRemotePublicKeyRef:(SecKeyRef)remotePublicKeyRef {
+    self.remoteKey = remotePublicKeyRef;
+}
 @end
