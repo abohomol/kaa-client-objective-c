@@ -83,4 +83,29 @@
     XCTAssertTrue([errorReason isEqualToString:deserializedReason]);
 }
 
+- (void)testArrayOfObjects {
+    LogEntry *entry1 = [[LogEntry alloc] init];
+    entry1.data = [@"entry1data" dataUsingEncoding:NSUTF8StringEncoding];
+    LogEntry *entry2 = [[LogEntry alloc] init];
+    entry2.data = [@"entry2data" dataUsingEncoding:NSUTF8StringEncoding];
+    LogEntry *entry3 = [[LogEntry alloc] init];
+    entry3.data = [@"entry3data" dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSMutableArray *entries = [NSMutableArray arrayWithObjects:entry1, entry2, entry3, nil];
+    
+    [entries addObject:entry1];
+    [entries addObject:entry2];
+    [entries addObject:entry3];
+
+    LogSyncRequest *request = [[LogSyncRequest alloc] init];
+    request.requestId = 10;
+    request.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_0 andData:entries];
+    
+    NSData *serialized = [self.converter toBytes:request];
+    
+    LogSyncRequest *deserializedRequest = [self.converter fromBytes:serialized object:[LogSyncRequest new]];
+    XCTAssertEqual(request.requestId, deserializedRequest.requestId);
+    
+}
+
 @end
