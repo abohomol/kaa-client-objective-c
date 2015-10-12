@@ -78,6 +78,48 @@
     XCTAssertTrue([enumOrigin isEqualToNumber:enumDes]);
 }
 
+- (void)testBytes {
+    int randomInt = arc4random();
+    NSData *data = [NSData dataWithBytes:&randomInt length:sizeof(randomInt)];
+    char *buffer = (char *)malloc(([self.utils getBytesSize:data]) * sizeof(char));
+    avro_writer_t writer = avro_writer_memory(buffer, [self.utils getBytesSize:data]);
+    if (!writer) {
+        XCTFail(@"Can't allocate memory!");
+    }
+    [self.utils serializeBytes:data to:writer];
+    NSData *serialized = [NSData dataWithBytes:writer->buf length:writer->written];
+    avro_writer_free(writer);
+    if (buffer) {
+        free(buffer);
+    }
+    
+    avro_reader_t reader = avro_reader_memory([serialized bytes], [serialized length]);
+    NSData *deserialized = [self.utils deserializeBytes:reader];
+    avro_reader_free(reader);
+    XCTAssertTrue([data isEqualToData:deserialized]);
+}
+
+- (void)testFixed {
+    int randomInt = arc4random();
+    NSData *data = [NSData dataWithBytes:&randomInt length:sizeof(randomInt)];
+    char *buffer = (char *)malloc(([self.utils getFixedSize:data]) * sizeof(char));
+    avro_writer_t writer = avro_writer_memory(buffer, [self.utils getFixedSize:data]);
+    if (!writer) {
+        XCTFail(@"Can't allocate memory!");
+    }
+    [self.utils serializeFixed:data to:writer];
+    NSData *serialized = [NSData dataWithBytes:writer->buf length:writer->written];
+    avro_writer_free(writer);
+    if (buffer) {
+        free(buffer);
+    }
+    
+    avro_reader_t reader = avro_reader_memory([serialized bytes], [serialized length]);
+    NSData *deserialized = [self.utils deserializeFixed:reader size:[NSNumber numberWithLong:[data length]]];
+    avro_reader_free(reader);
+    XCTAssertTrue([data isEqualToData:deserialized]);
+}
+
 - (void)testString {
     
     NSString *origin = @"Avro Utils Tests";
@@ -89,7 +131,10 @@
     [self.utils serializeString:origin to:writer];
     NSData *serialized = [NSData dataWithBytes:writer->buf length:writer->written];
     avro_writer_free(writer);
-    
+    if (buffer) {
+        free(buffer);
+    }
+
     avro_reader_t reader = avro_reader_memory([serialized bytes], [serialized length]);
     NSString *deserialized = [self.utils deserializeString:reader];
     avro_reader_free(reader);
@@ -97,7 +142,7 @@
 }
 
 
-- (void)testBasicArray {
+- (void)testArrayWithStrings {
     
     NSArray *array = [NSArray arrayWithObjects:@"Object1", @"Object2", @"Object3", nil];
     size_t size = [self.utils getArraySize:array withSelector:@selector(getStringSize:) parameterized:YES target:self.utils];
@@ -109,6 +154,9 @@
     [self.utils serializeArray:array to:writer withSelector:@selector(serializeString:to:) target:self.utils];
     NSData *serialized = [NSData dataWithBytes:writer->buf length:writer->written];
     avro_writer_free(writer);
+    if (buffer) {
+        free(buffer);
+    }
     
     avro_reader_t reader = avro_reader_memory([serialized bytes], [serialized length]);
     NSArray *desirealized = [self.utils deserializeArray:reader withSelector:@selector(deserializeString:) andParam:nil target:self.utils];
@@ -120,9 +168,7 @@
 }
 
 
-- (void)testArrayWithAvroObjects {
-
-    //creating 3 objects
+- (void)testArrayOfRecords {
     
     SubscriptionCommand *command1 = [[SubscriptionCommand alloc] init];
     command1.topicId = @"TestSubscriptionCommand1";
@@ -134,7 +180,7 @@
     command3.topicId = @"TestSubscriptionCommand3";
     command3.command = SUBSCRIPTION_COMMAND_TYPE_REMOVE;
     
-    NSArray *array = [NSArray arrayWithObjects:command1, command2, command3,nil];
+    NSArray *array = [NSArray arrayWithObjects:command1, command2, command3, nil];
     
     size_t size = [self.utils getArraySize:array withSelector:@selector(getSize) parameterized:NO target:nil];
     char *buffer = (char *)malloc(size * sizeof(char));
@@ -145,6 +191,9 @@
     [self.utils serializeArray:array to:writer withSelector:@selector(serializeRecord:to:) target:nil];
     NSData *serialized = [NSData dataWithBytes:writer->buf length:writer->written];
     avro_writer_free(writer);
+    if (buffer) {
+        free(buffer);
+    }
     
     avro_reader_t reader = avro_reader_memory([serialized bytes], [serialized length]);
     NSArray *desirealized = [self.utils deserializeArray:reader withSelector:@selector(deserializeRecord:as:) andParam:[SubscriptionCommand class] target:nil];
