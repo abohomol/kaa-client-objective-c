@@ -33,10 +33,16 @@
     return self;
 }
 
+- (void)update:(NSData *)data {
+    if (data && [data length] > 0) {
+        CC_SHA1_Update(&context, [data bytes], (CC_LONG)[data length]);
+    }
+}
+
 - (void)updateWithString:(NSString *)string {
     if (string && ![string isEmpty]) {
         const char *cString = [string cStringUsingEncoding:NSUTF8StringEncoding];
-        CC_LONG strLength = strlen(cString);
+        CC_LONG strLength = (CC_LONG)strlen(cString);
         CC_SHA1_Update(&context, cString, strLength);
     }
 }

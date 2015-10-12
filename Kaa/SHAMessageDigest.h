@@ -16,6 +16,8 @@
  */
 - (void)updateWithString:(NSString *)string;
 
+- (void)update:(NSData *)data;
+
 /**
  * Compute message digest with accumulated data chunks.
  * @return pointer to the internal buffer that holds the message digest value.
