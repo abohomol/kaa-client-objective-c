@@ -237,6 +237,7 @@
 		B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */; settings = {ASSET_TAGS = (); }; };
 		B8EC91BF1BC4058600D3723B /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BD1BC4058600D3723B /* libAFNetworking.a */; };
 		B8EC91C01BC4058600D3723B /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */; };
+		B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EFF1F91BC8FE8C002551A9 /* MessageEncoderDecoderTests.m */; settings = {ASSET_TAGS = (); }; };
 		B8FBD9EC1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */; };
 		B8FBD9EF1B9E0243009A2BA3 /* SimpleConfigurationStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */; };
 		B8FBD9F01B9E0243009A2BA3 /* SimpleConfigurationStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FBD9EE1B9E0243009A2BA3 /* SimpleConfigurationStorage.m */; };
@@ -506,6 +507,7 @@
 		B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesStateTest.m; sourceTree = "<group>"; };
 		B8EC91BD1BC4058600D3723B /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
+		B8EFF1F91BC8FE8C002551A9 /* MessageEncoderDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageEncoderDecoderTests.m; sourceTree = "<group>"; };
 		B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationPersistenceManager.h; sourceTree = "<group>"; };
 		B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleConfigurationStorage.h; sourceTree = "<group>"; };
 		B8FBD9EE1B9E0243009A2BA3 /* SimpleConfigurationStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleConfigurationStorage.m; sourceTree = "<group>"; };
@@ -674,6 +676,7 @@
 			isa = PBXGroup;
 			children = (
 				B81B98BE1BC7A29100C2DFF4 /* KeyUtilsTests.m */,
+				B8EFF1F91BC8FE8C002551A9 /* MessageEncoderDecoderTests.m */,
 			);
 			name = security;
 			sourceTree = "<group>";
@@ -738,11 +741,10 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				B8A066B11BCBE01B00F4E357 /* avro */,
 				B81B98BD1BC7A27600C2DFF4 /* security */,
 				B8C10A1A1BC2DE00001A2236 /* channel */,
 				B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */,
-				39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */,
-				39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */,
 				391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */,
 				B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */,
 				B824A1FB1B1452C50076C753 /* Supporting Files */,
@@ -960,6 +962,15 @@
 				B824A2241B1489FE0076C753 /* ConnectivityChecker.m */,
 			);
 			name = connectivity;
+			sourceTree = "<group>";
+		};
+		B8A066B11BCBE01B00F4E357 /* avro */ = {
+			isa = PBXGroup;
+			children = (
+				39AEB2851BBA79790045FB32 /* AvroBytesConverterTests.m */,
+				39AEB2861BBA79790045FB32 /* AvroUtilsTests.m */,
+			);
+			name = avro;
 			sourceTree = "<group>";
 		};
 		B8A8DF9F1BA02880002CEF3E /* transports */ = {
@@ -1443,6 +1454,7 @@
 				B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */,
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
+				B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 				B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */,
 			);
