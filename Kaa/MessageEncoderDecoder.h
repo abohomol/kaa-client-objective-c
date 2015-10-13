@@ -66,5 +66,6 @@
 - (BOOL)verify:(NSData *)message withSignature:(NSData *)signature;
 
 - (void)setRemotePublicKey:(NSData *)remotePublicKey;
+- (void)setRemotePublicKeyRef:(SecKeyRef)remotePublicKeyRef;
 
 @end
