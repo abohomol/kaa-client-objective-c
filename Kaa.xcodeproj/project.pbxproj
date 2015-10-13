@@ -26,6 +26,7 @@
 		39E404D21BBC31F900A5B833 /* AbstractExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		39E404D51BBD0FF500A5B833 /* SimpleExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */; settings = {ASSET_TAGS = (); }; };
 		39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
+		39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */; settings = {ASSET_TAGS = (); }; };
 		6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */; };
 		B800844F1B7B2DDD003A3D5E /* ResyncConfigurationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */; };
 		B80084501B7B2DDD003A3D5E /* ResyncConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */; };
@@ -293,6 +294,7 @@
 		39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractExecutorContext.m; sourceTree = "<group>"; };
 		39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleExecutorContext.h; sourceTree = "<group>"; };
 		39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleExecutorContext.m; sourceTree = "<group>"; };
+		39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTransportInfoTest.m; sourceTree = "<group>"; };
 		4CAC4D1133C2E2FBC990B5AC /* Pods-libKaa.a.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.debug.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.debug.xcconfig"; sourceTree = "<group>"; };
 		B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResyncConfigurationManager.h; sourceTree = "<group>"; };
 		B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResyncConfigurationManager.m; sourceTree = "<group>"; };
@@ -561,6 +563,14 @@
 			name = strategy;
 			sourceTree = "<group>";
 		};
+		39FF8B0B1BCC007000666D1F /* channel */ = {
+			isa = PBXGroup;
+			children = (
+				39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */,
+			);
+			name = channel;
+			sourceTree = "<group>";
+		};
 		B81161101B4BBB1400C4E0C6 /* configuration */ = {
 			isa = PBXGroup;
 			children = (
@@ -741,6 +751,7 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				39FF8B0B1BCC007000666D1F /* channel */,
 				B8A066B11BCBE01B00F4E357 /* avro */,
 				B81B98BD1BC7A27600C2DFF4 /* security */,
 				B8C10A1A1BC2DE00001A2236 /* channel */,
@@ -1455,6 +1466,7 @@
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */,
+				39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 				B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */,
 			);

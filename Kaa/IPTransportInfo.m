@@ -8,6 +8,8 @@
 
 #import "IPTransportInfo.h"
 
+#define NSUINTEGERSIZE 8
+
 @interface IPTransportInfo ()
 
 @property (nonatomic,strong) NSData *publicKey;
@@ -28,12 +30,31 @@
     meta.protocolVersionInfo = info;
     self = [super initWithServerType:[parent serverType] andMeta:meta];
     if (self) {
-        self.publicKey = [super.meta.connectionInfo subdataWithRange:NSMakeRange(0, 4)];
+        int pointStart = 0;
+        int len = NSUINTEGERSIZE;
+        NSUInteger length = 0;
+        NSData *lengthData = [NSData data];
         
-        NSData *hostData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(4, 8)];
+        lengthData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
+        [lengthData getBytes:&length length:sizeof(NSUInteger)];
+        pointStart += len;
+        len = (int)length;
+        
+        self.publicKey = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
+        pointStart += len;
+        len = NSUINTEGERSIZE;
+        
+        lengthData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
+        [lengthData getBytes:&length length:sizeof(NSUInteger)];
+        pointStart += len;
+        len = (int)length;
+        
+        NSData *hostData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
         self.host = [[NSString alloc] initWithData:hostData encoding:NSUTF8StringEncoding];
+        pointStart += len;
+        len = NSUINTEGERSIZE;
         
-        NSData *portData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(8, 12)];
+        NSData *portData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
         self.port = *(int*)([portData bytes]);
     }
     return self;
