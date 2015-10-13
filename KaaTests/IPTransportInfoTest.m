@@ -17,10 +17,6 @@
 
 @implementation IPTransportInfoTest
 
-- (void)setUp {
-    [super setUp];
-}
-
 - (void) testInit {
     KeyPair *pair = [KeyUtils generateKeyPair];
     NSData *publicKey = [KeyUtils getPublicKey];
