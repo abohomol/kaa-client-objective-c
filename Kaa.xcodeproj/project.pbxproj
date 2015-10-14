@@ -249,6 +249,7 @@
 		B8FC094F1B904BD2002109A4 /* UserTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FC094E1B904BD2002109A4 /* UserTransport.h */; };
 		B8FC09521B904CFD002109A4 /* DefaultEndpointRegistrationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */; };
 		B8FC09531B904CFD002109A4 /* DefaultEndpointRegistrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */; };
+		E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF13C1BCE7910005076FC /* MemBucketTest.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -522,6 +523,7 @@
 		B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEndpointRegistrationManager.h; sourceTree = "<group>"; };
 		B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEndpointRegistrationManager.m; sourceTree = "<group>"; };
 		DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-libKaa.a.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E88FF13C1BCE7910005076FC /* MemBucketTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemBucketTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -761,6 +763,7 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				E88FF13B1BCE78F5005076FC /* logging */,
 				39FF8B0E1BCD49BE00666D1F /* transport */,
 				39FF8B0B1BCC007000666D1F /* channel */,
 				B8A066B11BCBE01B00F4E357 /* avro */,
@@ -1103,6 +1106,22 @@
 				DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E88FF13B1BCE78F5005076FC /* logging */ = {
+			isa = PBXGroup;
+			children = (
+				E88FF13E1BCE7915005076FC /* memory */,
+				E88FF13C1BCE7910005076FC /* MemBucketTest.m */,
+			);
+			name = logging;
+			sourceTree = "<group>";
+		};
+		E88FF13E1BCE7915005076FC /* memory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = memory;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1478,6 +1497,7 @@
 				39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */,
+				E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */,
 				39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 				B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */,
