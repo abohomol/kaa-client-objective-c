@@ -89,7 +89,7 @@
         [NSException raise:NSInvalidArgumentException format:@"Record size(%li) is bigger than max bucket size(%li)!",
          (long)[record getSize], (long)self.maxBucketSize];
     }
-    [self.bucketsLock lock];
+    [self.bucketsLock tryLock];
     if (self.consumedVolume + [record getSize] > self.maxStorageSize) {
         [NSException raise:@"IllegalStateException" format:@"Storage is full!"];
     }

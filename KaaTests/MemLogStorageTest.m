@@ -32,6 +32,8 @@
     LogBlock *logBlock = [storage getRecordBlock:16 batchCount:3];
     XCTAssertTrue([[logBlock logRecords] count] <= maxCount);
     XCTAssertTrue([self getLogBlockSize:logBlock] <= maxSize);
+    XCTAssertEqual(insertionCount - [[logBlock logRecords] count], [[storage getStatus] getRecordCount]);
+    
     
 }
 
@@ -42,7 +44,7 @@
 - (NSInteger) getLogBlockSize:(LogBlock *)logBlock {
     NSInteger size = 0;
     for (LogRecord *record in [logBlock logRecords]) {
-        size = [record getSize];
+        size += [record getSize];
     }
     return size;
 }
