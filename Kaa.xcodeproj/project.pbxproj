@@ -250,6 +250,7 @@
 		B8FC09521B904CFD002109A4 /* DefaultEndpointRegistrationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */; };
 		B8FC09531B904CFD002109A4 /* DefaultEndpointRegistrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */; };
 		E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF13C1BCE7910005076FC /* MemBucketTest.m */; settings = {ASSET_TAGS = (); }; };
+		E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -524,6 +525,7 @@
 		B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEndpointRegistrationManager.m; sourceTree = "<group>"; };
 		DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-libKaa.a.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88FF13C1BCE7910005076FC /* MemBucketTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemBucketTest.m; sourceTree = "<group>"; };
+		E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemLogStorageTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1112,7 +1114,7 @@
 			isa = PBXGroup;
 			children = (
 				E88FF13E1BCE7915005076FC /* memory */,
-				E88FF13C1BCE7910005076FC /* MemBucketTest.m */,
+				E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */,
 			);
 			name = logging;
 			sourceTree = "<group>";
@@ -1120,6 +1122,7 @@
 		E88FF13E1BCE7915005076FC /* memory */ = {
 			isa = PBXGroup;
 			children = (
+				E88FF13C1BCE7910005076FC /* MemBucketTest.m */,
 			);
 			name = memory;
 			sourceTree = "<group>";
@@ -1490,6 +1493,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */,
 				B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */,
 				39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */,
 				B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */,
