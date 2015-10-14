@@ -13,10 +13,14 @@
 
 @property (nonatomic,strong) NSString *url;
 
+//- (instancetype)initWith:(NSString *)url
+//              privateKey:(SecKeyRef)privateK
+//               publicKey:(SecKeyRef)publicK
+//               remoteKey:(NSData *)remoteK;
 - (instancetype)initWith:(NSString *)url
               privateKey:(SecKeyRef)privateK
                publicKey:(SecKeyRef)publicK
-               remoteKey:(NSData *)remoteK;
+            remoteKeyRef:(SecKeyRef)remoteK;
 
 - (void)disableVerification;
 - (NSData *)verifyResponse:(NSData *)body signature:(NSData *)signature;
