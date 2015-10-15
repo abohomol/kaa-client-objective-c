@@ -10,6 +10,7 @@
 		391A91A01BBD6CCD00DBA851 /* SingleThreadExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */; settings = {ASSET_TAGS = (); }; };
 		391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */; settings = {ASSET_TAGS = (); }; };
+		392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
 		39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
@@ -281,6 +282,7 @@
 		391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleThreadExecutorContext.h; sourceTree = "<group>"; };
 		391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleThreadExecutorContext.m; sourceTree = "<group>"; };
 		391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndPointObjectHashTest.m; sourceTree = "<group>"; };
+		392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogUploadStrategyTest.m; sourceTree = "<group>"; };
 		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
 		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
 		39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCountLogUploadStrategy.h; sourceTree = "<group>"; };
@@ -1115,6 +1117,7 @@
 			children = (
 				E88FF13E1BCE7915005076FC /* memory */,
 				E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */,
+				392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */,
 			);
 			name = logging;
 			sourceTree = "<group>";
@@ -1494,6 +1497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */,
+				392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */,
 				B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */,
 				39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */,
 				B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */,

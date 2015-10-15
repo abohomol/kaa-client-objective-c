@@ -23,18 +23,4 @@
 
 - (instancetype)initWithDefaults;
 
-- (void)setTimeout:(NSInteger)timeout;
-
-- (void)setRetryPeriod:(NSInteger)retryPeriod;
-
-- (void)setVolumeThreshold:(NSInteger)volumeThreshold;
-
-- (void)setCountThreshold:(NSInteger)countThreshold;
-
-- (void)setBatchSize:(NSInteger)batchSize;
-
-- (void)setBatchCount:(NSInteger)batchCount;
-
-- (void)setUploadCheckPeriod:(NSInteger)uploadCheckPeriod;
-
 @end

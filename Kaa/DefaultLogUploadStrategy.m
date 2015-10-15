@@ -97,34 +97,6 @@
     }
 }
 
-- (void)setTimeout:(NSInteger)timeout {
-    self.timeout = timeout;
-}
-
-- (void)setRetryPeriod:(NSInteger)retryPeriod {
-    self.retryPeriod = retryPeriod;
-}
-
-- (void)setVolumeThreshold:(NSInteger)volumeThreshold {
-    self.volumeThreshold = volumeThreshold;
-}
-
-- (void)setCountThreshold:(NSInteger)countThreshold {
-    self.countThreshold = countThreshold;
-}
-
-- (void)setBatchSize:(NSInteger)batchSize {
-    self.batchSize = batchSize;
-}
-
-- (void)setBatchCount:(NSInteger)batchCount {
-    self.batchCount = batchCount;
-}
-
-- (void)setUploadCheckPeriod:(NSInteger)uploadCheckPeriod {
-    self.uploadCheckPeriod = uploadCheckPeriod;
-}
-
 - (void) lockUpload {
     self.isUploadLocked = YES;
 }
