@@ -72,6 +72,7 @@
         lastIndex--;
         [overSize addObject:currentRecord];
         self.size -= [currentRecord getSize];
+        [self.records removeObjectAtIndex:lastIndex];
     }
     DDLogVerbose(@"%@ Shrink over-sized elements: %li. New bucket size: %li and count %li", TAG,
                  (long)[overSize count], (long)self.size, (long)[self getCount]);

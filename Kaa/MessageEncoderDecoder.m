@@ -33,7 +33,7 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
 @implementation MessageEncoderDecoder
 
 - (instancetype)initWithKeyPair:(KeyPair *)keys {
-    return [self initWithKeyPair:keys andRemotePublicKey:nil];
+    return [self initWithKeyPair:keys andRemotePublicKeyRef:NULL];
 }
 
 - (instancetype)initWithKeyPair:(KeyPair *)keys andRemotePublicKey:(NSData *)remoteKey {

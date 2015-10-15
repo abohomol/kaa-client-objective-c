@@ -29,8 +29,8 @@
 @implementation DefaultHttpClient
 
 - (instancetype)initWith:(NSString *)url privateKey:(SecKeyRef)privateK publicKey:(SecKeyRef)publicK
-               remoteKey:(NSData *)remoteK {
-    self = [super initWith:url privateKey:privateK publicKey:publicK remoteKey:remoteK];
+               remoteKeyRef:(SecKeyRef)remoteK {
+    self = [super initWith:url privateKey:privateK publicKey:publicK remoteKeyRef:remoteK];
     if (self) {
         self.client = [[AFHTTPClient alloc] initWithBaseURL:[NSURL URLWithString:url]];
         self.isShutDown = NO;
