@@ -36,19 +36,19 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
     return [self initWithKeyPair:keys andRemotePublicKeyRef:NULL];
 }
 
-//- (instancetype)initWithKeyPair:(KeyPair *)keys andRemotePublicKey:(NSData *)remoteKey {
-//    self = [super init];
-//    if (self) {
-//        self.keys = keys;
-//        self.remoteKey = NULL;
-//        self.rawRemoteKey = remoteKey;
-//        if (remoteKey) {
-//            [self setRemotePublicKey:remoteKey];
-//        }
-//        DDLogVerbose(@"%@ Initialized with key pair: [%@] \nRemotePublicKey: %@", TAG, self.keys, [remoteKey hexadecimalString]);
-//    }
-//    return self;
-//}
+- (instancetype)initWithKeyPair:(KeyPair *)keys andRemotePublicKey:(NSData *)remoteKey {
+    self = [super init];
+    if (self) {
+        self.keys = keys;
+        self.remoteKey = NULL;
+        self.rawRemoteKey = remoteKey;
+        if (remoteKey) {
+            [self setRemotePublicKey:remoteKey];
+        }
+        DDLogVerbose(@"%@ Initialized with key pair: [%@] \nRemotePublicKey: %@", TAG, self.keys, [remoteKey hexadecimalString]);
+    }
+    return self;
+}
 
 - (instancetype)initWithKeyPair:(KeyPair *)keys andRemotePublicKeyRef:(SecKeyRef)remoteKeyRef {
     self = [super init];

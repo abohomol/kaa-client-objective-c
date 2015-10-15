@@ -17,20 +17,6 @@
 
 @implementation AbstractHttpClient
 
-//- (instancetype)initWith:(NSString *)url
-//              privateKey:(SecKeyRef)privateK
-//               publicKey:(SecKeyRef)publicK
-//               remoteKey:(NSData *)remoteK {
-//    self = [super init];
-//    if (self) {
-//        self.url = url;
-//        KeyPair *keys = [[KeyPair alloc] initWithPrivate:privateK andPublic:publicK];
-//        self.encoderDecoder = [[MessageEncoderDecoder alloc] initWithKeyPair:keys andRemotePublicKey:remoteK];
-//        self.verificationEnabled = YES;
-//    }
-//    return self;
-//}
-
 - (instancetype)initWith:(NSString *)url
               privateKey:(SecKeyRef)privateK
                publicKey:(SecKeyRef)publicK
