@@ -10,8 +10,6 @@
 #import <Foundation/Foundation.h>
 #import "MemBucket.h"
 
-#define NSINTEGERSIZE 8
-
 @interface MemBucketTest : XCTestCase
 
 @end
@@ -55,7 +53,7 @@
     while (curSize + [record getSize] <= maxSize && curRecordCount < maxRecordCount) {
         XCTAssertTrue([bucket addRecord:record]);
         curRecordCount++;
-        curSize += NSINTEGERSIZE;
+        curSize += sizeof(NSInteger);
     }
     
     XCTAssertFalse([bucket addRecord:record]);
