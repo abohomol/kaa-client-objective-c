@@ -201,7 +201,7 @@
     LogRecord *record = [self getLogRecord];
     
     //size of each record is 8B
-    NSInteger insertionCount = 3;
+    NSInteger insertionCount = 9;
     NSInteger receivedCount = 0;
     NSInteger iter = insertionCount;
     
@@ -224,10 +224,10 @@
     XCTAssertEqual(insertionCount - receivedCount, [[storage getStatus] getRecordCount]);
     XCTAssertEqual((insertionCount - receivedCount) * 8, [[storage getStatus] getConsumedVolume]);
     
-    //    [storage notifyUploadFailed:[logBlock blockId]];
-    //    receivedCount -= [[logBlock logRecords] count];
-    //    XCTAssertEqual(insertionCount - receivedCount, [[storage getStatus] getRecordCount]);
-    //    XCTAssertEqual((insertionCount - receivedCount) * 8, [[storage getStatus] getConsumedVolume]);
+    [storage notifyUploadFailed:[logBlock blockId]];
+    receivedCount -= [[logBlock logRecords] count];
+    XCTAssertEqual(insertionCount - receivedCount, [[storage getStatus] getRecordCount]);
+    XCTAssertEqual((insertionCount - receivedCount) * 8, [[storage getStatus] getConsumedVolume]);
     
 }
 
