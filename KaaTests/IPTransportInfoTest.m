@@ -18,7 +18,7 @@
 @implementation IPTransportInfoTest
 
 - (void) testInit {
-    KeyPair *pair = [KeyUtils generateKeyPair];
+    [KeyUtils generateKeyPair];
     NSData *publicKey = [KeyUtils getPublicKey];
     TransportProtocolId *TPid = [TransportProtocolIdHolder TCPTransportID];
     int port = 80;
@@ -37,7 +37,10 @@
     return  [[GenericTransportInfo alloc] initWithServerType:serverType andMeta:md];
 }
 
-- (ProtocolMetaData *) buildMetaDataWithTPid:(TransportProtocolId *)TPid host:(NSString *)host port:(NSUInteger)port andPublicKey:(NSData *)publicKey {
+- (ProtocolMetaData *) buildMetaDataWithTPid:(TransportProtocolId *)TPid
+                                        host:(NSString *)host
+                                        port:(NSUInteger)port
+                                andPublicKey:(NSData *)publicKey {
     NSUInteger publicKeyLength = [publicKey length];
     NSUInteger hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *data = [NSMutableData data];
@@ -47,11 +50,8 @@
     
     [data appendBytes:&publicKeyLength length:sizeof(publicKeyLength)];
     [data appendData:publicKey];
-    NSLog(@"data length: %lu", (unsigned long)[data length]);
     [data appendBytes:&hostLength length:sizeof(hostLength)];
-    NSLog(@"data length: %lu", (unsigned long)[data length]);
     [data appendData:[host dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"data length: %lu", (unsigned long)[data length]);
     [data appendBytes:&port length:sizeof(port)];
     ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
     [md setConnectionInfo:data];

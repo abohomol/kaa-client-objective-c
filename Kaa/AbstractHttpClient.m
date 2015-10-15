@@ -31,6 +31,20 @@
     return self;
 }
 
+- (instancetype)initWith:(NSString *)url
+              privateKey:(SecKeyRef)privateK
+               publicKey:(SecKeyRef)publicK
+               remoteKeyRef:(SecKeyRef)remoteK {
+    self = [super init];
+    if (self) {
+        self.url = url;
+        KeyPair *keys = [[KeyPair alloc] initWithPrivate:privateK andPublic:publicK];
+        self.encoderDecoder = [[MessageEncoderDecoder alloc] initWithKeyPair:keys andRemotePublicKeyRef:remoteK];
+        self.verificationEnabled = YES;
+    }
+    return self;
+}
+
 - (void)disableVerification {
     self.verificationEnabled = NO;
 }

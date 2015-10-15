@@ -111,6 +111,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
+        NSLog(@"testVerifyResponseFailure passed!");
     }
 }
 

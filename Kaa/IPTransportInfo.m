@@ -8,8 +8,6 @@
 
 #import "IPTransportInfo.h"
 
-#define NSUINTEGERSIZE 8
-
 @interface IPTransportInfo ()
 
 @property (nonatomic,strong) NSData *publicKey;
@@ -31,7 +29,7 @@
     self = [super initWithServerType:[parent serverType] andMeta:meta];
     if (self) {
         int pointStart = 0;
-        int len = NSUINTEGERSIZE;
+        int len = sizeof(NSUInteger);
         NSUInteger length = 0;
         NSData *lengthData = [NSData data];
         
@@ -42,7 +40,7 @@
         
         self.publicKey = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
         pointStart += len;
-        len = NSUINTEGERSIZE;
+        len = sizeof(NSUInteger);
         
         lengthData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
         [lengthData getBytes:&length length:sizeof(NSUInteger)];
@@ -52,7 +50,7 @@
         NSData *hostData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
         self.host = [[NSString alloc] initWithData:hostData encoding:NSUTF8StringEncoding];
         pointStart += len;
-        len = NSUINTEGERSIZE;
+        len = sizeof(NSUInteger);
         
         NSData *portData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
         self.port = *(int*)([portData bytes]);

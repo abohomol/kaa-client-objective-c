@@ -18,6 +18,11 @@
                publicKey:(SecKeyRef)publicK
             remoteKeyRef:(SecKeyRef)remoteK;
 
+- (instancetype)initWith:(NSString *)url
+              privateKey:(SecKeyRef)privateK
+               publicKey:(SecKeyRef)publicK
+               remoteKeyRef:(SecKeyRef)remoteK;
+
 - (void)disableVerification;
 - (NSData *)verifyResponse:(NSData *)body signature:(NSData *)signature;
 - (MessageEncoderDecoder *)getEncoderDecoder;
