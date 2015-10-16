@@ -24,6 +24,7 @@
     self = [super init];
     if (self) {
         self.transport = transport;
+        self.serializer = [[ProfileSerializer alloc] init];
     }
     return self;
 }
