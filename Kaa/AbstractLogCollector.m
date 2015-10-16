@@ -26,6 +26,7 @@
 @property (nonatomic,strong) NSLock *timeoutsLock;
 @property (atomic) BOOL uploadCheckInProgress;
 @property (nonatomic,strong) NSLock *uploadCheckLock;
+@property (nonatomic,strong) NSObject *uploadCheckGuard;   //variable to sync
 
 - (void)checkDeliveryTimeout:(NSInteger)bucketId;
 - (void)processUploadDecision:(LogUploadStrategyDecision)decision;
@@ -50,6 +51,7 @@
         self.timeoutsLock = [[NSLock alloc] init];
         self.uploadCheckInProgress = NO;
         self.uploadCheckLock = [[NSLock alloc] init];
+        self.uploadCheckGuard = [[NSObject alloc] init];
     }
     return self;
 }
@@ -153,24 +155,24 @@
 
 - (void)scheduleUploadCheck {
     DDLogVerbose(@"%@ Attempt to execute upload check: %i", TAG, self.uploadCheckInProgress);
-    [self.uploadCheckLock lock];
-    if (!self.uploadCheckInProgress) {
-        DDLogVerbose(@"%@ Scheduling upload check with timeout: %li", TAG, (long)[self.strategy getUploadCheckPeriod]);
-        self.uploadCheckInProgress = YES;
-        __weak typeof(self)weakSelf = self;
-        dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)([self.strategy getUploadCheckPeriod] * NSEC_PER_SEC));
-        dispatch_after(delay, [self.executorContext getSheduledExecutor], ^{
-            
-            [weakSelf.uploadCheckLock lock];
-            weakSelf.uploadCheckInProgress = NO;
-            [weakSelf.uploadCheckLock unlock];
-            
-            [weakSelf uploadIfNeeded];
-        });
-    } else {
-        DDLogVerbose(@"%@ Upload check is already scheduled!", TAG);
+    @synchronized(self.uploadCheckGuard) {
+        if (!self.uploadCheckInProgress) {
+            DDLogVerbose(@"%@ Scheduling upload check with timeout: %li", TAG, (long)[self.strategy getUploadCheckPeriod]);
+            self.uploadCheckInProgress = YES;
+            __weak typeof(self)weakSelf = self;
+            dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)([self.strategy getUploadCheckPeriod] * NSEC_PER_SEC));
+            dispatch_after(delay, [self.executorContext getSheduledExecutor], ^{
+                
+                @synchronized(self.uploadCheckGuard) {
+                    weakSelf.uploadCheckInProgress = NO;
+                }
+                
+                [weakSelf uploadIfNeeded];
+            });
+        } else {
+            DDLogVerbose(@"%@ Upload check is already scheduled!", TAG);
+        }
     }
-    [self.uploadCheckLock unlock];
 }
 
 - (void)checkDeliveryTimeout:(NSInteger)bucketId {

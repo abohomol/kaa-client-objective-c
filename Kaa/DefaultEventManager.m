@@ -27,8 +27,8 @@
 
 @property (nonatomic) BOOL isEngaged;
 
-@property (nonatomic,strong) NSLock *eventsLock;
-@property (nonatomic,strong) NSLock *trxLock;
+@property (nonatomic,strong) NSObject *eventGuard;
+@property (nonatomic,strong) NSObject *trxGuard;
 
 - (NSMutableArray *)getPendingEvents:(BOOL)clear;
 
@@ -51,8 +51,8 @@
         self.transactions = [NSMutableDictionary dictionary];
         
         self.isEngaged = NO;
-        self.eventsLock = [[NSLock alloc] init];
-        self.trxLock = [[NSLock alloc] init];
+        self.eventGuard = [[NSObject alloc] init];
+        self.trxGuard = [[NSObject alloc] init];
     }
     return self;
 }
@@ -73,9 +73,9 @@
 }
 
 - (void)clearState {
-    [self.eventsLock lock];
-    [self.currentEvents removeAllObjects];
-    [self.eventsLock unlock];
+    @synchronized(self.eventGuard) {
+        [self.currentEvents removeAllObjects];
+    }
 }
 
 - (void)produceEvent:(NSString *)eventFQN data:(NSData *)data target:(NSString *)target {
@@ -85,31 +85,31 @@
 - (void)produceEvent:(NSString *)eventFQN data:(NSData *)data target:(NSString *)target transactionId:(TransactionId *)transactionId {
     if (transactionId) {
         DDLogInfo(@"%@ Adding event [eventClassFQN: %@, target: %@] to transaction %@", TAG, eventFQN, (target ? target : @"broadcast"), transactionId);
-        [self.trxLock lock];
-        NSMutableArray *events = [self.transactions objectForKey:transactionId];
-        if (events) {
+        @synchronized(self.eventGuard) {
+            NSMutableArray *events = [self.transactions objectForKey:transactionId];
+            if (events) {
+                Event *event = [[Event alloc] init];
+                event.seqNum = -1;
+                event.eventClassFQN = eventFQN;
+                event.eventData = [NSData dataWithData:data];
+                event.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
+                [events addObject:event];
+            } else {
+                DDLogWarn(@"%@ Transaction with id %@ is missing. Ignoring event.", TAG, transactionId);
+            }
+        }
+    } else {
+        DDLogInfo(@"%@ Producing event [eventClassFQN: %@, target: %@]", TAG, eventFQN, (target ? target : @"broadcast"));
+        @synchronized(self.trxGuard) {
             Event *event = [[Event alloc] init];
-            event.seqNum = -1;
+            event.seqNum = [self.state getAndIncrementEventSequenceNumber];
             event.eventClassFQN = eventFQN;
             event.eventData = [NSData dataWithData:data];
             event.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
             event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
-            [events addObject:event];
-        } else {
-            DDLogWarn(@"%@ Transaction with id %@ is missing. Ignoring event.", TAG, transactionId);
+            [self.currentEvents addObject:event];
         }
-        [self.trxLock unlock];
-    } else {
-        DDLogInfo(@"%@ Producing event [eventClassFQN: %@, target: %@]", TAG, eventFQN, (target ? target : @"broadcast"));
-        [self.eventsLock lock];
-        Event *event = [[Event alloc] init];
-        event.seqNum = [self.state getAndIncrementEventSequenceNumber];
-        event.eventClassFQN = eventFQN;
-        event.eventData = [NSData dataWithData:data];
-        event.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-        event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
-        [self.currentEvents addObject:event];
-        [self.eventsLock unlock];
         
         if (!self.isEngaged) {
             [self.transport sync];
@@ -173,59 +173,59 @@
 }
 
 - (NSMutableArray *)getPendingEvents:(BOOL)clear {
-    [self.eventsLock lock];
-    NSMutableArray *pendingEvents = [NSMutableArray arrayWithArray:self.currentEvents];
-    if (clear) {
-        [self.currentEvents removeAllObjects];
-    }
-    [self.eventsLock unlock];
+    @synchronized(self.eventGuard) {
+        NSMutableArray *pendingEvents = [NSMutableArray arrayWithArray:self.currentEvents];
+        if (clear) {
+            [self.currentEvents removeAllObjects];
+        }
     return pendingEvents;
+    }
 }
 
 - (TransactionId *)beginTransaction {
     TransactionId *trxId = [[TransactionId alloc] init];
-    [self.trxLock lock];
-    if (![self.transactions objectForKey:trxId]) {
-        DDLogDebug(@"%@ Creating events transaction with id [%@]", TAG, trxId);
-        [self.transactions setObject:[NSMutableArray array] forKey:trxId];
+    @synchronized(self.trxGuard) {
+        if (![self.transactions objectForKey:trxId]) {
+            DDLogDebug(@"%@ Creating events transaction with id [%@]", TAG, trxId);
+            [self.transactions setObject:[NSMutableArray array] forKey:trxId];
+        }
+        return trxId;
     }
-    [self.trxLock unlock];
-    return trxId;
 }
 
 - (void)commit:(TransactionId *)trxId {
     DDLogDebug(@"%@ Committing events transaction with id [%@]", TAG, trxId);
-    [self.trxLock lock];
-    NSArray *eventsToCommit = [self.transactions objectForKey:trxId];
-    if (eventsToCommit) {
-        [self.transactions removeObjectForKey:trxId];
-        
-        [self.eventsLock lock];
-        for (Event *event in eventsToCommit) {
-            event.seqNum = [self.state getAndIncrementEventSequenceNumber];
-            [self.currentEvents addObject:event];
+    @synchronized(self.trxGuard) {
+        NSArray *eventsToCommit = [self.transactions objectForKey:trxId];
+        if (eventsToCommit) {
+            [self.transactions removeObjectForKey:trxId];
+            
+            @synchronized(self.eventGuard) {
+                for (Event *event in eventsToCommit) {
+                    event.seqNum = [self.state getAndIncrementEventSequenceNumber];
+                    [self.currentEvents addObject:event];
+                }
+            }
         }
-        [self.eventsLock unlock];
+        if (!self.isEngaged) {
+            [self.transport sync];
+        }
     }
-    if (!self.isEngaged) {
-        [self.transport sync];
-    }
-    [self.trxLock unlock];
 }
 
 - (void)rollback:(TransactionId *)trxId {
     DDLogDebug(@"%@ Rolling back events transaction with id %@", TAG, trxId);
-    [self.trxLock lock];
-    NSMutableArray *eventsToRemove = [self.transactions objectForKey:trxId];
-    if (eventsToRemove) {
-        [self.transactions removeObjectForKey:trxId];
-        for (Event *event in eventsToRemove) {
-            DDLogVerbose(@"%@ Removing event %@", TAG, event);
+    @synchronized(self.trxGuard) {
+        NSMutableArray *eventsToRemove = [self.transactions objectForKey:trxId];
+        if (eventsToRemove) {
+            [self.transactions removeObjectForKey:trxId];
+            for (Event *event in eventsToRemove) {
+                DDLogVerbose(@"%@ Removing event %@", TAG, event);
+            }
+        } else {
+            DDLogDebug(@"%@ Transaction with id [%@] was not created", TAG, trxId);
         }
-    } else {
-        DDLogDebug(@"%@ Transaction with id [%@] was not created", TAG, trxId);
     }
-    [self.trxLock unlock];
 }
 
 - (void)engageDataChannel {
