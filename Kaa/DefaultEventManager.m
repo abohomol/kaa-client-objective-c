@@ -85,7 +85,7 @@
 - (void)produceEvent:(NSString *)eventFQN data:(NSData *)data target:(NSString *)target transactionId:(TransactionId *)transactionId {
     if (transactionId) {
         DDLogInfo(@"%@ Adding event [eventClassFQN: %@, target: %@] to transaction %@", TAG, eventFQN, (target ? target : @"broadcast"), transactionId);
-        @synchronized(self.eventGuard) {
+        @synchronized(self.trxGuard) {
             NSMutableArray *events = [self.transactions objectForKey:transactionId];
             if (events) {
                 Event *event = [[Event alloc] init];
@@ -101,7 +101,7 @@
         }
     } else {
         DDLogInfo(@"%@ Producing event [eventClassFQN: %@, target: %@]", TAG, eventFQN, (target ? target : @"broadcast"));
-        @synchronized(self.trxGuard) {
+        @synchronized(self.eventGuard) {
             Event *event = [[Event alloc] init];
             event.seqNum = [self.state getAndIncrementEventSequenceNumber];
             event.eventClassFQN = eventFQN;
@@ -189,8 +189,8 @@
             DDLogDebug(@"%@ Creating events transaction with id [%@]", TAG, trxId);
             [self.transactions setObject:[NSMutableArray array] forKey:trxId];
         }
-        return trxId;
     }
+    return trxId;
 }
 
 - (void)commit:(TransactionId *)trxId {
