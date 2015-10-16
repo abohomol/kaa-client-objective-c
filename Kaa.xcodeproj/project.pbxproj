@@ -12,6 +12,7 @@
 		391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */; settings = {ASSET_TAGS = (); }; };
+		392D3ED71BD102BF007CC7DA /* EventManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED61BD102BF007CC7DA /* EventManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
 		39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
@@ -288,6 +289,7 @@
 		391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndPointObjectHashTest.m; sourceTree = "<group>"; };
 		392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogUploadStrategyTest.m; sourceTree = "<group>"; };
 		392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileManagerTest.m; sourceTree = "<group>"; };
+		392D3ED61BD102BF007CC7DA /* EventManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManagerTest.m; sourceTree = "<group>"; };
 		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
 		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
 		39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCountLogUploadStrategy.h; sourceTree = "<group>"; };
@@ -569,6 +571,14 @@
 			name = profile;
 			sourceTree = "<group>";
 		};
+		392D3ED51BD102A1007CC7DA /* event */ = {
+			isa = PBXGroup;
+			children = (
+				392D3ED61BD102BF007CC7DA /* EventManagerTest.m */,
+			);
+			name = event;
+			sourceTree = "<group>";
+		};
 		39AEB2841BBA6A440045FB32 /* strategy */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +792,7 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				392D3ED51BD102A1007CC7DA /* event */,
 				392D3ED21BD0EEDA007CC7DA /* profile */,
 				E88FF13B1BCE78F5005076FC /* logging */,
 				39FF8B0E1BCD49BE00666D1F /* transport */,
@@ -1547,6 +1558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392D3ED71BD102BF007CC7DA /* EventManagerTest.m in Sources */,
 				E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */,
 				392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */,
 				B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */,
