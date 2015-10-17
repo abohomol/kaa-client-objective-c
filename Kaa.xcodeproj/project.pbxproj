@@ -596,14 +596,6 @@
 			name = strategy;
 			sourceTree = "<group>";
 		};
-		39FF8B0B1BCC007000666D1F /* channel */ = {
-			isa = PBXGroup;
-			children = (
-				39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */,
-			);
-			name = channel;
-			sourceTree = "<group>";
-		};
 		39FF8B0E1BCD49BE00666D1F /* transport */ = {
 			isa = PBXGroup;
 			children = (
@@ -796,7 +788,6 @@
 				392D3ED21BD0EEDA007CC7DA /* profile */,
 				E88FF13B1BCE78F5005076FC /* logging */,
 				39FF8B0E1BCD49BE00666D1F /* transport */,
-				39FF8B0B1BCC007000666D1F /* channel */,
 				B8A066B11BCBE01B00F4E357 /* avro */,
 				B81B98BD1BC7A27600C2DFF4 /* security */,
 				B8C10A1A1BC2DE00001A2236 /* channel */,
@@ -1105,6 +1096,7 @@
 		B8C10A1A1BC2DE00001A2236 /* channel */ = {
 			isa = PBXGroup;
 			children = (
+				39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */,
 				B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */,
 			);
 			name = channel;
