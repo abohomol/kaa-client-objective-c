@@ -11,6 +11,8 @@
 		391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */; settings = {ASSET_TAGS = (); }; };
+		392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */; settings = {ASSET_TAGS = (); }; };
+		392D3ED71BD102BF007CC7DA /* EventManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED61BD102BF007CC7DA /* EventManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
 		39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
@@ -29,6 +31,7 @@
 		39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */; settings = {ASSET_TAGS = (); }; };
 		39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0F1BCD49DF00666D1F /* AbstractHttpClientTest.m */; settings = {ASSET_TAGS = (); }; };
+		555D709CF7DB758766ABDA97 /* libPods-KaaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 859AA00A9E215058D7F33E50 /* libPods-KaaTests.a */; };
 		6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */; };
 		B800844F1B7B2DDD003A3D5E /* ResyncConfigurationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */; };
 		B80084501B7B2DDD003A3D5E /* ResyncConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */; };
@@ -278,11 +281,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		288B6E34A174A0B006D7475F /* Pods-KaaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaaTests/Pods-KaaTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B82CEEF86BDB0D4EB551C48 /* Pods-KaaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaaTests/Pods-KaaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34B3F556DC3121F3AFA8ECC3 /* Pods-libKaa.a.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.release.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.release.xcconfig"; sourceTree = "<group>"; };
 		391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleThreadExecutorContext.h; sourceTree = "<group>"; };
 		391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleThreadExecutorContext.m; sourceTree = "<group>"; };
 		391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndPointObjectHashTest.m; sourceTree = "<group>"; };
 		392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogUploadStrategyTest.m; sourceTree = "<group>"; };
+		392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileManagerTest.m; sourceTree = "<group>"; };
+		392D3ED61BD102BF007CC7DA /* EventManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManagerTest.m; sourceTree = "<group>"; };
 		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
 		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
 		39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCountLogUploadStrategy.h; sourceTree = "<group>"; };
@@ -302,6 +309,7 @@
 		39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTransportInfoTest.m; sourceTree = "<group>"; };
 		39FF8B0F1BCD49DF00666D1F /* AbstractHttpClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractHttpClientTest.m; sourceTree = "<group>"; };
 		4CAC4D1133C2E2FBC990B5AC /* Pods-libKaa.a.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.debug.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.debug.xcconfig"; sourceTree = "<group>"; };
+		859AA00A9E215058D7F33E50 /* libPods-KaaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-KaaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResyncConfigurationManager.h; sourceTree = "<group>"; };
 		B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResyncConfigurationManager.m; sourceTree = "<group>"; };
 		B803F8ED1B7A5AA2009C2C28 /* ConfigurationCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfigurationCommon.h; sourceTree = "<group>"; };
@@ -548,12 +556,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				B824A1F71B1452C50076C753 /* libKaa.a in Frameworks */,
+				555D709CF7DB758766ABDA97 /* libPods-KaaTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		392D3ED21BD0EEDA007CC7DA /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */,
+			);
+			name = profile;
+			sourceTree = "<group>";
+		};
+		392D3ED51BD102A1007CC7DA /* event */ = {
+			isa = PBXGroup;
+			children = (
+				392D3ED61BD102BF007CC7DA /* EventManagerTest.m */,
+			);
+			name = event;
+			sourceTree = "<group>";
+		};
 		39AEB2841BBA6A440045FB32 /* strategy */ = {
 			isa = PBXGroup;
 			children = (
@@ -767,6 +792,8 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				392D3ED51BD102A1007CC7DA /* event */,
+				392D3ED21BD0EEDA007CC7DA /* profile */,
 				E88FF13B1BCE78F5005076FC /* logging */,
 				39FF8B0E1BCD49BE00666D1F /* transport */,
 				39FF8B0B1BCC007000666D1F /* channel */,
@@ -1098,6 +1125,8 @@
 			children = (
 				4CAC4D1133C2E2FBC990B5AC /* Pods-libKaa.a.debug.xcconfig */,
 				34B3F556DC3121F3AFA8ECC3 /* Pods-libKaa.a.release.xcconfig */,
+				2B82CEEF86BDB0D4EB551C48 /* Pods-KaaTests.debug.xcconfig */,
+				288B6E34A174A0B006D7475F /* Pods-KaaTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1108,6 +1137,7 @@
 				B8EC91BD1BC4058600D3723B /* libAFNetworking.a */,
 				B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */,
 				DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */,
+				859AA00A9E215058D7F33E50 /* libPods-KaaTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1303,9 +1333,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B824A2021B1452C50076C753 /* Build configuration list for PBXNativeTarget "KaaTests" */;
 			buildPhases = (
+				B66933FD8935E5B3BC6153B6 /* Check Pods Manifest.lock */,
 				B824A1F21B1452C50076C753 /* Sources */,
 				B824A1F31B1452C50076C753 /* Frameworks */,
 				B824A1F41B1452C50076C753 /* Resources */,
+				187C1CBC80866C0AFDD68769 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1364,6 +1396,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		187C1CBC80866C0AFDD68769 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KaaTests/Pods-KaaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5EAE82A0E95F6FACE22C8D63 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1380,6 +1427,21 @@
 			showEnvVarsInLog = 0;
 		};
 		B372BE7C18244273275835CA /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B66933FD8935E5B3BC6153B6 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1496,6 +1558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				392D3ED71BD102BF007CC7DA /* EventManagerTest.m in Sources */,
 				E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */,
 				392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */,
 				B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */,
@@ -1505,6 +1568,7 @@
 				39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */,
+				392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */,
 				E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */,
 				39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
@@ -1636,6 +1700,7 @@
 		};
 		B824A2031B1452C50076C753 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2B82CEEF86BDB0D4EB551C48 /* Pods-KaaTests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1659,6 +1724,7 @@
 		};
 		B824A2041B1452C50076C753 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 288B6E34A174A0B006D7475F /* Pods-KaaTests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (

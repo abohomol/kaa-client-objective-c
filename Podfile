@@ -3,6 +3,10 @@
 
 target 'libKaa.a' do
   pod 'CocoaLumberjack'
-  pod 'AFNetworking', '~> 1.x'
+  pod ’AFNetworking', '~> 1.x'
+end
+
+target :KaaTests, :exclusive => true do
+  pod 'OCMockito', '~> 1.0'
 end
 
