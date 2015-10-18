@@ -40,6 +40,7 @@
 - (void)persist;
 - (NSString *)refreshEndpointAccessToken;
 - (void)clean;
+- (void)setIsAttachedToUser:(BOOL)isAttachedToUser;
 
 @end
 

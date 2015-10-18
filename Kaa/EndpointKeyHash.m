@@ -37,4 +37,7 @@
     return NO;
 }
 
+- (NSString *)description {
+    return self.keyHash;
+}
 @end
