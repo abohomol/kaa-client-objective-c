@@ -255,6 +255,7 @@
 		B8FC09531B904CFD002109A4 /* DefaultEndpointRegistrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */; };
 		E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF13C1BCE7910005076FC /* MemBucketTest.m */; settings = {ASSET_TAGS = (); }; };
 		E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */; settings = {ASSET_TAGS = (); }; };
+		E8C9EC621BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E8C9EC611BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -536,6 +537,7 @@
 		DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-libKaa.a.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E88FF13C1BCE7910005076FC /* MemBucketTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemBucketTest.m; sourceTree = "<group>"; };
 		E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemLogStorageTest.m; sourceTree = "<group>"; };
+		E8C9EC611BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEndpointRegistrationManagerTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -574,6 +576,7 @@
 		392D3ED51BD102A1007CC7DA /* event */ = {
 			isa = PBXGroup;
 			children = (
+				E8C9EC601BD3AB0A00462794 /* registration */,
 				392D3ED61BD102BF007CC7DA /* EventManagerTest.m */,
 			);
 			name = event;
@@ -1152,6 +1155,14 @@
 			name = memory;
 			sourceTree = "<group>";
 		};
+		E8C9EC601BD3AB0A00462794 /* registration */ = {
+			isa = PBXGroup;
+			children = (
+				E8C9EC611BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m */,
+			);
+			name = registration;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1565,6 +1576,7 @@
 				39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 				B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */,
+				E8C9EC621BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
