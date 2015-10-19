@@ -73,8 +73,8 @@
 }
 
 - (void)setTransport:(id<BootstrapTransport>)transport {
-    @synchronized (self) {
-        self.transport = transport;
+    @synchronized (self.transport) {
+        _transport = transport;
     }
 }
 
@@ -92,13 +92,13 @@
 
 - (void)setChannelManager:(id<KaaInternalChannelManager>)channelManager {
     @synchronized (self) {
-        self.channelManager = channelManager;
+        _channelManager = channelManager;
     }
 }
 
 - (void)setFailoverManager:(id<FailoverManager>)failoverManager {
     @synchronized (self) {
-        self.failoverManager = failoverManager;
+        _failoverManager = failoverManager;
     }
 }
 
