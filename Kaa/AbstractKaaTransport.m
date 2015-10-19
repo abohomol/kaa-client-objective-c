@@ -14,11 +14,11 @@
 @implementation AbstractKaaTransport
 
 - (void)setChannelManager:(id<KaaChannelManager>)channelManager {
-    self.channelManager = channelManager;
+    _channelManager = channelManager;
 }
 
 - (void)setClientState:(id<KaaClientState>)state {
-    self.clientState = state;
+    _clientState = state;
 }
 
 - (void)syncByType:(TransportType)type {

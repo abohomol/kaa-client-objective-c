@@ -60,7 +60,7 @@
     if (!strategy) {
         [NSException raise:NSInvalidArgumentException format:@"%@ Strategy is nil!", TAG];
     }
-    self.strategy = strategy;
+    _strategy = strategy;
     DDLogInfo(@"%@ New log upload strategy was set: %@", TAG, strategy);
 }
 
@@ -68,7 +68,7 @@
     if (!storage) {
         [NSException raise:NSInvalidArgumentException format:@"%@ Storage is nil!", TAG];
     }
-    self.storage = storage;
+    _storage = storage;
     DDLogInfo(@"%@ New log storage was set: %@", TAG, storage);
 }
 

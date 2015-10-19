@@ -305,7 +305,7 @@
         return;
     }
     
-    self.connectivityChecker = connectivityChecker;
+    _connectivityChecker = connectivityChecker;
     for (id<KaaDataChannel> channel in self.channels) {
         [channel setConnectivityChecker:connectivityChecker];
     }
@@ -362,23 +362,23 @@
 }
 
 - (void)setOperationMultiplexer:(id<KaaDataMultiplexer>)multiplexer {
-    self.operationsMultiplexer = multiplexer;
+    _operationsMultiplexer = multiplexer;
 }
 
 - (void)setOperationDemultiplexer:(id<KaaDataDemultiplexer>)demultiplexer {
-    self.operationsDemultiplexer = demultiplexer;
+    _operationsDemultiplexer = demultiplexer;
 }
 
 - (void)setBootstrapMultiplexer:(id<KaaDataMultiplexer>)bootstrapMultiplexer {
-    self.bootstrapMultiplexer = bootstrapMultiplexer;
+    _bootstrapMultiplexer = bootstrapMultiplexer;
 }
 
 - (void)setBootstrapDemultiplexer:(id<KaaDataDemultiplexer>)bootstrapDemultiplexer {
-    self.bootstrapDemultiplexer = bootstrapDemultiplexer;
+    _bootstrapDemultiplexer = bootstrapDemultiplexer;
 }
 
 - (void)setFailoverManager:(id<FailoverManager>)failoverManager {
-    self.failoverManager = failoverManager;
+    _failoverManager = failoverManager;
 }
 
 - (void)sync:(TransportType)type ack:(BOOL)ack all:(BOOL)all {

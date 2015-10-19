@@ -10,6 +10,7 @@
 		391A91A01BBD6CCD00DBA851 /* SingleThreadExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */; settings = {ASSET_TAGS = (); }; };
 		391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */; settings = {ASSET_TAGS = (); }; };
+		391F25881BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391F25871BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED71BD102BF007CC7DA /* EventManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED61BD102BF007CC7DA /* EventManagerTest.m */; settings = {ASSET_TAGS = (); }; };
@@ -288,6 +289,7 @@
 		391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleThreadExecutorContext.h; sourceTree = "<group>"; };
 		391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleThreadExecutorContext.m; sourceTree = "<group>"; };
 		391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndPointObjectHashTest.m; sourceTree = "<group>"; };
+		391F25871BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultBootstrapManagerTest.m; sourceTree = "<group>"; };
 		392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogUploadStrategyTest.m; sourceTree = "<group>"; };
 		392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileManagerTest.m; sourceTree = "<group>"; };
 		392D3ED61BD102BF007CC7DA /* EventManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManagerTest.m; sourceTree = "<group>"; };
@@ -565,6 +567,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		391F25861BD4C5E20031ED84 /* bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				391F25871BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m */,
+			);
+			name = bootstrap;
+			sourceTree = "<group>";
+		};
 		392D3ED21BD0EEDA007CC7DA /* profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -787,6 +797,7 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				391F25861BD4C5E20031ED84 /* bootstrap */,
 				392D3ED51BD102A1007CC7DA /* event */,
 				392D3ED21BD0EEDA007CC7DA /* profile */,
 				E88FF13B1BCE78F5005076FC /* logging */,
@@ -1569,6 +1580,7 @@
 				B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */,
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */,
+				391F25881BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */,
 				392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */,

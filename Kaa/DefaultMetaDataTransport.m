@@ -42,19 +42,19 @@
 }
 
 - (void)setClientProperties:(KaaClientProperties *)properties {
-    self.properties = properties;
+    _properties = properties;
 }
 
 - (void)setClientState:(id<KaaClientState>)state {
-    self.state = state;
+    _state = state;
 }
 
 - (void)setEndpointPublicKeyhash:(EndpointObjectHash *)hash {
-    self.publicKeyHash = hash;
+    _publicKeyHash = hash;
 }
 
 - (void)setTimeout:(NSInteger)timeout {
-    self.timeout = timeout;
+    _timeout = timeout;
 }
 
 @end

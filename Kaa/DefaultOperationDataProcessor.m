@@ -48,7 +48,7 @@
 
 - (void)setRedirectionTransport:(id<RedirectionTransport>)transport {
     @synchronized(self) {
-        self.redirectionTransport = transport;
+        _redirectionTransport = transport;
     }
 }
 
@@ -60,37 +60,37 @@
 
 - (void)setConfigurationTransport:(id<ConfigurationTransport>)transport {
     @synchronized(self) {
-        self.configurationTransport = transport;
+        _configurationTransport = transport;
     }
 }
 
 - (void)setEventTransport:(id<EventTransport>)transport {
     @synchronized(self) {
-        self.eventTransport = transport;
+        _eventTransport = transport;
     }
 }
 
 - (void)setNotificationTransport:(id<NotificationTransport>)transport {
     @synchronized(self) {
-        self.notificationTransport = transport;
+        _notificationTransport = transport;
     }
 }
 
 - (void)setProfileTransport:(id<ProfileTransport>)transport {
     @synchronized(self) {
-        self.profileTransport = transport;
+        _profileTransport = transport;
     }
 }
 
 - (void)setUserTransport:(id<UserTransport>)transport {
     @synchronized(self) {
-        self.userTransport = transport;
+        _userTransport = transport;
     }
 }
 
 - (void)setLogTransport:(id<LogTransport>)transport {
     @synchronized(self) {
-        self.logTransport = transport;
+        _logTransport = transport;
     }
 }
 
