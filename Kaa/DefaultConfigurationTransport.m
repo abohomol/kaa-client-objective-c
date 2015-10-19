@@ -77,7 +77,7 @@
 }
 
 - (void)setResyncOnly:(BOOL)resyncOnly {
-    self.resyncOnly = resyncOnly;
+    _resyncOnly = resyncOnly;
 }
 
 @end
