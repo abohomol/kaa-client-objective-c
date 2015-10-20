@@ -15,6 +15,7 @@
 		392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED71BD102BF007CC7DA /* EventManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED61BD102BF007CC7DA /* EventManagerTest.m */; settings = {ASSET_TAGS = (); }; };
+		3933312B1BD61F36003BCC45 /* DefaultBootstrapChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933312A1BD61F36003BCC45 /* DefaultBootstrapChannelTest.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
 		39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
@@ -295,6 +296,7 @@
 		392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogUploadStrategyTest.m; sourceTree = "<group>"; };
 		392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileManagerTest.m; sourceTree = "<group>"; };
 		392D3ED61BD102BF007CC7DA /* EventManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManagerTest.m; sourceTree = "<group>"; };
+		3933312A1BD61F36003BCC45 /* DefaultBootstrapChannelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultBootstrapChannelTest.m; sourceTree = "<group>"; };
 		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
 		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
 		39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCountLogUploadStrategy.h; sourceTree = "<group>"; };
@@ -1123,6 +1125,7 @@
 			children = (
 				39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */,
 				B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */,
+				3933312A1BD61F36003BCC45 /* DefaultBootstrapChannelTest.m */,
 			);
 			name = channel;
 			sourceTree = "<group>";
@@ -1601,6 +1604,7 @@
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 				B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */,
 				E8C9EC621BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m in Sources */,
+				3933312B1BD61F36003BCC45 /* DefaultBootstrapChannelTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
