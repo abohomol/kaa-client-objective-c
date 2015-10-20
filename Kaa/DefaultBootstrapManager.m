@@ -73,7 +73,7 @@
 }
 
 - (void)setTransport:(id<BootstrapTransport>)transport {
-    @synchronized (self.transport) {
+    @synchronized (self) {
         _transport = transport;
     }
 }
