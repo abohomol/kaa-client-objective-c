@@ -237,6 +237,8 @@
     [verifyCount(fetchListener, times(1)) onEventListenersReceived:anything()];
 }
 
+#pragma mark - Supporting methods
+
 - (KaaClientProperties *)getProperties {
     KaaClientProperties *properties = [[KaaClientProperties alloc] initDefaults:[CommonBase64 new]];
     [properties setString:STATE_FILE_NAME forKey:STATE_FILE_LOCATION];

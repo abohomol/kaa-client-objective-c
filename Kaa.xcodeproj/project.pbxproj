@@ -11,6 +11,7 @@
 		391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */; settings = {ASSET_TAGS = (); }; };
 		391F25881BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391F25871BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m */; settings = {ASSET_TAGS = (); }; };
+		391F258B1BD4F31A0031ED84 /* DefaultNotificationManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391F258A1BD4F31A0031ED84 /* DefaultNotificationManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 		392D3ED71BD102BF007CC7DA /* EventManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 392D3ED61BD102BF007CC7DA /* EventManagerTest.m */; settings = {ASSET_TAGS = (); }; };
@@ -290,6 +291,7 @@
 		391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleThreadExecutorContext.m; sourceTree = "<group>"; };
 		391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndPointObjectHashTest.m; sourceTree = "<group>"; };
 		391F25871BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultBootstrapManagerTest.m; sourceTree = "<group>"; };
+		391F258A1BD4F31A0031ED84 /* DefaultNotificationManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultNotificationManagerTest.m; sourceTree = "<group>"; };
 		392D3ED01BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogUploadStrategyTest.m; sourceTree = "<group>"; };
 		392D3ED31BD0EEF2007CC7DA /* DefaultProfileManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileManagerTest.m; sourceTree = "<group>"; };
 		392D3ED61BD102BF007CC7DA /* EventManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventManagerTest.m; sourceTree = "<group>"; };
@@ -575,6 +577,14 @@
 			name = bootstrap;
 			sourceTree = "<group>";
 		};
+		391F25891BD4F3070031ED84 /* notification */ = {
+			isa = PBXGroup;
+			children = (
+				391F258A1BD4F31A0031ED84 /* DefaultNotificationManagerTest.m */,
+			);
+			name = notification;
+			sourceTree = "<group>";
+		};
 		392D3ED21BD0EEDA007CC7DA /* profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -797,6 +807,7 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				391F25891BD4F3070031ED84 /* notification */,
 				391F25861BD4C5E20031ED84 /* bootstrap */,
 				392D3ED51BD102A1007CC7DA /* event */,
 				392D3ED21BD0EEDA007CC7DA /* profile */,
@@ -1586,6 +1597,7 @@
 				392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */,
 				E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */,
 				39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */,
+				391F258B1BD4F31A0031ED84 /* DefaultNotificationManagerTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 				B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */,
 				E8C9EC621BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m in Sources */,
