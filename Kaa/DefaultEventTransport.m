@@ -33,13 +33,7 @@
         self.pendingEvents = [NSMutableDictionary dictionary];
         
         self.eventSNComparator = ^NSComparisonResult (Event *first, Event *second) {
-            if (first.seqNum == second.seqNum) {
-                return NSOrderedSame;
-            } else if (first.seqNum > second.seqNum) {
-                return NSOrderedAscending;
-            } else {
-                return NSOrderedDescending;
-            }
+            return first.seqNum - second.seqNum;
         };
     }
     return self;
