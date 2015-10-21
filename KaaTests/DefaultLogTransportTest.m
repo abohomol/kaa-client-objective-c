@@ -30,6 +30,7 @@
     
     @try {
         [transport sync];
+        XCTFail();
     }
     @catch (NSException *exception) {
         NSLog(@"testSyncNegativeSucceed. Caught ChannelRuntimeException");

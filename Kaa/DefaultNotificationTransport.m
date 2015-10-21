@@ -33,15 +33,7 @@
         self.sentNotificationCommands = [NSMutableArray array];
         
         self.nfComparator = ^NSComparisonResult (Notification *first, Notification *second) {
-            int firstVal = [first.seqNumber.data intValue];
-            int secondVal = [second.seqNumber.data intValue];
-            if (firstVal == secondVal) {
-                return NSOrderedSame;
-            } else if (firstVal > secondVal) {
-                return NSOrderedAscending;
-            } else {
-                return NSOrderedDescending;
-            }
+            return [first.seqNumber.data intValue] - [second.seqNumber.data intValue];
         };
     }
     return self;

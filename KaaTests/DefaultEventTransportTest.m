@@ -30,6 +30,7 @@ static NSMutableData *dataWith123;
     id <EventTransport> transport = [[DefaultEventTransport alloc] initWithState:clientState];
     @try {
         [transport sync];
+        XCTFail();
     }
     @catch (NSException *exception) {
         NSLog(@"testSyncNegative succeed. Caught ChannelRuntimeException");
