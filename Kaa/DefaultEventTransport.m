@@ -103,7 +103,7 @@
             
             NSArray *sortedEvents = [[eventsSet allObjects] sortedArrayUsingComparator:self.eventSNComparator];
             
-            [self.kaaClientState setEventSequenceNumber:(self.startEventSN + (int)[sortedEvents count])];
+            [self.kaaClientState setEventSequenceNumber:(self.startEventSN + [sortedEvents count])];
             if ([sortedEvents count] > 0 && ((Event *)[sortedEvents objectAtIndex:0]).seqNum != self.startEventSN) {
                 DDLogInfo(@"%@ Put in order event sequence numbers (expected: %i, actual: %i)",
                           TAG, self.startEventSN, ((Event *)[sortedEvents objectAtIndex:0]).seqNum);
@@ -111,7 +111,7 @@
                     event.seqNum = self.startEventSN++;
                 }
             } else {
-                self.startEventSN += (int)[sortedEvents count];
+                self.startEventSN += [sortedEvents count];
             }
             
             DDLogInfo(@"%@ Event sequence number isn't synchronized. Set to %i", TAG, self.startEventSN);
