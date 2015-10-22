@@ -39,8 +39,6 @@
     if (self) {
         self.requestConverter = [[AvroBytesConverter alloc] init];
         self.responseConverter = [[AvroBytesConverter alloc] init];
-        
-        self.requestConverter = 0;
     }
     return self;
     
@@ -182,7 +180,7 @@
                         evRequest.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
                         eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                        andData:evRequest];
-                    } else if (self.eventTransport) {
+                    } if (self.eventTransport) {
                         eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                        andData:[self.eventTransport createEventRequest:request.requestId]];
                     } else {
@@ -229,7 +227,7 @@
                         
                         userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                       andData:userRequest];
-                    } else if (self.userTransport) {
+                    } if (self.userTransport) {
                         userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                       andData:[self.userTransport createUserRequest]];
                     } else {
@@ -246,7 +244,7 @@
                         logRequest.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_1];
                         logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                      andData:logRequest];
-                    } else if (self.logTransport) {
+                    } if (self.logTransport) {
                         logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                      andData:[self.logTransport createLogRequest]];
                     } else {
