@@ -41,6 +41,7 @@
 		39E404D21BBC31F900A5B833 /* AbstractExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		39E404D51BBD0FF500A5B833 /* SimpleExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */; settings = {ASSET_TAGS = (); }; };
 		39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
+		39F626891BD9149B0039BDE9 /* DefaultProfileTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F626881BD9149B0039BDE9 /* DefaultProfileTransportTest.m */; settings = {ASSET_TAGS = (); }; };
 		39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */; settings = {ASSET_TAGS = (); }; };
 		39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0F1BCD49DF00666D1F /* AbstractHttpClientTest.m */; settings = {ASSET_TAGS = (); }; };
 		555D709CF7DB758766ABDA97 /* libPods-KaaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 859AA00A9E215058D7F33E50 /* libPods-KaaTests.a */; };
@@ -331,6 +332,7 @@
 		39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractExecutorContext.m; sourceTree = "<group>"; };
 		39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleExecutorContext.h; sourceTree = "<group>"; };
 		39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleExecutorContext.m; sourceTree = "<group>"; };
+		39F626881BD9149B0039BDE9 /* DefaultProfileTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileTransportTest.m; sourceTree = "<group>"; };
 		39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTransportInfoTest.m; sourceTree = "<group>"; };
 		39FF8B0F1BCD49DF00666D1F /* AbstractHttpClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractHttpClientTest.m; sourceTree = "<group>"; };
 		4CAC4D1133C2E2FBC990B5AC /* Pods-libKaa.a.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.debug.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1153,6 +1155,7 @@
 				393331381BD7BA72003BCC45 /* DefaultNotificationTransportTest.m */,
 				3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */,
 				3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */,
+				39F626881BD9149B0039BDE9 /* DefaultProfileTransportTest.m */,
 			);
 			name = channel;
 			sourceTree = "<group>";
@@ -1633,6 +1636,7 @@
 				E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */,
 				39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */,
 				3933312F1BD661E3003BCC45 /* DefaultBootstrapTransportTest.m in Sources */,
+				39F626891BD9149B0039BDE9 /* DefaultProfileTransportTest.m in Sources */,
 				391F258B1BD4F31A0031ED84 /* DefaultNotificationManagerTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
 				3933313B1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m in Sources */,
