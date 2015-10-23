@@ -359,7 +359,6 @@
     if (subscriptionInfo) {
         NSData *data = [self.base64 decodeString:subscriptionInfo];
         TopicSubscriptionInfo *decodedInfo = nil;
-        //TODO how to get know that there is no more data to read
         avro_reader_t reader = avro_reader_memory([data bytes], [data length]);
         @try {
             while (reader->read < reader->len) {

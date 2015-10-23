@@ -9,22 +9,23 @@
 #import <Foundation/Foundation.h>
 #import "KaaDataChannel.h"
 #import "KaaTransport.h"
+#import "KaaClient.h"
+#import "KaaClientPlatformContext.h"
+#import "KaaClientStateDelegate.h"
 
-//TODO: remove, because used to make other headers get compiled
+//TODO: remove, because it's used only to compile headers below
 #import "GenericKaaClient.h"
 #import "KaaChannelManager.h"
 #import "ConfigurationCommon.h"
 #import "EndpointRegistrationProcessor.h"
 #import "EventManger.h"
 #import "BaseEventFamily.h"
-#import "KaaClient.h"
 #import "ProfileManager.h"
 #import "NotificationManager.h"
 #import "UserTransport.h"
 #import "BootstrapTransport.h"
 #import "BootstrapManager.h"
 #import "ConfigurationPersistenceManager.h"
-#import "KaaClientPlatformContext.h"
 #import "RedirectionTransport.h"
 #import "MetaDataTransport.h"
 #import "KaaClientStateDelegate.h"
@@ -34,6 +35,13 @@
 #import "Constants.h"
 #import "CommonEPConstants.h"
 
+/**
+ * Creates new Kaa client based on platform context and optional state delegate.
+ */
 @interface Kaa : NSObject
+
++ (id<KaaClient>)clientWithContext:(id<KaaClientPlatformContext>)context andStateDelegate:(id<KaaClientStateDelegate>)delegate;
+
++ (id<KaaClient>)clientWithContext:(id<KaaClientPlatformContext>)context;
 
 @end

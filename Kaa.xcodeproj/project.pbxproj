@@ -260,6 +260,8 @@
 		B8EC91BF1BC4058600D3723B /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BD1BC4058600D3723B /* libAFNetworking.a */; };
 		B8EC91C01BC4058600D3723B /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */; };
 		B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EFF1F91BC8FE8C002551A9 /* MessageEncoderDecoderTests.m */; settings = {ASSET_TAGS = (); }; };
+		B8F14E251BD8E200001D1B02 /* BaseKaaClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B8F14E221BD8E200001D1B02 /* BaseKaaClient.h */; settings = {ASSET_TAGS = (); }; };
+		B8F14E261BD8E200001D1B02 /* BaseKaaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F14E231BD8E200001D1B02 /* BaseKaaClient.m */; settings = {ASSET_TAGS = (); }; };
 		B8FBD9EC1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */; };
 		B8FBD9EF1B9E0243009A2BA3 /* SimpleConfigurationStorage.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */; };
 		B8FBD9F01B9E0243009A2BA3 /* SimpleConfigurationStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FBD9EE1B9E0243009A2BA3 /* SimpleConfigurationStorage.m */; };
@@ -557,6 +559,9 @@
 		B8EC91BD1BC4058600D3723B /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
 		B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libCocoaLumberjack.a; path = "Pods/../build/Debug-iphoneos/libCocoaLumberjack.a"; sourceTree = "<group>"; };
 		B8EFF1F91BC8FE8C002551A9 /* MessageEncoderDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageEncoderDecoderTests.m; sourceTree = "<group>"; };
+		B8F14E221BD8E200001D1B02 /* BaseKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseKaaClient.h; sourceTree = "<group>"; };
+		B8F14E231BD8E200001D1B02 /* BaseKaaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseKaaClient.m; sourceTree = "<group>"; };
+		B8F14E241BD8E200001D1B02 /* client_properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = client_properties.plist; sourceTree = "<group>"; };
 		B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationPersistenceManager.h; sourceTree = "<group>"; };
 		B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleConfigurationStorage.h; sourceTree = "<group>"; };
 		B8FBD9EE1B9E0243009A2BA3 /* SimpleConfigurationStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleConfigurationStorage.m; sourceTree = "<group>"; };
@@ -818,6 +823,8 @@
 				B8A8DFA01BA03B74002CEF3E /* transport */,
 				B824A1EE1B1452C50076C753 /* Kaa.h */,
 				B824A1F01B1452C50076C753 /* Kaa.m */,
+				B8F14E221BD8E200001D1B02 /* BaseKaaClient.h */,
+				B8F14E231BD8E200001D1B02 /* BaseKaaClient.m */,
 				B8330C3E1B38051B00D1A573 /* GenericKaaClient.h */,
 				B8B4CDBF1B8213C0007FE20D /* KaaClientProperties.h */,
 				B8B4CDC01B8213C0007FE20D /* KaaClientProperties.m */,
@@ -828,6 +835,7 @@
 				B88836241BA0981C00ACAB4F /* KaaClientStateDelegate.h */,
 				B844623A1BB5C377009826FC /* KaaLogging.h */,
 				B844623B1BB5C377009826FC /* KaaLogging.m */,
+				B8F14E241BD8E200001D1B02 /* client_properties.plist */,
 			);
 			path = Kaa;
 			sourceTree = "<group>";
@@ -1242,6 +1250,7 @@
 				B87A74341B95BBDC0052858F /* NSData+Conversion.h in Headers */,
 				B878C2981B45730700453947 /* AvroBased.h in Headers */,
 				B81935C31B15D0660053486A /* EndpointObjectHash.h in Headers */,
+				B8F14E251BD8E200001D1B02 /* BaseKaaClient.h in Headers */,
 				B8A13B161BB01AD000265729 /* CommonEPConstants.h in Headers */,
 				B8C055D01B57AF1E00F5AA1C /* ExecutorContext.h in Headers */,
 				39E404D51BBD0FF500A5B833 /* SimpleExecutorContext.h in Headers */,
@@ -1550,6 +1559,7 @@
 				B81161201B4BC75100C4E0C6 /* LogBlock.m in Sources */,
 				B840CF361B172016001D0F74 /* EndpointAccessToken.m in Sources */,
 				B88D00C21BA8AE9F002E0144 /* DefaultEventTransport.m in Sources */,
+				B8F14E261BD8E200001D1B02 /* BaseKaaClient.m in Sources */,
 				B856EFB41B9C82CC00C065D9 /* KaaClientPropertiesState.m in Sources */,
 				391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */,
 				B8807C1D1BA33B0F00F78BFC /* BlockingQueue.m in Sources */,
