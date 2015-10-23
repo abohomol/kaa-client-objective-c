@@ -180,7 +180,7 @@
                         evRequest.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
                         eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                        andData:evRequest];
-                    } if (self.eventTransport) {
+                    } else if (self.eventTransport) {
                         eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                        andData:[self.eventTransport createEventRequest:request.requestId]];
                     } else {
@@ -207,7 +207,7 @@
                 }
                     break;
                 case TRANSPORT_TYPE_PROFILE:
-                    if (!isDownDirection || self.profileTransport) {
+                    if (!isDownDirection && self.profileTransport) {
                         request.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                                        andData:[self.profileTransport createProfileRequest]];
                     } else {
@@ -227,7 +227,7 @@
                         
                         userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                       andData:userRequest];
-                    } if (self.userTransport) {
+                    } else if (self.userTransport) {
                         userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                       andData:[self.userTransport createUserRequest]];
                     } else {
@@ -244,7 +244,7 @@
                         logRequest.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_1];
                         logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                      andData:logRequest];
-                    } if (self.logTransport) {
+                    } else if (self.logTransport) {
                         logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                      andData:[self.logTransport createLogRequest]];
                     } else {

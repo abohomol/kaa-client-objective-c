@@ -96,11 +96,11 @@
     
     XCTAssertNotNil([operationDataProcessor compileRequest:transportTypes]);
     [verifyCount(configurationTransport, times(1)) createConfigurationRequest];
-    [verifyCount(profileTransport, times(1)) createProfileRequest];
-    [verifyCount(notificationTransport, times(1)) createEmptyNotificationRequest];
-    [verifyCount(userTransport, times(1)) createUserRequest];
     [verifyCount(metaDataTransport, times(1)) createMetaDataRequest];
-    [verifyCount(logTransport, times(1)) createLogRequest];
+    [verifyCount(profileTransport, times(0)) createProfileRequest];
+    [verifyCount(notificationTransport, times(0)) createNotificationRequest];
+    [verifyCount(userTransport, times(0)) createUserRequest];
+    [verifyCount(logTransport, times(0)) createLogRequest];
 }
 
 - (void)testResponse {
