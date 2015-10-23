@@ -64,7 +64,7 @@
                  context:(id<ExecutorContext>)context {
     self = [super init];
     if (self) {
-        if (!bootstrapMgr || !servers || [servers count] <= 0 || !context) {
+        if (!bootstrapMgr || !servers || [servers count] <= 0) {
             [NSException raise:@"ChannelRuntimeException" format:@"Failed to create channel manager!"];
         }
         
@@ -544,27 +544,28 @@
     DDLogDebug(@"%@ Worker started for channel with id: %@", TAG, [self.channel getId]);
     while (!self.isCancelled && !self.isStopped) {
         @try {
+            BlockingQueue *taskQueue;
             @synchronized(self.manager.syncTaskQueueMap) {
-                BlockingQueue *taskQueue = [self.manager.syncTaskQueueMap objectForKey:[self.channel getId]];
-                SyncTask *task = [taskQueue take];
-                NSMutableArray *additionalTasks = [NSMutableArray array];
-                [taskQueue drainTo:additionalTasks];
-                if ([additionalTasks count] > 0) {
-                    DDLogDebug(@"%@ [%@] Merging task %@ with %@", TAG, [self.channel getId], task, additionalTasks);
-                    task = [SyncTask merge:task additionalTasks:additionalTasks];
-                }
-                if (task.isAll) {
-                    DDLogDebug(@"%@ [%@] Going to invoke syncAll method for types %@",
-                               TAG, [self.channel getId], [task getTransportTypes]);
-                    [self.channel syncAll];
-                } else if (task.isAckOnly) {
-                    DDLogDebug(@"%@ [%@] Going to invoke syncAck method for types %@",
-                               TAG, [self.channel getId], [task getTransportTypes]);
-                    [self.channel syncAckTransportTypes:[task getTransportTypes]];
-                } else {
-                    DDLogDebug(@"%@ [%@] Going to invoke sync method", TAG, [self.channel getId]);
-                    [self.channel syncTransportTypes:[task getTransportTypes]];
-                }
+                taskQueue = [self.manager.syncTaskQueueMap objectForKey:[self.channel getId]];
+            }
+            SyncTask *task = [taskQueue take];
+            NSMutableArray *additionalTasks = [NSMutableArray array];
+            [taskQueue drainTo:additionalTasks];
+            if ([additionalTasks count] > 0) {
+                DDLogDebug(@"%@ [%@] Merging task %@ with %@", TAG, [self.channel getId], task, additionalTasks);
+                task = [SyncTask merge:task additionalTasks:additionalTasks];
+            }
+            if (task.isAll) {
+                DDLogDebug(@"%@ [%@] Going to invoke syncAll method for types %@",
+                           TAG, [self.channel getId], [task getTransportTypes]);
+                [self.channel syncAll];
+            } else if (task.isAckOnly) {
+                DDLogDebug(@"%@ [%@] Going to invoke syncAck method for types %@",
+                           TAG, [self.channel getId], [task getTransportTypes]);
+                [self.channel syncAckTransportTypes:[task getTransportTypes]];
+            } else {
+                DDLogDebug(@"%@ [%@] Going to invoke sync method", TAG, [self.channel getId]);
+                [self.channel syncTransportTypes:[task getTransportTypes]];
             }
         }
         @catch (NSException *exception) {
