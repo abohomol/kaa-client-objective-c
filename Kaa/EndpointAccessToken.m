@@ -31,8 +31,21 @@
 }
 
 - (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+    if (object == nil) {
+        return NO;
+    }
     if ([object isKindOfClass:[EndpointAccessToken class]]) {
         EndpointAccessToken *other = (EndpointAccessToken*)object;
+        if (self.token == nil) {
+            if (other.token != nil) {
+                return NO;
+            } else {
+                return YES;
+            }
+        }
         if ([self.token isEqualToString:other.token]) {
             return YES;
         }
