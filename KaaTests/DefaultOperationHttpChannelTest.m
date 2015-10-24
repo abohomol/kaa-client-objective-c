@@ -1,8 +1,8 @@
 //
-//  DefaultBootstrapChannelTest.m
+//  DefaultOperationHttpChannelTest.m
 //  Kaa
 //
-//  Created by Aleksey Gutyro on 20.10.15.
+//  Created by Aleksey Gutyro on 22.10.15.
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 #define HC_SHORTHAND
@@ -12,17 +12,16 @@
 #import <OCMockito/OCMockito.h>
 
 #import <XCTest/XCTest.h>
-#import <Foundation/Foundation.h>
-#import "DefaultBootstrapChannel.h"
-#import "AbstractHttpChannel.h"
-#import "KaaClientState.h"
-#import "GenericTransportInfo.h"
+#import "DefaultOperationHttpChannel.h"
 #import "TransportProtocolIdHolder.h"
 #import "KeyUtils.h"
+#import "GenericTransportInfo.h"
 
-#pragma mark DefaultBootStrapChannelFake
+static NSDictionary *SUPPORTED_TYPES;
 
-@interface DefaultBootStrapChannelFake : DefaultBootstrapChannel
+#pragma mark DefaultOperationHttpChannelFake
+
+@interface DefaultOperationHttpChannelFake : DefaultOperationHttpChannel
 
 @property (nonatomic) NSInteger wantedNumberOfInvocations;
 
@@ -30,10 +29,9 @@
                          state:(id<KaaClientState>)state
                failoverManager:(id<FailoverManager>)manager
   andWantedNumberOfInvocations:(NSInteger)wantedNumberOfInvocations;
-
 @end
 
-@implementation DefaultBootStrapChannelFake
+@implementation DefaultOperationHttpChannelFake
 
 - (instancetype)initWithClient:(AbstractKaaClient *)client
                          state:(id<KaaClientState>)state
@@ -48,59 +46,31 @@
     return [super createExecutor];
 }
 
+@end
 
+#pragma mark DefaultOperationHttpChannelTest
+
+@interface DefaultOperationHttpChannelTest : XCTestCase
 
 @end
 
-#pragma mark DefaultBootStrapChannelMock
+@implementation DefaultOperationHttpChannelTest
 
-@interface DefaultBootStrapChannelMock : DefaultBootStrapChannelFake
-
-@end
-
-@implementation DefaultBootStrapChannelMock
-
-- (instancetype) initWithClient:(AbstractKaaClient *)client state:(id<KaaClientState>)state failoverManager:(id<FailoverManager>)manager andWantedNumberOfInvocations:(NSInteger)wantedNumberOfInvocations {
-    self = [super initWithClient:client state:state failoverManager:manager andWantedNumberOfInvocations:wantedNumberOfInvocations];
-    return self;
+- (void) setUp {
+    SUPPORTED_TYPES =
+    [NSDictionary dictionaryWithObjects:@[[NSNumber numberWithInt:CHANNEL_DIRECTION_UP], [NSNumber numberWithInt:CHANNEL_DIRECTION_UP]] forKeys:@[[NSNumber numberWithInt:TRANSPORT_TYPE_EVENT], [NSNumber numberWithInt:TRANSPORT_TYPE_LOGGING]]];
 }
 
-- (AbstractHttpClient *) getHttpClient {
-    AbstractHttpClient *client = mock([AbstractHttpClient class]);
-    MessageEncoderDecoder *crypt = mock([MessageEncoderDecoder class]);
-    @try {
-        NSInteger five = 5;
-        NSMutableData *data = [NSMutableData dataWithBytes:&five length:sizeof(five)];
-        [data appendBytes:&five length:sizeof(five)];
-        [data appendBytes:&five length:sizeof(five)];
-        [given([crypt decodeData:anything()]) willReturn:[NSData dataWithData:data]];
-    }
-    @catch (NSException *exception) {
-        NSLog(@"GeneralSecurityException");
-    }
-    [given([client getEncoderDecoder]) willReturn:crypt];
-    return client;
-}
-
-@end
-
-#pragma mark DefaultBootstrapChannelTest
-
-@interface DefaultBootstrapChannelTest : XCTestCase
-
-@end
-
-@implementation DefaultBootstrapChannelTest
 
 - (void)testChannelGetters {
     AbstractKaaClient *client = mock([AbstractKaaClient class]);
     id <KaaClientState> state = mockProtocol(@protocol(KaaClientState));
-    id <FailoverManager> failoverManager = mockProtocol(@protocol(FailoverManager));
-    id <KaaDataChannel> channel = [[DefaultBootstrapChannel alloc] initWithClient:client state:state failoverManager:failoverManager];
+    id <FailoverManager> manager = mockProtocol(@protocol(FailoverManager));
+    id <KaaDataChannel> channel = [[DefaultOperationHttpChannel alloc] initWithClient:client state:state failoverManager:manager];
     
-    NSDictionary *dict = [channel getSupportedTransportTypes];
-    
-    XCTAssertEqualObjects([dict objectForKey:[NSNumber numberWithInt:TRANSPORT_TYPE_BOOTSTRAP]], [NSNumber numberWithInt:CHANNEL_DIRECTION_BIDIRECTIONAL]);
+    XCTAssertEqualObjects(SUPPORTED_TYPES, [channel getSupportedTransportTypes]);
+    XCTAssertEqualObjects([TransportProtocolIdHolder HTTPTransportID], [channel getTransportProtocolId]);
+    XCTAssertEqualObjects(@"default_operations_http_channel", [channel getId]);
 }
 
 - (void)testChannelSync {
@@ -123,23 +93,23 @@
     id <KaaClientState> state = mockProtocol(@protocol(KaaClientState));
     id <KaaDataMultiplexer> multiplexer = mockProtocol(@protocol(KaaDataMultiplexer));
     id <KaaDataDemultiplexer> demultiplexer = mockProtocol(@protocol(KaaDataDemultiplexer));
-    DefaultBootStrapChannelMock *channel = [[DefaultBootStrapChannelMock alloc] initWithClient:client state:state failoverManager:failoverManager andWantedNumberOfInvocations:2];
+    DefaultOperationHttpChannelFake *channel = [[DefaultOperationHttpChannelFake alloc] initWithClient:client state:state failoverManager:failoverManager andWantedNumberOfInvocations:2];
     
     id <TransportConnectionInfo> server = [self createTestServerInfoWithServerType:SERVER_BOOTSTRAP transportProtocolId:[TransportProtocolIdHolder TCPTransportID] host:@"localhost" port:9889 andPublicKey:[KeyUtils getPublicKey]];
     [channel setServer:server];
-
-    [channel sync:TRANSPORT_TYPE_BOOTSTRAP];
+    
+    [channel sync:TRANSPORT_TYPE_EVENT];
     [channel setDemultiplexer:demultiplexer];
     [channel setDemultiplexer:nil];
-    [channel sync:TRANSPORT_TYPE_BOOTSTRAP];
+    [channel sync:TRANSPORT_TYPE_EVENT];
     [channel setMultiplexer:multiplexer];
     [channel setMultiplexer:nil];
-    [channel sync:TRANSPORT_TYPE_CONFIGURATION];
     [channel sync:TRANSPORT_TYPE_BOOTSTRAP];
-
+    [channel sync:TRANSPORT_TYPE_EVENT];
+    
     [NSThread sleepForTimeInterval:1];
-    [verifyCount([channel getDemultiplexer], times(channel.wantedNumberOfInvocations)) processResponse:data];
     [verifyCount([channel getMultiplexer], times(channel.wantedNumberOfInvocations)) compileRequest:anything()];
+    [verifyCount([channel getDemultiplexer], times(channel.wantedNumberOfInvocations)) processResponse:anything()];
 }
 
 - (void)testShutDown {
@@ -156,7 +126,7 @@
     id <KaaClientState> state = mockProtocol(@protocol(KaaClientState));
     id <KaaDataMultiplexer> multiplexer = mockProtocol(@protocol(KaaDataMultiplexer));
     id <KaaDataDemultiplexer> demultiplexer = mockProtocol(@protocol(KaaDataDemultiplexer));
-    DefaultBootStrapChannelFake *channel = [[DefaultBootStrapChannelFake alloc] initWithClient:client state:state failoverManager:failoverManager andWantedNumberOfInvocations:0];
+    DefaultOperationHttpChannelFake *channel = [[DefaultOperationHttpChannelFake alloc] initWithClient:client state:state failoverManager:failoverManager andWantedNumberOfInvocations:0];
     [channel setMultiplexer:multiplexer];
     [channel setDemultiplexer:demultiplexer];
     [channel shutdown];
@@ -167,21 +137,18 @@
     [channel sync:TRANSPORT_TYPE_BOOTSTRAP];
     [channel syncAll];
     
-    NSData *data = [self returnData];
+    NSInteger five = 5;
+    NSMutableData *data = [NSMutableData dataWithBytes:&five length:sizeof(five)];
+    [data appendBytes:&five length:sizeof(five)];
+    [data appendBytes:&five length:sizeof(five)];
+
     [NSThread sleepForTimeInterval:1];
     [verifyCount([channel getDemultiplexer], times(channel.wantedNumberOfInvocations)) processResponse:data];
     [verifyCount([channel getMultiplexer], times(channel.wantedNumberOfInvocations)) compileRequest:anything()];
 }
 
-#pragma mark - Supporting methods
 
-- (NSData *) returnData {
-    NSInteger five = 5;
-    NSMutableData *data = [NSMutableData dataWithBytes:&five length:sizeof(five)];
-    [data appendBytes:&five length:sizeof(five)];
-    [data appendBytes:&five length:sizeof(five)];
-    return data;
-}
+#pragma mark - Supporting methods 
 
 - (id<TransportConnectionInfo>) createTestServerInfoWithServerType:(ServerType)serverType transportProtocolId:(TransportProtocolId *)TPid host:(NSString *)host port:(NSUInteger)port andPublicKey:(NSData *)publicKey {
     ProtocolMetaData *md = [[ProtocolMetaData alloc] init];

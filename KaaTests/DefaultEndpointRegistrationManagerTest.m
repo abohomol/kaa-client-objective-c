@@ -132,7 +132,7 @@
     EndpointAccessToken *accessToken1_2 = [[EndpointAccessToken alloc] initWithToken:token1];
     EndpointAccessToken *accessToken2 = [[EndpointAccessToken alloc] initWithToken:token2];
     
-    XCTAssertEqualObjects(accessToken1, accessToken1);
+    XCTAssertTrue([accessToken1 isEqual:accessToken1]);
     XCTAssertNotEqualObjects(accessToken1, token1);
     XCTAssertEqualObjects([accessToken1 token], [accessToken1 description]);
     XCTAssertEqualObjects(accessToken1, accessToken1_2);
@@ -147,8 +147,7 @@
     EndpointAccessToken *emptyToken1 = [[EndpointAccessToken alloc] initWithToken:nil];
     EndpointAccessToken *emptyToken2 = [[EndpointAccessToken alloc] initWithToken:nil];
     
- // TODO
- //   XCTAssertEqualObjects(emptyToken1, emptyToken2);
+    XCTAssertTrue([emptyToken1 isEqual:emptyToken2]);
     XCTAssertEqual([emptyToken1 hash], [emptyToken2 hash]);
     XCTAssertNotEqual(accessToken1, emptyToken2);
     XCTAssertNotNil(accessToken1);

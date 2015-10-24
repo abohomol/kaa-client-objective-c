@@ -39,8 +39,6 @@
     if (self) {
         self.requestConverter = [[AvroBytesConverter alloc] init];
         self.responseConverter = [[AvroBytesConverter alloc] init];
-        
-        self.requestConverter = 0;
     }
     return self;
     
@@ -209,7 +207,7 @@
                 }
                     break;
                 case TRANSPORT_TYPE_PROFILE:
-                    if (!isDownDirection || self.profileTransport) {
+                    if (!isDownDirection && self.profileTransport) {
                         request.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                                        andData:[self.profileTransport createProfileRequest]];
                     } else {

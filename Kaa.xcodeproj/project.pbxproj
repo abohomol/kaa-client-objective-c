@@ -23,6 +23,8 @@
 		393331351BD7AF84003BCC45 /* DefaultLogTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 393331341BD7AF84003BCC45 /* DefaultLogTransportTest.m */; settings = {ASSET_TAGS = (); }; };
 		393331371BD7B6BC003BCC45 /* DefaultMetaDataTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 393331361BD7B6BC003BCC45 /* DefaultMetaDataTransportTest.m */; settings = {ASSET_TAGS = (); }; };
 		393331391BD7BA72003BCC45 /* DefaultNotificationTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 393331381BD7BA72003BCC45 /* DefaultNotificationTransportTest.m */; settings = {ASSET_TAGS = (); }; };
+		3933313B1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */; settings = {ASSET_TAGS = (); }; };
+		3933313D1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
 		39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
@@ -39,6 +41,10 @@
 		39E404D21BBC31F900A5B833 /* AbstractExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
 		39E404D51BBD0FF500A5B833 /* SimpleExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */; settings = {ASSET_TAGS = (); }; };
 		39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */; settings = {ASSET_TAGS = (); }; };
+		39F626891BD9149B0039BDE9 /* DefaultProfileTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F626881BD9149B0039BDE9 /* DefaultProfileTransportTest.m */; settings = {ASSET_TAGS = (); }; };
+		39F6268B1BD91F350039BDE9 /* DefaultRedirectionTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6268A1BD91F350039BDE9 /* DefaultRedirectionTransportTest.m */; settings = {ASSET_TAGS = (); }; };
+		39F6268D1BD9207A0039BDE9 /* DefaultUserTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6268C1BD9207A0039BDE9 /* DefaultUserTransportTest.m */; settings = {ASSET_TAGS = (); }; };
+		39F6268F1BDA4A5B0039BDE9 /* DefaultChannelManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39F6268E1BDA4A5B0039BDE9 /* DefaultChannelManagerTest.m */; settings = {ASSET_TAGS = (); }; };
 		39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */; settings = {ASSET_TAGS = (); }; };
 		39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0F1BCD49DF00666D1F /* AbstractHttpClientTest.m */; settings = {ASSET_TAGS = (); }; };
 		555D709CF7DB758766ABDA97 /* libPods-KaaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 859AA00A9E215058D7F33E50 /* libPods-KaaTests.a */; };
@@ -337,6 +343,8 @@
 		393331341BD7AF84003BCC45 /* DefaultLogTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogTransportTest.m; sourceTree = "<group>"; };
 		393331361BD7B6BC003BCC45 /* DefaultMetaDataTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultMetaDataTransportTest.m; sourceTree = "<group>"; };
 		393331381BD7BA72003BCC45 /* DefaultNotificationTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultNotificationTransportTest.m; sourceTree = "<group>"; };
+		3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationDataProcessorTest.m; sourceTree = "<group>"; };
+		3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationHttpChannelTest.m; sourceTree = "<group>"; };
 		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
 		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
 		39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordCountLogUploadStrategy.h; sourceTree = "<group>"; };
@@ -353,6 +361,10 @@
 		39E404D01BBC31F900A5B833 /* AbstractExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractExecutorContext.m; sourceTree = "<group>"; };
 		39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleExecutorContext.h; sourceTree = "<group>"; };
 		39E404D41BBD0FF500A5B833 /* SimpleExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleExecutorContext.m; sourceTree = "<group>"; };
+		39F626881BD9149B0039BDE9 /* DefaultProfileTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileTransportTest.m; sourceTree = "<group>"; };
+		39F6268A1BD91F350039BDE9 /* DefaultRedirectionTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultRedirectionTransportTest.m; sourceTree = "<group>"; };
+		39F6268C1BD9207A0039BDE9 /* DefaultUserTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultUserTransportTest.m; sourceTree = "<group>"; };
+		39F6268E1BDA4A5B0039BDE9 /* DefaultChannelManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultChannelManagerTest.m; sourceTree = "<group>"; };
 		39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTransportInfoTest.m; sourceTree = "<group>"; };
 		39FF8B0F1BCD49DF00666D1F /* AbstractHttpClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractHttpClientTest.m; sourceTree = "<group>"; };
 		4CAC4D1133C2E2FBC990B5AC /* Pods-libKaa.a.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.debug.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1253,6 +1265,12 @@
 				393331341BD7AF84003BCC45 /* DefaultLogTransportTest.m */,
 				393331361BD7B6BC003BCC45 /* DefaultMetaDataTransportTest.m */,
 				393331381BD7BA72003BCC45 /* DefaultNotificationTransportTest.m */,
+				3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */,
+				3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */,
+				39F626881BD9149B0039BDE9 /* DefaultProfileTransportTest.m */,
+				39F6268A1BD91F350039BDE9 /* DefaultRedirectionTransportTest.m */,
+				39F6268C1BD9207A0039BDE9 /* DefaultUserTransportTest.m */,
+				39F6268E1BDA4A5B0039BDE9 /* DefaultChannelManagerTest.m */,
 			);
 			name = channel;
 			sourceTree = "<group>";
@@ -1752,14 +1770,20 @@
 				39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */,
 				391F25881BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
+				3933313D1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m in Sources */,
 				B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */,
+				39F6268F1BDA4A5B0039BDE9 /* DefaultChannelManagerTest.m in Sources */,
 				392D3ED41BD0EEF2007CC7DA /* DefaultProfileManagerTest.m in Sources */,
 				393331311BD666F9003BCC45 /* DefaultConfigurationTransportTest.m in Sources */,
 				E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */,
+				39F6268D1BD9207A0039BDE9 /* DefaultUserTransportTest.m in Sources */,
 				39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */,
 				3933312F1BD661E3003BCC45 /* DefaultBootstrapTransportTest.m in Sources */,
+				39F626891BD9149B0039BDE9 /* DefaultProfileTransportTest.m in Sources */,
 				391F258B1BD4F31A0031ED84 /* DefaultNotificationManagerTest.m in Sources */,
+				39F6268B1BD91F350039BDE9 /* DefaultRedirectionTransportTest.m in Sources */,
 				39AEB2881BBA79790045FB32 /* AvroUtilsTests.m in Sources */,
+				3933313B1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m in Sources */,
 				B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */,
 				E8C9EC621BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m in Sources */,
 				393331371BD7B6BC003BCC45 /* DefaultMetaDataTransportTest.m in Sources */,
