@@ -6,15 +6,15 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KaaSync.h"
-#import "SyncResponse.h"
-#import "SyncRequest.h"
+#import "KAATCPKaaSync.h"
+#import "KAATCPSyncResponse.h"
+#import "KAATCPSyncRequest.h"
 
 #define KAASYNC_MESSAGE_TYPE_SHIFT 4
 
 static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAASYNC_VERSION};
 
-@implementation KaaSync
+@implementation KAATCPKaaSync
 
 - (instancetype)init {
     self = [super init];
@@ -36,7 +36,7 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
     return self;
 }
 
-- (instancetype)initWithOldKaaSync:(KaaSync *)old {
+- (instancetype)initWithOldKaaSync:(KAATCPKaaSync *)old {
     self = [super initWithOld:old];
     if (self) {
         [self setMessageType:TCP_MESSAGE_TYPE_KAASYNC];
@@ -72,24 +72,24 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
 }
 
 - (void)decodeVariableHeader:(NSInputStream *)input {
-    uint8_t *header;
-    [input read:header maxLength:sizeof(FIXED_HEADER_CONST)];
+    uint8_t header[sizeof(FIXED_HEADER_CONST)];
+    [input read:header maxLength:sizeof(header)];
     for (int i = 0; i < sizeof(FIXED_HEADER_CONST); i++) {
         if (header[i] != FIXED_HEADER_CONST[i]) {
             [NSException raise:@"KaaTcpProtocolException" format:@"Kaatcp protocol version missmatch"];
         }
     }
     
-    uint8_t *msbByte;
-    [input read:msbByte maxLength:sizeof(char)];
+    uint8_t msbByte[1];
+    [input read:msbByte maxLength:sizeof(msbByte)];
     int32_t msb = ((*(char *)msbByte) & 0xFF) << 8;
-    uint8_t *lsbByte;
-    [input read:lsbByte maxLength:sizeof(char)];
+    uint8_t lsbByte[1];
+    [input read:lsbByte maxLength:sizeof(lsbByte)];
     int32_t lsb = (*(char *)lsbByte) & 0xFF;
     self.messageId = (msb | lsb);
     
-    uint8_t *flagByte;
-    [input read:flagByte maxLength:sizeof(char)];
+    uint8_t flagByte[1];
+    [input read:flagByte maxLength:sizeof(flagByte)];
     char flag = *(char *)flagByte;
     self.request = ((flag & 0xFF) & KAASYNC_REQUEST_FLAG) != 0;
     self.zipped = ((flag & 0xFF) & KAASYNC_ZIPPED_FLAG) != 0;
@@ -112,9 +112,9 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
     switch (self.kaaSyncMessageType) {
         case KAA_SYNC_MESSAGE_TYPE_SYNC:
             if (self.request) {
-                return [[SyncRequest alloc] initWithOldKaaSync:self];
+                return [[KAATCPSyncRequest alloc] initWithOldKaaSync:self];
             } else {
-                return [[SyncResponse alloc] initWithOldKaaSync:self];
+                return [[KAATCPSyncResponse alloc] initWithOldKaaSync:self];
             }
             break;
         case KAA_SYNC_MESSAGE_TYPE_UNUSED:

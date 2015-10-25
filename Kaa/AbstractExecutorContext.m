@@ -19,8 +19,7 @@
 @implementation AbstractExecutorContext
 
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [self initWithTimeOut:DEFAULT_TIMEOUT andTimeUnit:DEFAULT_TIMEUNIT];
 }
 

@@ -6,7 +6,7 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KaaSync.h"
+#import "KAATCPKaaSync.h"
 
 /**
  * Sync message Class.
@@ -19,7 +19,7 @@
  *  Payload Avro object depend on Flags object can be zipped and than encrypted with AES SessionKey
  *  exchanged with the CONNECT message.
  */
-@interface Sync : KaaSync
+@interface KAATCPSync : KAATCPKaaSync
 
 @property (nonatomic,strong) NSData *avroObject; //Avro object byte representation
 

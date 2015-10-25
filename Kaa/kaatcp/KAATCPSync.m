@@ -6,11 +6,11 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "Sync.h"
+#import "KAATCPSync.h"
 
-@implementation Sync
+@implementation KAATCPSync
 
-- (instancetype)initWithOldKaaSync:(KaaSync *)old {
+- (instancetype)initWithOldKaaSync:(KAATCPKaaSync *)old {
     self = [super initWithOldKaaSync:old];
     if (self) {
         [self setKaaSyncMessageType:KAA_SYNC_MESSAGE_TYPE_SYNC];
@@ -36,11 +36,11 @@
 }
 
 - (void)decodeAvroObject:(NSInputStream *)input {
-    uint8_t *data;
+    uint8_t data[1];
     NSMutableData *avroObject = [NSMutableData data];
     while ([input hasBytesAvailable]) {
-        [input read:data maxLength:sizeof(char)];
-        [avroObject appendBytes:data length:sizeof(char)];
+        [input read:data maxLength:sizeof(data)];
+        [avroObject appendBytes:data length:sizeof(data)];
     }
     _avroObject = avroObject;
 }

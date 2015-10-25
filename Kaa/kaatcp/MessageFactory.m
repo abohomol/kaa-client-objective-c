@@ -18,7 +18,7 @@
 @property (nonatomic,weak) id<SyncRequestDelegate> syncRequestDelegate;
 @property (nonatomic,weak) id<SyncResponseDelegate> syncResponseDelegate;
 
-- (void)onKaaSyncMessage:(KaaSync *)frame;
+- (void)onKaaSyncMessage:(KAATCPKaaSync *)frame;
 
 @end
 
@@ -41,30 +41,30 @@
     switch (frame.messageType) {
         case TCP_MESSAGE_TYPE_CONNACK:
             if (self.connAckDelegate) {
-                [self.connAckDelegate onConnAckMessage:(ConnAck *)frame];
+                [self.connAckDelegate onConnAckMessage:(KAATCPConnAck *)frame];
             }
             break;
         case TCP_MESSAGE_TYPE_CONNECT:
             if (self.connectDelegate) {
-                [self.connectDelegate onConnectMessage:(Connect *)frame];
+                [self.connectDelegate onConnectMessage:(KAATCPConnect *)frame];
             }
             break;
         case TCP_MESSAGE_TYPE_DISCONNECT:
             if (self.disconnectDelegate) {
-                [self.disconnectDelegate onDisconnectMessage:(Disconnect *)frame];
+                [self.disconnectDelegate onDisconnectMessage:(KAATCPDisconnect *)frame];
             }
             break;
         case TCP_MESSAGE_TYPE_KAASYNC:
-            [self onKaaSyncMessage:(KaaSync *)frame];
+            [self onKaaSyncMessage:(KAATCPKaaSync *)frame];
             break;
         case TCP_MESSAGE_TYPE_PINGREQ:
             if (self.pingRequestDelegate) {
-                [self.pingRequestDelegate onPingRequestMessage:(PingRequest *)frame];
+                [self.pingRequestDelegate onPingRequestMessage:(KAATCPPingRequest *)frame];
             }
             break;
         case TCP_MESSAGE_TYPE_PINGRESP:
             if (self.pingResponseDelegate) {
-                [self.pingResponseDelegate onPingResponseMessage:(PingResponse *)frame];
+                [self.pingResponseDelegate onPingResponseMessage:(KAATCPPingResponse *)frame];
             }
             break;
         default:
@@ -72,16 +72,16 @@
     }
 }
 
-- (void)onKaaSyncMessage:(KaaSync *)frame {
+- (void)onKaaSyncMessage:(KAATCPKaaSync *)frame {
     switch (frame.kaaSyncMessageType) {
         case KAA_SYNC_MESSAGE_TYPE_SYNC:
             if (frame.request) {
                 if (self.syncRequestDelegate) {
-                    [self.syncRequestDelegate onSyncRequestMessage:(SyncRequest *)frame];
+                    [self.syncRequestDelegate onSyncRequestMessage:(KAATCPSyncRequest *)frame];
                 }
             } else {
                 if (self.syncResponseDelegate) {
-                    [self.syncResponseDelegate onSyncResponseMessage:(SyncResponse *)frame];
+                    [self.syncResponseDelegate onSyncResponseMessage:(KAATCPSyncResponse *)frame];
                 }
             }
             break;

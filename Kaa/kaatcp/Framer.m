@@ -79,22 +79,22 @@
     MqttFrame *frame = nil;
     switch (type) {
         case TCP_MESSAGE_TYPE_CONNACK:
-            frame = [[ConnAck alloc] init];
+            frame = [[KAATCPConnAck alloc] init];
             break;
         case TCP_MESSAGE_TYPE_CONNECT:
-            frame = [[Connect alloc] init];
+            frame = [[KAATCPConnect alloc] init];
             break;
         case TCP_MESSAGE_TYPE_DISCONNECT:
-            frame = [[Disconnect alloc] init];
+            frame = [[KAATCPDisconnect alloc] init];
             break;
         case TCP_MESSAGE_TYPE_KAASYNC:
-            frame = [[KaaSync alloc] init];
+            frame = [[KAATCPKaaSync alloc] init];
             break;
         case TCP_MESSAGE_TYPE_PINGREQ:
-            frame = [[PingRequest alloc] init];
+            frame = [[KAATCPPingRequest alloc] init];
             break;
         case TCP_MESSAGE_TYPE_PINGRESP:
-            frame = [[PingResponse alloc] init];
+            frame = [[KAATCPPingResponse alloc] init];
             break;
         default:
             [NSException raise:@"KaaTcpProtocolException" format:@"Got incorrect messageType format: %i", type];

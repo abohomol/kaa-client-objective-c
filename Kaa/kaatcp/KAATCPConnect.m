@@ -6,12 +6,12 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "Connect.h"
+#import "KAATCPConnect.h"
 #import "KaaLogging.h"
 
 #define TAG @"Connect >>>"
 
-@interface Connect ()
+@interface KAATCPConnect ()
 
 - (void)packVeriableHeader;
 
@@ -25,7 +25,7 @@
 
 static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONNECT_VERSION,CONNECT_FIXED_HEADER_FLAG};
 
-@implementation Connect
+@implementation KAATCPConnect
 
 - (instancetype)init {
     self = [super init];
@@ -94,14 +94,14 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONN
 - (void)decode {
     NSInputStream *input = [[NSInputStream alloc] initWithData:self.buffer];
     [self decodeVariableHeader:input];
-    uint8_t *protocolId;
-    [input read:protocolId maxLength:sizeof(int32_t)];
+    uint8_t protocolId[4];
+    [input read:protocolId maxLength:sizeof(protocolId)];
     _nextProtocolId = *(int32_t *)protocolId;
-    uint8_t *aesKey;
-    [input read:aesKey maxLength:sizeof(char)];
+    uint8_t aesKey[1];
+    [input read:aesKey maxLength:sizeof(aesKey)];
     _isEncrypted = (*(char *)aesKey) != 0;
-    uint8_t *sign;
-    [input read:sign maxLength:sizeof(char)];
+    uint8_t sign[1];
+    [input read:sign maxLength:sizeof(signed)];
     _hasSignature = (*(char *)sign) != 0;
     [self decodeKeepAlive:input];
     if (_isEncrypted) {
@@ -119,30 +119,30 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONN
 }
 
 - (void)decodeSyncRequest:(NSInputStream *)input {
-    uint8_t *data;
+    uint8_t data[1];
     NSMutableData *request = [NSMutableData data];
     while ([input hasBytesAvailable]) {
-        [input read:data maxLength:sizeof(char)];
-        [request appendBytes:data length:sizeof(char)];
+        [input read:data maxLength:sizeof(data)];
+        [request appendBytes:data length:sizeof(data)];
     }
     self.syncRequest = request;
 }
 
 - (void)decodeSignature:(NSInputStream *)input {
-    uint8_t *signature;
-    [input read:signature maxLength:CONNECT_SIGNATURE_LENGTH];
+    uint8_t signature[CONNECT_SIGNATURE_LENGTH];
+    [input read:signature maxLength:sizeof(signature)];
     self.signature = [NSData dataWithBytes:signature length:CONNECT_SIGNATURE_LENGTH];
 }
 
 - (void)decodeSessionKey:(NSInputStream *)input {
-    uint8_t *key;
-    [input read:key maxLength:CONNECT_AES_SESSION_KEY_LENGTH];
+    uint8_t key[CONNECT_AES_SESSION_KEY_LENGTH];
+    [input read:key maxLength:sizeof(key)];
     self.aesSessionKey = [NSData dataWithBytes:key length:CONNECT_AES_SESSION_KEY_LENGTH];
 }
 
 - (void)decodeVariableHeader:(NSInputStream *)input {
-    uint8_t *header;
-    [input read:header maxLength:sizeof(FIXED_HEADER_CONST)];
+    uint8_t header[sizeof(FIXED_HEADER_CONST)];
+    [input read:header maxLength:sizeof(header)];
     for (int i = 0; i < sizeof(FIXED_HEADER_CONST); i++) {
         if (header[i] != FIXED_HEADER_CONST[i]) {
             [NSException raise:@"KaaTcpProtocolException" format:@"Kaatcp protocol version missmatch"];
@@ -151,12 +151,12 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONN
 }
 
 - (void)decodeKeepAlive:(NSInputStream *)input {
-    uint8_t *msbBytes;
-    [input read:msbBytes maxLength:sizeof(char)];
+    uint8_t msbBytes[1];
+    [input read:msbBytes maxLength:sizeof(msbBytes)];
     int msb = (((char)msbBytes) & 0xFF) << 8;
     
-    uint8_t *lsbBytes;
-    [input read:lsbBytes maxLength:sizeof(char)];
+    uint8_t lsbBytes[1];
+    [input read:lsbBytes maxLength:sizeof(lsbBytes)];
     int lsb = ((char)lsbBytes) & 0xFF;
     self.keepAlive = (msb | lsb);
 }

@@ -1,19 +1,19 @@
 //
-//  PingRequest.m
+//  PingResponse.m
 //  Kaa
 //
 //  Created by Anton Bohomol on 10/24/15.
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "PingRequest.h"
+#import "KAATCPPingResponse.h"
 
-@implementation PingRequest
+@implementation KAATCPPingResponse
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self setMessageType:TCP_MESSAGE_TYPE_PINGREQ];
+        [self setMessageType:TCP_MESSAGE_TYPE_PINGRESP];
         self.remainingLength = 0;
     }
     return self;

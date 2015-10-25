@@ -95,7 +95,7 @@
 }
 
 - (void)main {
-    if (self.isConcurrent || self.isFinished) {
+    if (self.isCancelled || self.isFinished) {
         return;
     }
     

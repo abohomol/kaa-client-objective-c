@@ -52,7 +52,7 @@
 #define CONNECT_SESSION_KEY_FLAGS           0x11
 #define CONNECT_SIGNATURE_FLAGS             0x01
 
-@interface Connect : MqttFrame
+@interface KAATCPConnect : MqttFrame
 
 @property (nonatomic) char keepAlive;                //kaatcp keep alive interval, default 200 seconds
 

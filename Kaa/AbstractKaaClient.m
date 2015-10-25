@@ -26,7 +26,7 @@
 #import "DefaultBootstrapDataProcessor.h"
 #import "DefaultOperationDataProcessor.h"
 #import "DefaultBootstrapChannel.h"
-#import "DefaultOperationHttpChannel.h"
+#import "DefaultOperationTcpChannel.h"
 #import "KaaLogging.h"
 
 #define TAG @"AbstractKaaClient >>>"
@@ -434,9 +434,8 @@
     [btChannel setDemultiplexer:btProcessor];
     [manager addChannel:btChannel];
     
-    id<KaaDataChannel> opChannel = [[DefaultOperationHttpChannel alloc] initWithClient:self
-                                                                                 state:self.clientState
-                                                                       failoverManager:self.failoverManager];
+    id<KaaDataChannel> opChannel = [[DefaultOperationTcpChannel alloc] initWithClientState:self.clientState
+                                                                            andFailoverMgr:self.failoverManager];
     [opChannel setMultiplexer:opProcessor];
     [opChannel setDemultiplexer:opProcessor];
     [manager addChannel:opChannel];

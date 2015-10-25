@@ -13,6 +13,6 @@
  * The PINGREQ message is an "are you alive?" message that is sent
  * from a connected client to the server.
  */
-@interface PingRequest : MqttFrame
+@interface KAATCPPingRequest : MqttFrame
 
 @end
