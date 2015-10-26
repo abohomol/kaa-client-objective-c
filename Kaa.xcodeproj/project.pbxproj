@@ -169,6 +169,7 @@
 		B876299C1B8CD026006AD5EF /* EventListenersRequestBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = B876299A1B8CD026006AD5EF /* EventListenersRequestBinding.m */; };
 		B876299E1B8CD2C6006AD5EF /* EventTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B876299D1B8CD2C6006AD5EF /* EventTransport.h */; };
 		B87629A41B8DA6E8006AD5EF /* KaaClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B87629A31B8DA6DF006AD5EF /* KaaClient.h */; };
+		B8785E721BDE32BA00306A38 /* KAASocketTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8785E711BDE32BA00306A38 /* KAASocketTest.m */; settings = {ASSET_TAGS = (); }; };
 		B878C2981B45730700453947 /* AvroBased.h in Headers */ = {isa = PBXBuildFile; fileRef = B878C2961B45730700453947 /* AvroBased.h */; };
 		B878C2991B45730700453947 /* AvroBased.m in Sources */ = {isa = PBXBuildFile; fileRef = B878C2971B45730700453947 /* AvroBased.m */; };
 		B878C29C1B45773E00453947 /* KAAUnion.h in Headers */ = {isa = PBXBuildFile; fileRef = B878C29A1B45773E00453947 /* KAAUnion.h */; };
@@ -498,6 +499,7 @@
 		B876299A1B8CD026006AD5EF /* EventListenersRequestBinding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventListenersRequestBinding.m; sourceTree = "<group>"; };
 		B876299D1B8CD2C6006AD5EF /* EventTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventTransport.h; sourceTree = "<group>"; };
 		B87629A31B8DA6DF006AD5EF /* KaaClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KaaClient.h; sourceTree = "<group>"; };
+		B8785E711BDE32BA00306A38 /* KAASocketTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAASocketTest.m; sourceTree = "<group>"; };
 		B878C2961B45730700453947 /* AvroBased.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvroBased.h; sourceTree = "<group>"; };
 		B878C2971B45730700453947 /* AvroBased.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroBased.m; sourceTree = "<group>"; };
 		B878C29A1B45773E00453947 /* KAAUnion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAAUnion.h; sourceTree = "<group>"; };
@@ -1303,6 +1305,7 @@
 				39F6268A1BD91F350039BDE9 /* DefaultRedirectionTransportTest.m */,
 				39F6268C1BD9207A0039BDE9 /* DefaultUserTransportTest.m */,
 				39F6268E1BDA4A5B0039BDE9 /* DefaultChannelManagerTest.m */,
+				B8785E711BDE32BA00306A38 /* KAASocketTest.m */,
 			);
 			name = channel;
 			sourceTree = "<group>";
@@ -1802,6 +1805,7 @@
 				393331331BD67A64003BCC45 /* DefaultEventTransportTest.m in Sources */,
 				B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */,
 				39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */,
+				B8785E721BDE32BA00306A38 /* KAASocketTest.m in Sources */,
 				B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */,
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391292531BDE10210013F631 /* KaaTcpMessageTest.m in Sources */,
