@@ -73,7 +73,7 @@
         rawDestination[size] = digit;
         ++size;
     } while ( remainingLength > 0 );
-    
+    [destination appendBytes:rawDestination length:size];
     return size;
 }
 

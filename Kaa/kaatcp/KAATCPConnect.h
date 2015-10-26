@@ -54,7 +54,7 @@
 
 @interface KAATCPConnect : MqttFrame
 
-@property (nonatomic) char keepAlive;                //kaatcp keep alive interval, default 200 seconds
+@property (nonatomic) int16_t keepAlive;                //kaatcp keep alive interval, default 200 seconds
 
 @property (nonatomic) int32_t nextProtocolId;
 
@@ -65,7 +65,7 @@
 @property (nonatomic,readonly) BOOL hasSignature;
 @property (nonatomic,readonly) BOOL isEncrypted;
 
-- (instancetype)initWithAlivePeriod:(char)keepAlive
+- (instancetype)initWithAlivePeriod:(int16_t)keepAlive
                      nextProtocolId:(int32_t)protocolId
                       aesSessionKey:(NSData *)key
                         syncRequest:(NSData *)request

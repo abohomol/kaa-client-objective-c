@@ -36,7 +36,7 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONN
     return self;
 }
 
-- (instancetype)initWithAlivePeriod:(char)keepAlive
+- (instancetype)initWithAlivePeriod:(int16_t)keepAlive
                      nextProtocolId:(int32_t)protocolId
                       aesSessionKey:(NSData *)key
                         syncRequest:(NSData *)request
@@ -164,13 +164,13 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONN
 
 - (void)packVeriableHeader {
     [self.buffer appendBytes:FIXED_HEADER_CONST length:sizeof(FIXED_HEADER_CONST)];
-    int32_t protocolId = self.nextProtocolId;
+    int32_t protocolId = htonl(self.nextProtocolId);
     [self.buffer appendBytes:&protocolId length:sizeof(protocolId)];
     char keyFlag = self.aesSessionKey ? CONNECT_SESSION_KEY_FLAGS : 0;
     [self.buffer appendBytes:&keyFlag length:sizeof(keyFlag)];
     char signFlag = self.signature ? CONNECT_SIGNATURE_FLAGS : 0;
     [self.buffer appendBytes:&signFlag length:sizeof(signFlag)];
-    char keepAlive = self.keepAlive;
+    int16_t keepAlive = htons(self.keepAlive);
     [self.buffer appendBytes:&keepAlive length:sizeof(keepAlive)];
 }
 
