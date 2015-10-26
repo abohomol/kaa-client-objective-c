@@ -8,7 +8,7 @@
 
 #import "MqttFrame.h"
 
-#define CONNACK_REMAINING_LEGTH_V1 (1)
+#define CONNACK_REMAINING_LEGTH_V1 (2)
 
 /**
  * CONNACK return code enum

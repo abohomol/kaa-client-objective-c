@@ -47,7 +47,7 @@
 - (void)testConnectMessage {
     char charpayload[] = {0xFF, 0x01, 0x02, 0x03};
     NSData *payload = [NSData dataWithBytes:&charpayload length:sizeof(charpayload)];
-    char charConnectHeader[20] = {0x10, 0x16, 0x00, 0x06, 'K','a','a','t','c','p', 0x01, 0x02, 0xd4, 0xf2, 0x91, 0xf2, 0x00, 0x00, 0x00, 0xC8};
+    char charConnectHeader[20] = {0x10, 0x16, 0x00, 0x06, 'K','a','a','t','c','p', 0x01, 0x02, 0xf2, 0x91, 0xf2, 0xd4, 0x00, 0x00, 0x00, 0xC8};
     NSData *connectedHeader = [NSData dataWithBytes:&charConnectHeader length:sizeof(charConnectHeader)];
     KAATCPConnect *message = [[KAATCPConnect alloc] initWithAlivePeriod:200 nextProtocolId:0xf291f2d4 aesSessionKey:nil syncRequest:payload signature:nil];
     NSData *frame = [message getFrame];
