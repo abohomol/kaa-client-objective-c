@@ -52,6 +52,7 @@
 
 - (void)decode {
     NSInputStream *input = [NSInputStream inputStreamWithData:self.buffer];
+    [input open];
     [self decodeVariableHeader:input];
     [self decodeAvroObject:input];
     [input close];

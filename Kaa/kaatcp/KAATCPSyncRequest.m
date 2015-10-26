@@ -19,6 +19,7 @@
     if (self) {
         [self setRequest:YES];
         NSInputStream *input = [NSInputStream inputStreamWithData:self.buffer];
+        [input open];
         [self decodeAvroObject:input];
         [input close];
     }

@@ -92,7 +92,8 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONN
 }
 
 - (void)decode {
-    NSInputStream *input = [[NSInputStream alloc] initWithData:self.buffer];
+    NSInputStream *input = [NSInputStream inputStreamWithData:self.buffer];
+    [input open];
     [self decodeVariableHeader:input];
     uint8_t protocolId[4];
     [input read:protocolId maxLength:sizeof(protocolId)];
