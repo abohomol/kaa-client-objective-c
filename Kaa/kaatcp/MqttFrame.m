@@ -109,7 +109,7 @@
     while (pos < bytes.length && !self.frameDecodeComplete) {
         if (self.currentState == FRAME_PARSING_STATE_PROCESSING_PAYLOAD) {
             NSUInteger bytesToCopy = (self.remainingLength > bytes.length - pos) ? bytes.length - pos : self.remainingLength;
-            [self.buffer replaceBytesInRange:NSMakeRange(pos, bytesToCopy) withBytes:[bytes bytes]];
+            [self.buffer appendData:[bytes subdataWithRange:NSMakeRange(pos, bytesToCopy)]];
             pos += bytesToCopy;
             self.remainingLength -= bytesToCopy;
             DDLogVerbose(@"%@ Frame [%i]: copied %li bytes of payload. %i bytes left",
