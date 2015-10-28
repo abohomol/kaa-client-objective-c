@@ -91,6 +91,7 @@
 		B824A22C1B148CFA0076C753 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B824A22B1B148CFA0076C753 /* SystemConfiguration.framework */; };
 		B824A22E1B148F1A0076C753 /* KaaChannelManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B824A22D1B148F1A0076C753 /* KaaChannelManager.h */; };
 		B824A2341B149F050076C753 /* KaaClientState.h in Headers */ = {isa = PBXBuildFile; fileRef = B824A2331B149F050076C753 /* KaaClientState.h */; };
+		B824AB231BE0E42500436BEA /* MessageFactoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B824AB221BE0E42500436BEA /* MessageFactoryTest.m */; settings = {ASSET_TAGS = (); }; };
 		B825A9A21B5664E800D35F01 /* GenericLogCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = B825A9A11B5664E800D35F01 /* GenericLogCollector.h */; };
 		B8330C3F1B38051B00D1A573 /* GenericKaaClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B8330C3E1B38051B00D1A573 /* GenericKaaClient.h */; };
 		B83CCCFA1B8B2B86003D4B0B /* AbstractLogCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = B83CCCF81B8B2B86003D4B0B /* AbstractLogCollector.h */; };
@@ -420,6 +421,7 @@
 		B824A22B1B148CFA0076C753 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B824A22D1B148F1A0076C753 /* KaaChannelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaChannelManager.h; sourceTree = "<group>"; };
 		B824A2331B149F050076C753 /* KaaClientState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaClientState.h; sourceTree = "<group>"; };
+		B824AB221BE0E42500436BEA /* MessageFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageFactoryTest.m; sourceTree = "<group>"; };
 		B825A9A11B5664E800D35F01 /* GenericLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericLogCollector.h; sourceTree = "<group>"; };
 		B8330C3E1B38051B00D1A573 /* GenericKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericKaaClient.h; sourceTree = "<group>"; };
 		B83CCCF81B8B2B86003D4B0B /* AbstractLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLogCollector.h; sourceTree = "<group>"; };
@@ -675,6 +677,7 @@
 		391292511BDE0FE70013F631 /* kaatcp */ = {
 			isa = PBXGroup;
 			children = (
+				B824AB221BE0E42500436BEA /* MessageFactoryTest.m */,
 				391292521BDE10210013F631 /* KaaTcpMessageTest.m */,
 			);
 			name = kaatcp;
@@ -1806,6 +1809,7 @@
 				B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */,
 				39AEB2871BBA79790045FB32 /* AvroBytesConverterTests.m in Sources */,
 				B8785E721BDE32BA00306A38 /* KAASocketTest.m in Sources */,
+				B824AB231BE0E42500436BEA /* MessageFactoryTest.m in Sources */,
 				B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */,
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391292531BDE10210013F631 /* KaaTcpMessageTest.m in Sources */,

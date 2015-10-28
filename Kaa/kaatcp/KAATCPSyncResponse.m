@@ -18,7 +18,7 @@
     self = [super initWithOldKaaSync:old];
     if (self) {
         [self setRequest:NO];
-        NSInputStream *input = [NSInputStream inputStreamWithData:self.buffer];
+        NSInputStream *input = [self remainingStream];
         [input open];
         [self decodeAvroObject:input];
         [input close];

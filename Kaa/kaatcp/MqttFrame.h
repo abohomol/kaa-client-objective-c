@@ -37,8 +37,10 @@ typedef enum {
  */
 @interface MqttFrame : NSObject
 
-@property (nonatomic) TCPMessageType messageType;
 @property (nonatomic,strong) NSMutableData *buffer;
+@property (nonatomic) NSUInteger bufferPosition;
+
+@property (nonatomic) TCPMessageType messageType;
 @property (nonatomic) BOOL frameDecodeComplete;
 /**
  * Remaining length of mqtt frame
@@ -93,5 +95,7 @@ typedef enum {
  * @throws KaaTcpProtocolException
  */
 - (MqttFrame *)upgradeFrame;
+
+- (NSInputStream *)remainingStream;
 
 @end

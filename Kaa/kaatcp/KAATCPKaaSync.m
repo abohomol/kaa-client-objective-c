@@ -51,11 +51,15 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
 
 - (void)packVeriableHeader {
     [self.buffer appendBytes:FIXED_HEADER_CONST length:sizeof(FIXED_HEADER_CONST)];
+    self.bufferPosition += sizeof(FIXED_HEADER_CONST);
     
     char mId1 = self.messageId & 0x0000FF00;
     [self.buffer appendBytes:&mId1 length:sizeof(mId1)];
+    self.bufferPosition++;
+    
     char mId2 = self.messageId & 0x000000FF;
     [self.buffer appendBytes:&mId2 length:sizeof(mId2)];
+    self.bufferPosition++;
     
     char flags = 0x00;
     if (self.request) {
@@ -69,11 +73,13 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
     }
     flags = flags | (self.kaaSyncMessageType << KAASYNC_MESSAGE_TYPE_SHIFT);
     [self.buffer appendBytes:&flags length:sizeof(flags)];
+    self.bufferPosition++;
 }
 
 - (void)decodeVariableHeader:(NSInputStream *)input {
     uint8_t header[sizeof(FIXED_HEADER_CONST)];
     [input read:header maxLength:sizeof(header)];
+    self.bufferPosition += sizeof(FIXED_HEADER_CONST);
     for (int i = 0; i < sizeof(FIXED_HEADER_CONST); i++) {
         if (header[i] != FIXED_HEADER_CONST[i]) {
             [NSException raise:@"KaaTcpProtocolException" format:@"Kaatcp protocol version missmatch"];
@@ -82,15 +88,21 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
     
     uint8_t msbByte[1];
     [input read:msbByte maxLength:sizeof(msbByte)];
+    self.bufferPosition++;
     int32_t msb = ((*(char *)msbByte) & 0xFF) << 8;
+    
     uint8_t lsbByte[1];
     [input read:lsbByte maxLength:sizeof(lsbByte)];
+    self.bufferPosition++;
     int32_t lsb = (*(char *)lsbByte) & 0xFF;
+    
     self.messageId = (msb | lsb);
     
     uint8_t flagByte[1];
     [input read:flagByte maxLength:sizeof(flagByte)];
+    self.bufferPosition++;
     char flag = *(char *)flagByte;
+    
     self.request = ((flag & 0xFF) & KAASYNC_REQUEST_FLAG) != 0;
     self.zipped = ((flag & 0xFF) & KAASYNC_ZIPPED_FLAG) != 0;
     self.encrypted = ((flag & 0xFF) & KAASYNC_ENCRYPTED_FLAG) != 0;
@@ -103,7 +115,7 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
 }
 
 - (void)decode {
-    NSInputStream *input = [NSInputStream inputStreamWithData:self.buffer];
+    NSInputStream *input = [self remainingStream];
     [input open];
     [self decodeVariableHeader:input];
     [input close];

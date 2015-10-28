@@ -33,6 +33,7 @@
     if (self) {
         _messageType = old.messageType;
         _buffer = old.buffer;
+        _bufferPosition = old.bufferPosition;
         _frameDecodeComplete = old.frameDecodeComplete;
         _remainingLength = old.remainingLength;
         _multiplier = old.multiplier;
@@ -50,7 +51,9 @@
         DDLogVerbose(@"%@ Allocating buffer size [%i]", TAG, remainingSize);
         self.buffer = [NSMutableData dataWithCapacity:remainingSize];
         [self.buffer appendData:kaaTcpHeader];
+        self.bufferPosition += kaaTcpHeader.length;
         [self pack];
+        self.bufferPosition = 0;
     }
     return self.buffer;
 }
@@ -79,6 +82,9 @@
 
 - (void)onFrameDone {
     DDLogVerbose(@"%@ Frame [%i]: payload processed", TAG, self.messageType);
+    if (self.buffer) {
+        self.bufferPosition = 0;
+    }
     [self decode];
     self.frameDecodeComplete = YES;
 }
@@ -91,6 +97,7 @@
             DDLogVerbose(@"%@ Frame [%i]: payload length: %i", TAG, self.messageType, self.remainingLength);
             if (self.remainingLength != 0) {
                 self.buffer = [NSMutableData dataWithCapacity:self.remainingLength];
+                self.bufferPosition = 0;
                 self.currentState = FRAME_PARSING_STATE_PROCESSING_PAYLOAD;
             } else {
                 [self onFrameDone];
@@ -109,7 +116,8 @@
     while (pos < bytes.length && !self.frameDecodeComplete) {
         if (self.currentState == FRAME_PARSING_STATE_PROCESSING_PAYLOAD) {
             NSUInteger bytesToCopy = (self.remainingLength > bytes.length - pos) ? bytes.length - pos : self.remainingLength;
-            [self.buffer replaceBytesInRange:NSMakeRange(pos, bytesToCopy) withBytes:[bytes bytes]];
+            [self.buffer appendData:[bytes subdataWithRange:NSMakeRange(pos, bytesToCopy)]];
+            self.bufferPosition += bytesToCopy;
             pos += bytesToCopy;
             self.remainingLength -= bytesToCopy;
             DDLogVerbose(@"%@ Frame [%i]: copied %li bytes of payload. %i bytes left",
@@ -127,6 +135,11 @@
 
 - (MqttFrame *)upgradeFrame {
     return self;
+}
+
+- (NSInputStream *)remainingStream {
+    NSRange range = NSMakeRange(self.bufferPosition, self.buffer.length - self.bufferPosition);
+    return [NSInputStream inputStreamWithData:[self.buffer subdataWithRange:range]];
 }
 
 - (NSString *)description {

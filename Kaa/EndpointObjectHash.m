@@ -50,7 +50,7 @@
     unsigned char hashedChars[20];
     CC_SHA1([data bytes], (CC_LONG)[data length], hashedChars);
     NSData *hashedData = [NSData dataWithBytes:hashedChars length:20];
-    return [[super alloc] initWithData:hashedData];
+    return [[self alloc] initWithData:hashedData];
 }
 
 - (NSUInteger)hash {

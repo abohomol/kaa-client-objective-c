@@ -54,9 +54,9 @@
 
 @interface KAATCPConnect : MqttFrame
 
-@property (nonatomic) int16_t keepAlive;                //kaatcp keep alive interval, default 200 seconds
+@property (nonatomic) uint16_t keepAlive;                //kaatcp keep alive interval, default 200 seconds
 
-@property (nonatomic) int32_t nextProtocolId;
+@property (nonatomic) uint32_t nextProtocolId;
 
 @property (nonatomic,strong) NSData *aesSessionKey;
 @property (nonatomic,strong) NSData *signature;     //Signature of aesSessionKey and endpointPublicKeyHash
@@ -65,8 +65,8 @@
 @property (nonatomic,readonly) BOOL hasSignature;
 @property (nonatomic,readonly) BOOL isEncrypted;
 
-- (instancetype)initWithAlivePeriod:(int16_t)keepAlive
-                     nextProtocolId:(int32_t)protocolId
+- (instancetype)initWithAlivePeriod:(uint16_t)keepAlive
+                     nextProtocolId:(uint32_t)protocolId
                       aesSessionKey:(NSData *)key
                         syncRequest:(NSData *)request
                           signature:(NSData *)signature;

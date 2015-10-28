@@ -29,9 +29,12 @@
 
 - (void)pack {
     char zero = 0;
-    char reason = self.reason;
     [self.buffer appendBytes:&zero length:sizeof(char)];
+    self.bufferPosition++;
+    
+    char reason = self.reason;
     [self.buffer appendBytes:&reason length:sizeof(char)];
+    self.bufferPosition++;
 }
 
 - (void)decode {

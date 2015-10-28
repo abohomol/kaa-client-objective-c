@@ -33,7 +33,9 @@
     char zero = 0;
     char code = self.returnCode;
     [self.buffer appendBytes:&zero length:sizeof(char)];
+    self.bufferPosition += sizeof(char);
     [self.buffer appendBytes:&code length:sizeof(char)];
+    self.bufferPosition += sizeof(char);
 }
 
 - (void)decode {
