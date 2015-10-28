@@ -52,14 +52,10 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
 - (void)packVeriableHeader {
     [self.buffer appendBytes:FIXED_HEADER_CONST length:sizeof(FIXED_HEADER_CONST)];
     self.bufferPosition += sizeof(FIXED_HEADER_CONST);
-    
-    char mId1 = self.messageId & 0x0000FF00;
-    [self.buffer appendBytes:&mId1 length:sizeof(mId1)];
-    self.bufferPosition++;
-    
-    char mId2 = self.messageId & 0x000000FF;
-    [self.buffer appendBytes:&mId2 length:sizeof(mId2)];
-    self.bufferPosition++;
+
+    uint16_t messageId = htons(self.messageId);
+    [self.buffer appendBytes:&messageId length:sizeof(messageId)];
+    self.bufferPosition += sizeof(messageId);
     
     char flags = 0x00;
     if (self.request) {
@@ -86,17 +82,10 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
         }
     }
     
-    uint8_t msbByte[1];
-    [input read:msbByte maxLength:sizeof(msbByte)];
-    self.bufferPosition++;
-    int32_t msb = ((*(char *)msbByte) & 0xFF) << 8;
-    
-    uint8_t lsbByte[1];
-    [input read:lsbByte maxLength:sizeof(lsbByte)];
-    self.bufferPosition++;
-    int32_t lsb = (*(char *)lsbByte) & 0xFF;
-    
-    self.messageId = (msb | lsb);
+    uint8_t messageId[2];
+    [input read:messageId maxLength:sizeof(messageId)];
+    self.bufferPosition += sizeof(messageId);
+    self.messageId = ntohs(*(uint16_t *)messageId);
     
     uint8_t flagByte[1];
     [input read:flagByte maxLength:sizeof(flagByte)];

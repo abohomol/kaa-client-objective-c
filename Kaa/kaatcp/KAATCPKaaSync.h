@@ -74,7 +74,7 @@ typedef enum {
 
 @interface KAATCPKaaSync : MqttFrame
 
-@property (nonatomic) int messageId;                            //message id if used, default 0
+@property (nonatomic) uint16_t messageId;                            //message id if used, default 0
 @property (nonatomic) BOOL request;                             //Request/Response (bit 0) 1 - request, 0 - response
 @property (nonatomic) BOOL zipped;                              //Zipped (bit 1) 1 - zipped, 0 - unzipped
 @property (nonatomic) BOOL encrypted;                           //Encrypted(bit 2) 1 - encrypted, 0 - not encrypted
