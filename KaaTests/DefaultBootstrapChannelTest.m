@@ -175,7 +175,7 @@
 
 #pragma mark - Supporting methods
 
-- (NSData *) returnData {
+- (NSData *)returnData {
     NSInteger five = 5;
     NSMutableData *data = [NSMutableData dataWithBytes:&five length:sizeof(five)];
     [data appendBytes:&five length:sizeof(five)];
@@ -183,18 +183,18 @@
     return data;
 }
 
-- (id<TransportConnectionInfo>) createTestServerInfoWithServerType:(ServerType)serverType transportProtocolId:(TransportProtocolId *)TPid host:(NSString *)host port:(NSUInteger)port andPublicKey:(NSData *)publicKey {
+- (id<TransportConnectionInfo>) createTestServerInfoWithServerType:(ServerType)serverType transportProtocolId:(TransportProtocolId *)TPid host:(NSString *)host port:(uint32_t)port andPublicKey:(NSData *)publicKey {
     ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
     md = [self buildMetaDataWithTPid:TPid host:host port:port andPublicKey:publicKey];
     return  [[GenericTransportInfo alloc] initWithServerType:serverType andMeta:md];
 }
 
-- (ProtocolMetaData *) buildMetaDataWithTPid:(TransportProtocolId *)TPid
+- (ProtocolMetaData *)buildMetaDataWithTPid:(TransportProtocolId *)TPid
                                         host:(NSString *)host
-                                        port:(NSUInteger)port
+                                        port:(uint32_t)port
                                 andPublicKey:(NSData *)publicKey {
-    NSUInteger publicKeyLength = [publicKey length];
-    NSUInteger hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    uint32_t publicKeyLength = [publicKey length];
+    uint32_t hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *data = [NSMutableData data];
     ProtocolVersionPair *pair = [[ProtocolVersionPair alloc]init];
     [pair setId:TPid.protocolId];

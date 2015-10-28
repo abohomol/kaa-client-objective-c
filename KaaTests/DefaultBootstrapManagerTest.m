@@ -225,10 +225,10 @@
 
 - (ProtocolMetaData *) buildMetaDataWithTPid:(TransportProtocolId *)TPid
                                         host:(NSString *)host
-                                        port:(NSUInteger)port
+                                        port:(uint32_t)port
                                 andPublicKey:(NSData *)publicKey {
-    NSUInteger publicKeyLength = [publicKey length];
-    NSUInteger hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    uint32_t publicKeyLength = [publicKey length];
+    uint32_t hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *data = [NSMutableData data];
     ProtocolVersionPair *pair = [[ProtocolVersionPair alloc]init];
     [pair setId:TPid.protocolId];

@@ -28,32 +28,30 @@
     meta.protocolVersionInfo = info;
     self = [super initWithServerType:[parent serverType] andMeta:meta];
     if (self) {
-        int pointStart = 0;
-        int len = sizeof(NSUInteger);
-        NSUInteger length = 0;
-        NSData *lengthData = [NSData data];
+        NSInputStream *input = [NSInputStream inputStreamWithData:super.meta.connectionInfo];
+        [input open];
         
-        lengthData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
-        [lengthData getBytes:&length length:sizeof(NSUInteger)];
-        pointStart += len;
-        len = (int)length;
+        uint8_t keySizeBytes[sizeof(uint32_t)];
+        [input read:keySizeBytes maxLength:sizeof(uint32_t)];
+        uint32_t keySize = *(uint32_t *)keySizeBytes;
         
-        self.publicKey = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
-        pointStart += len;
-        len = sizeof(NSUInteger);
+        uint8_t key[keySize];
+        [input read:key maxLength:sizeof(key)];
+        self.publicKey = [NSData dataWithBytes:key length:sizeof(key)];
         
-        lengthData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
-        [lengthData getBytes:&length length:sizeof(NSUInteger)];
-        pointStart += len;
-        len = (int)length;
+        uint8_t hostSizeBytes[sizeof(uint32_t)];
+        [input read:hostSizeBytes maxLength:sizeof(uint32_t)];
+        uint32_t hostSize = *(uint32_t *)hostSizeBytes;
         
-        NSData *hostData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
-        self.host = [[NSString alloc] initWithData:hostData encoding:NSUTF8StringEncoding];
-        pointStart += len;
-        len = sizeof(NSUInteger);
+        uint8_t host[hostSize];
+        [input read:host maxLength:sizeof(host)];
+        self.host = [[NSString alloc] initWithBytes:host length:sizeof(host) encoding:NSUTF8StringEncoding];
         
-        NSData *portData = [super.meta.connectionInfo subdataWithRange:NSMakeRange(pointStart, len)];
-        self.port = *(int*)([portData bytes]);
+        uint8_t portBytes[sizeof(uint32_t)];
+        [input read:portBytes maxLength:sizeof(uint32_t)];
+        self.port = *(uint32_t *)portBytes;
+        
+        [input close];
     }
     return self;
 }

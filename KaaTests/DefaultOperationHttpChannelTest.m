@@ -150,7 +150,7 @@ static NSDictionary *SUPPORTED_TYPES;
 
 #pragma mark - Supporting methods 
 
-- (id<TransportConnectionInfo>) createTestServerInfoWithServerType:(ServerType)serverType transportProtocolId:(TransportProtocolId *)TPid host:(NSString *)host port:(NSUInteger)port andPublicKey:(NSData *)publicKey {
+- (id<TransportConnectionInfo>) createTestServerInfoWithServerType:(ServerType)serverType transportProtocolId:(TransportProtocolId *)TPid host:(NSString *)host port:(uint32_t)port andPublicKey:(NSData *)publicKey {
     ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
     md = [self buildMetaDataWithTPid:TPid host:host port:port andPublicKey:publicKey];
     return  [[GenericTransportInfo alloc] initWithServerType:serverType andMeta:md];
@@ -158,10 +158,10 @@ static NSDictionary *SUPPORTED_TYPES;
 
 - (ProtocolMetaData *) buildMetaDataWithTPid:(TransportProtocolId *)TPid
                                         host:(NSString *)host
-                                        port:(NSUInteger)port
+                                        port:(uint32_t)port
                                 andPublicKey:(NSData *)publicKey {
-    NSUInteger publicKeyLength = [publicKey length];
-    NSUInteger hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    uint32_t publicKeyLength = [publicKey length];
+    uint32_t hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
     NSMutableData *data = [NSMutableData data];
     ProtocolVersionPair *pair = [[ProtocolVersionPair alloc]init];
     [pair setId:TPid.protocolId];
