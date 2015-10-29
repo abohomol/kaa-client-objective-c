@@ -208,7 +208,7 @@
     
     ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
     [md setConnectionInfo:data];
-    [md setAccessPointId:[[NSString stringWithFormat:@"%@:%lu", host, (unsigned long)port] hash]];
+    [md setAccessPointId:[[NSString stringWithFormat:@"%@:%i", host, port] hash]];
     [md setProtocolVersionInfo:pair];
     return md;
 }

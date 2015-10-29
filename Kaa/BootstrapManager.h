@@ -39,7 +39,7 @@
  *
  * @param accessPointId endpoint's DNS.
  */
-- (void)useNextOperationsServerByAccessPointId:(NSInteger)accessPointId;
+- (void)useNextOperationsServerByAccessPointId:(int)accessPointId;
 
 /**
  * Sets bootstrap transport object.
