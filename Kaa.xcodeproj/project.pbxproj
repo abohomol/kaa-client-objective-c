@@ -668,14 +668,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		391292501BDE0FD50013F631 /* impl */ = {
-			isa = PBXGroup;
-			children = (
-				391292511BDE0FE70013F631 /* kaatcp */,
-			);
-			name = impl;
-			sourceTree = "<group>";
-		};
 		391292511BDE0FE70013F631 /* kaatcp */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +926,7 @@
 				39FF8B0E1BCD49BE00666D1F /* transport */,
 				B8A066B11BCBE01B00F4E357 /* avro */,
 				B81B98BD1BC7A27600C2DFF4 /* security */,
+				391292511BDE0FE70013F631 /* kaatcp */,
 				B8C10A1A1BC2DE00001A2236 /* channel */,
 				B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */,
 				391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */,
@@ -1293,7 +1286,6 @@
 		B8C10A1A1BC2DE00001A2236 /* channel */ = {
 			isa = PBXGroup;
 			children = (
-				391292501BDE0FD50013F631 /* impl */,
 				39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */,
 				B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */,
 				3933312A1BD61F36003BCC45 /* DefaultBootstrapChannelTest.m */,
