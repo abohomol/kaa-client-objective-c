@@ -22,7 +22,7 @@
 - (instancetype)initWithData:(NSData *)data {
     self = [super init];
     if (self) {
-        _data = [[NSData data] initWithData:data];
+        _data = [NSData dataWithData:data];
     }
     return self;
 }
