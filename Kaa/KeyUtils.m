@@ -162,11 +162,7 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
         return NULL;
     }
     
-    [peerPublicKeyAttr removeObjectForKey:(__bridge id)kSecValueData];
-    [peerPublicKeyAttr setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnRef];
-    sanityCheck = SecItemCopyMatching((__bridge CFDictionaryRef) peerPublicKeyAttr, (CFTypeRef *)&remoteKeyRef);
-    DDLogDebug(@"%@ Getting key ref for stored key. OSStatus: %i", TAG, (int)sanityCheck);
-    
+    remoteKeyRef = [self getKeyRefByTag:tag];
     if (remoteKeyRef == NULL && persistPeer) {
         remoteKeyRef = [KeyUtils getKeyRefWithPersistentKeyRef:persistPeer];
     }
