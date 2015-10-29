@@ -27,6 +27,162 @@
 		3933313B1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */; settings = {ASSET_TAGS = (); }; };
 		3933313D1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */; settings = {ASSET_TAGS = (); }; };
 		398CDBEB1BE0FAEE00D31E34 /* DefaultOperationTcpChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CDBEA1BE0FAEE00D31E34 /* DefaultOperationTcpChannelTest.m */; settings = {ASSET_TAGS = (); }; };
+		398CE8E11BE26E0000D31E34 /* avro_private.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622C1BB5BAD4009826FC /* avro_private.h */; };
+		398CE8E21BE26E0000D31E34 /* encoding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622D1BB5BAD4009826FC /* encoding.h */; };
+		398CE8E31BE26E0000D31E34 /* encoding_binary.c in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622E1BB5BAD4009826FC /* encoding_binary.c */; };
+		398CE8E41BE26E0000D31E34 /* io.c in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622F1BB5BAD4009826FC /* io.c */; };
+		398CE8E51BE26E0000D31E34 /* KAAConfiguration.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85447E81BD51ECA000889BF /* KAAConfiguration.h */; };
+		398CE8E61BE26E0000D31E34 /* KAALog.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85447EA1BD51ECA000889BF /* KAALog.h */; };
+		398CE8E71BE26E0000D31E34 /* KAANotification.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85447EC1BD51ECA000889BF /* KAANotification.h */; };
+		398CE8E81BE26E0000D31E34 /* KAAProfile.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85447EE1BD51ECA000889BF /* KAAProfile.h */; };
+		398CE8E91BE26E0000D31E34 /* EndpointGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B86D7F0A1BA2BD4700563592 /* EndpointGen.h */; };
+		398CE8EA1BE26E0000D31E34 /* AvroUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B863B3291B3D7B3D00E58F50 /* AvroUtils.h */; };
+		398CE8EB1BE26E0000D31E34 /* AvroBased.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B878C2961B45730700453947 /* AvroBased.h */; };
+		398CE8EC1BE26E0000D31E34 /* AvroBytesConverter.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8D47D861B4FF8490003BAF3 /* AvroBytesConverter.h */; };
+		398CE8ED1BE26E0000D31E34 /* KAAUnion.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B878C29A1B45773E00453947 /* KAAUnion.h */; };
+		398CE8EE1BE26E0000D31E34 /* BootstrapManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B856C0021B90C7B100A9F65D /* BootstrapManager.h */; };
+		398CE8EF1BE26E0000D31E34 /* DefaultBootstrapManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B856C0061B9337F700A9F65D /* DefaultBootstrapManager.h */; };
+		398CE8F01BE26E0000D31E34 /* ExecutorContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */; };
+		398CE8F11BE26E0000D31E34 /* TransportContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88836261BA09A5F00ACAB4F /* TransportContext.h */; };
+		398CE8F21BE26E0000D31E34 /* AbstractExecutorContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 39E404CF1BBC31F900A5B833 /* AbstractExecutorContext.h */; };
+		398CE8F31BE26E0000D31E34 /* SimpleExecutorContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */; };
+		398CE8F41BE26E0000D31E34 /* SingleThreadExecutorContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */; };
+		398CE8F51BE26E0000D31E34 /* MqttFrame.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA631BDA479D0016A721 /* MqttFrame.h */; };
+		398CE8F61BE26E0000D31E34 /* KAATCPConnAck.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA6F1BDA65B80016A721 /* KAATCPConnAck.h */; };
+		398CE8F71BE26E0000D31E34 /* KAATCPConnect.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA731BDA71F70016A721 /* KAATCPConnect.h */; };
+		398CE8F81BE26E0000D31E34 /* KAATCPDisconnect.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA771BDAE9D10016A721 /* KAATCPDisconnect.h */; };
+		398CE8F91BE26E0000D31E34 /* KAATCPKaaSync.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA7B1BDAEC3D0016A721 /* KAATCPKaaSync.h */; };
+		398CE8FA1BE26E0000D31E34 /* KAATCPSync.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA7F1BDBAA4B0016A721 /* KAATCPSync.h */; };
+		398CE8FB1BE26E0000D31E34 /* KAATCPSyncResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA831BDBAEE00016A721 /* KAATCPSyncResponse.h */; };
+		398CE8FC1BE26E0000D31E34 /* KAATCPSyncRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA871BDBB4170016A721 /* KAATCPSyncRequest.h */; };
+		398CE8FD1BE26E0000D31E34 /* KAATCPPingRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA8B1BDBB56E0016A721 /* KAATCPPingRequest.h */; };
+		398CE8FE1BE26E0000D31E34 /* KAATCPPingResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA8F1BDBB6590016A721 /* KAATCPPingResponse.h */; };
+		398CE8FF1BE26E0000D31E34 /* TCPDelegates.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* TCPDelegates.h */; };
+		398CE9001BE26E0000D31E34 /* Framer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA671BDA5D1D0016A721 /* Framer.h */; };
+		398CE9011BE26E0000D31E34 /* MessageFactory.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA941BDBB8CA0016A721 /* MessageFactory.h */; };
+		398CE9021BE26E0000D31E34 /* ConnectivityChecker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2231B1489FE0076C753 /* ConnectivityChecker.h */; };
+		398CE9031BE26E0000D31E34 /* HttpRequestCreator.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A13B0F1BB0198F00265729 /* HttpRequestCreator.h */; };
+		398CE9041BE26E0000D31E34 /* AbstractHttpChannel.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A13B171BB0221B00265729 /* AbstractHttpChannel.h */; };
+		398CE9051BE26E0000D31E34 /* DefaultBootstrapChannel.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85B33C71BB04B1300B5785F /* DefaultBootstrapChannel.h */; };
+		398CE9061BE26E0000D31E34 /* DefaultOperationTcpChannel.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8E5A0B51BDD2BAF008E9066 /* DefaultOperationTcpChannel.h */; };
+		398CE9071BE26E0000D31E34 /* DefaultOperationHttpChannel.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8DBE3521BB073040036058B /* DefaultOperationHttpChannel.h */; };
+		398CE9081BE26E0000D31E34 /* KAASocket.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8E5A0B71BDD2BAF008E9066 /* KAASocket.h */; };
+		398CE9091BE26E0000D31E34 /* AbstractKaaTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B840CF381B172B75001D0F74 /* AbstractKaaTransport.h */; };
+		398CE90A1BE26E0000D31E34 /* DefaultBootstrapTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A8DFA11BA03BA0002CEF3E /* DefaultBootstrapTransport.h */; };
+		398CE90B1BE26E0000D31E34 /* DefaultConfigurationTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88D00B71BA88533002E0144 /* DefaultConfigurationTransport.h */; };
+		398CE90C1BE26E0000D31E34 /* DefaultEventTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88D00BF1BA8AE9F002E0144 /* DefaultEventTransport.h */; };
+		398CE90D1BE26E0000D31E34 /* DefaultLogTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88D00B31BA8835D002E0144 /* DefaultLogTransport.h */; };
+		398CE90E1BE26E0000D31E34 /* DefaultMetaDataTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8B8ED211BA2D0640067BC4C /* DefaultMetaDataTransport.h */; };
+		398CE90F1BE26E0000D31E34 /* DefaultNotificationTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81C0DCC1BAB1C970038CCA0 /* DefaultNotificationTransport.h */; };
+		398CE9101BE26E0000D31E34 /* DefaultProfileTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88D00BB1BA88CAD002E0144 /* DefaultProfileTransport.h */; };
+		398CE9111BE26E0000D31E34 /* DefaultRedirectionTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88D00AF1BA87F8D002E0144 /* DefaultRedirectionTransport.h */; };
+		398CE9121BE26E0000D31E34 /* DefaultUserTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88836301BA17C0100ACAB4F /* DefaultUserTransport.h */; };
+		398CE9131BE26E0000D31E34 /* SyncTask.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A8DF9B1BA02878002CEF3E /* SyncTask.h */; };
+		398CE9141BE26E0000D31E34 /* DefaultChannelManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8B8ED251BA2D43C0067BC4C /* DefaultChannelManager.h */; };
+		398CE9151BE26E0000D31E34 /* DefaultBootstrapDataProcessor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A13B031BAFE47A00265729 /* DefaultBootstrapDataProcessor.h */; };
+		398CE9161BE26E0000D31E34 /* DefaultOperationDataProcessor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A13B071BAFE93A00265729 /* DefaultOperationDataProcessor.h */; };
+		398CE9171BE26E0000D31E34 /* DefaultFailoverManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8DBE3561BB138550036058B /* DefaultFailoverManager.h */; };
+		398CE9181BE26E0000D31E34 /* TransportCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2081B1457CE0076C753 /* TransportCommon.h */; };
+		398CE9191BE26E0000D31E34 /* KaaTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2091B1457FC0076C753 /* KaaTransport.h */; };
+		398CE91A1BE26E0000D31E34 /* BootstrapTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8D8EF401B9078FA0088F227 /* BootstrapTransport.h */; };
+		398CE91B1BE26E0000D31E34 /* ConfigurationTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B888362E1BA09C2500ACAB4F /* ConfigurationTransport.h */; };
+		398CE91C1BE26E0000D31E34 /* LogTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8C055CC1B57ACD500F5AA1C /* LogTransport.h */; };
+		398CE91D1BE26E0000D31E34 /* EventTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B876299D1B8CD2C6006AD5EF /* EventTransport.h */; };
+		398CE91E1BE26E0000D31E34 /* MetaDataTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A8DF951B9F468B002CEF3E /* MetaDataTransport.h */; };
+		398CE91F1BE26E0000D31E34 /* NotificationTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8E68AA21B8E241A00EE1065 /* NotificationTransport.h */; };
+		398CE9201BE26E0000D31E34 /* ProfileTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B84822841B8DB031004E370B /* ProfileTransport.h */; };
+		398CE9211BE26E0000D31E34 /* RedirectionTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B803FD3A1B9EF65600187E61 /* RedirectionTransport.h */; };
+		398CE9221BE26E0000D31E34 /* UserTransport.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8FC094E1B904BD2002109A4 /* UserTransport.h */; };
+		398CE9231BE26E0000D31E34 /* KaaDataChannel.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A20E1B145A7C0076C753 /* KaaDataChannel.h */; };
+		398CE9241BE26E0000D31E34 /* TransportProtocolId.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2161B1461DC0076C753 /* TransportProtocolId.h */; };
+		398CE9251BE26E0000D31E34 /* KaaDataDemultiplexer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A21E1B146A300076C753 /* KaaDataDemultiplexer.h */; };
+		398CE9261BE26E0000D31E34 /* KaaDataMultiplexer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2201B14831F0076C753 /* KaaDataMultiplexer.h */; };
+		398CE9271BE26E0000D31E34 /* TransportConnectionInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2211B1488830076C753 /* TransportConnectionInfo.h */; };
+		398CE9281BE26E0000D31E34 /* KaaChannelManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A22D1B148F1A0076C753 /* KaaChannelManager.h */; };
+		398CE9291BE26E0000D31E34 /* FailoverManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8C055C11B56B9ED00F5AA1C /* FailoverManager.h */; };
+		398CE92A1BE26E0000D31E34 /* FailoverDecision.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8C055C31B56BB2A00F5AA1C /* FailoverDecision.h */; };
+		398CE92B1BE26E0000D31E34 /* GenericTransportInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */; };
+		398CE92C1BE26E0000D31E34 /* KaaInternalChannelManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B856C0041B90D4C000A9F65D /* KaaInternalChannelManager.h */; };
+		398CE92D1BE26E0000D31E34 /* TransportProtocolIdHolder.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B803FD361B9EF52300187E61 /* TransportProtocolIdHolder.h */; };
+		398CE92E1BE26E0000D31E34 /* IPTransportInfo.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A8DF971B9F4871002CEF3E /* IPTransportInfo.h */; };
+		398CE92F1BE26E0000D31E34 /* ConfigurationStorage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81161121B4BBB3D00C4E0C6 /* ConfigurationStorage.h */; };
+		398CE9301BE26E0000D31E34 /* ConfigurationPersistenceManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */; };
+		398CE9311BE26E0000D31E34 /* SimpleConfigurationStorage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */; };
+		398CE9321BE26E0000D31E34 /* ConfigurationCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B803F8ED1B7A5AA2009C2C28 /* ConfigurationCommon.h */; };
+		398CE9331BE26E0000D31E34 /* ConfigurationDeserializer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B803F8EF1B7A5C86009C2C28 /* ConfigurationDeserializer.h */; };
+		398CE9341BE26E0000D31E34 /* ResyncConfigurationManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */; };
+		398CE9351BE26E0000D31E34 /* AbstractConfigurationManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85E35641B860218008B663E /* AbstractConfigurationManager.h */; };
+		398CE9361BE26E0000D31E34 /* EndpointRegistrationManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B811612B1B4BD45200C4E0C6 /* EndpointRegistrationManager.h */; };
+		398CE9371BE26E0000D31E34 /* EndpointRegistrationProcessor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B876298D1B8CB45B006AD5EF /* EndpointRegistrationProcessor.h */; };
+		398CE9381BE26E0000D31E34 /* DefaultEndpointRegistrationManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */; };
+		398CE9391BE26E0000D31E34 /* EventManger.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B876298F1B8CB660006AD5EF /* EventManger.h */; };
+		398CE93A1BE26E0000D31E34 /* EndpointKeyHash.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81935BB1B15CC7C0053486A /* EndpointKeyHash.h */; };
+		398CE93B1BE26E0000D31E34 /* EndpointAccessToken.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B840CF331B172016001D0F74 /* EndpointAccessToken.h */; };
+		398CE93C1BE26E0100D31E34 /* BaseEventFamily.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87629911B8CC595006AD5EF /* BaseEventFamily.h */; };
+		398CE93D1BE26E0100D31E34 /* UserVerifierConstants.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87629931B8CCD45006AD5EF /* UserVerifierConstants.h */; };
+		398CE93E1BE26E0100D31E34 /* DefaultEventManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87629951B8CCFD5006AD5EF /* DefaultEventManager.h */; };
+		398CE93F1BE26E0100D31E34 /* EventListenersRequestBinding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87629991B8CD026006AD5EF /* EventListenersRequestBinding.h */; };
+		398CE9401BE26E0100D31E34 /* EventFamilyFactory.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85447E41BD51EA9000889BF /* EventFamilyFactory.h */; };
+		398CE9411BE26E0100D31E34 /* NotificationTopicListDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81161151B4BC23A00C4E0C6 /* NotificationTopicListDelegate.h */; };
+		398CE9421BE26E0100D31E34 /* NotificationProcessor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B84822861B8DB368004E370B /* NotificationProcessor.h */; };
+		398CE9431BE26E0100D31E34 /* NotificationManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B84822881B8DBB05004E370B /* NotificationManager.h */; };
+		398CE9441BE26E0100D31E34 /* NotificationCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B848228A1B8DBB54004E370B /* NotificationCommon.h */; };
+		398CE9451BE26E0100D31E34 /* DefaultNotificationManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B848228E1B8DC269004E370B /* DefaultNotificationManager.h */; };
+		398CE9461BE26E0100D31E34 /* PeriodicLogUploadStrategy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; };
+		398CE9471BE26E0100D31E34 /* RecordCountLogUploadStrategy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; };
+		398CE9481BE26E0100D31E34 /* RecordCountWithTimeLimitLogUploadStrategy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 39AEB2741BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.h */; };
+		398CE9491BE26E0100D31E34 /* StorageSizeLogUploadStrategy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 39AEB2761BBA6A3E0045FB32 /* StorageSizeLogUploadStrategy.h */; };
+		398CE94A1BE26E0100D31E34 /* StorageSizeWithTimeLimitLogUploadStrategy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 39AEB2781BBA6A3E0045FB32 /* StorageSizeWithTimeLimitLogUploadStrategy.h */; };
+		398CE94B1BE26E0100D31E34 /* MemBucket.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B83CCD011B8B37DF003D4B0B /* MemBucket.h */; };
+		398CE94C1BE26E0100D31E34 /* MemLogStorage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B83CCD091B8B52CE003D4B0B /* MemLogStorage.h */; };
+		398CE94D1BE26E0100D31E34 /* LogStorage.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81161191B4BC5B700C4E0C6 /* LogStorage.h */; };
+		398CE94E1BE26E0100D31E34 /* LogBlock.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B811611D1B4BC75100C4E0C6 /* LogBlock.h */; };
+		398CE94F1BE26E0100D31E34 /* LogUploadStrategy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81161211B4BCCEC00C4E0C6 /* LogUploadStrategy.h */; };
+		398CE9501BE26E0100D31E34 /* AccessPointCommand.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81161231B4BCFA100C4E0C6 /* AccessPointCommand.h */; };
+		398CE9511BE26E0100D31E34 /* LogFailoverCommand.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81161251B4BCFF600C4E0C6 /* LogFailoverCommand.h */; };
+		398CE9521BE26E0100D31E34 /* GenericLogCollector.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B825A9A11B5664E800D35F01 /* GenericLogCollector.h */; };
+		398CE9531BE26E0100D31E34 /* AbstractLogCollector.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B83CCCF81B8B2B86003D4B0B /* AbstractLogCollector.h */; };
+		398CE9541BE26E0100D31E34 /* DefaultLogUploadStrategy.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B83CCCFC1B8B30A2003D4B0B /* DefaultLogUploadStrategy.h */; };
+		398CE9551BE26E0100D31E34 /* DefaultLogCollector.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B83CCD051B8B3F96003D4B0B /* DefaultLogCollector.h */; };
+		398CE9561BE26E0100D31E34 /* LogRecord.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88836341BA1F15000ACAB4F /* LogRecord.h */; };
+		398CE9571BE26E0100D31E34 /* LogCollector.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88836381BA1F1FD00ACAB4F /* LogCollector.h */; };
+		398CE9581BE26E0100D31E34 /* ProfileManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B84822791B8DAE78004E370B /* ProfileManager.h */; };
+		398CE9591BE26E0100D31E34 /* ProfileCommon.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B848227C1B8DAECA004E370B /* ProfileCommon.h */; };
+		398CE95A1BE26E0100D31E34 /* DefaultProfileManager.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B84822801B8DAFC0004E370B /* DefaultProfileManager.h */; };
+		398CE95B1BE26E0100D31E34 /* KaaClientState.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2331B149F050076C753 /* KaaClientState.h */; };
+		398CE95C1BE26E0100D31E34 /* KaaClientPropertiesState.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B856EFB11B9C82CC00C065D9 /* KaaClientPropertiesState.h */; };
+		398CE95D1BE26E0100D31E34 /* EndpointObjectHash.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B81935C11B15D0660053486A /* EndpointObjectHash.h */; };
+		398CE95E1BE26E0100D31E34 /* Constants.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A13B131BB019CB00265729 /* Constants.h */; };
+		398CE95F1BE26E0100D31E34 /* CommonEPConstants.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A13B151BB01AD000265729 /* CommonEPConstants.h */; };
+		398CE9601BE26E0100D31E34 /* TimeCommons.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8DBE35A1BB139200036058B /* TimeCommons.h */; };
+		398CE9611BE26E0100D31E34 /* KAABase64.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8B4CDC31B8215C4007FE20D /* KAABase64.h */; };
+		398CE9621BE26E0100D31E34 /* NSString+Commons.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8C8BD351B83153400D2C016 /* NSString+Commons.h */; };
+		398CE9631BE26E0100D31E34 /* SHAMessageDigest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8D415AD1B8476A600B0D551 /* SHAMessageDigest.h */; };
+		398CE9641BE26E0100D31E34 /* NSMutableArray+Shuffling.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B856C00A1B9360EB00A9F65D /* NSMutableArray+Shuffling.h */; };
+		398CE9651BE26E0100D31E34 /* UUID.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B856EFB51B9D61D200C065D9 /* UUID.h */; };
+		398CE9661BE26E0100D31E34 /* BlockingQueue.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8807C1A1BA33B0F00F78BFC /* BlockingQueue.h */; };
+		398CE9671BE26E0100D31E34 /* SchemaProcessor.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B888362B1BA09B5000ACAB4F /* SchemaProcessor.h */; };
+		398CE9681BE26E0100D31E34 /* KeyUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8D1D1081B9442940097E64A /* KeyUtils.h */; };
+		398CE9691BE26E0100D31E34 /* KeyPair.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8D1D10C1B945FF10097E64A /* KeyPair.h */; };
+		398CE96A1BE26E0100D31E34 /* MessageEncoderDecoder.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87D498C1B94AF0300AD7CFC /* MessageEncoderDecoder.h */; };
+		398CE96B1BE26E0100D31E34 /* NSData+CommonCrypto.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87A742E1B95AF120052858F /* NSData+CommonCrypto.h */; };
+		398CE96C1BE26E0100D31E34 /* NSData+Conversion.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87A74321B95BBDC0052858F /* NSData+Conversion.h */; };
+		398CE96D1BE26E0100D31E34 /* TransactionId.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B83CCD171B8CAB3B003D4B0B /* TransactionId.h */; };
+		398CE96E1BE26E0100D31E34 /* Transactable.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B876298A1B8CAF5E006AD5EF /* Transactable.h */; };
+		398CE96F1BE26E0100D31E34 /* AbstractHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8FBD9F21B9E02DB009A2BA3 /* AbstractHttpClient.h */; };
+		398CE9701BE26E0100D31E34 /* DefaultHttpClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8DBE35C1BB1448D0036058B /* DefaultHttpClient.h */; };
+		398CE9711BE26E0100D31E34 /* BaseKaaClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8F14E221BD8E200001D1B02 /* BaseKaaClient.h */; };
+		398CE9721BE26E0100D31E34 /* GenericKaaClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8330C3E1B38051B00D1A573 /* GenericKaaClient.h */; };
+		398CE9731BE26E0100D31E34 /* KaaClientProperties.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8B4CDBF1B8213C0007FE20D /* KaaClientProperties.h */; };
+		398CE9741BE26E0100D31E34 /* KaaClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87629A31B8DA6DF006AD5EF /* KaaClient.h */; };
+		398CE9751BE26E0100D31E34 /* KaaClientPlatformContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8FBD9F61B9E35B4009A2BA3 /* KaaClientPlatformContext.h */; };
+		398CE9761BE26E0100D31E34 /* AbstractKaaClient.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B888361E1BA0930600ACAB4F /* AbstractKaaClient.h */; };
+		398CE9771BE26E0100D31E34 /* AbstractKaaClient.m in Copy Files */ = {isa = PBXBuildFile; fileRef = B888361F1BA0930600ACAB4F /* AbstractKaaClient.m */; };
+		398CE9781BE26E0100D31E34 /* KaaClientStateDelegate.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B88836241BA0981C00ACAB4F /* KaaClientStateDelegate.h */; };
+		398CE9791BE26E0100D31E34 /* KaaLogging.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844623A1BB5C377009826FC /* KaaLogging.h */; };
+		398CE97A1BE26E2C00D31E34 /* platform.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622B1BB5BAD4009826FC /* platform.h */; };
+		398CE97B1BE26E8300D31E34 /* io.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622A1BB5BAD4009826FC /* io.h */; };
+		398CE97C1BE26E8300D31E34 /* EventDelegates.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B876298B1B8CB28C006AD5EF /* EventDelegates.h */; };
 		39AEB27A1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
 		39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */; settings = {ASSET_TAGS = (); }; };
 		39AEB27C1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h in Headers */ = {isa = PBXBuildFile; fileRef = 39AEB2721BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.h */; settings = {ASSET_TAGS = (); }; };
@@ -76,10 +232,10 @@
 		B81B98BF1BC7A29100C2DFF4 /* KeyUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B81B98BE1BC7A29100C2DFF4 /* KeyUtilsTests.m */; settings = {ASSET_TAGS = (); }; };
 		B81C0DCE1BAB1C970038CCA0 /* DefaultNotificationTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B81C0DCC1BAB1C970038CCA0 /* DefaultNotificationTransport.h */; };
 		B81C0DCF1BAB1C970038CCA0 /* DefaultNotificationTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = B81C0DCD1BAB1C970038CCA0 /* DefaultNotificationTransport.m */; };
-		B824A1EF1B1452C50076C753 /* Kaa.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = B824A1EE1B1452C50076C753 /* Kaa.h */; };
+		B824A1EF1B1452C50076C753 /* Kaa.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A1EE1B1452C50076C753 /* Kaa.h */; };
 		B824A1F11B1452C50076C753 /* Kaa.m in Sources */ = {isa = PBXBuildFile; fileRef = B824A1F01B1452C50076C753 /* Kaa.m */; };
 		B824A1F71B1452C50076C753 /* libKaa.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B824A1EB1B1452C50076C753 /* libKaa.a */; };
-		B824A20B1B1458AE0076C753 /* Kaa.h in Headers */ = {isa = PBXBuildFile; fileRef = B824A1EE1B1452C50076C753 /* Kaa.h */; };
+		B824A20B1B1458AE0076C753 /* Kaa.h in Headers */ = {isa = PBXBuildFile; fileRef = B824A1EE1B1452C50076C753 /* Kaa.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B824A20C1B1458C90076C753 /* TransportCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = B824A2081B1457CE0076C753 /* TransportCommon.h */; };
 		B824A20D1B1458CC0076C753 /* KaaTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B824A2091B1457FC0076C753 /* KaaTransport.h */; };
 		B824A20F1B145A7C0076C753 /* KaaDataChannel.h in Headers */ = {isa = PBXBuildFile; fileRef = B824A20E1B145A7C0076C753 /* KaaDataChannel.h */; };
@@ -320,14 +476,171 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B824A1E91B1452C50076C753 /* CopyFiles */ = {
+		B824A1E91B1452C50076C753 /* Copy Files */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				B824A1EF1B1452C50076C753 /* Kaa.h in CopyFiles */,
+				398CE97B1BE26E8300D31E34 /* io.h in Copy Files */,
+				398CE97C1BE26E8300D31E34 /* EventDelegates.h in Copy Files */,
+				398CE97A1BE26E2C00D31E34 /* platform.h in Copy Files */,
+				398CE8E11BE26E0000D31E34 /* avro_private.h in Copy Files */,
+				398CE8E21BE26E0000D31E34 /* encoding.h in Copy Files */,
+				398CE8E31BE26E0000D31E34 /* encoding_binary.c in Copy Files */,
+				398CE8E41BE26E0000D31E34 /* io.c in Copy Files */,
+				398CE8E51BE26E0000D31E34 /* KAAConfiguration.h in Copy Files */,
+				398CE8E61BE26E0000D31E34 /* KAALog.h in Copy Files */,
+				398CE8E71BE26E0000D31E34 /* KAANotification.h in Copy Files */,
+				398CE8E81BE26E0000D31E34 /* KAAProfile.h in Copy Files */,
+				398CE8E91BE26E0000D31E34 /* EndpointGen.h in Copy Files */,
+				398CE8EA1BE26E0000D31E34 /* AvroUtils.h in Copy Files */,
+				398CE8EB1BE26E0000D31E34 /* AvroBased.h in Copy Files */,
+				398CE8EC1BE26E0000D31E34 /* AvroBytesConverter.h in Copy Files */,
+				398CE8ED1BE26E0000D31E34 /* KAAUnion.h in Copy Files */,
+				398CE8EE1BE26E0000D31E34 /* BootstrapManager.h in Copy Files */,
+				398CE8EF1BE26E0000D31E34 /* DefaultBootstrapManager.h in Copy Files */,
+				398CE8F01BE26E0000D31E34 /* ExecutorContext.h in Copy Files */,
+				398CE8F11BE26E0000D31E34 /* TransportContext.h in Copy Files */,
+				398CE8F21BE26E0000D31E34 /* AbstractExecutorContext.h in Copy Files */,
+				398CE8F31BE26E0000D31E34 /* SimpleExecutorContext.h in Copy Files */,
+				398CE8F41BE26E0000D31E34 /* SingleThreadExecutorContext.h in Copy Files */,
+				398CE8F51BE26E0000D31E34 /* MqttFrame.h in Copy Files */,
+				398CE8F61BE26E0000D31E34 /* KAATCPConnAck.h in Copy Files */,
+				398CE8F71BE26E0000D31E34 /* KAATCPConnect.h in Copy Files */,
+				398CE8F81BE26E0000D31E34 /* KAATCPDisconnect.h in Copy Files */,
+				398CE8F91BE26E0000D31E34 /* KAATCPKaaSync.h in Copy Files */,
+				398CE8FA1BE26E0000D31E34 /* KAATCPSync.h in Copy Files */,
+				398CE8FB1BE26E0000D31E34 /* KAATCPSyncResponse.h in Copy Files */,
+				398CE8FC1BE26E0000D31E34 /* KAATCPSyncRequest.h in Copy Files */,
+				398CE8FD1BE26E0000D31E34 /* KAATCPPingRequest.h in Copy Files */,
+				398CE8FE1BE26E0000D31E34 /* KAATCPPingResponse.h in Copy Files */,
+				398CE8FF1BE26E0000D31E34 /* TCPDelegates.h in Copy Files */,
+				398CE9001BE26E0000D31E34 /* Framer.h in Copy Files */,
+				398CE9011BE26E0000D31E34 /* MessageFactory.h in Copy Files */,
+				398CE9021BE26E0000D31E34 /* ConnectivityChecker.h in Copy Files */,
+				398CE9031BE26E0000D31E34 /* HttpRequestCreator.h in Copy Files */,
+				398CE9041BE26E0000D31E34 /* AbstractHttpChannel.h in Copy Files */,
+				398CE9051BE26E0000D31E34 /* DefaultBootstrapChannel.h in Copy Files */,
+				398CE9061BE26E0000D31E34 /* DefaultOperationTcpChannel.h in Copy Files */,
+				398CE9071BE26E0000D31E34 /* DefaultOperationHttpChannel.h in Copy Files */,
+				398CE9081BE26E0000D31E34 /* KAASocket.h in Copy Files */,
+				398CE9091BE26E0000D31E34 /* AbstractKaaTransport.h in Copy Files */,
+				398CE90A1BE26E0000D31E34 /* DefaultBootstrapTransport.h in Copy Files */,
+				398CE90B1BE26E0000D31E34 /* DefaultConfigurationTransport.h in Copy Files */,
+				398CE90C1BE26E0000D31E34 /* DefaultEventTransport.h in Copy Files */,
+				398CE90D1BE26E0000D31E34 /* DefaultLogTransport.h in Copy Files */,
+				398CE90E1BE26E0000D31E34 /* DefaultMetaDataTransport.h in Copy Files */,
+				398CE90F1BE26E0000D31E34 /* DefaultNotificationTransport.h in Copy Files */,
+				398CE9101BE26E0000D31E34 /* DefaultProfileTransport.h in Copy Files */,
+				398CE9111BE26E0000D31E34 /* DefaultRedirectionTransport.h in Copy Files */,
+				398CE9121BE26E0000D31E34 /* DefaultUserTransport.h in Copy Files */,
+				398CE9131BE26E0000D31E34 /* SyncTask.h in Copy Files */,
+				398CE9141BE26E0000D31E34 /* DefaultChannelManager.h in Copy Files */,
+				398CE9151BE26E0000D31E34 /* DefaultBootstrapDataProcessor.h in Copy Files */,
+				398CE9161BE26E0000D31E34 /* DefaultOperationDataProcessor.h in Copy Files */,
+				398CE9171BE26E0000D31E34 /* DefaultFailoverManager.h in Copy Files */,
+				398CE9181BE26E0000D31E34 /* TransportCommon.h in Copy Files */,
+				398CE9191BE26E0000D31E34 /* KaaTransport.h in Copy Files */,
+				398CE91A1BE26E0000D31E34 /* BootstrapTransport.h in Copy Files */,
+				398CE91B1BE26E0000D31E34 /* ConfigurationTransport.h in Copy Files */,
+				398CE91C1BE26E0000D31E34 /* LogTransport.h in Copy Files */,
+				398CE91D1BE26E0000D31E34 /* EventTransport.h in Copy Files */,
+				398CE91E1BE26E0000D31E34 /* MetaDataTransport.h in Copy Files */,
+				398CE91F1BE26E0000D31E34 /* NotificationTransport.h in Copy Files */,
+				398CE9201BE26E0000D31E34 /* ProfileTransport.h in Copy Files */,
+				398CE9211BE26E0000D31E34 /* RedirectionTransport.h in Copy Files */,
+				398CE9221BE26E0000D31E34 /* UserTransport.h in Copy Files */,
+				398CE9231BE26E0000D31E34 /* KaaDataChannel.h in Copy Files */,
+				398CE9241BE26E0000D31E34 /* TransportProtocolId.h in Copy Files */,
+				398CE9251BE26E0000D31E34 /* KaaDataDemultiplexer.h in Copy Files */,
+				398CE9261BE26E0000D31E34 /* KaaDataMultiplexer.h in Copy Files */,
+				398CE9271BE26E0000D31E34 /* TransportConnectionInfo.h in Copy Files */,
+				398CE9281BE26E0000D31E34 /* KaaChannelManager.h in Copy Files */,
+				398CE9291BE26E0000D31E34 /* FailoverManager.h in Copy Files */,
+				398CE92A1BE26E0000D31E34 /* FailoverDecision.h in Copy Files */,
+				398CE92B1BE26E0000D31E34 /* GenericTransportInfo.h in Copy Files */,
+				398CE92C1BE26E0000D31E34 /* KaaInternalChannelManager.h in Copy Files */,
+				398CE92D1BE26E0000D31E34 /* TransportProtocolIdHolder.h in Copy Files */,
+				398CE92E1BE26E0000D31E34 /* IPTransportInfo.h in Copy Files */,
+				398CE92F1BE26E0000D31E34 /* ConfigurationStorage.h in Copy Files */,
+				398CE9301BE26E0000D31E34 /* ConfigurationPersistenceManager.h in Copy Files */,
+				398CE9311BE26E0000D31E34 /* SimpleConfigurationStorage.h in Copy Files */,
+				398CE9321BE26E0000D31E34 /* ConfigurationCommon.h in Copy Files */,
+				398CE9331BE26E0000D31E34 /* ConfigurationDeserializer.h in Copy Files */,
+				398CE9341BE26E0000D31E34 /* ResyncConfigurationManager.h in Copy Files */,
+				398CE9351BE26E0000D31E34 /* AbstractConfigurationManager.h in Copy Files */,
+				398CE9361BE26E0000D31E34 /* EndpointRegistrationManager.h in Copy Files */,
+				398CE9371BE26E0000D31E34 /* EndpointRegistrationProcessor.h in Copy Files */,
+				398CE9381BE26E0000D31E34 /* DefaultEndpointRegistrationManager.h in Copy Files */,
+				398CE9391BE26E0000D31E34 /* EventManger.h in Copy Files */,
+				398CE93A1BE26E0000D31E34 /* EndpointKeyHash.h in Copy Files */,
+				398CE93B1BE26E0000D31E34 /* EndpointAccessToken.h in Copy Files */,
+				398CE93C1BE26E0100D31E34 /* BaseEventFamily.h in Copy Files */,
+				398CE93D1BE26E0100D31E34 /* UserVerifierConstants.h in Copy Files */,
+				398CE93E1BE26E0100D31E34 /* DefaultEventManager.h in Copy Files */,
+				398CE93F1BE26E0100D31E34 /* EventListenersRequestBinding.h in Copy Files */,
+				398CE9401BE26E0100D31E34 /* EventFamilyFactory.h in Copy Files */,
+				398CE9411BE26E0100D31E34 /* NotificationTopicListDelegate.h in Copy Files */,
+				398CE9421BE26E0100D31E34 /* NotificationProcessor.h in Copy Files */,
+				398CE9431BE26E0100D31E34 /* NotificationManager.h in Copy Files */,
+				398CE9441BE26E0100D31E34 /* NotificationCommon.h in Copy Files */,
+				398CE9451BE26E0100D31E34 /* DefaultNotificationManager.h in Copy Files */,
+				398CE9461BE26E0100D31E34 /* PeriodicLogUploadStrategy.h in Copy Files */,
+				398CE9471BE26E0100D31E34 /* RecordCountLogUploadStrategy.h in Copy Files */,
+				398CE9481BE26E0100D31E34 /* RecordCountWithTimeLimitLogUploadStrategy.h in Copy Files */,
+				398CE9491BE26E0100D31E34 /* StorageSizeLogUploadStrategy.h in Copy Files */,
+				398CE94A1BE26E0100D31E34 /* StorageSizeWithTimeLimitLogUploadStrategy.h in Copy Files */,
+				398CE94B1BE26E0100D31E34 /* MemBucket.h in Copy Files */,
+				398CE94C1BE26E0100D31E34 /* MemLogStorage.h in Copy Files */,
+				398CE94D1BE26E0100D31E34 /* LogStorage.h in Copy Files */,
+				398CE94E1BE26E0100D31E34 /* LogBlock.h in Copy Files */,
+				398CE94F1BE26E0100D31E34 /* LogUploadStrategy.h in Copy Files */,
+				398CE9501BE26E0100D31E34 /* AccessPointCommand.h in Copy Files */,
+				398CE9511BE26E0100D31E34 /* LogFailoverCommand.h in Copy Files */,
+				398CE9521BE26E0100D31E34 /* GenericLogCollector.h in Copy Files */,
+				398CE9531BE26E0100D31E34 /* AbstractLogCollector.h in Copy Files */,
+				398CE9541BE26E0100D31E34 /* DefaultLogUploadStrategy.h in Copy Files */,
+				398CE9551BE26E0100D31E34 /* DefaultLogCollector.h in Copy Files */,
+				398CE9561BE26E0100D31E34 /* LogRecord.h in Copy Files */,
+				398CE9571BE26E0100D31E34 /* LogCollector.h in Copy Files */,
+				398CE9581BE26E0100D31E34 /* ProfileManager.h in Copy Files */,
+				398CE9591BE26E0100D31E34 /* ProfileCommon.h in Copy Files */,
+				398CE95A1BE26E0100D31E34 /* DefaultProfileManager.h in Copy Files */,
+				398CE95B1BE26E0100D31E34 /* KaaClientState.h in Copy Files */,
+				398CE95C1BE26E0100D31E34 /* KaaClientPropertiesState.h in Copy Files */,
+				398CE95D1BE26E0100D31E34 /* EndpointObjectHash.h in Copy Files */,
+				398CE95E1BE26E0100D31E34 /* Constants.h in Copy Files */,
+				398CE95F1BE26E0100D31E34 /* CommonEPConstants.h in Copy Files */,
+				398CE9601BE26E0100D31E34 /* TimeCommons.h in Copy Files */,
+				398CE9611BE26E0100D31E34 /* KAABase64.h in Copy Files */,
+				398CE9621BE26E0100D31E34 /* NSString+Commons.h in Copy Files */,
+				398CE9631BE26E0100D31E34 /* SHAMessageDigest.h in Copy Files */,
+				398CE9641BE26E0100D31E34 /* NSMutableArray+Shuffling.h in Copy Files */,
+				398CE9651BE26E0100D31E34 /* UUID.h in Copy Files */,
+				398CE9661BE26E0100D31E34 /* BlockingQueue.h in Copy Files */,
+				398CE9671BE26E0100D31E34 /* SchemaProcessor.h in Copy Files */,
+				398CE9681BE26E0100D31E34 /* KeyUtils.h in Copy Files */,
+				398CE9691BE26E0100D31E34 /* KeyPair.h in Copy Files */,
+				398CE96A1BE26E0100D31E34 /* MessageEncoderDecoder.h in Copy Files */,
+				398CE96B1BE26E0100D31E34 /* NSData+CommonCrypto.h in Copy Files */,
+				398CE96C1BE26E0100D31E34 /* NSData+Conversion.h in Copy Files */,
+				398CE96D1BE26E0100D31E34 /* TransactionId.h in Copy Files */,
+				398CE96E1BE26E0100D31E34 /* Transactable.h in Copy Files */,
+				398CE96F1BE26E0100D31E34 /* AbstractHttpClient.h in Copy Files */,
+				398CE9701BE26E0100D31E34 /* DefaultHttpClient.h in Copy Files */,
+				398CE9711BE26E0100D31E34 /* BaseKaaClient.h in Copy Files */,
+				398CE9721BE26E0100D31E34 /* GenericKaaClient.h in Copy Files */,
+				398CE9731BE26E0100D31E34 /* KaaClientProperties.h in Copy Files */,
+				398CE9741BE26E0100D31E34 /* KaaClient.h in Copy Files */,
+				398CE9751BE26E0100D31E34 /* KaaClientPlatformContext.h in Copy Files */,
+				398CE9761BE26E0100D31E34 /* AbstractKaaClient.h in Copy Files */,
+				398CE9771BE26E0100D31E34 /* AbstractKaaClient.m in Copy Files */,
+				398CE9781BE26E0100D31E34 /* KaaClientStateDelegate.h in Copy Files */,
+				398CE9791BE26E0100D31E34 /* KaaLogging.h in Copy Files */,
+				B824A1EF1B1452C50076C753 /* Kaa.h in Copy Files */,
 			);
+			name = "Copy Files";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -1538,7 +1851,7 @@
 				B372BE7C18244273275835CA /* Check Pods Manifest.lock */,
 				B824A1E71B1452C50076C753 /* Sources */,
 				B824A1E81B1452C50076C753 /* Frameworks */,
-				B824A1E91B1452C50076C753 /* CopyFiles */,
+				B824A1E91B1452C50076C753 /* Copy Files */,
 				B824A20A1B1458720076C753 /* Headers */,
 				5EAE82A0E95F6FACE22C8D63 /* Copy Pods Resources */,
 			);

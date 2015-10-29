@@ -20,8 +20,8 @@
 extern "C" {
 #endif
 
-#include "avro/platform.h"
-#include "avro/io.h"
+#include "platform.h"
+#include "io.h"
 
 /*
  * TODO: this will need more functions when JSON encoding is added 
