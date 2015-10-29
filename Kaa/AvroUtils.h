@@ -5,10 +5,11 @@
 //  Created by Anton Bohomol on 6/26/15.
 //  Copyright (c) 2015 CYBERVISION INC. All rights reserved.
 //
+//
 
 #import <Foundation/Foundation.h>
-#import "avro_src/avro/io.h"
-#import "avro_src/encoding.h"
+#import "io.h"
+#import "encoding.h"
 
 @protocol Avro <NSObject>
 
