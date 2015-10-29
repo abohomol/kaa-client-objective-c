@@ -217,7 +217,7 @@
     array = [NSArray arrayWithObject:md];
     
     [manager onProtocolListUpdated:array];
-    XCTAssertEqualObjects(@"http://localhost:9889", [channelManager receivedURL]);
+    XCTAssertEqualObjects(@"http://localhost2:9889", [channelManager receivedURL]);
     XCTAssertTrue(channelManager.serverUpdated);
 }
 
@@ -241,7 +241,7 @@
     [data appendBytes:&port length:sizeof(port)];
     ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
     [md setConnectionInfo:data];
-    [md setAccessPointId:[[NSString stringWithFormat:@"%@:%lu", host, (unsigned long)port] hash]];
+    [md setAccessPointId:[[NSString stringWithFormat:@"%@:%i", host, port] hash]];
     [md setProtocolVersionInfo:pair];
     return md;
 }

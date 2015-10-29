@@ -27,7 +27,7 @@
 @property (nonatomic,strong) NSMutableDictionary *mappedOperationServerList;  //<TransportProtocolId, NSMutableArray<ProtocolMetaData>>
 @property (nonatomic,strong) NSMutableDictionary *mappedIterators;            //<TransportProtocolId, NSEnumerator<ProtocolMetaData>>
 
-- (NSMutableArray *)getTransportsByAccessPointId:(NSInteger)accessPointId;
+- (NSMutableArray *)getTransportsByAccessPointId:(int)accessPointId;
 - (void)notifyChannelManagerAboutServers:(NSMutableArray *)servers;
 - (void)applyDecision:(FailoverDecision *)decision;
 
@@ -78,13 +78,13 @@
     }
 }
 
-- (void)useNextOperationsServerByAccessPointId:(NSInteger)accessPointId {
+- (void)useNextOperationsServerByAccessPointId:(int)accessPointId {
     @synchronized (self) {
         NSMutableArray *servers = [self getTransportsByAccessPointId:accessPointId];
         if (servers && [servers count] > 0) {
             [self notifyChannelManagerAboutServers:servers];
         } else {
-            self.serverToApply = [NSNumber numberWithLong:accessPointId];
+            self.serverToApply = [NSNumber numberWithInt:accessPointId];
             [self.transport sync];
         }
     }
@@ -132,7 +132,7 @@
             [self.mappedIterators setObject:[servers objectEnumerator] forKey:key];
         }
         if (self.serverToApply) {
-            NSMutableArray *servers = [self getTransportsByAccessPointId:[self.serverToApply longValue]];
+            NSMutableArray *servers = [self getTransportsByAccessPointId:[self.serverToApply intValue]];
             if (servers && [servers count] > 0) {
                 [self notifyChannelManagerAboutServers:servers];
                 self.serverToApply = nil;
@@ -154,7 +154,7 @@
     }
 }
 
-- (NSMutableArray *)getTransportsByAccessPointId:(NSInteger)accessPointId {
+- (NSMutableArray *)getTransportsByAccessPointId:(int)accessPointId {
     if (!self.operationsServerList || [self.operationsServerList count] <= 0) {
         [NSException raise:@"BootstrapRuntimeException" format:@"Operations Server list is empty"];
     }
