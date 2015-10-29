@@ -205,9 +205,10 @@
     [data appendBytes:&hostLength length:sizeof(hostLength)];
     [data appendData:[host dataUsingEncoding:NSUTF8StringEncoding]];
     [data appendBytes:&port length:sizeof(port)];
+    
     ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
     [md setConnectionInfo:data];
-    [md setAccessPointId:(int)[NSString stringWithFormat:@"%@:%lu", host, (unsigned long)port]];
+    [md setAccessPointId:[[NSString stringWithFormat:@"%@:%lu", host, (unsigned long)port] hash]];
     [md setProtocolVersionInfo:pair];
     return md;
 }
