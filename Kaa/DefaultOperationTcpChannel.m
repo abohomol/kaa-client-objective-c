@@ -11,7 +11,6 @@
 #import "IPTransportInfo.h"
 #import "MessageEncoderDecoder.h"
 #import "MessageFactory.h"
-#import "KAASocket.h"
 #import "Constants.h"
 #import "TransportProtocolIdHolder.h"
 
@@ -258,7 +257,7 @@ typedef enum {
         @try {
             DDLogInfo(@"%@ Channel [%@]: opening connection to server %@", TAG, [self getId], self.currentServer);
             self.isOpenConnectionScheduled = NO;
-            self.socket = [KAASocket openWithHost:[self.currentServer getHost] andPort:[self.currentServer getPort]];
+            self.socket = [self createSocket];
             [self sendConnect];
             [self scheduleReadTask:self.socket];
             [self schedulePingTask];
@@ -269,6 +268,10 @@ typedef enum {
             [self onServerFailed];
         }
     }
+}
+
+- (KAASocket *)createSocket {
+    return [KAASocket openWithHost:[self.currentServer getHost] andPort:[self.currentServer getPort]];
 }
 
 - (void)onServerFailed {
@@ -474,6 +477,10 @@ typedef enum {
 }
 
 - (void)setServer:(id<TransportConnectionInfo>)server {
+    [self setServer:server withKeyPair:nil];
+}
+
+- (void)setServer:(id<TransportConnectionInfo>)server withKeyPair:(KeyPair *) sendedKeyPair {
     @synchronized(self) {
         if (!server) {
             DDLogWarn(@"%@ Server is nil for channel [%@]", TAG, [self getId]);
@@ -486,7 +493,12 @@ typedef enum {
         DDLogInfo(@"%@ Setting server [%@] for channel [%@]", TAG, server, [self getId]);
         IPTransportInfo *oldServer = self.currentServer;
         self.currentServer = [[IPTransportInfo alloc] initWithTransportInfo:server];
-        KeyPair *keyPair = [[KeyPair alloc] initWithPrivate:[self.state privateKey] andPublic:[self.state publicKey]];
+        KeyPair *keyPair;
+        if (sendedKeyPair) {
+            keyPair = sendedKeyPair;
+        } else {
+            keyPair = [[KeyPair alloc] initWithPrivate:[self.state privateKey] andPublic:[self.state publicKey]];
+        }
         self.encDec = [[MessageEncoderDecoder alloc] initWithKeyPair:keyPair andRemotePublicKey:[self.currentServer getPublicKey]];
         if (self.channelState != CHANNEL_STATE_PAUSE) {
             if (!self.executor) {
@@ -583,6 +595,7 @@ typedef enum {
     self = [super init];
     if (self) {
         _channel = channel;
+        _socket = channel.socket;
     }
     return self;
 }
