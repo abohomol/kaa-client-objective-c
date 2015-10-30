@@ -310,6 +310,8 @@
 		B85E35661B860218008B663E /* AbstractConfigurationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B85E35641B860218008B663E /* AbstractConfigurationManager.h */; };
 		B85E35671B860218008B663E /* AbstractConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B85E35651B860218008B663E /* AbstractConfigurationManager.m */; };
 		B860B12B1BB2AC84001A89E1 /* TimeCommons.m in Sources */ = {isa = PBXBuildFile; fileRef = B860B12A1BB2AB60001A89E1 /* TimeCommons.m */; };
+		B862123F1BE3CE77005C5FE7 /* EndpointGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B86D1C1D1BE3795E000A0073 /* EndpointGen.h */; };
+		B86212401BE3CEAB005C5FE7 /* DefaultKaaPlatformContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B86229E71BE352EF0045ED0D /* DefaultKaaPlatformContext.h */; };
 		B86229E91BE352EF0045ED0D /* DefaultKaaPlatformContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B86229E71BE352EF0045ED0D /* DefaultKaaPlatformContext.h */; settings = {ASSET_TAGS = (); }; };
 		B86229EA1BE352EF0045ED0D /* DefaultKaaPlatformContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B86229E81BE352EF0045ED0D /* DefaultKaaPlatformContext.m */; settings = {ASSET_TAGS = (); }; };
 		B863B32B1B3D7B3D00E58F50 /* AvroUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B863B3291B3D7B3D00E58F50 /* AvroUtils.h */; };
@@ -482,6 +484,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B86212401BE3CEAB005C5FE7 /* DefaultKaaPlatformContext.h in Copy Files */,
+				B862123F1BE3CE77005C5FE7 /* EndpointGen.h in Copy Files */,
 				398CE97B1BE26E8300D31E34 /* io.h in Copy Files */,
 				398CE97C1BE26E8300D31E34 /* EventDelegates.h in Copy Files */,
 				398CE97A1BE26E2C00D31E34 /* platform.h in Copy Files */,
