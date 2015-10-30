@@ -29,8 +29,7 @@
 
 @implementation SimpleExecutorContext
 
-- (instancetype)init
-{
+- (instancetype)init {
     return [self initWithlifeCycleThreadCount:SINGLE_THREAD
                             andApiThreadCount:SINGLE_THREAD
                        andCallbackThreadCount:SINGLE_THREAD
@@ -51,7 +50,7 @@
     return self;
 }
 
-- (void) initiate {
+- (void)initiate {
     DDLogDebug(@"%@ Creating executor services", TAG);
     self.lifeCycleExecutor = [[NSOperationQueue alloc] init];
     self.apiExecutor = [[NSOperationQueue alloc] init];
@@ -64,26 +63,26 @@
     [self.scheduledExecutor setMaxConcurrentOperationCount:self.scheduledThreadCount];
 }
 
-- (void) stop {
+- (void)stop {
     [self.lifeCycleExecutor cancelAllOperations];
     [self.apiExecutor cancelAllOperations];
     [self.callBackExecutor cancelAllOperations];
     [self.scheduledExecutor cancelAllOperations];
 }
 
-- (NSOperationQueue*) getLifeCycleExecutor {
+- (NSOperationQueue *)getLifeCycleExecutor {
     return self.lifeCycleExecutor;
 }
 
-- (NSOperationQueue*) getApiExecutor {
+- (NSOperationQueue *)getApiExecutor {
     return self.apiExecutor;
 }
 
-- (NSOperationQueue*) getCallbackExecutor {
+- (NSOperationQueue *)getCallbackExecutor {
     return self.callBackExecutor;
 }
 
-- (dispatch_queue_t) getSheduledExecutor {
+- (dispatch_queue_t)getSheduledExecutor {
     return [self.scheduledExecutor underlyingQueue];
 }
 

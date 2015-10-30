@@ -8,6 +8,7 @@
 
 #import "DefaultKaaPlatformContext.h"
 #import "DefaultHttpClient.h"
+#import "SimpleExecutorContext.h"
 
 @interface DefaultKaaPlatformContext ()
 
@@ -17,6 +18,15 @@
 @end
 
 @implementation DefaultKaaPlatformContext
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        _props = nil;
+        _exContext = [[SimpleExecutorContext alloc] init];
+    }
+    return self;
+}
 
 - (instancetype)initWith:(KaaClientProperties *)properties andExecutor:(id<ExecutorContext>)executor {
     self = [super init];
