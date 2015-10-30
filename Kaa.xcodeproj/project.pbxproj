@@ -35,7 +35,6 @@
 		398CE8E61BE26E0000D31E34 /* KAALog.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85447EA1BD51ECA000889BF /* KAALog.h */; };
 		398CE8E71BE26E0000D31E34 /* KAANotification.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85447EC1BD51ECA000889BF /* KAANotification.h */; };
 		398CE8E81BE26E0000D31E34 /* KAAProfile.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B85447EE1BD51ECA000889BF /* KAAProfile.h */; };
-		398CE8E91BE26E0000D31E34 /* EndpointGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B86D7F0A1BA2BD4700563592 /* EndpointGen.h */; };
 		398CE8EA1BE26E0000D31E34 /* AvroUtils.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B863B3291B3D7B3D00E58F50 /* AvroUtils.h */; };
 		398CE8EB1BE26E0000D31E34 /* AvroBased.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B878C2961B45730700453947 /* AvroBased.h */; };
 		398CE8EC1BE26E0000D31E34 /* AvroBytesConverter.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8D47D861B4FF8490003BAF3 /* AvroBytesConverter.h */; };
@@ -316,8 +315,8 @@
 		B86229EA1BE352EF0045ED0D /* DefaultKaaPlatformContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B86229E81BE352EF0045ED0D /* DefaultKaaPlatformContext.m */; settings = {ASSET_TAGS = (); }; };
 		B863B32B1B3D7B3D00E58F50 /* AvroUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B863B3291B3D7B3D00E58F50 /* AvroUtils.h */; };
 		B863B32C1B3D7B3D00E58F50 /* AvroUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B863B32A1B3D7B3D00E58F50 /* AvroUtils.m */; };
-		B86D7F141BA2BD4700563592 /* EndpointGen.h in Headers */ = {isa = PBXBuildFile; fileRef = B86D7F0A1BA2BD4700563592 /* EndpointGen.h */; };
-		B86D7F151BA2BD4700563592 /* EndpointGen.m in Sources */ = {isa = PBXBuildFile; fileRef = B86D7F0B1BA2BD4700563592 /* EndpointGen.m */; };
+		B86D1C1F1BE3795E000A0073 /* EndpointGen.h in Headers */ = {isa = PBXBuildFile; fileRef = B86D1C1D1BE3795E000A0073 /* EndpointGen.h */; settings = {ASSET_TAGS = (); }; };
+		B86D1C201BE3795E000A0073 /* EndpointGen.m in Sources */ = {isa = PBXBuildFile; fileRef = B86D1C1E1BE3795E000A0073 /* EndpointGen.m */; settings = {ASSET_TAGS = (); }; };
 		B876298C1B8CB28C006AD5EF /* EventDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = B876298B1B8CB28C006AD5EF /* EventDelegates.h */; };
 		B876298E1B8CB45B006AD5EF /* EndpointRegistrationProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = B876298D1B8CB45B006AD5EF /* EndpointRegistrationProcessor.h */; };
 		B87629901B8CB660006AD5EF /* EventManger.h in Headers */ = {isa = PBXBuildFile; fileRef = B876298F1B8CB660006AD5EF /* EventManger.h */; };
@@ -495,7 +494,6 @@
 				398CE8E61BE26E0000D31E34 /* KAALog.h in Copy Files */,
 				398CE8E71BE26E0000D31E34 /* KAANotification.h in Copy Files */,
 				398CE8E81BE26E0000D31E34 /* KAAProfile.h in Copy Files */,
-				398CE8E91BE26E0000D31E34 /* EndpointGen.h in Copy Files */,
 				398CE8EA1BE26E0000D31E34 /* AvroUtils.h in Copy Files */,
 				398CE8EB1BE26E0000D31E34 /* AvroBased.h in Copy Files */,
 				398CE8EC1BE26E0000D31E34 /* AvroBytesConverter.h in Copy Files */,
@@ -806,8 +804,8 @@
 		B86229E81BE352EF0045ED0D /* DefaultKaaPlatformContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultKaaPlatformContext.m; sourceTree = "<group>"; };
 		B863B3291B3D7B3D00E58F50 /* AvroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvroUtils.h; sourceTree = "<group>"; };
 		B863B32A1B3D7B3D00E58F50 /* AvroUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroUtils.m; sourceTree = "<group>"; };
-		B86D7F0A1BA2BD4700563592 /* EndpointGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointGen.h; sourceTree = "<group>"; };
-		B86D7F0B1BA2BD4700563592 /* EndpointGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndpointGen.m; sourceTree = "<group>"; };
+		B86D1C1D1BE3795E000A0073 /* EndpointGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndpointGen.h; path = gen/EndpointGen.h; sourceTree = "<group>"; };
+		B86D1C1E1BE3795E000A0073 /* EndpointGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndpointGen.m; path = gen/EndpointGen.m; sourceTree = "<group>"; };
 		B876298A1B8CAF5E006AD5EF /* Transactable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Transactable.h; sourceTree = "<group>"; };
 		B876298B1B8CB28C006AD5EF /* EventDelegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDelegates.h; sourceTree = "<group>"; };
 		B876298D1B8CB45B006AD5EF /* EndpointRegistrationProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointRegistrationProcessor.h; sourceTree = "<group>"; };
@@ -1405,6 +1403,8 @@
 		B86D7F091BA2BD3E00563592 /* gen */ = {
 			isa = PBXGroup;
 			children = (
+				B86D1C1D1BE3795E000A0073 /* EndpointGen.h */,
+				B86D1C1E1BE3795E000A0073 /* EndpointGen.m */,
 				B85447E81BD51ECA000889BF /* KAAConfiguration.h */,
 				B85447E91BD51ECA000889BF /* KAAConfiguration.m */,
 				B85447EA1BD51ECA000889BF /* KAALog.h */,
@@ -1413,8 +1413,6 @@
 				B85447ED1BD51ECA000889BF /* KAANotification.m */,
 				B85447EE1BD51ECA000889BF /* KAAProfile.h */,
 				B85447EF1BD51ECA000889BF /* KAAProfile.m */,
-				B86D7F0A1BA2BD4700563592 /* EndpointGen.h */,
-				B86D7F0B1BA2BD4700563592 /* EndpointGen.m */,
 			);
 			name = gen;
 			sourceTree = "<group>";
@@ -1737,6 +1735,7 @@
 				B856C0051B90D4C000A9F65D /* KaaInternalChannelManager.h in Headers */,
 				B83CCD031B8B37DF003D4B0B /* MemBucket.h in Headers */,
 				B824A20F1B145A7C0076C753 /* KaaDataChannel.h in Headers */,
+				B86D1C1F1BE3795E000A0073 /* EndpointGen.h in Headers */,
 				B87FCA911BDBB6590016A721 /* KAATCPPingResponse.h in Headers */,
 				B85447F61BD51ECA000889BF /* KAAProfile.h in Headers */,
 				B8A13B051BAFE47A00265729 /* DefaultBootstrapDataProcessor.h in Headers */,
@@ -1775,7 +1774,6 @@
 				B8330C3F1B38051B00D1A573 /* GenericKaaClient.h in Headers */,
 				B8E5A0B91BDD2BAF008E9066 /* DefaultOperationTcpChannel.h in Headers */,
 				B876298C1B8CB28C006AD5EF /* EventDelegates.h in Headers */,
-				B86D7F141BA2BD4700563592 /* EndpointGen.h in Headers */,
 				B87629A41B8DA6E8006AD5EF /* KaaClient.h in Headers */,
 				B84462311BB5BAD4009826FC /* platform.h in Headers */,
 				B8FBD9F71B9E35B4009A2BA3 /* KaaClientPlatformContext.h in Headers */,
@@ -2072,6 +2070,7 @@
 				B8A13B121BB0198F00265729 /* HttpRequestCreator.m in Sources */,
 				B85447F31BD51ECA000889BF /* KAALog.m in Sources */,
 				B824A2261B1489FE0076C753 /* ConnectivityChecker.m in Sources */,
+				B86D1C201BE3795E000A0073 /* EndpointGen.m in Sources */,
 				B84462351BB5BAD4009826FC /* io.c in Sources */,
 				39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */,
 				B87FCA761BDA71F70016A721 /* KAATCPConnect.m in Sources */,
@@ -2087,7 +2086,6 @@
 				B863B32C1B3D7B3D00E58F50 /* AvroUtils.m in Sources */,
 				B87A74351B95BBDC0052858F /* NSData+Conversion.m in Sources */,
 				B8DBE3551BB073040036058B /* DefaultOperationHttpChannel.m in Sources */,
-				B86D7F151BA2BD4700563592 /* EndpointGen.m in Sources */,
 				B87FCA861BDBAEE00016A721 /* KAATCPSyncResponse.m in Sources */,
 				B8B8ED241BA2D0640067BC4C /* DefaultMetaDataTransport.m in Sources */,
 				B8FBD9F51B9E02DB009A2BA3 /* AbstractHttpClient.m in Sources */,
