@@ -312,6 +312,8 @@
 		B85E35661B860218008B663E /* AbstractConfigurationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B85E35641B860218008B663E /* AbstractConfigurationManager.h */; };
 		B85E35671B860218008B663E /* AbstractConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B85E35651B860218008B663E /* AbstractConfigurationManager.m */; };
 		B860B12B1BB2AC84001A89E1 /* TimeCommons.m in Sources */ = {isa = PBXBuildFile; fileRef = B860B12A1BB2AB60001A89E1 /* TimeCommons.m */; };
+		B86229E91BE352EF0045ED0D /* DefaultKaaPlatformContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B86229E71BE352EF0045ED0D /* DefaultKaaPlatformContext.h */; settings = {ASSET_TAGS = (); }; };
+		B86229EA1BE352EF0045ED0D /* DefaultKaaPlatformContext.m in Sources */ = {isa = PBXBuildFile; fileRef = B86229E81BE352EF0045ED0D /* DefaultKaaPlatformContext.m */; settings = {ASSET_TAGS = (); }; };
 		B863B32B1B3D7B3D00E58F50 /* AvroUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = B863B3291B3D7B3D00E58F50 /* AvroUtils.h */; };
 		B863B32C1B3D7B3D00E58F50 /* AvroUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = B863B32A1B3D7B3D00E58F50 /* AvroUtils.m */; };
 		B86D7F141BA2BD4700563592 /* EndpointGen.h in Headers */ = {isa = PBXBuildFile; fileRef = B86D7F0A1BA2BD4700563592 /* EndpointGen.h */; };
@@ -800,6 +802,8 @@
 		B85E35641B860218008B663E /* AbstractConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractConfigurationManager.h; sourceTree = "<group>"; };
 		B85E35651B860218008B663E /* AbstractConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractConfigurationManager.m; sourceTree = "<group>"; };
 		B860B12A1BB2AB60001A89E1 /* TimeCommons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeCommons.m; sourceTree = "<group>"; };
+		B86229E71BE352EF0045ED0D /* DefaultKaaPlatformContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultKaaPlatformContext.h; sourceTree = "<group>"; };
+		B86229E81BE352EF0045ED0D /* DefaultKaaPlatformContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultKaaPlatformContext.m; sourceTree = "<group>"; };
 		B863B3291B3D7B3D00E58F50 /* AvroUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvroUtils.h; sourceTree = "<group>"; };
 		B863B32A1B3D7B3D00E58F50 /* AvroUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroUtils.m; sourceTree = "<group>"; };
 		B86D7F0A1BA2BD4700563592 /* EndpointGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointGen.h; sourceTree = "<group>"; };
@@ -1224,6 +1228,8 @@
 				B844623A1BB5C377009826FC /* KaaLogging.h */,
 				B844623B1BB5C377009826FC /* KaaLogging.m */,
 				B8F14E241BD8E200001D1B02 /* client_properties.plist */,
+				B86229E71BE352EF0045ED0D /* DefaultKaaPlatformContext.h */,
+				B86229E81BE352EF0045ED0D /* DefaultKaaPlatformContext.m */,
 			);
 			path = Kaa;
 			sourceTree = "<group>";
@@ -1734,6 +1740,7 @@
 				B87FCA911BDBB6590016A721 /* KAATCPPingResponse.h in Headers */,
 				B85447F61BD51ECA000889BF /* KAAProfile.h in Headers */,
 				B8A13B051BAFE47A00265729 /* DefaultBootstrapDataProcessor.h in Headers */,
+				B86229E91BE352EF0045ED0D /* DefaultKaaPlatformContext.h in Headers */,
 				B87FCA691BDA5D1D0016A721 /* Framer.h in Headers */,
 				B8D8EF411B9078FA0088F227 /* BootstrapTransport.h in Headers */,
 				B83CCCFA1B8B2B86003D4B0B /* AbstractLogCollector.h in Headers */,
@@ -2048,6 +2055,7 @@
 				B8C8BD381B83153400D2C016 /* NSString+Commons.m in Sources */,
 				B824A1F11B1452C50076C753 /* Kaa.m in Sources */,
 				B85B33CA1BB04B1300B5785F /* DefaultBootstrapChannel.m in Sources */,
+				B86229EA1BE352EF0045ED0D /* DefaultKaaPlatformContext.m in Sources */,
 				B88836371BA1F15000ACAB4F /* LogRecord.m in Sources */,
 				B84462341BB5BAD4009826FC /* encoding_binary.c in Sources */,
 				B8FBD9F01B9E0243009A2BA3 /* SimpleConfigurationStorage.m in Sources */,
@@ -2233,6 +2241,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -2248,6 +2257,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Kaa;
 				SKIP_INSTALL = YES;
@@ -2263,6 +2273,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/build/Debug-iphoneos",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = Kaa;
 				SKIP_INSTALL = YES;
