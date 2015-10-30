@@ -29,7 +29,7 @@
 @interface TopicState : AvroBased
 
 @property(nonatomic,strong) NSString *topicId;
-@property(nonatomic) int seqNumber;
+@property(nonatomic) int32_t seqNumber;
 
 @end
 
@@ -159,7 +159,7 @@ typedef enum {
 
 @interface EndpointAttachRequest : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) NSString *endpointAccessToken;
 
 @end
@@ -169,7 +169,7 @@ typedef enum {
 
 @interface EndpointAttachResponse : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) KAAUnion *endpointKeyHash;
 @property(nonatomic) SyncResponseResultType result;
 
@@ -189,7 +189,7 @@ typedef enum {
 
 @interface EndpointDetachRequest : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) NSString *endpointKeyHash;
 
 @end
@@ -199,7 +199,7 @@ typedef enum {
 
 @interface EndpointDetachResponse : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic) SyncResponseResultType result;
 
 @end
@@ -209,7 +209,7 @@ typedef enum {
 
 @interface Event : AvroBased
 
-@property(nonatomic) int seqNum;
+@property(nonatomic) int32_t seqNum;
 @property(nonatomic,strong) NSString *eventClassFQN;
 @property(nonatomic,strong) NSData *eventData;
 @property(nonatomic,strong) KAAUnion *source;
@@ -240,7 +240,7 @@ typedef enum {
 
 @interface EventListenersRequest : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) NSArray *eventClassFQNs;
 
 @end
@@ -250,7 +250,7 @@ typedef enum {
 
 @interface EventListenersResponse : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) KAAUnion *listeners;
 @property(nonatomic) SyncResponseResultType result;
 
@@ -278,7 +278,7 @@ typedef enum {
 
 @interface EventSequenceNumberResponse : AvroBased
 
-@property(nonatomic) int seqNum;
+@property(nonatomic) int32_t seqNum;
 
 @end
 
@@ -406,8 +406,8 @@ typedef enum {
 
 @interface ProtocolVersionPair : AvroBased
 
-@property(nonatomic) int id;
-@property(nonatomic) int version;
+@property(nonatomic) int32_t id;
+@property(nonatomic) int32_t version;
 
 @end
 
@@ -416,7 +416,7 @@ typedef enum {
 
 @interface BootstrapSyncRequest : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) NSArray *supportedProtocols;
 
 @end
@@ -426,7 +426,7 @@ typedef enum {
 
 @interface ConfigurationSyncRequest : AvroBased
 
-@property(nonatomic) int appStateSeqNumber;
+@property(nonatomic) int32_t appStateSeqNumber;
 @property(nonatomic,strong) KAAUnion *configurationHash;
 @property(nonatomic,strong) KAAUnion *resyncOnly;
 
@@ -455,7 +455,7 @@ typedef enum {
 
 @interface NotificationSyncRequest : AvroBased
 
-@property(nonatomic) int appStateSeqNumber;
+@property(nonatomic) int32_t appStateSeqNumber;
 @property(nonatomic,strong) KAAUnion *topicListHash;
 @property(nonatomic,strong) KAAUnion *topicStates;
 @property(nonatomic,strong) KAAUnion *acceptedUnicastNotifications;
@@ -580,7 +580,7 @@ typedef enum {
 
 @interface LogSyncRequest : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) KAAUnion *logEntries;
 
 
@@ -599,7 +599,7 @@ typedef enum {
 
 @interface ProtocolMetaData : AvroBased
 
-@property(nonatomic) int accessPointId;
+@property(nonatomic) int32_t accessPointId;
 @property(nonatomic,strong) ProtocolVersionPair *protocolVersionInfo;
 @property(nonatomic,strong) NSData *connectionInfo;
 
@@ -610,7 +610,7 @@ typedef enum {
 
 @interface BootstrapSyncResponse : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) NSArray *supportedProtocols;
 
 @end
@@ -629,7 +629,7 @@ typedef enum {
 
 @interface ConfigurationSyncResponse : AvroBased
 
-@property(nonatomic) int appStateSeqNumber;
+@property(nonatomic) int32_t appStateSeqNumber;
 @property(nonatomic) SyncResponseStatus responseStatus;
 @property(nonatomic,strong) KAAUnion *confSchemaBody;
 @property(nonatomic,strong) KAAUnion *confDeltaBody;
@@ -659,7 +659,7 @@ typedef enum {
 
 @interface NotificationSyncResponse : AvroBased
 
-@property(nonatomic) int appStateSeqNumber;
+@property(nonatomic) int32_t appStateSeqNumber;
 @property(nonatomic) SyncResponseStatus responseStatus;
 @property(nonatomic,strong) KAAUnion *notifications;
 @property(nonatomic,strong) KAAUnion *availableTopics;
@@ -785,7 +785,7 @@ typedef enum {
 
 @interface LogDeliveryStatus : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic) SyncResponseResultType result;
 @property(nonatomic,strong) KAAUnion *errorCode;
 
@@ -823,7 +823,7 @@ typedef enum {
 
 @interface RedirectSyncResponse : AvroBased
 
-@property(nonatomic) int accessPointId;
+@property(nonatomic) int32_t accessPointId;
 
 @end
 
@@ -832,7 +832,7 @@ typedef enum {
 
 @interface SyncRequest : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic,strong) KAAUnion *syncRequestMetaData;
 @property(nonatomic,strong) KAAUnion *bootstrapSyncRequest;
 @property(nonatomic,strong) KAAUnion *profileSyncRequest;
@@ -921,7 +921,7 @@ typedef enum {
 
 @interface SyncResponse : AvroBased
 
-@property(nonatomic) int requestId;
+@property(nonatomic) int32_t requestId;
 @property(nonatomic) SyncResponseResultType status;
 @property(nonatomic,strong) KAAUnion *bootstrapSyncResponse;
 @property(nonatomic,strong) KAAUnion *profileSyncResponse;
@@ -1012,6 +1012,6 @@ typedef enum {
 @interface TopicSubscriptionInfo : AvroBased
 
 @property(nonatomic,strong) Topic *topicInfo;
-@property(nonatomic) int seqNumber;
+@property(nonatomic) int32_t seqNumber;
 
 @end

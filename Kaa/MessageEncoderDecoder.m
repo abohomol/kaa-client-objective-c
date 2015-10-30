@@ -235,7 +235,7 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
     size_t hashBytesSize = CC_SHA1_DIGEST_LENGTH;
     uint8_t *hashBytes = malloc(hashBytesSize);
     if (!CC_SHA1([message bytes], (CC_LONG)[message length], hashBytes)) {
-        return nil;
+        return NO;
     }
     
     OSStatus status = SecKeyRawVerify([self getRemotePublicKey],

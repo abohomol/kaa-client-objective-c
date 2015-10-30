@@ -13,31 +13,31 @@
 
 @interface MemBucket ()
 
-@property (nonatomic) NSInteger maxSize;
-@property (nonatomic) NSInteger maxRecordCount;
-@property (nonatomic) NSInteger size;
+@property (nonatomic) int64_t maxSize;
+@property (nonatomic) int32_t maxRecordCount;
+@property (nonatomic) int64_t size;
 
 @end
 
 @implementation MemBucket
 
-- (instancetype)initWithId:(NSInteger)bucketId maxSize:(NSInteger)maxSize maxRecordCount:(NSInteger)maxRecordCount {
+- (instancetype)initWithId:(int32_t)bucketId maxSize:(int64_t)maxSize maxRecordCount:(int32_t)maxRecordCount {
     self = [super init];
     if (self) {
         _bucketId = bucketId;
-        self.maxSize = maxSize;
-        self.maxRecordCount = maxRecordCount;
+        _maxSize = maxSize;
+        _maxRecordCount = maxRecordCount;
         _records = [NSMutableArray array];
-        self.state = MEM_BUCKET_STATE_FREE;
+        _state = MEM_BUCKET_STATE_FREE;
     }
     return self;
 }
 
-- (NSInteger)getSize {
-    return self.size;
+- (int64_t)getSize {
+    return _size;
 }
 
-- (NSInteger)getCount {
+- (int32_t)getCount {
     return [self.records count];
 }
 
@@ -56,7 +56,7 @@
     return YES;
 }
 
-- (NSArray *)shrinkToSize:(NSInteger)newSize newCount:(NSInteger)newCount {
+- (NSArray *)shrinkToSize:(int64_t)newSize newCount:(int32_t)newCount {
     DDLogVerbose(@"%@ Shrinking %@ bucket to the new size: %li and count %li", TAG,
                  self, (long)newSize, (long)newCount);
     if (newSize < 0 || newCount < 0) {

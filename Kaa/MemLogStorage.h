@@ -12,7 +12,7 @@
 @interface MemLogStorage : NSObject <LogStorage,LogStorageStatus>
 
 - (instancetype)initWithDefaults;
-- (instancetype)initWithBucketSize:(NSInteger)maxBucketSize bucketRecordCount:(NSInteger)maxBucketRecordCount;
-- (instancetype)initWithMaxStorageSize:(NSInteger)maxStorageSize bucketSize:(NSInteger)bucketSize bucketRecordCount:(NSInteger)bucketRecordCount;
+- (instancetype)initWithBucketSize:(int64_t)maxBucketSize bucketRecordCount:(int32_t)maxBucketRecordCount;
+- (instancetype)initWithMaxStorageSize:(int64_t)maxStorageSize bucketSize:(int64_t)bucketSize bucketRecordCount:(int32_t)bucketRecordCount;
 
 @end

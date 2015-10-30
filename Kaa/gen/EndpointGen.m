@@ -22,6 +22,7 @@
 
 @implementation TopicState
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeString:self.topicId to:writer];
     [self.utils serializeInt:[NSNumber numberWithInt:self.seqNumber] to:writer];
@@ -45,6 +46,7 @@
 
 @implementation SubscriptionCommand
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeString:self.topicId to:writer];
     [self.utils serializeEnum:[NSNumber numberWithInt:self.command] to:writer];
@@ -67,6 +69,7 @@
 
 
 @implementation UserAttachRequest
+
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeString:self.userVerifierId to:writer];
@@ -93,6 +96,15 @@
 
 
 @implementation UserAttachResponse
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.errorCode = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_ERROR_CODE_OR_NULL_BRANCH_1];
+        self.errorReason = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeEnum:[NSNumber numberWithInt:self.result] to:writer];
@@ -234,6 +246,7 @@
 
 @implementation UserAttachNotification
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeString:self.userExternalId to:writer];
     [self.utils serializeString:self.endpointAccessToken to:writer];
@@ -257,6 +270,7 @@
 
 @implementation UserDetachNotification
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeString:self.endpointAccessToken to:writer];
 }
@@ -276,6 +290,7 @@
 
 
 @implementation EndpointAttachRequest
+
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
@@ -299,6 +314,14 @@
 
 
 @implementation EndpointAttachResponse
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.endpointKeyHash = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
@@ -383,6 +406,7 @@
 
 @implementation EndpointDetachRequest
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
     [self.utils serializeString:self.endpointKeyHash to:writer];
@@ -406,6 +430,7 @@
 
 @implementation EndpointDetachResponse
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
     [self.utils serializeEnum:[NSNumber numberWithInt:self.result] to:writer];
@@ -428,6 +453,15 @@
 
 
 @implementation Event
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+        self.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.seqNum] to:writer];
@@ -575,10 +609,11 @@
 
 @implementation EventListenersRequest
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
-            [self.utils serializeArray:self.eventClassFQNs to:writer withSelector:@selector(serializeString:to:) target:nil];
-    }
+    [self.utils serializeArray:self.eventClassFQNs to:writer withSelector:@selector(serializeString:to:) target:nil];
+}
 
 - (size_t)getSize {
     size_t recordSize = 0;
@@ -597,6 +632,14 @@
 
 
 @implementation EventListenersResponse
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.listeners = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
@@ -681,6 +724,7 @@
 
 @implementation EventSequenceNumberRequest
 
+
 - (void)serialize:(avro_writer_t)writer {
 }
 
@@ -697,6 +741,7 @@
 
 
 @implementation EventSequenceNumberResponse
+
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.seqNum] to:writer];
@@ -717,6 +762,15 @@
 
 
 @implementation Notification
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.uid = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+        self.seqNumber = [KAAUnion unionWithBranch:KAA_UNION_INT_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeString:self.topicId to:writer];
@@ -864,6 +918,7 @@
 
 @implementation Topic
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeString:self.id to:writer];
     [self.utils serializeString:self.name to:writer];
@@ -890,6 +945,7 @@
 
 @implementation LogEntry
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeBytes:self.data to:writer];
 }
@@ -909,6 +965,16 @@
 
 
 @implementation SyncRequestMetaData
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.endpointPublicKeyHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+        self.profileHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+        self.timeout = [KAAUnion unionWithBranch:KAA_UNION_LONG_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeString:self.sdkToken to:writer];
@@ -1110,6 +1176,15 @@
 
 @implementation ProfileSyncRequest
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.endpointPublicKey = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+        self.endpointAccessToken = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
+
 - (void)serialize:(avro_writer_t)writer {
     [self serializeEndpointPublicKey:self.endpointPublicKey to:writer];
     [self.utils serializeBytes:self.profileBody to:writer];
@@ -1250,6 +1325,7 @@
 
 @implementation ProtocolVersionPair
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.id] to:writer];
     [self.utils serializeInt:[NSNumber numberWithInt:self.version] to:writer];
@@ -1272,6 +1348,7 @@
 
 
 @implementation BootstrapSyncRequest
+
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
@@ -1296,6 +1373,15 @@
 
 
 @implementation ConfigurationSyncRequest
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.configurationHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+        self.resyncOnly = [KAAUnion unionWithBranch:KAA_UNION_BOOLEAN_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.appStateSeqNumber] to:writer];
@@ -1436,6 +1522,17 @@
 
 
 @implementation NotificationSyncRequest
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.topicListHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+        self.topicStates = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_STATE_OR_NULL_BRANCH_1];
+        self.acceptedUnicastNotifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
+        self.subscriptionCommands = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_SUBSCRIPTION_COMMAND_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.appStateSeqNumber] to:writer];
@@ -1699,6 +1796,16 @@
 
 @implementation UserSyncRequest
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.userAttachRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_REQUEST_OR_NULL_BRANCH_1];
+        self.endpointAttachRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_REQUEST_OR_NULL_BRANCH_1];
+        self.endpointDetachRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_REQUEST_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
+
 - (void)serialize:(avro_writer_t)writer {
     [self serializeUserAttachRequest:self.userAttachRequest to:writer];
     [self serializeEndpointAttachRequests:self.endpointAttachRequests to:writer];
@@ -1898,6 +2005,16 @@
 
 @implementation EventSyncRequest
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+                        self.eventSequenceNumberRequest = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_REQUEST_OR_NULL_BRANCH_1];
+                                self.eventListenersRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_REQUEST_OR_NULL_BRANCH_1];
+                                self.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
 - (void)serialize:(avro_writer_t)writer {
     [self serializeEventSequenceNumberRequest:self.eventSequenceNumberRequest to:writer];
     [self serializeEventListenersRequests:self.eventListenersRequests to:writer];
@@ -2083,6 +2200,14 @@
 
 @implementation LogSyncRequest
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+                                        self.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
     [self serializeLogEntries:self.logEntries to:writer];
@@ -2164,6 +2289,7 @@
 
 @implementation ProtocolMetaData
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.accessPointId] to:writer];
     [self.protocolVersionInfo serialize:writer];
@@ -2190,6 +2316,7 @@
 
 @implementation BootstrapSyncResponse
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
             [self.utils serializeArray:self.supportedProtocols to:writer withSelector:@selector(serializeRecord:to:) target:nil];
@@ -2214,6 +2341,7 @@
 
 @implementation ProfileSyncResponse
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeEnum:[NSNumber numberWithInt:self.responseStatus] to:writer];
 }
@@ -2233,6 +2361,15 @@
 
 
 @implementation ConfigurationSyncResponse
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.confSchemaBody = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+        self.confDeltaBody = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.appStateSeqNumber] to:writer];
@@ -2376,6 +2513,15 @@
 
 
 @implementation NotificationSyncResponse
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.notifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_NOTIFICATION_OR_NULL_BRANCH_1];
+        self.availableTopics = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.appStateSeqNumber] to:writer];
@@ -2521,6 +2667,18 @@
 
 
 @implementation UserSyncResponse
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.userAttachResponse = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
+        self.userAttachNotification = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_NOTIFICATION_OR_NULL_BRANCH_1];
+        self.userDetachNotification = [KAAUnion unionWithBranch:KAA_UNION_USER_DETACH_NOTIFICATION_OR_NULL_BRANCH_1];
+        self.endpointAttachResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
+        self.endpointDetachResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_RESPONSE_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self serializeUserAttachResponse:self.userAttachResponse to:writer];
@@ -2841,6 +2999,16 @@
 
 @implementation EventSyncResponse
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.eventSequenceNumberResponse = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_1];
+        self.eventListenersResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_RESPONSE_OR_NULL_BRANCH_1];
+        self.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
+
 - (void)serialize:(avro_writer_t)writer {
     [self serializeEventSequenceNumberResponse:self.eventSequenceNumberResponse to:writer];
     [self serializeEventListenersResponses:self.eventListenersResponses to:writer];
@@ -3040,6 +3208,14 @@
 
 @implementation LogDeliveryStatus
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.errorCode = [KAAUnion unionWithBranch:KAA_UNION_LOG_DELIVERY_ERROR_CODE_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
     [self.utils serializeEnum:[NSNumber numberWithInt:self.result] to:writer];
@@ -3123,6 +3299,14 @@
 
 @implementation LogSyncResponse
 
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.deliveryStatuses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_DELIVERY_STATUS_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
+
 - (void)serialize:(avro_writer_t)writer {
     [self serializeDeliveryStatuses:self.deliveryStatuses to:writer];
 }
@@ -3201,6 +3385,7 @@
 
 @implementation RedirectSyncResponse
 
+
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.accessPointId] to:writer];
 }
@@ -3220,6 +3405,21 @@
 
 
 @implementation SyncRequest
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.syncRequestMetaData = [KAAUnion unionWithBranch:KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_1];
+        self.bootstrapSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_REQUEST_OR_NULL_BRANCH_1];
+        self.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_1];
+        self.configurationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
+        self.notificationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
+        self.userSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_1];
+        self.eventSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_1];
+        self.logSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
@@ -3720,6 +3920,21 @@
 
 
 @implementation SyncResponse
+
+- (instancetype)init {
+    self = [super init];
+    if (self) {
+        self.bootstrapSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+        self.profileSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+        self.configurationSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+        self.notificationSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+        self.userSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+        self.eventSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+        self.redirectSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_REDIRECT_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+        self.logSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+    }
+    return self;
+}
 
 - (void)serialize:(avro_writer_t)writer {
     [self.utils serializeInt:[NSNumber numberWithInt:self.requestId] to:writer];
@@ -4223,6 +4438,7 @@
 
 
 @implementation TopicSubscriptionInfo
+
 
 - (void)serialize:(avro_writer_t)writer {
     [self.topicInfo serialize:writer];

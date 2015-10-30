@@ -28,13 +28,13 @@
  * Retrieves current log storage size used by added records.
  * Returns amount of bytes consumed by added records.
  */
-- (NSInteger)getConsumedVolume;
+- (int64_t)getConsumedVolume;
 
 /**
  * Retrieves current number of added records.
  * Returns number of records in a local storage.
  */
-- (NSInteger)getRecordCount;
+- (int64_t)getRecordCount;
 
 @end
 
@@ -68,7 +68,7 @@
  * blockSize - maximum size of sending log block
  * Returns new log block
  */
-- (LogBlock *)getRecordBlock:(NSInteger)blockSize batchCount:(NSInteger)batchCount;
+- (LogBlock *)getRecordBlock:(int64_t)blockSize batchCount:(int32_t)batchCount;
 
 /**
  * Removes already sent log records by its block id.
@@ -77,14 +77,14 @@
  *
  * blockId - unique id of sent log block
  */
-- (void)removeRecordBlock:(NSInteger)blockId;
+- (void)removeRecordBlock:(int32_t)blockId;
 
 /**
  * Notifies if sending of a log block with a specified id was failed.
  *
  * blockId - unique id of log block.
  */
-- (void)notifyUploadFailed:(NSInteger)blockId;
+- (void)notifyUploadFailed:(int32_t)blockId;
 
 /**
  * Closes log storage and releases all used resources (if any)

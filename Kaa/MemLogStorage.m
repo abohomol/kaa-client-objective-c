@@ -12,19 +12,19 @@
 
 #define TAG @"MemLogStorage >>>"
 
-#define DEFAULT_MAX_STORAGE_SIZE        (16 * 1024 * 1024);
-#define DEFAULT_MAX_BUCKET_SIZE         (16 * 1024);
-#define DEFAULT_MAX_BUCKET_RECORD_COUNT (256);
+#define DEFAULT_MAX_STORAGE_SIZE        (16 * 1024 * 1024)
+#define DEFAULT_MAX_BUCKET_SIZE         (16 * 1024)
+#define DEFAULT_MAX_BUCKET_RECORD_COUNT (256)
 
 @interface MemLogStorage ()
 
-@property (nonatomic) NSInteger maxStorageSize;
-@property (nonatomic) NSInteger maxBucketSize;
-@property (nonatomic) NSInteger maxBucketRecordCount;
+@property (nonatomic) int64_t maxStorageSize;
+@property (nonatomic) int64_t maxBucketSize;
+@property (nonatomic) int32_t maxBucketRecordCount;
 @property (nonatomic,strong) NSMutableDictionary *buckets;
-@property (atomic) NSInteger bucketIdSeq;
-@property (atomic) volatile NSInteger consumedVolume;
-@property (atomic) volatile NSInteger recordCount;
+@property (atomic) int32_t bucketIdSeq;
+@property (atomic) volatile int64_t consumedVolume;
+@property (atomic) volatile int64_t recordCount;
 
 @property (nonatomic,strong) MemBucket *currentBucket;
 
@@ -44,7 +44,7 @@
     return self;
 }
 
-- (instancetype)initWithBucketSize:(NSInteger)maxBucketSize bucketRecordCount:(NSInteger)maxBucketRecordCount {
+- (instancetype)initWithBucketSize:(int64_t)maxBucketSize bucketRecordCount:(int32_t)maxBucketRecordCount {
     self = [super init];
     if (self) {
         self.maxStorageSize = DEFAULT_MAX_STORAGE_SIZE;
@@ -56,7 +56,8 @@
     return self;
 }
 
-- (instancetype)initWithMaxStorageSize:(NSInteger)maxStorageSize bucketSize:(NSInteger)bucketSize bucketRecordCount:(NSInteger)bucketRecordCount {
+- (instancetype)initWithMaxStorageSize:(int64_t)maxStorageSize bucketSize:(int64_t)bucketSize
+                     bucketRecordCount:(int32_t)bucketRecordCount {
     self = [super init];
     if (self) {
         self.maxStorageSize = maxStorageSize;
@@ -68,14 +69,14 @@
     return self;
 }
 
-- (NSInteger)getConsumedVolume {
-    DDLogDebug(@"%@ Consumed volume: %li", TAG, (long)self.consumedVolume);
-    return self.consumedVolume;
+- (int64_t)getConsumedVolume {
+    DDLogDebug(@"%@ Consumed volume: %li", TAG, (long)_consumedVolume);
+    return _consumedVolume;
 }
 
-- (NSInteger)getRecordCount {
-    DDLogDebug(@"%@ Record count: %li", TAG, (long)self.recordCount);
-    return self.recordCount;
+- (int64_t)getRecordCount {
+    DDLogDebug(@"%@ Record count: %li", TAG, (long)_recordCount);
+    return _recordCount;
 }
 
 - (void)addLogRecord:(LogRecord *)record {
@@ -106,7 +107,7 @@
     DDLogVerbose(@"%@ Added a new log record to bucket with id [%li]", TAG, (long)[self.currentBucket bucketId]);
 }
 
-- (LogBlock *)getRecordBlock:(NSInteger)blockSize batchCount:(NSInteger)batchCount {
+- (LogBlock *)getRecordBlock:(int64_t)blockSize batchCount:(int32_t)batchCount {
     DDLogVerbose(@"%@ Getting new record block with block size: %li and count: %li", TAG, (long)blockSize, (long)batchCount);
     if (blockSize > self.maxBucketSize || batchCount > self.maxBucketRecordCount) {
         //TODO add support of block resize

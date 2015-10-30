@@ -17,15 +17,15 @@ typedef enum {
 
 @interface MemBucket : NSObject
 
-@property (nonatomic,readonly) NSInteger bucketId;
+@property (nonatomic,readonly) int32_t bucketId;
 @property (nonatomic,strong,readonly) NSMutableArray *records;
 @property (nonatomic) MemBucketState state;
 
-- (instancetype)initWithId:(NSInteger)bucketId maxSize:(NSInteger)maxSize maxRecordCount:(NSInteger)maxRecordCount;
+- (instancetype)initWithId:(int32_t)bucketId maxSize:(int64_t)maxSize maxRecordCount:(int32_t)maxRecordCount;
 
-- (NSInteger)getSize;
+- (int64_t)getSize;
 
-- (NSInteger)getCount;
+- (int32_t)getCount;
 
 - (BOOL)addRecord:(LogRecord *)record;
 
@@ -34,6 +34,6 @@ typedef enum {
  * @param newSize expected max size of a bucket inclusively
  * @return records removed from the bucket
  */
-- (NSArray *)shrinkToSize:(NSInteger)newSize newCount:(NSInteger)newCount;
+- (NSArray *)shrinkToSize:(int64_t)newSize newCount:(int32_t)newCount;
 
 @end

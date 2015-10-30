@@ -205,7 +205,6 @@
 		39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */; settings = {ASSET_TAGS = (); }; };
 		39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0F1BCD49DF00666D1F /* AbstractHttpClientTest.m */; settings = {ASSET_TAGS = (); }; };
 		555D709CF7DB758766ABDA97 /* libPods-KaaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 859AA00A9E215058D7F33E50 /* libPods-KaaTests.a */; };
-		6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */; };
 		B800844F1B7B2DDD003A3D5E /* ResyncConfigurationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */; };
 		B80084501B7B2DDD003A3D5E /* ResyncConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */; };
 		B803F8EE1B7A5AA8009C2C28 /* ConfigurationCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = B803F8ED1B7A5AA2009C2C28 /* ConfigurationCommon.h */; };
@@ -967,7 +966,6 @@
 				B8EC91C01BC4058600D3723B /* libCocoaLumberjack.a in Frameworks */,
 				B81935B91B15C3880053486A /* Security.framework in Frameworks */,
 				B824A22C1B148CFA0076C753 /* SystemConfiguration.framework in Frameworks */,
-				6363EC05531D90FBE641ECF9 /* libPods-libKaa.a.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
