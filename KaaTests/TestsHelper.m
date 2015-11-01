@@ -12,7 +12,7 @@
 
 + (ProtocolMetaData *)buildMetaDataWithTPid:(TransportProtocolId *)TPid
                                        host:(NSString *)host
-                                       port:(uint32_t)port
+                                       port:(int32_t)port
                                andPublicKey:(NSData *)publicKey {
     int32_t publicKeyLength = [publicKey length];
     int32_t hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
