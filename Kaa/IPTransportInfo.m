@@ -32,7 +32,7 @@
         [input open];
         
         uint8_t keySizeBytes[sizeof(uint32_t)];
-        [input read:keySizeBytes maxLength:sizeof(uint32_t)];
+        [input read:keySizeBytes maxLength:sizeof(keySizeBytes)];
         uint32_t keySize = *(uint32_t *)keySizeBytes;
         
         uint8_t key[keySize];
@@ -40,7 +40,7 @@
         self.publicKey = [NSData dataWithBytes:key length:sizeof(key)];
         
         uint8_t hostSizeBytes[sizeof(uint32_t)];
-        [input read:hostSizeBytes maxLength:sizeof(uint32_t)];
+        [input read:hostSizeBytes maxLength:sizeof(hostSizeBytes)];
         uint32_t hostSize = *(uint32_t *)hostSizeBytes;
         
         uint8_t host[hostSize];
@@ -48,7 +48,7 @@
         self.host = [[NSString alloc] initWithBytes:host length:sizeof(host) encoding:NSUTF8StringEncoding];
         
         uint8_t portBytes[sizeof(uint32_t)];
-        [input read:portBytes maxLength:sizeof(uint32_t)];
+        [input read:portBytes maxLength:sizeof(portBytes)];
         self.port = *(uint32_t *)portBytes;
         
         [input close];

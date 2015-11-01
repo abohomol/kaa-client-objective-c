@@ -34,6 +34,7 @@
 #import "LogCollector.h"
 #import "Constants.h"
 #import "CommonEPConstants.h"
+#import "DefaultKaaPlatformContext.h"
 
 /**
  * Creates new Kaa client based on platform context and optional state delegate.

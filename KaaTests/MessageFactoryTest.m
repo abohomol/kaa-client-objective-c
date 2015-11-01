@@ -20,16 +20,7 @@
 #import "EndpointGen.h"
 #import "EndpointObjectHash.h"
 #import "MessageEncoderDecoder.h"
-
-#define KAATestEqual(a, b)\
-if ((a) != (b)) {\
-    [NSException raise:@"Test failed!" format:@"%li != %li", (long)a, (long)b];\
-}
-
-#define KAATestObjectsEqual(a, b)\
-if (![(a) isEqual:(b)]) {\
-    [NSException raise:@"Test failed!" format:@"%@ ISN'T EQUAL TO %@", a, b];\
-}
+#import "TestsHelper.h"
 
 @interface MessageFactoryTest : XCTestCase <ConnAckDelegate,ConnectDelegate,SyncResponseDelegate,SyncRequestDelegate,DisconnectDelegate>
 

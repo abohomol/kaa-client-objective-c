@@ -12,14 +12,14 @@
 
 @interface TestLogStorageStatus : NSObject <LogStorageStatus>
 
-@property (nonatomic) NSInteger consumedVolume;
-@property (nonatomic) NSInteger recordCount;
+@property (nonatomic) int64_t consumedVolume;
+@property (nonatomic) int64_t recordCount;
 
 @end
 
 @implementation TestLogStorageStatus
 
-- (instancetype)initWithConsumedVolume:(NSInteger)consumedVolume andRecordCount:(NSInteger)recordCount {
+- (instancetype)initWithConsumedVolume:(int64_t)consumedVolume andRecordCount:(int64_t)recordCount {
     self = [super init];
     if (self) {
         self.consumedVolume = consumedVolume;
@@ -28,11 +28,11 @@
     return self;
 }
 
-- (NSInteger)getConsumedVolume {
+- (int64_t)getConsumedVolume {
     return self.consumedVolume;
 }
 
-- (NSInteger)getRecordCount {
+- (int64_t)getRecordCount {
     return self.recordCount;
 }
 

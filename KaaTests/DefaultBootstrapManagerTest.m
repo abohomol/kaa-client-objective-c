@@ -20,6 +20,7 @@
 #import "KeyUtils.h"
 #import "KeyPair.h"
 #import "DefaultFailoverManager.h"
+#import "TestsHelper.h"
 
 #pragma mark - ChannelManagerMock
 
@@ -43,82 +44,82 @@
     return self;
 }
 
-- (void) setConnectivityChecker:(ConnectivityChecker *)checker {
+- (void)setConnectivityChecker:(ConnectivityChecker *)checker {
 }
 
-- (void) addChannel:(id<KaaDataChannel>)channel {
+- (void)addChannel:(id<KaaDataChannel>)channel {
 }
 
-- (void) removeChannel:(id<KaaDataChannel>)channel {
+- (void)removeChannel:(id<KaaDataChannel>)channel {
 }
 
-- (NSArray *) getChannels {
+- (NSArray *)getChannels {
     return nil;
 }
 
-- (id<KaaDataChannel>) getChannelById:(NSString *)channelId {
+- (id<KaaDataChannel>)getChannelById:(NSString *)channelId {
     return nil;
 }
 
-- (void) onServerFailed:(id<TransportConnectionInfo>)server {
+- (void)onServerFailed:(id<TransportConnectionInfo>)server {
 }
 
-- (void) setFailoverManager:(id<FailoverManager>)failoverManager {
+- (void)setFailoverManager:(id<FailoverManager>)failoverManager {
 }
 
-- (void) onTransportConnectionInfoUpdated:(id<TransportConnectionInfo>)newServer {
+- (void)onTransportConnectionInfoUpdated:(id<TransportConnectionInfo>)newServer {
     self.receivedURL = [[[IPTransportInfo alloc] initWithTransportInfo:newServer] getUrl];
     self.serverUpdated = YES;
     self.callCounter += 1;
 }
 
-- (void) clearChannelList {
+- (void)clearChannelList {
 }
 
-- (void) setChannel:(id<KaaDataChannel>)channel withType:(TransportType)type {
+- (void)setChannel:(id<KaaDataChannel>)channel withType:(TransportType)type {
 }
 
-- (void) removeChannelById:(NSString *)channelId {
+- (void)removeChannelById:(NSString *)channelId {
 }
 
-- (void) shutdown {
+- (void)shutdown {
 }
 
-- (void) pause {
+- (void)pause {
 }
 
-- (void) resume {
+- (void)resume {
 }
 
-- (void) setOperationDemultiplexer:(id<KaaDataDemultiplexer>)demultiplexer {
+- (void)setOperationDemultiplexer:(id<KaaDataDemultiplexer>)demultiplexer {
     //TODO Auto-generated method stub
 }
 
-- (void) setOperationMultiplexer:(id<KaaDataMultiplexer>)multiplexer {
+- (void)setOperationMultiplexer:(id<KaaDataMultiplexer>)multiplexer {
     //TODO Auto-generated method stub
 }
 
-- (void) setBootstrapMultiplexer:(id<KaaDataMultiplexer>)multiplexer {
+- (void)setBootstrapMultiplexer:(id<KaaDataMultiplexer>)multiplexer {
     //TODO Auto-generated method stub
 }
 
-- (void) setBootstrapDemultiplexer:(id<KaaDataDemultiplexer>)demultiplexer {
+- (void)setBootstrapDemultiplexer:(id<KaaDataDemultiplexer>)demultiplexer {
     //TODO Auto-generated method stub
 }
 
-- (void) sync:(TransportType)type {
+- (void)sync:(TransportType)type {
     //TODO Auto-generated method stub
 }
 
-- (void) syncAck:(TransportType)type {
+- (void)syncAck:(TransportType)type {
     //TODO Auto-generated method stub
 }
 
-- (void) syncAll:(TransportType)type {
+- (void)syncAll:(TransportType)type {
     //TODO Auto-generated method stub
 }
 
-- (id<TransportConnectionInfo>) getActiveServer:(TransportType)type {
+- (id<TransportConnectionInfo>)getActiveServer:(TransportType)type {
     //TODO Auto-generated method stub
     return nil;
 }
@@ -135,7 +136,7 @@
 
 @implementation DefaultBootstrapManagerTest
 
-- (void) testReceiveOperationsServerList {
+- (void)testReceiveOperationsServerList {
     id <BootstrapTransport> transport = mockProtocol(@protocol(BootstrapTransport));
     DefaultBootstrapManager *manager = [[DefaultBootstrapManager alloc] initWith:transport executorContext:nil];
     
@@ -153,7 +154,7 @@
     [verifyCount(transport, times(2)) sync];
 }
 
-- (void) testOperationsServerInfoRetrieving {
+- (void)testOperationsServerInfoRetrieving {
     id <ExecutorContext> executorContext = mockProtocol(@protocol(ExecutorContext));
     DefaultBootstrapManager *manager = [[DefaultBootstrapManager alloc] initWith:nil executorContext:executorContext];
     
@@ -171,7 +172,7 @@
     
     //Generating pseudo bootstrap key
     [KeyUtils generateKeyPair];
-    ProtocolMetaData *md = [self buildMetaDataWithTPid:[TransportProtocolIdHolder HTTPTransportID] host:@"localhost" port:9889 andPublicKey:[KeyUtils getPublicKey]];
+    ProtocolMetaData *md = [TestsHelper buildMetaDataWithTPid:[TransportProtocolIdHolder HTTPTransportID] host:@"localhost" port:9889 andPublicKey:[KeyUtils getPublicKey]];
     NSArray *array = [NSArray arrayWithObject:md];
     
     NSOperationQueue *opQue = [[NSOperationQueue alloc] init];
@@ -193,7 +194,7 @@
     XCTAssertEqual(1, channelManager.callCounter);
 }
 
-- (void) testUseServerByDNSName {
+- (void)testUseServerByDNSName {
     DefaultBootstrapManager *manager = [[DefaultBootstrapManager alloc] initWith:nil executorContext:nil];
     
     ChannelManagerMock *channelManager = [[ChannelManagerMock alloc] init];
@@ -204,7 +205,7 @@
     
     //Generating pseudo bootstrap key
     [KeyUtils generateKeyPair];
-    ProtocolMetaData *md = [self buildMetaDataWithTPid:[TransportProtocolIdHolder HTTPTransportID] host:@"localhost" port:9889 andPublicKey:[KeyUtils getPublicKey]];
+    ProtocolMetaData *md = [TestsHelper buildMetaDataWithTPid:[TransportProtocolIdHolder HTTPTransportID] host:@"localhost" port:9889 andPublicKey:[KeyUtils getPublicKey]];
     NSArray *array = [NSArray arrayWithObject:md];
     
     [manager onProtocolListUpdated:array];
@@ -213,37 +214,12 @@
     [manager useNextOperationsServerByAccessPointId:[@"localhost2:9889" hash]];
     [verifyCount(transport, times(1)) sync];
     
-    md = [self buildMetaDataWithTPid:[TransportProtocolIdHolder HTTPTransportID] host:@"localhost2" port:9889 andPublicKey:[KeyUtils getPublicKey]];
+    md = [TestsHelper buildMetaDataWithTPid:[TransportProtocolIdHolder HTTPTransportID] host:@"localhost2" port:9889 andPublicKey:[KeyUtils getPublicKey]];
     array = [NSArray arrayWithObject:md];
     
     [manager onProtocolListUpdated:array];
     XCTAssertEqualObjects(@"http://localhost2:9889", [channelManager receivedURL]);
     XCTAssertTrue(channelManager.serverUpdated);
-}
-
-#pragma mark - Supporting methods
-
-- (ProtocolMetaData *) buildMetaDataWithTPid:(TransportProtocolId *)TPid
-                                        host:(NSString *)host
-                                        port:(uint32_t)port
-                                andPublicKey:(NSData *)publicKey {
-    uint32_t publicKeyLength = [publicKey length];
-    uint32_t hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
-    NSMutableData *data = [NSMutableData data];
-    ProtocolVersionPair *pair = [[ProtocolVersionPair alloc]init];
-    [pair setId:TPid.protocolId];
-    [pair setVersion:TPid.protocolVersion];
-    
-    [data appendBytes:&publicKeyLength length:sizeof(publicKeyLength)];
-    [data appendData:publicKey];
-    [data appendBytes:&hostLength length:sizeof(hostLength)];
-    [data appendData:[host dataUsingEncoding:NSUTF8StringEncoding]];
-    [data appendBytes:&port length:sizeof(port)];
-    ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
-    [md setConnectionInfo:data];
-    [md setAccessPointId:[[NSString stringWithFormat:@"%@:%i", host, port] hash]];
-    [md setProtocolVersionInfo:pair];
-    return md;
 }
 
 @end
