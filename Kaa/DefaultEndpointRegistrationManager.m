@@ -61,6 +61,11 @@
         self.endpointDetachDelegates = [NSMutableDictionary dictionary];
         self.attachEndpointRequests = [NSMutableDictionary dictionary];
         self.detachEndpointRequests = [NSMutableDictionary dictionary];
+        
+        NSString *endpointAccessToken = [self.state endpointAccessToken];
+        if (!endpointAccessToken || endpointAccessToken.length == 0) {
+            [self.state refreshEndpointAccessToken];
+        }
     }
     return self;
 }
