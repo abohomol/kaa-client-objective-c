@@ -22,7 +22,7 @@
         <version>0.7.3-SNAPSHOT</version>
         <artifactId>client-multi</artifactId>
     </parent>
-    <artifactId>client-objc</artifactId>
+    <artifactId>client-objective-c</artifactId>
     <packaging>pom</packaging>
 
     <name>Kaa Client (Objective-C)</name>
