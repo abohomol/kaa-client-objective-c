@@ -47,7 +47,7 @@
     
     NSMutableURLRequest *request =
     [self.client multipartFormRequestWithMethod:@"POST"
-                                           path:uri
+                                           path:[NSString stringWithFormat:@"%@%@", self.url, uri]
                                      parameters:nil
                       constructingBodyWithBlock:^(id <AFMultipartFormData>formData) {
                           for (NSString *key in entity.allKeys) {
