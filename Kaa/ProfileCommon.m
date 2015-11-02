@@ -34,7 +34,7 @@
     if (container) {
         profile = [container getProfile];
     } else {
-        [NSException raise:NSInvalidArgumentException format:@"Profile container is not set!"];
+        profile = [[KAAProfile alloc] init];
     }
     if (profile) {
         return [converter toBytes:profile];
