@@ -38,8 +38,7 @@
     return self;
 }
 
-- (instancetype) initWithCountThreshold:(NSInteger)volumeThreshold TimeLimit:(long)timeLimit andTimeUnit:(TimeUnit)timeUnit
-{
+- (instancetype) initWithCountThreshold:(int32_t)volumeThreshold TimeLimit:(int64_t)timeLimit andTimeUnit:(TimeUnit)timeUnit {
     self = [self init];
     if (self) {
         [self setVolumeThreshold:volumeThreshold];
@@ -54,13 +53,13 @@
     long currentConsumedVolume = [status getConsumedVolume];
     
     if (currentConsumedVolume >= self.volumeThreshold) {
-        DDLogInfo(@"%@ Need to upload logs - current size: %li, threshold: %li",
+        DDLogInfo(@"%@ Need to upload logs - current size: %li, threshold: %i",
                   TAG, currentConsumedVolume, self.volumeThreshold);
         decision = LOG_UPLOAD_STRATEGY_DECISION_UPLOAD;
         self.lastUploadTime = currentTime;
     } else if (((currentTime - self.lastUploadTime) / 1000) >= self.uploadCheckPeriod) {
-        DDLogInfo(@"%@ Need to upload logs - current count: %li, lastUploadedTime: %li, timeLimit: %li",
-                  TAG, (long)[status getRecordCount], (long)self.lastUploadTime, self.uploadCheckPeriod);
+        DDLogInfo(@"%@ Need to upload logs - current count: %lli, lastUploadedTime: %lli, timeLimit: %i",
+                  TAG, [status getRecordCount], self.lastUploadTime, self.uploadCheckPeriod);
         decision = LOG_UPLOAD_STRATEGY_DECISION_UPLOAD;
         self.lastUploadTime = currentTime;
     }

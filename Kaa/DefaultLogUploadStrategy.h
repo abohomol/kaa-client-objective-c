@@ -11,15 +11,15 @@
 
 @interface DefaultLogUploadStrategy : NSObject <LogUploadStrategy>
 
-@property (nonatomic) NSInteger timeout;
-@property (nonatomic) NSInteger uploadCheckPeriod;
-@property (nonatomic) NSInteger retryPeriod;
-@property (nonatomic) NSInteger volumeThreshold;
-@property (nonatomic) NSInteger countThreshold;
-@property (nonatomic) NSInteger batchSize;
-@property (nonatomic) NSInteger batchCount;
-@property (nonatomic) BOOL      isUploadLocked;
-@property (nonatomic) long      timeLimit;
+@property (nonatomic) int32_t timeout;
+@property (nonatomic) int32_t uploadCheckPeriod;
+@property (nonatomic) int32_t retryPeriod;
+@property (nonatomic) int32_t volumeThreshold;
+@property (nonatomic) int32_t countThreshold;
+@property (nonatomic) int64_t batchSize;
+@property (nonatomic) int32_t batchCount;
+@property (nonatomic) BOOL    isUploadLocked;
+@property (nonatomic) int64_t timeLimit;
 
 - (instancetype)initWithDefaults;
 

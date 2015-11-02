@@ -32,6 +32,6 @@
 
 - (instancetype)initWithRecord:(KAALog *)record;
 - (instancetype)initWithData:(NSData *)data;
-- (NSUInteger)getSize;
+- (int64_t)getSize;
 
 @end

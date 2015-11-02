@@ -20,6 +20,7 @@
 #import "TransportProtocolIdHolder.h"
 #import "KeyUtils.h"
 #import "TestsHelper.h"
+#import "TransportProtocolIdHolder.h"
 
 #pragma mark DefaultBootStrapChannelFake
 
@@ -45,11 +46,9 @@
     return self;
 }
 
-- (NSOperationQueue *) createExecutor {
+- (NSOperationQueue *)createExecutor {
     return [super createExecutor];
 }
-
-
 
 @end
 
@@ -66,15 +65,15 @@
     return self;
 }
 
-- (AbstractHttpClient *) getHttpClient {
+- (AbstractHttpClient *)getHttpClient {
     AbstractHttpClient *client = mock([AbstractHttpClient class]);
     MessageEncoderDecoder *crypt = mock([MessageEncoderDecoder class]);
     @try {
-        NSInteger five = 5;
+        char five = 5;
         NSMutableData *data = [NSMutableData dataWithBytes:&five length:sizeof(five)];
         [data appendBytes:&five length:sizeof(five)];
         [data appendBytes:&five length:sizeof(five)];
-        [given([crypt decodeData:anything()]) willReturn:[NSData dataWithData:data]];
+        [given([crypt decodeData:anything()]) willReturn:data];
     }
     @catch (NSException *exception) {
         NSLog(@"GeneralSecurityException");
@@ -102,6 +101,8 @@
     NSDictionary *dict = [channel getSupportedTransportTypes];
     
     XCTAssertEqualObjects([dict objectForKey:[NSNumber numberWithInt:TRANSPORT_TYPE_BOOTSTRAP]], [NSNumber numberWithInt:CHANNEL_DIRECTION_BIDIRECTIONAL]);
+    XCTAssertTrue([[TransportProtocolIdHolder HTTPTransportID] isEqual:[channel getTransportProtocolId]]);
+    XCTAssertTrue([@"default_bootstrap_channel" isEqualToString:[channel getId]]);
 }
 
 - (void)testChannelSync {
@@ -109,12 +110,7 @@
     AbstractHttpClient *httpClient = mock([AbstractHttpClient class]);
     id <FailoverManager> failoverManager = mockProtocol(@protocol(FailoverManager));
     
-    NSInteger five = 5;
-    NSMutableData *data = [NSMutableData dataWithBytes:&five length:sizeof(five)];
-    [data appendBytes:&five length:sizeof(five)];
-    [data appendBytes:&five length:sizeof(five)];
-    
-    [given([httpClient executeHttpRequest:anything() entity:anything() verifyResponse:anything()]) willReturn:data];
+    [given([httpClient executeHttpRequest:anything() entity:anything() verifyResponse:anything()]) willReturn:[self returnData]];
     
     [KeyUtils generateKeyPair];
     AbstractKaaClient *client = mock([AbstractKaaClient class]);
@@ -139,7 +135,7 @@
     [channel sync:TRANSPORT_TYPE_BOOTSTRAP];
 
     [NSThread sleepForTimeInterval:1];
-    [verifyCount([channel getDemultiplexer], times(channel.wantedNumberOfInvocations)) processResponse:data];
+    [verifyCount([channel getDemultiplexer], times(channel.wantedNumberOfInvocations)) processResponse:[self returnData]];
     [verifyCount([channel getMultiplexer], times(channel.wantedNumberOfInvocations)) compileRequest:anything()];
 }
 
@@ -177,7 +173,7 @@
 #pragma mark - Supporting methods
 
 - (NSData *)returnData {
-    NSInteger five = 5;
+    char five = 5;
     NSMutableData *data = [NSMutableData dataWithBytes:&five length:sizeof(five)];
     [data appendBytes:&five length:sizeof(five)];
     [data appendBytes:&five length:sizeof(five)];
@@ -185,8 +181,7 @@
 }
 
 - (id<TransportConnectionInfo>) createTestServerInfoWithServerType:(ServerType)serverType transportProtocolId:(TransportProtocolId *)TPid host:(NSString *)host port:(uint32_t)port andPublicKey:(NSData *)publicKey {
-    ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
-    md = [TestsHelper buildMetaDataWithTPid:TPid host:host port:port andPublicKey:publicKey];
+    ProtocolMetaData *md = [TestsHelper buildMetaDataWithTPid:TPid host:host port:port andPublicKey:publicKey];
     return  [[GenericTransportInfo alloc] initWithServerType:serverType andMeta:md];
 }
 

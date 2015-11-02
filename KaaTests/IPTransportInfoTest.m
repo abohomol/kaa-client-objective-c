@@ -37,8 +37,7 @@
                                                               host:(NSString *)host
                                                               port:(uint32_t)port
                                                       andPublicKey:(NSData *)publicKey {
-    ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
-    md = [TestsHelper buildMetaDataWithTPid:TPid host:host port:port andPublicKey:publicKey];
+    ProtocolMetaData *md = [TestsHelper buildMetaDataWithTPid:TPid host:host port:port andPublicKey:publicKey];
     return  [[GenericTransportInfo alloc] initWithServerType:serverType andMeta:md];
 }
 

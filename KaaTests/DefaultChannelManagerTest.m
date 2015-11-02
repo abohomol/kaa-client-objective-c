@@ -445,16 +445,15 @@
 
 #pragma mark - Supporting methods
 
-- (NSDictionary *) getDefaultBootstrapServers {
+- (NSDictionary *)getDefaultBootstrapServers {
     [KeyUtils generateKeyPair];
     id <TransportConnectionInfo> server = [self createTestServerInfoWithServerType:SERVER_BOOTSTRAP transportProtocolId:[TransportProtocolIdHolder HTTPTransportID] host:@"localhost" port:9889 andPublicKey:[KeyUtils getPublicKey]];
     NSDictionary *dictionary = [NSDictionary dictionaryWithObject:@[server] forKey:[TransportProtocolIdHolder HTTPTransportID]];
     return dictionary;
 }
 
-- (id<TransportConnectionInfo>) createTestServerInfoWithServerType:(ServerType)serverType transportProtocolId:(TransportProtocolId *)TPid host:(NSString *)host port:(NSUInteger)port andPublicKey:(NSData *)publicKey {
-    ProtocolMetaData *md = [[ProtocolMetaData alloc] init];
-    md = [TestsHelper buildMetaDataWithTPid:TPid host:host port:port andPublicKey:publicKey];
+- (id<TransportConnectionInfo>)createTestServerInfoWithServerType:(ServerType)serverType transportProtocolId:(TransportProtocolId *)TPid host:(NSString *)host port:(int32_t)port andPublicKey:(NSData *)publicKey {
+    ProtocolMetaData *md = [TestsHelper buildMetaDataWithTPid:TPid host:host port:port andPublicKey:publicKey];
     return  [[GenericTransportInfo alloc] initWithServerType:serverType andMeta:md];
 }
 

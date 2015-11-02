@@ -15,7 +15,7 @@
 @protocol LogFailoverCommand <AccessPointCommand>
 
 - (void)retryLogUpload;
-- (void)retryLogUpload:(NSInteger)delay;
+- (void)retryLogUpload:(int32_t)delay;
 
 @end
 

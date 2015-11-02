@@ -262,7 +262,7 @@
     [storage close];
 }
 
-- (int32_t)addIfNotEmpty:(NSInteger)count :(LogBlock *)logBlock {
+- (int32_t)addIfNotEmpty:(int32_t)count :(LogBlock *)logBlock {
     if (logBlock && [[logBlock logRecords] count] > 0) {
         count += [[logBlock logRecords] count];
     }

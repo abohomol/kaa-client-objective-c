@@ -19,6 +19,7 @@
     char *buffer = (char *)malloc((objSize) * sizeof(char));
     avro_writer_t writer = avro_writer_memory(buffer, objSize);
     if (!writer) {
+        free(buffer);
         DDLogError(@"%@ Unable to allocate '%li'bytes for avro writer", TAG, objSize);
         return nil;
     }

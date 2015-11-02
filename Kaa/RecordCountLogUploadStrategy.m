@@ -28,7 +28,7 @@
 
 @implementation RecordCountLogUploadStrategy
 
-- (instancetype) initWithCountThreshold:(NSInteger)countThreshold {
+- (instancetype)initWithCountThreshold:(int32_t)countThreshold {
     
     self = [super init];
     if (self) {

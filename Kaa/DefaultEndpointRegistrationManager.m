@@ -230,7 +230,7 @@ userDetachNotification:(UserDetachNotification *)detachNotification {
 }
 
 - (UserAttachRequest *)getUserAttachRequest {
-    return self.userAttachRequest;
+    return _userAttachRequest;
 }
 
 - (BOOL)isAttachedToUser {

@@ -51,27 +51,27 @@ typedef enum {
  * that will be delivered in single request to server
  * Returns size of the batch
  */
-- (NSInteger)getBatchSize;
+- (int64_t)getBatchSize;
 
 /**
  * Retrieves maximum count of the records in report pack
  * that will be delivered in single request to server
  * Returns size of the batch
  */
-- (NSInteger)getBatchCount;
+- (int32_t)getBatchCount;
 
 /**
  * Maximum time to wait log delivery response.
  * Returns time in seconds.
  */
-- (NSInteger)getTimeout;
+- (int32_t)getTimeout;
 
 /**
  * If there are records in storage we need to periodically check isUploadNeeded method.
  * This is useful if client want to upload logs on certain timing conditions instead of log storage checks
  * Returns time in seconds
  */
-- (NSInteger)getUploadCheckPeriod;
+- (int32_t)getUploadCheckPeriod;
 
 /**
  * Handles timeout of log delivery

@@ -29,7 +29,7 @@
 
 @implementation StorageSizeLogUploadStrategy
 
-- (instancetype)initWithVolumeThreshold:(NSInteger)volumeThreshold {
+- (instancetype)initWithVolumeThreshold:(int32_t)volumeThreshold {
     self = [super init];
     if (self) {
         [self setVolumeThreshold:volumeThreshold];

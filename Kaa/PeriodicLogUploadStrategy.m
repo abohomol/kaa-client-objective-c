@@ -51,7 +51,7 @@
     long currentRecordCount = [status getRecordCount];
 
     if (((currentTime - self.lastUploadTime) / 1000) >= self.uploadCheckPeriod) {
-        DDLogInfo(@"%@ Need to upload logs - current count: %li, lastUploadedTime: %li, timeLimit: %li sec",
+        DDLogInfo(@"%@ Need to upload logs - current count: %li, lastUploadedTime: %li, timeLimit: %i sec",
                   TAG, currentRecordCount, (long)self.lastUploadTime, self.uploadCheckPeriod);
         decision = LOG_UPLOAD_STRATEGY_DECISION_UPLOAD;
         self.lastUploadTime = currentTime;

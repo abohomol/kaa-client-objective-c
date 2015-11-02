@@ -28,7 +28,7 @@
 @property (nonatomic,strong) NSLock *uploadCheckLock;
 @property (nonatomic,strong) NSObject *uploadCheckGuard;   //variable to sync
 
-- (void)checkDeliveryTimeout:(NSInteger)bucketId;
+- (void)checkDeliveryTimeout:(int32_t)bucketId;
 - (void)processUploadDecision:(LogUploadStrategyDecision)decision;
 
 @end
@@ -89,7 +89,7 @@
                 logEntry.data = [NSData dataWithData:record.data];
                 [logs addObject:logEntry];
             }
-            request.requestId = (int)group.blockId;
+            request.requestId = group.blockId;
             request.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_0 andData:logs];
             DDLogInfo(@"%@ Adding following bucket id [%li] for timeout tracking", TAG, (long)group.blockId);
             [self.timeoutsLock lock];
@@ -175,7 +175,7 @@
     }
 }
 
-- (void)checkDeliveryTimeout:(NSInteger)bucketId {
+- (void)checkDeliveryTimeout:(int32_t)bucketId {
     DDLogDebug(@"%@ Checking for a delivery timeout of the bucket with id: [%li]", TAG, (long)bucketId);
     [self.timeoutsLock lock];
     BOOL isTimeout = NO;
@@ -214,7 +214,7 @@
     [self uploadIfNeeded];
 }
 
-- (void)retryLogUpload:(NSInteger)delay {
+- (void)retryLogUpload:(int32_t)delay {
     __weak typeof(self)weakSelf = self;
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), [self.executorContext getSheduledExecutor], ^{
         [weakSelf uploadIfNeeded];

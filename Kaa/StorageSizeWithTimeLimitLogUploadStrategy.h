@@ -13,6 +13,6 @@
 
 @interface StorageSizeWithTimeLimitLogUploadStrategy : DefaultLogUploadStrategy
 
-@property (assign, nonatomic) long lastUploadTime;
+@property (nonatomic) int64_t lastUploadTime;
 
 @end

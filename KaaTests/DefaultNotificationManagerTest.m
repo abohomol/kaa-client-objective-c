@@ -19,32 +19,18 @@
 #import "DefaultNotificationManager.h"
 #import "AvroBytesConverter.h"
 #import "EndpointGen.h"
+#import "TestsHelper.h"
 
 #define STATE_FILE_NAME @"state.properties"
 #define STATE_FILE_LOCATION @"state_file_location"
 #define STATE_FILE_DEFAULT  @"state_properties"
 
-static NSArray *topicsArray;
+@interface DefaultNotificationManagerTest : XCTestCase <NotificationTopicListDelegate>
 
-
-@interface TestNotificationTopicListDelegate : NSObject <NotificationTopicListDelegate>
-
-@end
-
-@implementation TestNotificationTopicListDelegate
-
-- (void) onListUpdated:(NSArray *)list {
-    XCTAssertEqualObjects(topicsArray, list);
-    topicsArray = [NSArray array];
-}
-
-@end
-
-@interface DefaultNotificationManagerTest : XCTestCase
-
-@property (strong, nonatomic) id <ExecutorContext> executorContext;
-@property (strong, nonatomic) NSOperationQueue *executor;
+@property (nonatomic,strong) id<ExecutorContext> executorContext;
+@property (nonatomic,strong) NSOperationQueue *executor;
 @property (nonatomic,strong) AvroBytesConverter *converter;
+@property (nonatomic,strong) NSMutableArray *topicsArray;
 
 - (KaaClientProperties *)getProperties;
 
@@ -52,11 +38,18 @@ static NSArray *topicsArray;
 
 @implementation DefaultNotificationManagerTest
 
-- (void) setUp {
+- (void)onListUpdated:(NSArray *)list {
+    KAATestEqual(self.topicsArray, list);
+    [self.topicsArray removeAllObjects];
+}
+
+- (void)setUp {
     [super setUp];
     self.executorContext = mockProtocol(@protocol(ExecutorContext));
     self.executor = [[NSOperationQueue alloc] init];
     self.converter = [[AvroBytesConverter alloc] init];
+    
+    [self.topicsArray removeAllObjects];
     
     [given([self.executorContext getApiExecutor]) willReturn:self.executor];
     [given([self.executorContext getCallbackExecutor]) willReturn:self.executor];
@@ -68,7 +61,12 @@ static NSArray *topicsArray;
     [[NSFileManager defaultManager] removeItemAtPath:stateFileLocation error:&error];
 }
 
-- (void) testEmptyTopicList {
+- (void)tearDown {
+    [super tearDown];
+    [self.executor cancelAllOperations];
+}
+
+- (void)testEmptyTopicList {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
@@ -81,7 +79,7 @@ static NSArray *topicsArray;
     XCTAssertTrue([[notificationManager getTopics] count] == 0);
 }
 
-- (void) testTopicsAfterUpdate {
+- (void)testTopicsAfterUpdate {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -102,7 +100,7 @@ static NSArray *topicsArray;
     XCTAssertTrue([[notificationManager getTopics] count] == [topicsArray count]);
 }
 
-- (void) testTopicPersistence {
+- (void)testTopicPersistence {
     KaaClientProperties *prop = [self getProperties];
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:prop];
     
@@ -128,7 +126,7 @@ static NSArray *topicsArray;
     XCTAssertTrue([[newNotificationManager getTopics] count] == [topicsArray count]);
 }
 
-- (void) testTwiceTopicUpdate {
+- (void)testTwiceTopicUpdate {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -160,7 +158,7 @@ static NSArray *topicsArray;
     XCTAssertTrue([newTopics containsObject:topic3]);
 }
 
-- (void) testAddTopicUpdateListener {
+- (void)testAddTopicUpdateListener {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -176,18 +174,17 @@ static NSArray *topicsArray;
     Topic *topic3 = [[Topic alloc] init];
     topic3.id = @"id3";
     topic3.name = @"topic_name1";
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, topic3, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, topic3, nil];
     
-    TestNotificationTopicListDelegate *delegate = [[TestNotificationTopicListDelegate alloc] init];
-    [notificationManager addTopicListDelegate:delegate];
+    [notificationManager addTopicListDelegate:self];
     
-    [notificationManager topicsListUpdated:topicsArray];
-    [NSThread sleepForTimeInterval:3.f];
+    [notificationManager topicsListUpdated:self.topicsArray];
+    [NSThread sleepForTimeInterval:0.5f];
     
-    XCTAssertEqual(0, [topicsArray count]);
+    XCTAssertEqual(0, [self.topicsArray count]);
 }
 
-- (void) testRemoveTopicUpdateDelegate {
+- (void)testRemoveTopicUpdateDelegate {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -210,7 +207,7 @@ static NSArray *topicsArray;
     [verifyCount(delegate2, times(1)) onListUpdated:topicUpdate];
 }
 
-- (void) testGlobalNotificationDelegates {
+- (void)testGlobalNotificationDelegates {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -224,12 +221,12 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
     KAANotification *notification = [[KAANotification alloc] init];
     NSData *notificationBody = [self.converter toBytes:notification];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     
     Notification *notification1 = [[Notification alloc] init];
     notification1.topicId = @"id1";
@@ -266,7 +263,7 @@ static NSArray *topicsArray;
     [verifyCount(globalDelegate, times([notificationUpdate count] * 2)) onNotification:anything() withTopicId:anything()];
 }
 
-- (void) testNotificationDelegateOnTopic {
+- (void)testNotificationDelegateOnTopic {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -279,12 +276,12 @@ static NSArray *topicsArray;
     Topic *topic2 = [[Topic alloc] init];
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
     KAANotification *notification = [[KAANotification alloc] init];
     NSData *notificationBody = [self.converter toBytes:notification];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     
     Notification *notification1 = [[Notification alloc] init];
     notification1.topicId = @"id1";
@@ -310,13 +307,16 @@ static NSArray *topicsArray;
     [notificationManager removeNotificationDelegate:topicDelegate forTopic:@"id2"];
     [notificationManager notificationReceived:notificationUpdate];
     
-    [NSThread sleepForTimeInterval:5.f];
+    [NSThread sleepForTimeInterval:1.f];
     
     [verifyCount(globalDelegate, times([notificationUpdate count] * 2 - 1)) onNotification:anything() withTopicId:anything()];
+    
+    [NSThread sleepForTimeInterval:1.f];
+    
     [verifyCount(topicDelegate, times(1)) onNotification:anything() withTopicId:anything()];
 }
 
-- (void) testAddDelegateForUnknownTopic {
+- (void)testAddDelegateForUnknownTopic {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -330,9 +330,9 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     
     id <NotificationDelegate> delegate= mockProtocol(@protocol(NotificationDelegate));
     @try {
@@ -344,7 +344,7 @@ static NSArray *topicsArray;
     }
 }
 
-- (void) testRemoveDelegateForUnknownTopic {
+- (void)testRemoveDelegateForUnknownTopic {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -358,9 +358,9 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     
     id <NotificationDelegate> delegate= mockProtocol(@protocol(NotificationDelegate));
     @try {
@@ -372,7 +372,7 @@ static NSArray *topicsArray;
     }
 }
 
-- (void) testSubsribeForUnknownTopic1 {
+- (void)testSubsribeForUnknownTopic1 {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -386,9 +386,9 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     
     @try {
         [notificationManager subscribeToTopic:@"unknown_id" forceSync:YES];
@@ -399,7 +399,7 @@ static NSArray *topicsArray;
     }
 }
 
-- (void) testSubsribeForUnknownTopic2 {
+- (void)testSubsribeForUnknownTopic2 {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -413,9 +413,9 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     NSArray *topics = [NSArray arrayWithObjects:@"id1", @"id2", @"unknown_id", nil];
     @try {
         [notificationManager subscribeToTopics:topics forceSync:YES];
@@ -426,7 +426,7 @@ static NSArray *topicsArray;
     }
 }
 
-- (void) testUnsubsribeForUnknownTopic1 {
+- (void)testUnsubsribeForUnknownTopic1 {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -440,9 +440,9 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     @try {
         [notificationManager unsubscribeFromTopic:@"unknown_id" forceSync:YES];
         XCTFail();
@@ -452,7 +452,7 @@ static NSArray *topicsArray;
     }
 }
 
-- (void) testUnsubsribeForUnknownTopic2 {
+- (void)testUnsubsribeForUnknownTopic2 {
     KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
     id <NotificationTransport> transport = mockProtocol(@protocol(NotificationTransport));
     
@@ -466,9 +466,9 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     NSArray *topics = [NSArray arrayWithObjects:@"id1", @"id2", @"unknown_id", nil];
     @try {
         [notificationManager unsubscribeFromTopics:topics forceSync:YES];
@@ -493,8 +493,8 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
-    [notificationManager topicsListUpdated:topicsArray];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
+    [notificationManager topicsListUpdated:self.topicsArray];
     @try {
         [notificationManager subscribeToTopic:@"id2" forceSync:YES];
         XCTFail();
@@ -518,8 +518,8 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
-    [notificationManager topicsListUpdated:topicsArray];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
+    [notificationManager topicsListUpdated:self.topicsArray];
     NSArray *array = [NSArray arrayWithObjects:@"id1", @"id2", nil];
     @try {
         [notificationManager subscribeToTopics:array forceSync:YES];
@@ -544,8 +544,8 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
-    [notificationManager topicsListUpdated:topicsArray];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
+    [notificationManager topicsListUpdated:self.topicsArray];
     @try {
         [notificationManager unsubscribeFromTopic:@"id2" forceSync:YES];
         XCTFail();
@@ -569,8 +569,8 @@ static NSArray *topicsArray;
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, nil];
-    [notificationManager topicsListUpdated:topicsArray];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
+    [notificationManager topicsListUpdated:self.topicsArray];
     NSArray *array = [NSArray arrayWithObjects:@"id1", @"id2", nil];
     @try {
         [notificationManager unsubscribeFromTopics:array forceSync:YES];
@@ -599,9 +599,9 @@ static NSArray *topicsArray;
     topic3.id = @"id3";
     topic3.name = @"topic_name1";
     topic3.subscriptionType = SUBSCRIPTION_TYPE_OPTIONAL_SUBSCRIPTION;
-    topicsArray = [NSArray arrayWithObjects:topic1, topic2, topic3, nil];
+    self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, topic3, nil];
     
-    [notificationManager topicsListUpdated:topicsArray];
+    [notificationManager topicsListUpdated:self.topicsArray];
     [notificationManager subscribeToTopic:@"id1" forceSync:YES];
     
     [verifyCount(transport, times(1)) sync];
@@ -632,7 +632,5 @@ static NSArray *topicsArray;
     [properties setString:STATE_FILE_DEFAULT forKey:STATE_FILE_LOCATION];
     return properties;
 }
-
-
 
 @end

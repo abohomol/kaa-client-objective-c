@@ -150,14 +150,14 @@
     return result;
 }
 
-- (void)removeRecordBlock:(NSInteger)blockId {
+- (void)removeRecordBlock:(int32_t)blockId {
     DDLogVerbose(@"%@ Removing record block with id [%li]", TAG, (long)blockId);
     @synchronized(self.buckets) {
         [self.buckets removeObjectForKey:[NSNumber numberWithLong:blockId]];
     }
 }
 
-- (void)notifyUploadFailed:(NSInteger)blockId {
+- (void)notifyUploadFailed:(int32_t)blockId {
     DDLogVerbose(@"%@ Upload of record block [%li] failed", TAG, (long)blockId);
     @synchronized(self.buckets) {
         MemBucket * bucket = [self.buckets objectForKey:[NSNumber numberWithLong:blockId]];

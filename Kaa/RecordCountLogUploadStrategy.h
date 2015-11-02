@@ -11,4 +11,6 @@
 
 @interface RecordCountLogUploadStrategy : DefaultLogUploadStrategy
 
+- (instancetype)initWithCountThreshold:(int32_t)countThreshold;
+
 @end

@@ -20,22 +20,22 @@
 @property(readonly,nonatomic) SecKeyRef privateKey;
 @property(readonly,nonatomic) SecKeyRef publicKey;
 @property(nonatomic,strong,readonly) EndpointKeyHash *endpointKeyHash;
-@property(nonatomic) NSInteger appStateSequenceNumber;
-@property(nonatomic) NSInteger configSequenceNumber;
-@property(nonatomic) NSInteger notificationSequenceNumber;
+@property(nonatomic) int32_t appStateSequenceNumber;
+@property(nonatomic) int32_t configSequenceNumber;
+@property(nonatomic) int32_t notificationSequenceNumber;
 @property(nonatomic,strong) EndpointObjectHash *profileHash;
 
 @property(nonatomic,strong) NSMutableDictionary *attachedEndpoints; //<EndpointAccessToken, EndpointKeyHash> as key-value
 @property(nonatomic,strong) NSString *endpointAccessToken;
-@property(atomic) int eventSequenceNumber;
+@property(atomic) int32_t eventSequenceNumber;
 @property(nonatomic) BOOL isAttachedToUser;
 
 - (void)addTopic:(Topic *)topic;
 - (void)removeTopic:(NSString *)topicId;
-- (BOOL)updateTopicSubscriptionInfo:(NSString *)topicId sequence:(int)sequenceNumber;
+- (BOOL)updateTopicSubscriptionInfo:(NSString *)topicId sequence:(int32_t )sequenceNumber;
 - (NSDictionary *)getNfSubscriptions; //<NSString, NSInteger> as key-value.
 - (NSArray *)getTopics; //<Topic>
-- (int)getAndIncrementEventSequenceNumber;
+- (int32_t)getAndIncrementEventSequenceNumber;
 - (BOOL)isConfigurationVersionUpdated;
 - (void)persist;
 - (NSString *)refreshEndpointAccessToken;

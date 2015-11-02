@@ -10,7 +10,7 @@
 
 @implementation LogBlock
 
-- (instancetype)initWithBlockId:(NSInteger)blockId andRecords:(NSArray *)logRecords {
+- (instancetype)initWithBlockId:(int32_t)blockId andRecords:(NSArray *)logRecords {
     self = [super init];
     if (self) {
         _blockId = blockId;

@@ -75,6 +75,7 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
         
         sanityCheck = SecRandomCopyBytes(kSecRandomDefault, SESSION_KEY_SIZE, symmetricKey);
         if (sanityCheck != noErr) {
+            free(symmetricKey);
             DDLogError(@"%@ Problem generating the symmetric key. OSStatus: %i", TAG, (int)sanityCheck);
             return nil;
         }
@@ -208,6 +209,8 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
     size_t hashBytesSize = CC_SHA1_DIGEST_LENGTH;
     uint8_t *hashBytes = malloc(hashBytesSize);
     if (!CC_SHA1([message bytes], (CC_LONG)[message length], hashBytes)) {
+        free(signedHashBytes);
+        free(hashBytes);
         return nil;
     }
     
@@ -235,6 +238,7 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
     size_t hashBytesSize = CC_SHA1_DIGEST_LENGTH;
     uint8_t *hashBytes = malloc(hashBytesSize);
     if (!CC_SHA1([message bytes], (CC_LONG)[message length], hashBytes)) {
+        free(hashBytes);
         return NO;
     }
     

@@ -64,20 +64,20 @@
     return decision;
 }
 
-- (NSInteger)getBatchSize {
-    return self.batchSize;
+- (int64_t)getBatchSize {
+    return _batchSize;
 }
 
-- (NSInteger)getBatchCount {
-    return self.batchCount;
+- (int32_t)getBatchCount {
+    return _batchCount;
 }
 
-- (NSInteger)getTimeout {
-    return self.timeout;
+- (int32_t)getTimeout {
+    return _timeout;
 }
 
-- (NSInteger)getUploadCheckPeriod {
-    return self.uploadCheckPeriod;
+- (int32_t)getUploadCheckPeriod {
+    return _uploadCheckPeriod;
 }
 
 - (void)onTimeout:(id<LogFailoverCommand>)controller {
@@ -97,12 +97,12 @@
     }
 }
 
-- (void) lockUpload {
-    self.isUploadLocked = YES;
+- (void)lockUpload {
+    _isUploadLocked = YES;
 }
 
-- (void) unlockUpload {
-    self.isUploadLocked = NO;
+- (void)unlockUpload {
+    _isUploadLocked = NO;
 }
 
 @end

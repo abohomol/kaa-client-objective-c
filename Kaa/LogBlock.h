@@ -17,10 +17,10 @@
 @interface LogBlock : NSObject
 
 //Unique id for sending log block
-@property(nonatomic,readonly) NSInteger blockId;
+@property(nonatomic,readonly) int32_t blockId;
 //List of sending log records <LogRecord>
 @property(nonatomic,strong,readonly) NSArray* logRecords;
 
-- (instancetype)initWithBlockId:(NSInteger)blockId andRecords:(NSArray*)logRecords;
+- (instancetype)initWithBlockId:(int32_t)blockId andRecords:(NSArray*)logRecords;
 
 @end

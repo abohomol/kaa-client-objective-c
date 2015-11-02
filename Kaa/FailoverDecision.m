@@ -18,7 +18,7 @@
     return self;
 }
 
-- (instancetype)initWithFailoverAction:(FailoverAction)failoverAction retryPeriodInMilliseconds:(NSInteger)retryPeriod {
+- (instancetype)initWithFailoverAction:(FailoverAction)failoverAction retryPeriodInMilliseconds:(int64_t)retryPeriod {
     self = [super init];
     if (self) {
         _failoverAction = failoverAction;

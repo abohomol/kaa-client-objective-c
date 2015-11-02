@@ -219,9 +219,9 @@
     return self.endpointKeyHash;
 }
 
-- (NSInteger)appStateSequenceNumber {
+- (int32_t)appStateSequenceNumber {
     NSString *value = [self.state objectForKey:APP_STATE_SEQ_NUMBER];
-    return value ? [value integerValue] : 1;
+    return value ? (int32_t)[value integerValue] : 1;
 }
 
 - (EndpointObjectHash *)profileHash {
@@ -232,7 +232,7 @@
     return [EndpointObjectHash fromBytes:[self.base64 decodeBase64:[hash dataUsingEncoding:NSUTF8StringEncoding]]];
 }
 
-- (void)setAppStateSequenceNumber:(NSInteger)appStateSequenceNumber {
+- (void)setAppStateSequenceNumber:(int32_t)appStateSequenceNumber {
     [self.state setObject:[@(appStateSequenceNumber) stringValue] forKey:APP_STATE_SEQ_NUMBER];
 }
 
@@ -301,25 +301,25 @@
     return token ? token : @"";
 }
 
-- (void)setConfigSequenceNumber:(NSInteger)configSequenceNumber {
+- (void)setConfigSequenceNumber:(int32_t)configSequenceNumber {
     [self.state setObject:[@(configSequenceNumber) stringValue] forKey:CONFIG_SEQ_NUMBER];
 }
 
-- (NSInteger)configSequenceNumber {
+- (int32_t)configSequenceNumber {
     NSString *number = [self.state objectForKey:CONFIG_SEQ_NUMBER];
-    return [(number ? number : @"1") integerValue];
+    return (int32_t)[(number ? number : @"1") integerValue];
 }
 
-- (void)setNotificationSequenceNumber:(NSInteger)notificationSequenceNumber {
+- (void)setNotificationSequenceNumber:(int32_t)notificationSequenceNumber {
     [self.state setObject:[@(notificationSequenceNumber) stringValue] forKey:NOTIFICATION_SEQ_NUMBER];
 }
 
-- (NSInteger)notificationSequenceNumber {
+- (int32_t)notificationSequenceNumber {
     NSString *number = [self.state objectForKey:NOTIFICATION_SEQ_NUMBER];
-    return [(number ? number : @"1") integerValue];
+    return (int32_t)[(number ? number : @"1") integerValue];
 }
 
-- (int)getAndIncrementEventSequenceNumber {
+- (int32_t)getAndIncrementEventSequenceNumber {
     return self.eventSequenceNumber++;
 }
 
