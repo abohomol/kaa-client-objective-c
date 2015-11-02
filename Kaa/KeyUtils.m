@@ -20,10 +20,21 @@
 static const uint8_t publicKeyIdentifier[]  = "org.kaaproject.kaa.publickey";
 static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
 
+static const unsigned char _encodedRSAEncryptionOID[15] = {
+    
+    /* Sequence of length 0xd made up of OID followed by NULL */
+    0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86,
+    0xf7, 0x0d, 0x01, 0x01, 0x01, 0x05, 0x00
+    
+};
+
 @interface KeyUtils ()
 
 + (NSData *)defaultPublicKeyTag;
 + (NSData *)defaultPrivateKeyTag;
+
++ (NSData *)getPlainPublicKey;
++ (NSData *)getPlainPublicKeyByTag:(NSData *)tag;
 
 + (SecKeyRef)getKeyRefWithPersistentKeyRef:(CFTypeRef)persistentRef;
 
@@ -41,7 +52,7 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     OSStatus sanityCheck = noErr;
     SecKeyRef publicKeyRef = NULL;
     SecKeyRef privateKeyRef = NULL;
-
+    
     DDLogVerbose(@"%@ Removing key pair with same tags if exists", TAG);
     [KeyUtils removeKeyByTag:privateTag];
     [KeyUtils removeKeyByTag:publicTag];
@@ -72,7 +83,7 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
         [NSException raise:@"KeyPairGenerationException" format:@"Failed to generate new key pair!"];
         return nil;
     }
-
+    
 }
 
 + (SecKeyRef)getPublicKeyRef {
@@ -104,11 +115,11 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     return keyReference;
 }
 
-+ (NSData *)getPublicKey {
++ (NSData *)getPlainPublicKey {
     return [self getPublicKeyByTag:[self defaultPublicKeyTag]];
 }
 
-+ (NSData *)getPublicKeyByTag:(NSData *)tag {
++ (NSData *)getPlainPublicKeyByTag:(NSData *)tag {
     OSStatus sanityCheck = noErr;
     
     NSMutableDictionary * queryPublicKey = [[NSMutableDictionary alloc] init];
@@ -121,12 +132,57 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     CFTypeRef data = NULL;
     sanityCheck = SecItemCopyMatching((__bridge CFDictionaryRef)queryPublicKey, &data);
     NSData * publicKeyBits = (__bridge NSData *)(data);
-
+    
     if (sanityCheck != noErr) {
         DDLogWarn(@"%@ Can't get public key bytes by tag. OSStatus: %i", TAG, (int)sanityCheck);
     }
     
     return publicKeyBits;
+}
+
++ (NSData *)getPublicKey {
+    return [self getPublicKeyByTag:[self defaultPublicKeyTag]];
+}
+
++ (NSData *)getPublicKeyByTag:(NSData *)tag {
+    NSData *publicKey = [self getPlainPublicKeyByTag:tag];
+    
+    if (!publicKey) {
+        return nil;
+    }
+    
+    unsigned char builder[15];
+    NSMutableData * encKey = [[NSMutableData alloc] init];
+    int bitstringEncLength;
+    
+    // When we get to the bitstring - how will we encode it?
+    if  ([publicKey length ] + 1  < 128 ) {
+        bitstringEncLength = 1;
+    } else {
+        bitstringEncLength = (([publicKey length ] + 1 ) / 256 ) + 2;
+    }
+    
+    // Overall we have a sequence of a certain length
+    builder[0] = 0x30;    // ASN.1 encoding representing a SEQUENCE
+    // Build up overall size made up of size of OID + size of bitstring encoding + size of actual key
+    size_t i = sizeof(_encodedRSAEncryptionOID) + 2 + bitstringEncLength + [publicKey length];
+    size_t j = encodeLength(&builder[1], i);
+    [encKey appendBytes:builder length:j +1];
+    
+    // First part of the sequence is the OID
+    [encKey appendBytes:_encodedRSAEncryptionOID
+                 length:sizeof(_encodedRSAEncryptionOID)];
+    
+    // Now add the bitstring
+    builder[0] = 0x03;
+    j = encodeLength(&builder[1], [publicKey length] + 1);
+    builder[j + 1] = 0x00;
+    [encKey appendBytes:builder length:j + 2];
+    
+    // Now the actual key
+    [encKey appendData:publicKey];
+    
+    return encKey;
 }
 
 + (NSData *)defaultPrivateKeyTag {
@@ -178,7 +234,7 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     [queryKey setObject:(__bridge id)kSecClassKey forKey:(__bridge id)kSecClass];
     [queryKey setObject:tag forKey:(__bridge id)kSecAttrApplicationTag];
     [queryKey setObject:(__bridge id)kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];
-
+    
     OSStatus sanityCheck = noErr;
     sanityCheck = SecItemDelete((__bridge CFDictionaryRef)queryKey);
     if (sanityCheck == noErr) {
@@ -250,6 +306,24 @@ static const uint8_t privateKeyIdentifier[] = "org.kaaproject.kaa.privatekey";
     if (c_key[idx++] != '\0') return nil;
     
     return([NSData dataWithBytes:&c_key[idx] length:len - idx]);
+}
+
+size_t encodeLength(unsigned char * buf, size_t length) {
+    
+    // encode length in ASN.1 DER format
+    if (length < 128) {
+        buf[0] = length;
+        return 1;
+    }
+    
+    size_t i = (length / 256) + 1;
+    buf[0] = i + 0x80;
+    for (size_t j = 0 ; j < i; ++j) {
+        buf[i - j] = length & 0xFF;
+        length = length >> 8;
+    }
+    
+    return i + 1;
 }
 
 @end
