@@ -46,10 +46,10 @@
     
     NotificationSyncRequest *request = [[NotificationSyncRequest alloc] init];
     request.appStateSeqNumber = [self.clientState notificationSequenceNumber];
-    request.topicStates = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_STATE_OR_NULL_BRANCH_0 andData:[self getTopicStates]];
-    request.acceptedUnicastNotifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
-    request.topicListHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-    request.subscriptionCommands = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_SUBSCRIPTION_COMMAND_OR_NULL_BRANCH_1];
+    NSArray *states = [self getTopicStates];
+    if (states) {
+        request.topicStates = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_STATE_OR_NULL_BRANCH_0 andData:states];
+    }
     return request;
 }
 
@@ -65,13 +65,11 @@
                   (long)[self.acceptedUnicastNotificationIds count]);
         request.acceptedUnicastNotifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_0
                                                                  andData:[self.acceptedUnicastNotificationIds allObjects]];
-    } else {
-        request.acceptedUnicastNotifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
     }
-    
-    request.topicStates = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_STATE_OR_NULL_BRANCH_0
-                                            andData:[self getTopicStates]];
-    request.topicListHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+    NSArray *states = [self getTopicStates];
+    if (states) {
+         request.topicStates = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_STATE_OR_NULL_BRANCH_0 andData:states];   
+    }
     request.subscriptionCommands = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_SUBSCRIPTION_COMMAND_OR_NULL_BRANCH_0
                                                      andData:self.sentNotificationCommands];
     return request;
