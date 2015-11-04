@@ -249,8 +249,8 @@
                 [invocation invokeWithTarget:(target ? target : self)];
             }
         }
-        avro_binary_encoding.write_long(writer, 0);
     }
+    avro_binary_encoding.write_long(writer, 0);
 }
 
 @end
