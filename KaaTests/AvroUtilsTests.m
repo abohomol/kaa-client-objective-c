@@ -37,16 +37,18 @@
     NSNumber *longOrigin = [NSNumber numberWithLong:234];
     NSNumber *floatOrigin = [NSNumber numberWithFloat:394.3];
     NSNumber *doubleOrigin = [NSNumber numberWithDouble:35235.54];
-    NSNumber *boolOrigin = [NSNumber numberWithBool:YES];
+    NSNumber *boolTrue = [NSNumber numberWithBool:YES];
+    NSNumber *boolFalse = [NSNumber numberWithBool:NO];
     NSNumber *enumOrigin = [NSNumber numberWithInt:ADDER];
     
     size_t bufSize = [self.utils getIntSize:intOrigin]
         + [self.utils getLongSize:longOrigin]
         + [self.utils getFloatSize]
         + [self.utils getDoubleSize]
-        + [self.utils getBooleanSize:boolOrigin]
+        + [self.utils getBooleanSize:boolTrue]
+        + [self.utils getBooleanSize:boolFalse]
         + [self.utils getEnumSize:enumOrigin];
-    char *buffer = (char*)malloc(bufSize * sizeof(char));
+    char *buffer = (char *)malloc(bufSize * sizeof(char));
     avro_writer_t writer = avro_writer_memory(buffer, bufSize);
     if (!writer) {
         XCTFail(@"Can't allocate memory!");
@@ -55,7 +57,8 @@
     [self.utils serializeLong:longOrigin to:writer];
     [self.utils serializeFloat:floatOrigin to:writer];
     [self.utils serializeDouble:doubleOrigin to:writer];
-    [self.utils serializeBoolean:boolOrigin to:writer];
+    [self.utils serializeBoolean:boolTrue to:writer];
+    [self.utils serializeBoolean:boolFalse to:writer];
     [self.utils serializeEnum:enumOrigin to:writer];
     
     NSData *serialized = [NSData dataWithBytes:writer->buf length:writer->len];
@@ -66,7 +69,8 @@
     NSNumber *longDes = [self.utils deserializeLong:reader];
     NSNumber *floatDes = [self.utils deserializeFloat:reader];
     NSNumber *doubleDes = [self.utils deserializeDouble:reader];
-    NSNumber *boolDes = [self.utils deserializeBoolean:reader];
+    NSNumber *boolTrueDes = [self.utils deserializeBoolean:reader];
+    NSNumber *boolFalseDes = [self.utils deserializeBoolean:reader];
     NSNumber *enumDes = [self.utils deserializeEnum:reader];
     avro_reader_free(reader);
     
@@ -74,7 +78,8 @@
     XCTAssertTrue([longOrigin isEqualToNumber:longDes]);
     XCTAssertTrue([floatOrigin isEqualToNumber:floatDes]);
     XCTAssertTrue([doubleOrigin isEqualToNumber:doubleDes]);
-    XCTAssertTrue([boolOrigin isEqualToNumber:boolDes]);
+    XCTAssertTrue([boolTrue isEqualToNumber:boolTrueDes]);
+    XCTAssertTrue([boolFalse isEqualToNumber:boolFalseDes]);
     XCTAssertTrue([enumOrigin isEqualToNumber:enumDes]);
 }
 

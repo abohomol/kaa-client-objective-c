@@ -85,7 +85,7 @@
 - (NSNumber *)deserializeBoolean:(avro_reader_t)reader {
     int8_t *data = (int8_t*)malloc(sizeof(int8_t));
     avro_binary_encoding.read_boolean(reader, data);
-    return [NSNumber numberWithBool:(data > 0 ? YES : NO)];
+    return [NSNumber numberWithBool:(data[0] > 0 ? YES : NO)];
 }
 
 - (void)serializeBoolean:(NSNumber *)data to:(avro_writer_t)writer {
