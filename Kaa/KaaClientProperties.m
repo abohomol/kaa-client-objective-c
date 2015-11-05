@@ -71,9 +71,10 @@
 }
 
 - (NSDictionary *)loadProperties {
-    NSString *clientProperties = [[NSBundle mainBundle] pathForResource:KAA_CLIENT_PROPERTIES_FILE ofType:@"plist"];
+    NSBundle *bundle = [NSBundle bundleWithURL:[[NSBundle mainBundle] URLForResource:@"KaaResources" withExtension:@"bundle"]];
+    NSString *clientProperties = [bundle pathForResource:KAA_CLIENT_PROPERTIES_FILE ofType:@"plist"];
     if (![[NSFileManager defaultManager] fileExistsAtPath:clientProperties]) {
-        clientProperties = [[NSBundle mainBundle] pathForResource:DEFAULT_CLIENT_PROPERTIES ofType:@"plist"];
+        clientProperties = [bundle pathForResource:DEFAULT_CLIENT_PROPERTIES ofType:@"plist"];
     }
     return [NSMutableDictionary dictionaryWithContentsOfFile:clientProperties];
 }
