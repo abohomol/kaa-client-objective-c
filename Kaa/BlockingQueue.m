@@ -34,12 +34,11 @@
 }
 
 - (id)take {
-    id object;
     [self.condition lock];
     while (self.queue.count == 0) {
         [self.condition wait];
     }
-    object = [self.queue objectAtIndex:0];
+    id object = [self.queue objectAtIndex:0];
     [self.queue removeObjectAtIndex:0];
     [self.condition unlock];
     
@@ -50,10 +49,11 @@
     if ([self.queue count] == 0) {
         return;
     }
-        [self.condition lock];
-        [array addObjectsFromArray:self.queue];
-        [self.queue removeAllObjects];
-        [self.condition unlock];
+    
+    [self.condition lock];
+    [array addObjectsFromArray:self.queue];
+    [self.queue removeAllObjects];
+    [self.condition unlock];
 }
 
 - (NSUInteger)size {
