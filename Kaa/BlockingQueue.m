@@ -11,7 +11,6 @@
 @interface BlockingQueue()
 
 @property (nonatomic,strong) NSMutableArray *queue;
-@property (nonatomic,strong) dispatch_queue_t dispatcher;
 @property (nonatomic,strong) NSCondition *condition;
 
 @end
@@ -22,8 +21,6 @@
     self = [super init];
     if (self) {
         self.queue = [NSMutableArray array];
-        NSString *dispatcherName = [NSString stringWithFormat:@"org.kaaproject.kaa.blockingqueue.%li", (long)self.hash];
-        self.dispatcher = dispatch_queue_create([dispatcherName cStringUsingEncoding:NSUTF8StringEncoding], DISPATCH_QUEUE_SERIAL);
         self.condition = [[NSCondition alloc] init];
     }
     return self;
@@ -37,17 +34,14 @@
 }
 
 - (id)take {
-    __block id object;
-    __weak typeof(self)this = self;
-    dispatch_sync(this.dispatcher, ^{
-        [this.condition lock];
-        while (this.queue.count == 0) {
-            [this.condition wait];
-        }
-        object = [this.queue objectAtIndex:0];
-        [this.queue removeObjectAtIndex:0];
-        [this.condition unlock];
-    });
+    id object;
+    [self.condition lock];
+    while (self.queue.count == 0) {
+        [self.condition wait];
+    }
+    object = [self.queue objectAtIndex:0];
+    [self.queue removeObjectAtIndex:0];
+    [self.condition unlock];
     
     return object;
 }
@@ -56,13 +50,10 @@
     if ([self.queue count] == 0) {
         return;
     }
-    __weak typeof(self)this = self;
-    dispatch_sync(this.dispatcher, ^{
-        [this.condition lock];
-        [array addObjectsFromArray:this.queue];
-        [this.queue removeAllObjects];
-        [this.condition unlock];
-    });
+        [self.condition lock];
+        [array addObjectsFromArray:self.queue];
+        [self.queue removeAllObjects];
+        [self.condition unlock];
 }
 
 - (NSUInteger)size {
