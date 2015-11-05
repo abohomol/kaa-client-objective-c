@@ -235,8 +235,6 @@
 - (UserAttachResponse *) getUserAttachResponse {
     UserAttachResponse *response = [[UserAttachResponse alloc] init];
     response.result = SYNC_RESPONSE_RESULT_TYPE_SUCCESS;
-    response.errorCode = [[KAAUnion alloc] initWithBranch:KAA_UNION_USER_ATTACH_ERROR_CODE_OR_NULL_BRANCH_1];
-    response.errorReason = [[KAAUnion alloc] initWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
     return response;
 }
 

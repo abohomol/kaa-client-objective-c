@@ -28,8 +28,6 @@
 @property (nonatomic,strong) id<RedirectionTransport> redirectionTransport;
 @property (nonatomic,strong) id<LogTransport> logTransport;
 
-- (void)fillOutEmptyRequestUnions:(SyncRequest *)request;
-
 @end
 
 @implementation DefaultOperationDataProcessor
@@ -146,13 +144,10 @@
         SyncRequest *request = [[SyncRequest alloc] init];
         self.requestsCounter++;
         request.requestId = self.requestsCounter;
-        request.bootstrapSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_REQUEST_OR_NULL_BRANCH_1];
         
         if (self.mdTransport) {
             request.syncRequestMetaData = [KAAUnion unionWithBranch:KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_0
                                                            andData:[self.mdTransport createMetaDataRequest]];
-        } else {
-            request.syncRequestMetaData = [KAAUnion unionWithBranch:KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_1];
         }
         
         for (NSNumber *key in types.allKeys) {
@@ -163,28 +158,17 @@
                         request.configurationSyncRequest =
                         [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_0
                                           andData:[self.configurationTransport createConfigurationRequest]];
-                    } else {
-                        request.configurationSyncRequest =
-                        [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_1];
                     }
                     break;
                 case TRANSPORT_TYPE_EVENT:
                 {
                     KAAUnion *eventUnion;
                     if (isDownDirection) {
-                        EventSyncRequest *evRequest = [[EventSyncRequest alloc] init];
-                        evRequest.eventSequenceNumberRequest =
-                        [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_REQUEST_OR_NULL_BRANCH_1];
-                        evRequest.eventListenersRequests =
-                        [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_REQUEST_OR_NULL_BRANCH_1];
-                        evRequest.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
                         eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                       andData:evRequest];
+                                                       andData:[[EventSyncRequest alloc] init]];
                     } else if (self.eventTransport) {
                         eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                        andData:[self.eventTransport createEventRequest:request.requestId]];
-                    } else {
-                        eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_1];
                     }
                     request.eventSyncRequest = eventUnion;
                 }
@@ -200,8 +184,6 @@
                             nfUnion = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                         andData:[self.notificationTransport createNotificationRequest]];
                         }
-                    } else {
-                        nfUnion = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
                     }
                     request.notificationSyncRequest = nfUnion;
                 }
@@ -210,28 +192,17 @@
                     if (!isDownDirection && self.profileTransport) {
                         request.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                                        andData:[self.profileTransport createProfileRequest]];
-                    } else {
-                        request.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_1];
                     }
                     break;
                 case TRANSPORT_TYPE_USER:
                 {
                     KAAUnion *userUnion;
                     if (isDownDirection) {
-                        UserSyncRequest *userRequest = [[UserSyncRequest alloc] init];
-                        userRequest.userAttachRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_REQUEST_OR_NULL_BRANCH_1];
-                        userRequest.endpointAttachRequests =
-                        [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_REQUEST_OR_NULL_BRANCH_1];
-                        userRequest.endpointDetachRequests =
-                        [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_REQUEST_OR_NULL_BRANCH_1];
-                        
                         userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                      andData:userRequest];
+                                                      andData:[[UserSyncRequest alloc] init]];
                     } else if (self.userTransport) {
                         userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                       andData:[self.userTransport createUserRequest]];
-                    } else {
-                        userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_1];
                     }
                     request.userSyncRequest = userUnion;
                 }
@@ -240,15 +211,11 @@
                 {
                     KAAUnion *logUnion;
                     if (isDownDirection) {
-                        LogSyncRequest *logRequest = [[LogSyncRequest alloc] init];
-                        logRequest.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_1];
                         logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                     andData:logRequest];
+                                                     andData:[[LogSyncRequest alloc] init]];
                     } else if (self.logTransport) {
                         logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                      andData:[self.logTransport createLogRequest]];
-                    } else {
-                        logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_1];
                     }
                     request.logSyncRequest = logUnion;
                 }
@@ -259,7 +226,6 @@
                     break;
             }
         }
-        [self fillOutEmptyRequestUnions:request];
         DDLogInfo(@"%@ Created Sync request: %@", TAG, request);
         return [self.requestConverter toBytes:request];
     }
@@ -274,27 +240,6 @@
 - (void)postProcess {
     if (self.eventTransport) {
         [self.eventTransport releaseEventManager];
-    }
-}
-
-- (void)fillOutEmptyRequestUnions:(SyncRequest *)request {
-    if (!request.profileSyncRequest) {
-        request.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    }
-    if (!request.configurationSyncRequest) {
-        request.configurationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    }
-    if (!request.notificationSyncRequest) {
-        request.notificationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    }
-    if (!request.userSyncRequest) {
-        request.userSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    }
-    if (!request.eventSyncRequest) {
-        request.eventSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    }
-    if (!request.logSyncRequest) {
-        request.logSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_1];
     }
 }
 

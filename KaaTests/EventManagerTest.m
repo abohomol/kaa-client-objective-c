@@ -185,8 +185,7 @@
     id <EventManager> eventManager = [[DefaultEventManager alloc] initWith:state executorContext:executorContext eventTransport:transport];
     
     EventSyncRequest *request = [[EventSyncRequest alloc] init];
-    request.eventSequenceNumberRequest =
-    [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_REQUEST_OR_NULL_BRANCH_1];
+
     [eventManager produceEvent:@"kaa.test.event.SomeEvent" data:[NSData data] target:@"theTarget"];
     [eventManager fillEventListenersSyncRequest:request];
     request.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_0 andData:[eventManager pollPendingEvents]];

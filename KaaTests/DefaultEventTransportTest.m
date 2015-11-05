@@ -120,8 +120,6 @@ static NSMutableData *dataWith123;
     event.seqNum = 1;
     event.eventClassFQN = nil;
     event.eventData = nil;
-    event.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-    event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
     NSArray *events = @[event];
     
     DefaultEventManager *manager = mock([DefaultEventManager class]);
@@ -153,20 +151,17 @@ static NSMutableData *dataWith123;
     event1.seqNum = (int)restoredEventSN++;
     event1.eventClassFQN = nil;
     event1.eventData = nil;
-    event1.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-    event1.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+    
     Event *event2 = [[Event alloc] init];
     event2.seqNum = (int)restoredEventSN++;
     event2.eventClassFQN = nil;
     event2.eventData = nil;
-    event2.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-    event2.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+    
     Event *event3 = [[Event alloc] init];
     event3.seqNum = (int)restoredEventSN++;
     event3.eventClassFQN = nil;
     event3.eventData = nil;
-    event3.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-    event3.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+    
     NSArray *events = @[event1, event2, event3];
     
     DefaultEventManager *manager = mock([DefaultEventManager class]);
@@ -182,9 +177,6 @@ static NSMutableData *dataWith123;
     eventResponse.eventSequenceNumberResponse =
     [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_0
                       andData:[NSNumber numberWithInteger:lastEventSN]];
-    eventResponse.eventListenersResponses =
-    [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_RESPONSE_OR_NULL_BRANCH_1];
-    eventResponse.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
     
     [transport onEventResponse:eventResponse];
     
@@ -209,20 +201,17 @@ static NSMutableData *dataWith123;
     event1.seqNum = (int)restoredEventSN++;
     event1.eventClassFQN = nil;
     event1.eventData = nil;
-    event1.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-    event1.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+
     Event *event2 = [[Event alloc] init];
     event2.seqNum = (int)restoredEventSN++;
     event2.eventClassFQN = nil;
     event2.eventData = nil;
-    event2.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-    event2.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+
     Event *event3 = [[Event alloc] init];
     event3.seqNum = (int)restoredEventSN++;
     event3.eventClassFQN = nil;
     event3.eventData = nil;
-    event3.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-    event3.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+
     NSArray *events1 = @[event1, event2, event3];
     
     id <EventManager> manager1 = mockProtocol(@protocol(EventManager));
@@ -240,9 +229,6 @@ static NSMutableData *dataWith123;
     eventResponse1.eventSequenceNumberResponse =
     [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_0
                       andData:[NSNumber numberWithInt:lastReceivedSN]];
-    eventResponse1.eventListenersResponses =
-    [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_RESPONSE_OR_NULL_BRANCH_1];
-    eventResponse1.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
     
     [transport onEventResponse:eventResponse1];
     
@@ -262,8 +248,7 @@ static NSMutableData *dataWith123;
     event.seqNum = (int)synchronizedSN;
     event.eventClassFQN = nil;
     event.eventData = nil;
-    event.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-    event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+
     NSArray *events2 = @[event];
     id <EventManager> manager2 = mockProtocol(@protocol(EventManager));
     [given([manager2 pollPendingEvents]) willReturn:events2];
@@ -281,11 +266,7 @@ static NSMutableData *dataWith123;
     response.eventSequenceNumberResponse =
     [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_0
                       andData:[NSNumber numberWithInt:0]];
-    
-    response.eventListenersResponses =
-    [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_RESPONSE_OR_NULL_BRANCH_1];
-    
-    response.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
+
     return response;
 }
 
@@ -309,7 +290,6 @@ static NSMutableData *dataWith123;
 - (EventListenersResponse *) getNewEventListenerResponse {
     EventListenersResponse *response = [[EventListenersResponse alloc] init];
     response.requestId = 0;
-    response.listeners = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
     response.result = SYNC_RESPONSE_RESULT_TYPE_SUCCESS;
     return  response;
 }

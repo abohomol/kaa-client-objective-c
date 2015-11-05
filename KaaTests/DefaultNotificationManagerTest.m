@@ -231,15 +231,15 @@
     Notification *notification1 = [[Notification alloc] init];
     notification1.topicId = @"id1";
     notification1.type = NOTIFICATION_TYPE_CUSTOM;
-    notification1.uid = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
     notification1.seqNumber = [KAAUnion unionWithBranch:KAA_UNION_INT_OR_NULL_BRANCH_0 andData:[NSNumber numberWithInt:1]];
     notification1.body = notificationBody;
+    
     Notification *notification2 = [[Notification alloc] init];
     notification2.topicId = @"id2";
     notification2.type = NOTIFICATION_TYPE_CUSTOM;
-    notification2.uid = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
     notification2.seqNumber = [KAAUnion unionWithBranch:KAA_UNION_INT_OR_NULL_BRANCH_0 andData:[NSNumber numberWithInt:1]];
     notification2.body = notificationBody;
+    
     NSArray *notificationUpdate = [NSArray arrayWithObjects:notification1, notification2, nil];
     
     id <NotificationDelegate> mandatoryDelegate= mockProtocol(@protocol(NotificationDelegate));
@@ -286,15 +286,15 @@
     Notification *notification1 = [[Notification alloc] init];
     notification1.topicId = @"id1";
     notification1.type = NOTIFICATION_TYPE_CUSTOM;
-    notification1.uid = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
     notification1.seqNumber = [KAAUnion unionWithBranch:KAA_UNION_INT_OR_NULL_BRANCH_0 andData:[NSNumber numberWithInt:1]];
     notification1.body = notificationBody;
+    
     Notification *notification2 = [[Notification alloc] init];
     notification2.topicId = @"id2";
     notification2.type = NOTIFICATION_TYPE_CUSTOM;
-    notification2.uid = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
     notification2.seqNumber = [KAAUnion unionWithBranch:KAA_UNION_INT_OR_NULL_BRANCH_0 andData:[NSNumber numberWithInt:1]];
     notification2.body = notificationBody;
+    
     NSArray *notificationUpdate = [NSArray arrayWithObjects:notification1, notification2, nil];
     
     id <NotificationDelegate> globalDelegate= mockProtocol(@protocol(NotificationDelegate));

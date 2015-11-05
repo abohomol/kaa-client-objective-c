@@ -92,7 +92,6 @@
                 event.seqNum = -1;
                 event.eventClassFQN = eventFQN;
                 event.eventData = [NSData dataWithData:data];
-                event.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
                 event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
                 [events addObject:event];
             } else {
@@ -106,7 +105,6 @@
             event.seqNum = [self.state getAndIncrementEventSequenceNumber];
             event.eventClassFQN = eventFQN;
             event.eventData = [NSData dataWithData:data];
-            event.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
             event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
             [self.currentEvents addObject:event];
         }

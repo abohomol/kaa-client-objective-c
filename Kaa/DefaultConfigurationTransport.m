@@ -40,10 +40,8 @@
     if (self.clientState && self.hashContainer) {
         EndpointObjectHash *hash = [self.hashContainer getConfigurationHash];
         ConfigurationSyncRequest *request = [[ConfigurationSyncRequest alloc] init];
-        if (hash) {
+        if (hash.data) {
             request.configurationHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_0 andData:hash.data];
-        } else {
-            request.configurationHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
         }
         request.appStateSeqNumber = [self.clientState configSequenceNumber];
         request.resyncOnly = [KAAUnion unionWithBranch:KAA_UNION_BOOLEAN_OR_NULL_BRANCH_0
