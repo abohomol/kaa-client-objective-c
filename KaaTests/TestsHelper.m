@@ -14,8 +14,8 @@
                                        host:(NSString *)host
                                        port:(int32_t)port
                                andPublicKey:(NSData *)publicKey {
-    int32_t publicKeyLength = [publicKey length];
-    int32_t hostLength = [host lengthOfBytesUsingEncoding:NSUTF8StringEncoding];
+    int32_t publicKeyLength = CFSwapInt32([publicKey length]);
+    int32_t hostLength = CFSwapInt32([host lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
     NSMutableData *data = [NSMutableData data];
     
     [data appendBytes:&publicKeyLength length:sizeof(publicKeyLength)];

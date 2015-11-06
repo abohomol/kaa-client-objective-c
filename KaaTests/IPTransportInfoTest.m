@@ -29,7 +29,7 @@
     XCTAssertEqual(SERVER_OPERATIONS, [info serverType]);
     XCTAssertEqualObjects(TPid, [info transportId]);
     XCTAssertEqualObjects(@"localhost", [info getHost]);
-    XCTAssertEqual(port, [info getPort]);
+    XCTAssertEqual(port, CFSwapInt32([info getPort]));
 }
 
 - (id<TransportConnectionInfo>)createTestServerInfoWithServerType:(ServerType)serverType

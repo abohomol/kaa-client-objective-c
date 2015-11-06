@@ -33,7 +33,7 @@
         
         uint8_t keySizeBytes[sizeof(uint32_t)];
         [input read:keySizeBytes maxLength:sizeof(keySizeBytes)];
-        uint32_t keySize = *(uint32_t *)keySizeBytes;
+        uint32_t keySize = htonl(*(uint32_t *)keySizeBytes);
         
         uint8_t key[keySize];
         [input read:key maxLength:sizeof(key)];
@@ -41,7 +41,7 @@
         
         uint8_t hostSizeBytes[sizeof(uint32_t)];
         [input read:hostSizeBytes maxLength:sizeof(hostSizeBytes)];
-        uint32_t hostSize = *(uint32_t *)hostSizeBytes;
+        uint32_t hostSize = htonl(*(uint32_t *)hostSizeBytes);
         
         uint8_t host[hostSize];
         [input read:host maxLength:sizeof(host)];
@@ -49,7 +49,7 @@
         
         uint8_t portBytes[sizeof(uint32_t)];
         [input read:portBytes maxLength:sizeof(portBytes)];
-        self.port = *(uint32_t *)portBytes;
+        self.port = htonl(*(uint32_t *)portBytes);
         
         [input close];
     }
