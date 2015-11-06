@@ -36,9 +36,7 @@
             ProfileSyncRequest *request = [[ProfileSyncRequest alloc] init];
             request.endpointAccessToken = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0
                                                             andData:[self.clientState endpointAccessToken]];
-            if ([self.clientState isRegistred]) {
-                request.endpointPublicKey = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-            } else {
+            if (![self.clientState isRegistred]) {
                 [self.clientState publicKey]; //ensures that key pair is created
                 request.endpointPublicKey = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_0
                                                               andData:[KeyUtils getPublicKey]];

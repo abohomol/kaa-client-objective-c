@@ -204,8 +204,6 @@
     NotificationSyncResponse *response = [[NotificationSyncResponse alloc] init];
     response.responseStatus = responseStatus;
     response.appStateSeqNumber = 3;
-    response.notifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_NOTIFICATION_OR_NULL_BRANCH_1];
-    response.availableTopics = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_OR_NULL_BRANCH_1];
     return response;
 }
 
@@ -224,7 +222,6 @@
 - (Notification *) getNotificationWithTopicId:(NSString *)topicId andSeqNumber:(int)seqNumber {
     Notification *notification = [[Notification alloc]init];
     notification.topicId = topicId;
-    notification.uid = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
     notification.type = NOTIFICATION_TYPE_CUSTOM;
     notification.seqNumber = [KAAUnion unionWithBranch:KAA_UNION_INT_OR_NULL_BRANCH_0 andData:[NSNumber numberWithInt:seqNumber]];
     NSInteger int123 = 123;

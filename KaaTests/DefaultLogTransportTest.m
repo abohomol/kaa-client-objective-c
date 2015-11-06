@@ -64,7 +64,6 @@
     id <LogProcessor> processor = mockProtocol(@protocol(LogProcessor));
     id <LogTransport> transport = [[DefaultLogTransport alloc] init];
     LogSyncResponse *response = [[LogSyncResponse alloc] init];
-    response.deliveryStatuses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_DELIVERY_STATUS_OR_NULL_BRANCH_1];
     
     [transport onLogResponse:response];
     [transport setLogProcessor:processor];

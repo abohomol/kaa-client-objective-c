@@ -116,12 +116,6 @@ static int REQUEST_ID_2 = 73;
     detachResponse2.result = SYNC_RESPONSE_RESULT_TYPE_FAILURE;
     
     UserSyncResponse *response1 = [[UserSyncResponse alloc] init];
-    response1.userAttachResponse =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
-    response1.userAttachNotification =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_NOTIFICATION_OR_NULL_BRANCH_1];
-    response1.userDetachNotification =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_DETACH_NOTIFICATION_OR_NULL_BRANCH_1];
     response1.endpointAttachResponses =
     [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_RESPONSE_OR_NULL_BRANCH_0
                       andData:@[attachResponse1, attachResponse2, attachResponse3]];
@@ -144,14 +138,6 @@ static int REQUEST_ID_2 = 73;
     detachResponse3.requestId = REQUEST_ID_2;
     detachResponse3.result = SYNC_RESPONSE_RESULT_TYPE_SUCCESS;
     UserSyncResponse *response2 = [[UserSyncResponse alloc] init];
-    response2.userAttachResponse =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
-    response2.userAttachNotification =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_NOTIFICATION_OR_NULL_BRANCH_1];
-    response2.userDetachNotification =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_DETACH_NOTIFICATION_OR_NULL_BRANCH_1];
-    response2.endpointAttachResponses =
-    [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
     response2.endpointDetachResponses =
     [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_RESPONSE_OR_NULL_BRANCH_0
                       andData:@[detachResponse3]];

@@ -37,6 +37,10 @@
             <directory>${project.basedir}/Kaa.xcworkspace</directory>
             <outputDirectory>Kaa.xcworkspace</outputDirectory>
         </fileSet>
+	<fileSet>
+            <directory>${project.basedir}/KaaResources</directory>
+            <outputDirectory>KaaResources</outputDirectory>
+        </fileSet>
         <fileSet>
             <directory>${project.basedir}</directory>
             <outputDirectory>/</outputDirectory>

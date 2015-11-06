@@ -87,8 +87,8 @@
     
     if (!self.isEventSNSynchronized && response.eventSequenceNumberResponse
         && response.eventSequenceNumberResponse.branch == KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_0) {
-        NSNumber *lastSN = response.eventSequenceNumberResponse.data;
-        int expectedSN = [lastSN intValue] > 0 ? [lastSN intValue] + 1 : [lastSN intValue];
+        EventSequenceNumberResponse *seqNumResponse = response.eventSequenceNumberResponse.data;
+        int expectedSN = seqNumResponse.seqNum > 0 ? seqNumResponse.seqNum + 1 : seqNumResponse.seqNum;
         
         if (self.startEventSN != expectedSN) {
             self.startEventSN = expectedSN;

@@ -90,7 +90,7 @@
     
     AvroBytesConverter *requestCreator = [[AvroBytesConverter alloc] init];
     id <KaaDataMultiplexer> multiplexer = mockProtocol(@protocol(KaaDataMultiplexer));
-    [given([multiplexer compileRequest:anything()])willReturn:[requestCreator toBytes:[self getNewSyncRequest]]];
+    [given([multiplexer compileRequest:anything()])willReturn:[requestCreator toBytes:[[SyncRequest alloc] init]]];
     id <KaaDataDemultiplexer> demultiplexer = mockProtocol(@protocol(KaaDataDemultiplexer));
     
     [tcpChannel setMultiplexer:multiplexer];
@@ -159,21 +159,6 @@
     NSData *data = [responseCreator toBytes:syncResponse];
     KAATCPSyncResponse *response = [[KAATCPSyncResponse alloc] initWithAvro:data zipped:NO encypted:NO];
     return [response getFrame];
-}
-
-- (SyncRequest *) getNewSyncRequest {
-    SyncRequest *request = [[SyncRequest alloc] init];
-    request.syncRequestMetaData = [KAAUnion unionWithBranch:KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_1];
-    request.bootstrapSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    request.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    request.configurationSyncRequest =
-    [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    request.notificationSyncRequest =
-    [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    request.userSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    request.eventSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    request.logSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_1];
-    return request;
 }
 
 @end

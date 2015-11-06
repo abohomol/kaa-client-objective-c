@@ -125,7 +125,6 @@
     SyncResponse *response = [[SyncResponse alloc] init];
     [response setStatus:SYNC_RESPONSE_RESULT_TYPE_SUCCESS];
     [response setRequestId:1];
-    [response setBootstrapSyncResponse:[self getBootstrapResponseUnion]];
     [response setProfileSyncResponse:[self getProfileSyncResponseUnion]];
     [response setConfigurationSyncResponse:[self getConfigurationUnion]];
     [response setNotificationSyncResponse:[self getNotificationUnion]];
@@ -152,7 +151,6 @@
     
     SyncResponse *response = [[SyncResponse alloc] init];
     [response setStatus:SYNC_RESPONSE_RESULT_TYPE_SUCCESS];
-    [response setBootstrapSyncResponse:[self getBootstrapResponseUnion]];
     [response setProfileSyncResponse:[self getProfileSyncResponseUnion]];
     [response setConfigurationSyncResponse:[self getConfigurationUnion]];
     [response setNotificationSyncResponse:[self getNotificationUnion]];
@@ -171,22 +169,6 @@
     
     SyncResponse *response = [[SyncResponse alloc] init];
     [response setStatus:SYNC_RESPONSE_RESULT_TYPE_SUCCESS];
-    [response setBootstrapSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setProfileSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setConfigurationSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setNotificationSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setUserSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setEventSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setRedirectSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_REDIRECT_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setLogSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
     
     AvroBytesConverter *converter = [[AvroBytesConverter alloc] init];
     NSData *data = [converter toBytes:response];
@@ -214,22 +196,6 @@
     
     SyncResponse *response = [[SyncResponse alloc] init];
     [response setStatus:SYNC_RESPONSE_RESULT_TYPE_SUCCESS];
-    [response setBootstrapSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setProfileSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setConfigurationSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setNotificationSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setUserSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setEventSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setRedirectSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_REDIRECT_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
-    [response setLogSyncResponse:
-     [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_RESPONSE_OR_NULL_BRANCH_1]];
     
     AvroBytesConverter *converter = [[AvroBytesConverter alloc] init];
     NSData *data = [converter toBytes:response];
@@ -286,8 +252,7 @@
     ConfigurationSyncResponse *response = [[ConfigurationSyncResponse alloc] init];
     response.appStateSeqNumber = 1;
     response.responseStatus = SYNC_RESPONSE_STATUS_DELTA;
-    response.confSchemaBody = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-    response.confDeltaBody = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+
     return response;
 }
 
@@ -295,8 +260,7 @@
     NotificationSyncResponse *response = [[NotificationSyncResponse alloc]init];
     response.appStateSeqNumber = 1;
     response.responseStatus = SYNC_RESPONSE_STATUS_DELTA;
-    response.notifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_NOTIFICATION_OR_NULL_BRANCH_1];
-    response.availableTopics = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_OR_NULL_BRANCH_1];
+
     return response;
 }
 
@@ -316,42 +280,11 @@
     LogDeliveryStatus *status = [[LogDeliveryStatus alloc] init];
     status.requestId = 42;
     status.result = SYNC_RESPONSE_RESULT_TYPE_SUCCESS;
-    status.errorCode = [KAAUnion unionWithBranch:KAA_UNION_LOG_DELIVERY_ERROR_CODE_OR_NULL_BRANCH_1];
     
     LogSyncResponse *response = [[LogSyncResponse alloc] init];
     NSArray *array = [NSArray arrayWithObject:status];
     response.deliveryStatuses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_DELIVERY_STATUS_OR_NULL_BRANCH_0 andData:array];
     return response;
-}
-
-- (EventSyncResponse *) getEventSyncResponse {
-    EventSyncResponse *response = [[EventSyncResponse alloc] init];
-    response.eventSequenceNumberResponse =
-    [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_1];
-    response.eventListenersResponses =
-    [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_RESPONSE_OR_NULL_BRANCH_1];
-    response.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
-    return response;
-}
-
-- (UserSyncResponse *) getUserSyncResponse {
-    UserSyncResponse *response = [[UserSyncResponse alloc] init];
-    response.userAttachResponse =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
-    response.userAttachNotification =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_NOTIFICATION_OR_NULL_BRANCH_1];
-    response.userDetachNotification =
-    [KAAUnion unionWithBranch:KAA_UNION_USER_DETACH_NOTIFICATION_OR_NULL_BRANCH_1];
-    response.endpointAttachResponses =
-    [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
-    response.endpointDetachResponses =
-    [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_RESPONSE_OR_NULL_BRANCH_1];
-    return response;
-}
-
-- (KAAUnion *) getBootstrapResponseUnion {
-    KAAUnion *bootstrapUnin = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_RESPONSE_OR_NULL_BRANCH_1];
-    return bootstrapUnin;
 }
 
 - (KAAUnion *) getProfileSyncResponseUnion {
@@ -370,12 +303,14 @@
 }
 
 - (KAAUnion *) getUserUnion {
-    KAAUnion *userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_RESPONSE_OR_NULL_BRANCH_0 andData:[self getUserSyncResponse]];
+    KAAUnion *userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_RESPONSE_OR_NULL_BRANCH_0
+                                            andData:[[UserSyncResponse alloc] init]];
     return userUnion;
 }
 
 - (KAAUnion *) getEventUnion {
-    KAAUnion *eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_RESPONSE_OR_NULL_BRANCH_0 andData:[self getEventSyncResponse]];
+    KAAUnion *eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_RESPONSE_OR_NULL_BRANCH_0
+                                             andData:[[EventSyncResponse alloc] init]];
     return eventUnion;
 }
 
