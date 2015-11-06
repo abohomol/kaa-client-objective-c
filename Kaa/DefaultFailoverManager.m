@@ -120,9 +120,8 @@
         
         long secondsTimeout = [TimeUtils convert:self.failureResolutionTimeout from:self.timeUnit to:TIME_UNIT_SECONDS];
         dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(secondsTimeout * NSEC_PER_SEC));
-        __weak typeof(resolution)weakResolution = resolution;
         dispatch_after(delay, [self.executorContext getSheduledExecutor], ^{
-            [weakResolution start];
+            [resolution start];
         });
         
         [self.kaaChannelMgr onServerFailed:connectionInfo];

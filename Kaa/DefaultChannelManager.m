@@ -243,10 +243,9 @@
                         NSInteger period = [decision retryPeriod];
                         DDLogWarn(@"%@ Connection to next bootstrap server will be made in %li ms", TAG, (long)period);
                         __weak typeof(self)weakSelf = self;
-                        __weak typeof(nextConnectionInfo)weakInfo = nextConnectionInfo;
                         dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(period * NSEC_PER_MSEC));
                         dispatch_after(delay, [self.executorContext getSheduledExecutor], ^{
-                            [weakSelf onTransportConnectionInfoUpdated:weakInfo];
+                            [weakSelf onTransportConnectionInfoUpdated:nextConnectionInfo];
                         });
                     }
                         break;
@@ -270,10 +269,9 @@
                         NSInteger period = [decision retryPeriod];
                         DDLogWarn(@"%@ Reconnect to first bootstrap server will be made in %li ms", TAG, (long)period);
                         __weak typeof(self)weakSelf = self;
-                        __weak typeof(server)weakServer = server;
                         dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(period * NSEC_PER_MSEC));
                         dispatch_after(delay, [self.executorContext getSheduledExecutor], ^{
-                            [weakSelf onTransportConnectionInfoUpdated:weakServer];
+                            [weakSelf onTransportConnectionInfoUpdated:server];
                         });
                     }
                         break;
