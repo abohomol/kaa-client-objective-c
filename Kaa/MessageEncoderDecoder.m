@@ -90,7 +90,6 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
     return self.sessionKey;
 }
 
-//TODO: ECB is used in original implementation - kCCOptionECBMode
 - (NSData *)getEncodedSessionKey {
     NSData *sessionKey = [self getSessionKey];
     if (!sessionKey) {

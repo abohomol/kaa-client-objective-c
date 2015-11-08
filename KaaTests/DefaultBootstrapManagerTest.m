@@ -92,35 +92,27 @@
 }
 
 - (void)setOperationDemultiplexer:(id<KaaDataDemultiplexer>)demultiplexer {
-    //TODO Auto-generated method stub
 }
 
 - (void)setOperationMultiplexer:(id<KaaDataMultiplexer>)multiplexer {
-    //TODO Auto-generated method stub
 }
 
 - (void)setBootstrapMultiplexer:(id<KaaDataMultiplexer>)multiplexer {
-    //TODO Auto-generated method stub
 }
 
 - (void)setBootstrapDemultiplexer:(id<KaaDataDemultiplexer>)demultiplexer {
-    //TODO Auto-generated method stub
 }
 
 - (void)sync:(TransportType)type {
-    //TODO Auto-generated method stub
 }
 
 - (void)syncAck:(TransportType)type {
-    //TODO Auto-generated method stub
 }
 
 - (void)syncAll:(TransportType)type {
-    //TODO Auto-generated method stub
 }
 
 - (id<TransportConnectionInfo>)getActiveServer:(TransportType)type {
-    //TODO Auto-generated method stub
     return nil;
 }
 

@@ -23,8 +23,4 @@
  */
 + (instancetype)fromSHA1:(NSData *)data;
 
-//TODO
-//getDataBuf
-//binaryEquals
-
 @end
