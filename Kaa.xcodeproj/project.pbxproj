@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		390132EC1BEB3E3F00BA0A95 /* client_properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8F14E241BD8E200001D1B02 /* client_properties.plist */; };
 		391292531BDE10210013F631 /* KaaTcpMessageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 391292521BDE10210013F631 /* KaaTcpMessageTest.m */; };
 		391A91A01BBD6CCD00DBA851 /* SingleThreadExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */; };
 		391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */; };
@@ -654,7 +653,6 @@
 		288B6E34A174A0B006D7475F /* Pods-KaaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaaTests/Pods-KaaTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B82CEEF86BDB0D4EB551C48 /* Pods-KaaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaaTests/Pods-KaaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34B3F556DC3121F3AFA8ECC3 /* Pods-libKaa.a.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.release.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.release.xcconfig"; sourceTree = "<group>"; };
-		390132E61BEB3DBC00BA0A95 /* KaaResources.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaaResources.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		390132E81BEB3DBC00BA0A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		391292521BDE10210013F631 /* KaaTcpMessageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaTcpMessageTest.m; sourceTree = "<group>"; };
 		391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleThreadExecutorContext.h; sourceTree = "<group>"; };
@@ -968,13 +966,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		390132E31BEB3DBC00BA0A95 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B824A1E81B1452C50076C753 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1212,7 +1203,6 @@
 			children = (
 				B824A1EB1B1452C50076C753 /* libKaa.a */,
 				B824A1F61B1452C50076C753 /* KaaTests.xctest */,
-				390132E61BEB3DBC00BA0A95 /* KaaResources.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1876,23 +1866,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		390132E51BEB3DBC00BA0A95 /* KaaResources */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 390132EB1BEB3DBC00BA0A95 /* Build configuration list for PBXNativeTarget "KaaResources" */;
-			buildPhases = (
-				390132E21BEB3DBC00BA0A95 /* Sources */,
-				390132E31BEB3DBC00BA0A95 /* Frameworks */,
-				390132E41BEB3DBC00BA0A95 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = KaaResources;
-			productName = KaaResources;
-			productReference = 390132E61BEB3DBC00BA0A95 /* KaaResources.bundle */;
-			productType = "com.apple.product-type.bundle";
-		};
 		B824A1EA1B1452C50076C753 /* libKaa.a */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B824A1FF1B1452C50076C753 /* Build configuration list for PBXNativeTarget "libKaa.a" */;
@@ -1942,9 +1915,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "CYBERVISION INC";
 				TargetAttributes = {
-					390132E51BEB3DBC00BA0A95 = {
-						CreatedOnToolsVersion = 7.1;
-					};
 					B824A1EA1B1452C50076C753 = {
 						CreatedOnToolsVersion = 6.3.1;
 					};
@@ -1967,20 +1937,11 @@
 			targets = (
 				B824A1EA1B1452C50076C753 /* libKaa.a */,
 				B824A1F51B1452C50076C753 /* KaaTests */,
-				390132E51BEB3DBC00BA0A95 /* KaaResources */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		390132E41BEB3DBC00BA0A95 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				390132EC1BEB3E3F00BA0A95 /* client_properties.plist in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B824A1F41B1452C50076C753 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2055,13 +2016,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		390132E21BEB3DBC00BA0A95 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B824A1E71B1452C50076C753 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2228,39 +2182,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		390132E91BEB3DBC00BA0A95 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				INFOPLIST_FILE = KaaResources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = org.Kaaproject.KaaResources;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Debug;
-		};
-		390132EA1BEB3DBC00BA0A95 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "-";
-				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = KaaResources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
-				PRODUCT_BUNDLE_IDENTIFIER = org.Kaaproject.KaaResources;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				WRAPPER_EXTENSION = bundle;
-			};
-			name = Release;
-		};
 		B824A1FD1B1452C50076C753 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2422,14 +2343,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		390132EB1BEB3DBC00BA0A95 /* Build configuration list for PBXNativeTarget "KaaResources" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				390132E91BEB3DBC00BA0A95 /* Debug */,
-				390132EA1BEB3DBC00BA0A95 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
 		B824A1E61B1452C50076C753 /* Build configuration list for PBXProject "Kaa" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
