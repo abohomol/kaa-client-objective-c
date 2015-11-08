@@ -73,7 +73,7 @@
         self.isConfigVersionUpdated = NO;
         
         NSString *storage = [NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES) firstObject];
-        NSString *stateFileName = [properties stringForKey:STATE_FILE_LOCATION];
+        NSString *stateFileName = [properties stringForKey:STATE_FILE_LOCATION_KEY];
         if (!stateFileName) {
             stateFileName = STATE_FILE_DEFAULT;
         }

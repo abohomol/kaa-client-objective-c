@@ -10,16 +10,16 @@
 #import "KAABase64.h"
 #import "TimeCommons.h"
 
-#define KAA_CLIENT_PROPERTIES_FILE @"kaaClientPropertiesFile"
-#define BUILD_VERSION @"build.version"
-#define BUILD_COMMIT_HASH @"build.commit_hash"
-#define TRANSPORT_POLL_DELAY @"transport.poll.initial_delay"
-#define TRANSPORT_POLL_PERIOD @"transport.poll.period"
-#define TRANSPORT_POLL_UNIT @"transport.poll.unit"
-#define BOOTSTRAP_SERVERS @"transport.bootstrap.servers"
-#define CONFIG_DATA_DEFAULT @"config.data.default"
-#define CONFIG_SCHEMA_DEFAULT @"config.schema.default"
-#define SDK_TOKEN @"sdk_token"
+#define BUILD_VERSION_KEY           @"build.version"
+#define BUILD_COMMIT_HASH_KEY       @"build.commit_hash"
+#define TRANSPORT_POLL_DELAY_KEY    @"transport.poll.initial_delay"
+#define TRANSPORT_POLL_PERIOD_KEY   @"transport.poll.period"
+#define TRANSPORT_POLL_UNIT_KEY     @"transport.poll.unit"
+#define BOOTSTRAP_SERVERS_KEY       @"transport.bootstrap.servers"
+#define CONFIG_DATA_DEFAULT_KEY     @"config.data.default"
+#define CONFIG_SCHEMA_DEFAULT_KEY   @"config.schema.default"
+#define STATE_FILE_LOCATION_KEY     @"state.file.location"
+#define SDK_TOKEN_KEY               @"sdk_token"
 
 @interface KaaClientProperties : NSObject
 

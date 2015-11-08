@@ -9,33 +9,19 @@
 #import <XCTest/XCTest.h>
 #import "KaaClientPropertiesState.h"
 #import "NSData+Conversion.h"
-
-#define STATE_FILE_NAME @"state.properties"
+#import "TestsHelper.h"
 
 @interface KaaClientPropertiesStateTest : XCTestCase
 
 @property (nonatomic,strong) id<KaaClientState> state;
 
-- (KaaClientProperties *)getProperties;
-
 @end
 
 @implementation KaaClientPropertiesStateTest
 
-- (KaaClientProperties *)getProperties {
-    KaaClientProperties *properties = [[KaaClientProperties alloc] initDefaults:[CommonBase64 new]];
-    [properties setString:STATE_FILE_NAME forKey:STATE_FILE_LOCATION];
-    [properties setString:@"0" forKey:TRANSPORT_POLL_DELAY];
-    [properties setString:@"1" forKey:TRANSPORT_POLL_PERIOD];
-    [properties setString:@"1" forKey:TRANSPORT_POLL_UNIT];
-    [properties setString:@"123456" forKey:SDK_TOKEN];
-    [properties setString:STATE_FILE_DEFAULT forKey:STATE_FILE_LOCATION];
-    return properties;
-}
-
 - (void)setUp {
     [super setUp];
-    self.state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+    self.state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     NSLog(@"New state created!");
 }
 
@@ -80,14 +66,14 @@
     XCTAssertTrue([expected isEqualToDictionary:[self.state getNfSubscriptions]]);
     
     [self.state persist];
-    self.state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+    self.state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     
     XCTAssertTrue([expected isEqualToDictionary:[self.state getNfSubscriptions]]);
 
     [self.state removeTopic:topic1.id];
     [self.state persist];
     
-    self.state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+    self.state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     
     [expected removeObjectForKey:topic1.id];
     
@@ -102,8 +88,8 @@
     
     XCTAssertTrue([self.state isRegistred]);
     
-    KaaClientProperties *properties = [self getProperties];
-    [properties setString:@"SDK_TOKEN_100500" forKey:SDK_TOKEN];
+    KaaClientProperties *properties = [TestsHelper getProperties];
+    [properties setString:@"SDK_TOKEN_100500" forKey:SDK_TOKEN_KEY];
     
     KaaClientPropertiesState *newState = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:properties];
     

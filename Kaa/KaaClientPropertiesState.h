@@ -11,8 +11,7 @@
 #import "KAABase64.h"
 #import "KaaClientProperties.h"
 
-#define STATE_FILE_LOCATION @"state_file_location"
-#define STATE_FILE_DEFAULT  @"state_properties"
+#define STATE_FILE_DEFAULT  @"state.properties"
 
 @interface KaaClientPropertiesState : NSObject <KaaClientState>
 

@@ -18,8 +18,7 @@
 #import "EventTransport.h"
 #import "ExecutorContext.h"
 #import "DefaultEventManager.h"
-
-#define STATE_FILE_NAME @"state.properties"
+#import "TestsHelper.h"
 
 #pragma mark - TestFindEventListenersDelegate
 
@@ -29,10 +28,10 @@
 
 @implementation TestFindEventListenersDelegate
 
-- (void) onRequestFailed {
+- (void)onRequestFailed {
 }
 
-- (void) onEventListenersReceived:(NSArray *)eventListeners {
+- (void)onEventListenersReceived:(NSArray *)eventListeners {
 }
 
 
@@ -72,13 +71,13 @@
 #pragma mark - EventManagerTest
 
 @interface EventManagerTest : XCTestCase
-- (KaaClientProperties *)getProperties;
+
 @end
 
 @implementation EventManagerTest
 
-- (void) testNoHandler {
-    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+- (void)testNoHandler {
+    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     id <EventTransport> transport = mockProtocol(@protocol(EventTransport));
     id <BaseEventFamily> eventFamily = mockProtocol(@protocol(BaseEventFamily));
     id <ExecutorContext> executorContext = mockProtocol(@protocol(ExecutorContext));
@@ -92,8 +91,8 @@
     [verifyCount(eventFamily, times(0)) getSupportedEventFQNs];
 }
 
-- (void) testEngageRelease {
-    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+- (void)testEngageRelease {
+    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     id <EventTransport> transport = mockProtocol(@protocol(EventTransport));
     id <BaseEventFamily> eventFamily = mockProtocol(@protocol(BaseEventFamily));
     id <ExecutorContext> executorContext = mockProtocol(@protocol(ExecutorContext));
@@ -109,8 +108,8 @@
     [verifyCount(transport, times(1)) sync];
 }
 
-- (void) testTransaction {
-    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+- (void)testTransaction {
+    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     id <EventTransport> transport = mockProtocol(@protocol(EventTransport));
     id <BaseEventFamily> eventFamily = mockProtocol(@protocol(BaseEventFamily));
     id <ExecutorContext> executorContext = mockProtocol(@protocol(ExecutorContext));
@@ -136,8 +135,8 @@
     [verifyCount(transport, times(1)) sync];
 }
 
-- (void) testOneEventForTwoDifferentFamilies {
-    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+- (void)testOneEventForTwoDifferentFamilies {
+    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     
     id <EventTransport> transport = mockProtocol(@protocol(EventTransport));
     ConcreteEventFamily *eventFamily1 = [[ConcreteEventFamily alloc] initWithSupportedFQN:@"kaa.test.event.PlayEvent"];
@@ -177,8 +176,8 @@
     XCTAssertEqual(1, eventFamily2.eventsCount);
 }
 
-- (void) testFillRequest {
-    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+- (void)testFillRequest {
+    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     
     id <EventTransport> transport = mockProtocol(@protocol(EventTransport));
     id <ExecutorContext> executorContext = mockProtocol(@protocol(ExecutorContext));
@@ -207,8 +206,8 @@
     XCTAssertEqualObjects(eventFQNs[0], [[request.eventListenersRequests.data[0] eventClassFQNs] objectAtIndex:0]);
 }
 
-- (void) testEventListenersSyncRequestResponse {
-    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[self getProperties]];
+- (void)testEventListenersSyncRequestResponse {
+    KaaClientPropertiesState *state = [[KaaClientPropertiesState alloc] initWith:[CommonBase64 new] andClientProperties:[TestsHelper getProperties]];
     
     id <EventTransport> transport = mockProtocol(@protocol(EventTransport));
     id <ExecutorContext> executorContext = mockProtocol(@protocol(ExecutorContext));
@@ -238,22 +237,11 @@
 
 #pragma mark - Supporting methods
 
-- (KaaClientProperties *)getProperties {
-    KaaClientProperties *properties = [[KaaClientProperties alloc] initDefaults:[CommonBase64 new]];
-    [properties setString:STATE_FILE_NAME forKey:STATE_FILE_LOCATION];
-    [properties setString:@"0" forKey:TRANSPORT_POLL_DELAY];
-    [properties setString:@"1" forKey:TRANSPORT_POLL_PERIOD];
-    [properties setString:@"1" forKey:TRANSPORT_POLL_UNIT];
-    [properties setString:@"123456" forKey:SDK_TOKEN];
-    [properties setString:STATE_FILE_DEFAULT forKey:STATE_FILE_LOCATION];
-    return properties;
-}
-
-- (EventListenersResponse *) getNewEventListResponseWithRequestId:(int)requestId resultType:(SyncResponseResultType)resultType {
+- (EventListenersResponse *)getNewEventListResponseWithRequestId:(int)requestId resultType:(SyncResponseResultType)resultType {
     EventListenersResponse *response = [[EventListenersResponse alloc] init];
     response.requestId = requestId;
     response.result = resultType;
-    response.listeners = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_0];
+    response.listeners = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_0 andData:[NSArray array]];
     return response;
 }
 

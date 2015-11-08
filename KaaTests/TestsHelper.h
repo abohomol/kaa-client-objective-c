@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "TransportProtocolId.h"
 #import "EndpointGen.h"
+#import "KaaClientProperties.h"
 
 #define KAATestEqual(a, b)\
 if ((a) != (b)) {\
@@ -26,5 +27,7 @@ if (![(a) isEqual:(b)]) {\
                                        host:(NSString *)host
                                        port:(int32_t)port
                                andPublicKey:(NSData *)publicKey;
+
++ (KaaClientProperties *)getProperties;
 
 @end

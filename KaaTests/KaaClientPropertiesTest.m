@@ -22,11 +22,7 @@
 
 - (void)setUp {
     [super setUp];
-    NSString *propertiesPath = [[NSBundle bundleForClass:[self class]] pathForResource:@"client_test_properties" ofType:@"plist"];
-    XCTAssertTrue([[NSFileManager defaultManager] fileExistsAtPath:propertiesPath]);
-    NSDictionary *defaults = [NSDictionary dictionaryWithContentsOfFile:propertiesPath];
-    XCTAssertTrue([defaults count] > 0);
-    self.properties = [[KaaClientProperties alloc] initWithDictionary:defaults base64:[CommonBase64 new]];
+    self.properties = [[KaaClientProperties alloc] initDefaults:[CommonBase64 new]];
 }
 
 - (void)testGetBootstrapServers {
@@ -60,11 +56,11 @@
 }
 
 - (void)testGetDefaultConfigData {
-    XCTAssertTrue(nil == [self.properties defaultConfigData]);
+    XCTAssertNotNil([self.properties defaultConfigData]);
 }
 
 - (void)testGetDefaultConfigSchema {
-    XCTAssertTrue(nil == [self.properties defaultConfigSchema]);
+    XCTAssertNotNil([self.properties defaultConfigSchema]);
 }
 
 @end

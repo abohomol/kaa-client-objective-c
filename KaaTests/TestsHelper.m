@@ -7,6 +7,7 @@
 //
 
 #import "TestsHelper.h"
+#import "KaaClientPropertiesState.h"
 
 @implementation TestsHelper
 
@@ -34,6 +35,16 @@
     [md setAccessPointId:[[NSString stringWithFormat:@"%@:%i", host, port] hash]];
     [md setProtocolVersionInfo:pair];
     return md;
+}
+
++ (KaaClientProperties *)getProperties {
+    KaaClientProperties *properties = [[KaaClientProperties alloc] initDefaults:[CommonBase64 new]];
+    [properties setString:@"0" forKey:TRANSPORT_POLL_DELAY_KEY];
+    [properties setString:@"1" forKey:TRANSPORT_POLL_PERIOD_KEY];
+    [properties setString:@"1" forKey:TRANSPORT_POLL_UNIT_KEY];
+    [properties setString:@"123456" forKey:SDK_TOKEN_KEY];
+    [properties setString:STATE_FILE_DEFAULT forKey:STATE_FILE_LOCATION_KEY];
+    return properties;
 }
 
 @end

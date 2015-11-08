@@ -419,7 +419,6 @@
 		B8C055C61B56BB2A00F5AA1C /* FailoverDecision.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C055C41B56BB2A00F5AA1C /* FailoverDecision.m */; };
 		B8C055CD1B57ACD500F5AA1C /* LogTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C055CC1B57ACD500F5AA1C /* LogTransport.h */; };
 		B8C055D01B57AF1E00F5AA1C /* ExecutorContext.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */; };
-		B8C10A141BC2BBBF001A2236 /* client_test_properties.plist in Resources */ = {isa = PBXBuildFile; fileRef = B8C10A121BC2BBBF001A2236 /* client_test_properties.plist */; };
 		B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */; };
 		B8C10A1C1BC2DE14001A2236 /* SyncTaskTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */; };
 		B8C8BD371B83153400D2C016 /* NSString+Commons.h in Headers */ = {isa = PBXBuildFile; fileRef = B8C8BD351B83153400D2C016 /* NSString+Commons.h */; };
@@ -883,6 +882,7 @@
 		B88D00BC1BA88CAD002E0144 /* DefaultProfileTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileTransport.m; sourceTree = "<group>"; };
 		B88D00BF1BA8AE9F002E0144 /* DefaultEventTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEventTransport.h; sourceTree = "<group>"; };
 		B88D00C01BA8AE9F002E0144 /* DefaultEventTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEventTransport.m; sourceTree = "<group>"; };
+		B8A0B5111BEF65FA00105DFE /* KaaDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KaaDefaults.h; sourceTree = "<group>"; };
 		B8A13B031BAFE47A00265729 /* DefaultBootstrapDataProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultBootstrapDataProcessor.h; sourceTree = "<group>"; };
 		B8A13B041BAFE47A00265729 /* DefaultBootstrapDataProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultBootstrapDataProcessor.m; sourceTree = "<group>"; };
 		B8A13B071BAFE93A00265729 /* DefaultOperationDataProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOperationDataProcessor.h; sourceTree = "<group>"; };
@@ -913,7 +913,6 @@
 		B8C055C41B56BB2A00F5AA1C /* FailoverDecision.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FailoverDecision.m; sourceTree = "<group>"; };
 		B8C055CC1B57ACD500F5AA1C /* LogTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogTransport.h; sourceTree = "<group>"; };
 		B8C055CF1B57AF1E00F5AA1C /* ExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExecutorContext.h; sourceTree = "<group>"; };
-		B8C10A121BC2BBBF001A2236 /* client_test_properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = client_test_properties.plist; sourceTree = "<group>"; };
 		B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesTest.m; sourceTree = "<group>"; };
 		B8C10A1B1BC2DE14001A2236 /* SyncTaskTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SyncTaskTest.m; sourceTree = "<group>"; };
 		B8C8BD351B83153400D2C016 /* NSString+Commons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Commons.h"; sourceTree = "<group>"; };
@@ -948,7 +947,6 @@
 		B8EFF1F91BC8FE8C002551A9 /* MessageEncoderDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageEncoderDecoderTests.m; sourceTree = "<group>"; };
 		B8F14E221BD8E200001D1B02 /* BaseKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseKaaClient.h; sourceTree = "<group>"; };
 		B8F14E231BD8E200001D1B02 /* BaseKaaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseKaaClient.m; sourceTree = "<group>"; };
-		B8F14E241BD8E200001D1B02 /* client_properties.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = client_properties.plist; sourceTree = "<group>"; };
 		B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationPersistenceManager.h; sourceTree = "<group>"; };
 		B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleConfigurationStorage.h; sourceTree = "<group>"; };
 		B8FBD9EE1B9E0243009A2BA3 /* SimpleConfigurationStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleConfigurationStorage.m; sourceTree = "<group>"; };
@@ -1230,9 +1228,9 @@
 				B88836241BA0981C00ACAB4F /* KaaClientStateDelegate.h */,
 				B844623A1BB5C377009826FC /* KaaLogging.h */,
 				B844623B1BB5C377009826FC /* KaaLogging.m */,
-				B8F14E241BD8E200001D1B02 /* client_properties.plist */,
 				B86229E71BE352EF0045ED0D /* DefaultKaaPlatformContext.h */,
 				B86229E81BE352EF0045ED0D /* DefaultKaaPlatformContext.m */,
+				B8A0B5111BEF65FA00105DFE /* KaaDefaults.h */,
 			);
 			path = Kaa;
 			sourceTree = "<group>";
@@ -1263,7 +1261,6 @@
 		B824A1FB1B1452C50076C753 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				B8C10A121BC2BBBF001A2236 /* client_test_properties.plist */,
 				B824A1FC1B1452C50076C753 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -1936,7 +1933,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C10A141BC2BBBF001A2236 /* client_test_properties.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

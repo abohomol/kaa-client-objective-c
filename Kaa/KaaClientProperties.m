@@ -13,8 +13,7 @@
 #import "GenericTransportInfo.h"
 #import "TransportCommon.h"
 #import "SHAMessageDigest.h"
-
-#define DEFAULT_CLIENT_PROPERTIES @"client_properties"
+#import "KaaDefaults.h"
 
 @interface KaaClientProperties ()
 
@@ -42,25 +41,19 @@
 }
 
 - (instancetype)initDefaults:(id<KAABase64>)base64 {
-    self = [super init];
-    if (self) {
-        self.properties = [NSUserDefaults standardUserDefaults];
-        [self.properties registerDefaults:[self loadProperties]];
-        self.base64 = base64;
-    }
-    return self;
+    return [self initWithDictionary:[self loadProperties] base64:base64];
 }
 
 - (NSData *)propertiesHash {
     if (!self.cachedPropertiesHash) {
         SHAMessageDigest *digest = [[SHAMessageDigest alloc] init];
-        [digest updateWithString:[self.properties objectForKey:TRANSPORT_POLL_DELAY]];
-        [digest updateWithString:[self.properties objectForKey:TRANSPORT_POLL_PERIOD]];
-        [digest updateWithString:[self.properties objectForKey:TRANSPORT_POLL_UNIT]];
-        [digest updateWithString:[self.properties objectForKey:BOOTSTRAP_SERVERS]];
-        [digest updateWithString:[self.properties objectForKey:CONFIG_DATA_DEFAULT]];
-        [digest updateWithString:[self.properties objectForKey:CONFIG_SCHEMA_DEFAULT]];
-        [digest updateWithString:[self.properties objectForKey:SDK_TOKEN]];
+        [digest updateWithString:[self.properties objectForKey:TRANSPORT_POLL_DELAY_KEY]];
+        [digest updateWithString:[self.properties objectForKey:TRANSPORT_POLL_PERIOD_KEY]];
+        [digest updateWithString:[self.properties objectForKey:TRANSPORT_POLL_UNIT_KEY]];
+        [digest updateWithString:[self.properties objectForKey:BOOTSTRAP_SERVERS_KEY]];
+        [digest updateWithString:[self.properties objectForKey:CONFIG_DATA_DEFAULT_KEY]];
+        [digest updateWithString:[self.properties objectForKey:CONFIG_SCHEMA_DEFAULT_KEY]];
+        [digest updateWithString:[self.properties objectForKey:SDK_TOKEN_KEY]];
         self.cachedPropertiesHash = [NSMutableData dataWithBytes:[digest final] length:[digest size]];
     }
     return self.cachedPropertiesHash;
@@ -71,11 +64,19 @@
 }
 
 - (NSDictionary *)loadProperties {
-    NSString *clientProperties = [[NSBundle mainBundle] pathForResource:KAA_CLIENT_PROPERTIES_FILE ofType:@"plist"];
-    if (![[NSFileManager defaultManager] fileExistsAtPath:clientProperties]) {
-        clientProperties = [[NSBundle mainBundle] pathForResource:DEFAULT_CLIENT_PROPERTIES ofType:@"plist"];
-    }
-    return [NSMutableDictionary dictionaryWithContentsOfFile:clientProperties];
+    NSData *schemaBytes = [self.base64 decodeString:CONFIG_SCHEMA_DEFAULT];
+    return @{
+       BUILD_VERSION_KEY         : BUILD_VERSION,
+       BUILD_COMMIT_HASH_KEY     : BUILD_COMMIT_HASH,
+       TRANSPORT_POLL_DELAY_KEY  : TRANSPORT_POLL_DELAY,
+       TRANSPORT_POLL_PERIOD_KEY : TRANSPORT_POLL_PERIOD,
+       TRANSPORT_POLL_UNIT_KEY   : TRANSPORT_POLL_UNIT,
+       BOOTSTRAP_SERVERS_KEY     : BOOTSTRAP_SERVERS,
+       CONFIG_DATA_DEFAULT_KEY   : CONFIG_DATA_DEFAULT,
+       CONFIG_SCHEMA_DEFAULT_KEY : [[NSString alloc] initWithData:schemaBytes encoding:NSUTF8StringEncoding],
+       STATE_FILE_LOCATION_KEY   : STATE_FILE_LOCATION,
+       SDK_TOKEN_KEY             : SDK_TOKEN
+    };
 }
 
 - (NSDictionary *)parseBootstrapServers:(NSString *)serversStr {
@@ -104,35 +105,35 @@
 }
 
 - (NSDictionary *)bootstrapServers {
-    return [self parseBootstrapServers:[self.properties stringForKey:BOOTSTRAP_SERVERS]];
+    return [self parseBootstrapServers:[self.properties stringForKey:BOOTSTRAP_SERVERS_KEY]];
 }
 
 - (NSString *)buildVersion {
-    return [self.properties stringForKey:BUILD_VERSION];
+    return [self.properties stringForKey:BUILD_VERSION_KEY];
 }
 
 - (NSString *)commitHash {
-    return [self.properties stringForKey:BUILD_COMMIT_HASH];
+    return [self.properties stringForKey:BUILD_COMMIT_HASH_KEY];
 }
 
 - (NSString *)sdkToken {
-    return [self.properties stringForKey:SDK_TOKEN];
+    return [self.properties stringForKey:SDK_TOKEN_KEY];
 }
 
 - (NSInteger)pollDelay {
-    return [[self.properties stringForKey:TRANSPORT_POLL_DELAY] intValue];
+    return [[self.properties stringForKey:TRANSPORT_POLL_DELAY_KEY] intValue];
 }
 
 - (NSInteger)pollPeriod {
-    return [[self.properties stringForKey:TRANSPORT_POLL_PERIOD] intValue];
+    return [[self.properties stringForKey:TRANSPORT_POLL_PERIOD_KEY] intValue];
 }
 
 - (TimeUnit)pollUnit {
-    return (TimeUnit)[[self.properties stringForKey:TRANSPORT_POLL_UNIT] intValue];
+    return (TimeUnit)[[self.properties stringForKey:TRANSPORT_POLL_UNIT_KEY] intValue];
 }
 
 - (NSData *)defaultConfigData {
-    NSString *schema = [self.properties stringForKey:CONFIG_DATA_DEFAULT];
+    NSString *schema = [self.properties stringForKey:CONFIG_DATA_DEFAULT_KEY];
     if (!schema) {
         return nil;
     }
@@ -140,7 +141,7 @@
 }
 
 - (NSData *)defaultConfigSchema {
-    NSString *schema = [self.properties stringForKey:CONFIG_SCHEMA_DEFAULT];
+    NSString *schema = [self.properties stringForKey:CONFIG_SCHEMA_DEFAULT_KEY];
     if (!schema) {
         return nil;
     }
