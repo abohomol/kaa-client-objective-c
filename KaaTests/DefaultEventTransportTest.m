@@ -17,8 +17,6 @@
 #import "DefaultEventTransport.h"
 #import "DefaultEventManager.h"
 
-static NSMutableData *dataWith123;
-
 @interface DefaultEventTransportTest : XCTestCase
 
 @end
@@ -50,7 +48,7 @@ static NSMutableData *dataWith123;
 
 - (void)testCreateRequest {
     id <KaaClientState> clientState = mockProtocol(@protocol(KaaClientState));
-    DefaultEventManager *manager = mock([DefaultEventManager class]);
+    DefaultEventManager *manager = mockProtocol(@protocol(EventManager));
     Event *event1 = [[Event alloc] init];
     [event1 setSeqNum:1];
     Event *event2 = [[Event alloc] init];
@@ -62,6 +60,8 @@ static NSMutableData *dataWith123;
     [transport setEventManager:manager];
     [transport createEventRequest:2];
     [transport onEventResponse:[self getNewEmptyEventResponse]];
+    
+    [verifyCount(manager, times(1)) fillEventListenersSyncRequest:anything()];
     
     [transport createEventRequest:3];
     EventSyncRequest *request = [transport createEventRequest:4];
@@ -92,7 +92,7 @@ static NSMutableData *dataWith123;
     [transport onEventResponse:response];
     
     
-    [verifyCount(manager, times(3)) onGenericEvent:@"eventClassFQN" data:dataWith123 source:@"source"];
+    [verifyCount(manager, times(3)) onGenericEvent:@"eventClassFQN" data:[self getPlainData] source:@"source"];
     [verifyCount(manager, times(1)) eventListenersResponseReceived:delegates];
 }
 
@@ -118,11 +118,9 @@ static NSMutableData *dataWith123;
     id <KaaClientState> clientState = mockProtocol(@protocol(KaaClientState));
     Event *event = [[Event alloc] init];
     event.seqNum = 1;
-    event.eventClassFQN = nil;
-    event.eventData = nil;
     NSArray *events = @[event];
     
-    DefaultEventManager *manager = mock([DefaultEventManager class]);
+    id<EventManager> manager = mockProtocol(@protocol(EventManager));
     [given([manager pollPendingEvents]) willReturn:events];
     
     id <EventTransport> transport = [[DefaultEventTransport alloc] initWithState:clientState];
@@ -141,30 +139,24 @@ static NSMutableData *dataWith123;
 }
 
 - (void)testSynchronizedSN {
-    NSInteger restoredEventSN = 10;
-    NSInteger lastEventSN = restoredEventSN -1;
+    int restoredEventSN = 10;
+    int lastEventSN = restoredEventSN - 1;
     
     id <KaaClientState> clientState = mockProtocol(@protocol(KaaClientState));
     [given([clientState eventSequenceNumber]) willReturnInteger:restoredEventSN];
     
     Event *event1 = [[Event alloc] init];
-    event1.seqNum = (int)restoredEventSN++;
-    event1.eventClassFQN = nil;
-    event1.eventData = nil;
+    event1.seqNum = restoredEventSN++;
     
     Event *event2 = [[Event alloc] init];
-    event2.seqNum = (int)restoredEventSN++;
-    event2.eventClassFQN = nil;
-    event2.eventData = nil;
+    event2.seqNum = restoredEventSN++;
     
     Event *event3 = [[Event alloc] init];
-    event3.seqNum = (int)restoredEventSN++;
-    event3.eventClassFQN = nil;
-    event3.eventData = nil;
+    event3.seqNum = restoredEventSN++;
     
     NSArray *events = @[event1, event2, event3];
     
-    DefaultEventManager *manager = mock([DefaultEventManager class]);
+    id<EventManager> manager = mockProtocol(@protocol(EventManager));
     [given([manager pollPendingEvents]) willReturn:events];
     
     id <EventTransport> transport = [[DefaultEventTransport alloc] initWithState:clientState];
@@ -174,44 +166,40 @@ static NSMutableData *dataWith123;
     [transport createEventRequest:requestId++];
     
     EventSyncResponse *eventResponse = [[EventSyncResponse alloc] init];
+    EventSequenceNumberResponse *seqNumResponse = [[EventSequenceNumberResponse alloc] init];
+    seqNumResponse.seqNum = lastEventSN;
     eventResponse.eventSequenceNumberResponse =
     [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_0
-                      andData:[NSNumber numberWithInteger:lastEventSN]];
+                      andData:seqNumResponse];
     
     [transport onEventResponse:eventResponse];
     
-    EventSyncRequest *eventRequest2 = [transport createEventRequest:requestId];
+    EventSyncRequest *eventRequest = [transport createEventRequest:requestId];
     
-    XCTAssertTrue(eventRequest2.eventSequenceNumberRequest.data == nil);
-    XCTAssertTrue([eventRequest2.events.data count] == [events count]);
+    XCTAssertTrue(eventRequest.eventSequenceNumberRequest.data == nil);
+    XCTAssertTrue([eventRequest.events.data count] == [events count]);
     
     NSInteger expectedSN = lastEventSN + 1;
-    for (Event *ev in eventRequest2.events.data) {
+    for (Event *ev in eventRequest.events.data) {
         XCTAssertEqual(expectedSN++, ev.seqNum);
     }
 }
 
 - (void)testSequenceNumberSynchronization {
-    NSInteger restoredEventSN = 10;
+    int restoredEventSN = 10;
     
     id <KaaClientState> clientState = mockProtocol(@protocol(KaaClientState));
     [given([clientState eventSequenceNumber]) willReturnInteger:restoredEventSN];
     
     Event *event1 = [[Event alloc] init];
-    event1.seqNum = (int)restoredEventSN++;
-    event1.eventClassFQN = nil;
-    event1.eventData = nil;
-
+    event1.seqNum = restoredEventSN++;
+    
     Event *event2 = [[Event alloc] init];
-    event2.seqNum = (int)restoredEventSN++;
-    event2.eventClassFQN = nil;
-    event2.eventData = nil;
-
+    event2.seqNum = restoredEventSN++;
+    
     Event *event3 = [[Event alloc] init];
-    event3.seqNum = (int)restoredEventSN++;
-    event3.eventClassFQN = nil;
-    event3.eventData = nil;
-
+    event3.seqNum = restoredEventSN++;
+    
     NSArray *events1 = @[event1, event2, event3];
     
     id <EventManager> manager1 = mockProtocol(@protocol(EventManager));
@@ -221,23 +209,25 @@ static NSMutableData *dataWith123;
     id <EventTransport> transport = [[DefaultEventTransport alloc] initWithState:clientState];
     [transport setEventManager:manager1];
     
-    NSInteger requestId = 1;
+    int requestId = 1;
     [transport createEventRequest:requestId++];
     
     int lastReceivedSN = 5;
-    EventSyncResponse *eventResponse1 = [[EventSyncResponse alloc] init];
-    eventResponse1.eventSequenceNumberResponse =
+    EventSyncResponse *eventResponse = [[EventSyncResponse alloc] init];
+    EventSequenceNumberResponse *seqNumResponse = [[EventSequenceNumberResponse alloc] init];
+    seqNumResponse.seqNum = lastReceivedSN;
+    eventResponse.eventSequenceNumberResponse =
     [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_0
-                      andData:[NSNumber numberWithInt:lastReceivedSN]];
+                      andData:seqNumResponse];
     
-    [transport onEventResponse:eventResponse1];
+    [transport onEventResponse:eventResponse];
     
     EventSyncRequest *eventRequest2 = [transport createEventRequest:requestId];
     
     XCTAssertTrue(eventRequest2.eventSequenceNumberRequest.data == nil);
     XCTAssertTrue([eventRequest2.events.data count] == [events1 count]);
     
-    NSInteger synchronizedSN = lastReceivedSN + 1;
+    int synchronizedSN = lastReceivedSN + 1;
     for (Event *ev in eventRequest2.events.data) {
         XCTAssertEqual(synchronizedSN++, ev.seqNum);
     }
@@ -245,10 +235,8 @@ static NSMutableData *dataWith123;
     [transport onSyncResposeIdReceived:requestId++];
     
     Event *event = [[Event alloc] init];
-    event.seqNum = (int)synchronizedSN;
-    event.eventClassFQN = nil;
-    event.eventData = nil;
-
+    event.seqNum = synchronizedSN;
+    
     NSArray *events2 = @[event];
     id <EventManager> manager2 = mockProtocol(@protocol(EventManager));
     [given([manager2 pollPendingEvents]) willReturn:events2];
@@ -261,33 +249,38 @@ static NSMutableData *dataWith123;
 
 #pragma mark - Supporting methods
 
-- (EventSyncResponse *) getNewEmptyEventResponse {
+- (EventSyncResponse *)getNewEmptyEventResponse {
     EventSyncResponse *response = [[EventSyncResponse alloc] init];
+    EventSequenceNumberResponse *seqNumResponse = [[EventSequenceNumberResponse alloc] init];
+    seqNumResponse.seqNum = 0;
     response.eventSequenceNumberResponse =
     [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_0
-                      andData:[NSNumber numberWithInt:0]];
-
+                      andData:seqNumResponse];
+    
     return response;
 }
 
-- (Event *) getNewEvent {
-    NSInteger one = 1;
-    NSInteger two = 2;
-    NSInteger three = 3;
+- (NSData *)getPlainData {
+    char one = 1;
+    char two = 2;
+    char three = 3;
     NSMutableData *data = [NSMutableData dataWithBytes:&one length:sizeof(one)];
     [data appendBytes:&two length:sizeof(two)];
     [data appendBytes:&three length:sizeof(three)];
-    dataWith123 = data;
+    return data;
+}
+
+- (Event *)getNewEvent {
     Event *event = [[Event alloc] init];
     event.seqNum = 5;
     event.eventClassFQN = @"eventClassFQN";
-    event.eventData = data;
+    event.eventData = [self getPlainData];
     event.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:@"source"];
     event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:@"target"];
     return event;
 }
 
-- (EventListenersResponse *) getNewEventListenerResponse {
+- (EventListenersResponse *)getNewEventListenerResponse {
     EventListenersResponse *response = [[EventListenersResponse alloc] init];
     response.requestId = 0;
     response.result = SYNC_RESPONSE_RESULT_TYPE_SUCCESS;
