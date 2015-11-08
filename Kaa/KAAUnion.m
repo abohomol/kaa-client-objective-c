@@ -36,4 +36,12 @@
     return [[KAAUnion alloc] initWithBranch:branch];
 }
 
+- (NSString *)description {
+    if (self.data) {
+        return [NSString stringWithFormat:@"Branch:%i Data(%@):%@", self.branch, [self.data class], [self.data description]];
+    } else {
+        return [NSString stringWithFormat:@"Empty union with branch: %i", self.branch];
+    }
+}
+
 @end
