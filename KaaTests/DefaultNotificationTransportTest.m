@@ -109,7 +109,7 @@
     id <KaaClientState> clientState = mockProtocol(@protocol(KaaClientState));
     id <NotificationProcessor> processor = mockProtocol(@protocol(NotificationProcessor));
     [given([clientState notificationSequenceNumber]) willReturnInteger:2];
-    [given([clientState updateTopicSubscriptionInfo:anything() sequence:anything()]) willReturnBool:YES];
+    [given([clientState updateTopicSubscriptionInfo:anything() sequence:(int32_t)anything()]) willReturnBool:YES];
     
     NotificationSyncResponse *response = [self getNewNotificationResponseWithResponseStatus:SYNC_RESPONSE_STATUS_DELTA];
     
