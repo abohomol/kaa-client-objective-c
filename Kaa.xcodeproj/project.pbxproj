@@ -653,7 +653,6 @@
 		288B6E34A174A0B006D7475F /* Pods-KaaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KaaTests/Pods-KaaTests.release.xcconfig"; sourceTree = "<group>"; };
 		2B82CEEF86BDB0D4EB551C48 /* Pods-KaaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KaaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KaaTests/Pods-KaaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		34B3F556DC3121F3AFA8ECC3 /* Pods-libKaa.a.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-libKaa.a.release.xcconfig"; path = "Pods/Target Support Files/Pods-libKaa.a/Pods-libKaa.a.release.xcconfig"; sourceTree = "<group>"; };
-		390132E81BEB3DBC00BA0A95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		391292521BDE10210013F631 /* KaaTcpMessageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaTcpMessageTest.m; sourceTree = "<group>"; };
 		391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleThreadExecutorContext.h; sourceTree = "<group>"; };
 		391A919F1BBD6CCD00DBA851 /* SingleThreadExecutorContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingleThreadExecutorContext.m; sourceTree = "<group>"; };
@@ -989,14 +988,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		390132E71BEB3DBC00BA0A95 /* KaaResources */ = {
-			isa = PBXGroup;
-			children = (
-				390132E81BEB3DBC00BA0A95 /* Info.plist */,
-			);
-			path = KaaResources;
-			sourceTree = "<group>";
-		};
 		391292511BDE0FE70013F631 /* kaatcp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1191,7 +1182,6 @@
 				B824A22B1B148CFA0076C753 /* SystemConfiguration.framework */,
 				B824A1ED1B1452C50076C753 /* Kaa */,
 				B824A1FA1B1452C50076C753 /* KaaTests */,
-				390132E71BEB3DBC00BA0A95 /* KaaResources */,
 				B824A1EC1B1452C50076C753 /* Products */,
 				D52D551C6A09083F2656BDB7 /* Pods */,
 				DC516A0F99C6ED7A58E70F4C /* Frameworks */,
