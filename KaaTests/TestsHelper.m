@@ -17,14 +17,14 @@
                                andPublicKey:(NSData *)publicKey {
     int32_t publicKeyLength = CFSwapInt32([publicKey length]);
     int32_t hostLength = CFSwapInt32([host lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
-    port = CFSwapInt32(port);
+    int32_t portToWrite = CFSwapInt32(port);
     NSMutableData *data = [NSMutableData data];
     
     [data appendBytes:&publicKeyLength length:sizeof(publicKeyLength)];
     [data appendData:publicKey];
     [data appendBytes:&hostLength length:sizeof(hostLength)];
     [data appendData:[host dataUsingEncoding:NSUTF8StringEncoding]];
-    [data appendBytes:&port length:sizeof(port)];
+    [data appendBytes:&portToWrite length:sizeof(portToWrite)];
     
     ProtocolVersionPair *pair = [[ProtocolVersionPair alloc]init];
     [pair setId:TPid.protocolId];
