@@ -15,6 +15,8 @@
 @implementation Kaa
 
 + (id<KaaClient>)clientWithContext:(id<KaaClientPlatformContext>)context andStateDelegate:(id<KaaClientStateDelegate>)delegate {
+    [DDLog addLogger:[DDTTYLogger sharedInstance]]; // TTY = Xcode console
+    [DDLog addLogger:[DDASLLogger sharedInstance]]; // ASL = Apple System Logs
     @try {
         return [[BaseKaaClient alloc] initWithPlatformContext:context andDelegate:delegate];
     }
