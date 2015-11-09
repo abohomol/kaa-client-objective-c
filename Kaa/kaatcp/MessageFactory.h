@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TCPDelegates.h"
+#import "KAATCPDelegates.h"
 #import "Framer.h"
 
 /**

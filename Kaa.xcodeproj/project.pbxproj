@@ -56,7 +56,7 @@
 		398CE8FC1BE26E0000D31E34 /* KAATCPSyncRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA871BDBB4170016A721 /* KAATCPSyncRequest.h */; };
 		398CE8FD1BE26E0000D31E34 /* KAATCPPingRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA8B1BDBB56E0016A721 /* KAATCPPingRequest.h */; };
 		398CE8FE1BE26E0000D31E34 /* KAATCPPingResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA8F1BDBB6590016A721 /* KAATCPPingResponse.h */; };
-		398CE8FF1BE26E0000D31E34 /* TCPDelegates.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* TCPDelegates.h */; };
+		398CE8FF1BE26E0000D31E34 /* KAATCPDelegates.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* KAATCPDelegates.h */; };
 		398CE9001BE26E0000D31E34 /* Framer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA671BDA5D1D0016A721 /* Framer.h */; };
 		398CE9011BE26E0000D31E34 /* MessageFactory.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA941BDBB8CA0016A721 /* MessageFactory.h */; };
 		398CE9021BE26E0000D31E34 /* ConnectivityChecker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2231B1489FE0076C753 /* ConnectivityChecker.h */; };
@@ -445,7 +445,7 @@
 		B8E5A0BA1BDD2BAF008E9066 /* DefaultOperationTcpChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E5A0B61BDD2BAF008E9066 /* DefaultOperationTcpChannel.m */; };
 		B8E5A0BB1BDD2BAF008E9066 /* KAASocket.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E5A0B71BDD2BAF008E9066 /* KAASocket.h */; };
 		B8E5A0BC1BDD2BAF008E9066 /* KAASocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E5A0B81BDD2BAF008E9066 /* KAASocket.m */; };
-		B8E5A0BE1BDD9B31008E9066 /* TCPDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* TCPDelegates.h */; };
+		B8E5A0BE1BDD9B31008E9066 /* KAATCPDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* KAATCPDelegates.h */; };
 		B8E68AA31B8E241A00EE1065 /* NotificationTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E68AA21B8E241A00EE1065 /* NotificationTransport.h */; };
 		B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */; };
 		B8EC91BF1BC4058600D3723B /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BD1BC4058600D3723B /* libAFNetworking.a */; };
@@ -520,7 +520,7 @@
 				398CE8FC1BE26E0000D31E34 /* KAATCPSyncRequest.h in Copy Files */,
 				398CE8FD1BE26E0000D31E34 /* KAATCPPingRequest.h in Copy Files */,
 				398CE8FE1BE26E0000D31E34 /* KAATCPPingResponse.h in Copy Files */,
-				398CE8FF1BE26E0000D31E34 /* TCPDelegates.h in Copy Files */,
+				398CE8FF1BE26E0000D31E34 /* KAATCPDelegates.h in Copy Files */,
 				398CE9001BE26E0000D31E34 /* Framer.h in Copy Files */,
 				398CE9011BE26E0000D31E34 /* MessageFactory.h in Copy Files */,
 				398CE9021BE26E0000D31E34 /* ConnectivityChecker.h in Copy Files */,
@@ -941,7 +941,7 @@
 		B8E5A0B61BDD2BAF008E9066 /* DefaultOperationTcpChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationTcpChannel.m; sourceTree = "<group>"; };
 		B8E5A0B71BDD2BAF008E9066 /* KAASocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAASocket.h; sourceTree = "<group>"; };
 		B8E5A0B81BDD2BAF008E9066 /* KAASocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAASocket.m; sourceTree = "<group>"; };
-		B8E5A0BD1BDD9B31008E9066 /* TCPDelegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCPDelegates.h; path = kaatcp/TCPDelegates.h; sourceTree = "<group>"; };
+		B8E5A0BD1BDD9B31008E9066 /* KAATCPDelegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPDelegates.h; path = kaatcp/KAATCPDelegates.h; sourceTree = "<group>"; };
 		B8E68AA21B8E241A00EE1065 /* NotificationTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTransport.h; sourceTree = "<group>"; };
 		B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesStateTest.m; sourceTree = "<group>"; };
 		B8EC91BD1BC4058600D3723B /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
@@ -1439,7 +1439,7 @@
 		B87FCA611BDA41AE0016A721 /* delegates */ = {
 			isa = PBXGroup;
 			children = (
-				B8E5A0BD1BDD9B31008E9066 /* TCPDelegates.h */,
+				B8E5A0BD1BDD9B31008E9066 /* KAATCPDelegates.h */,
 			);
 			name = delegates;
 			sourceTree = "<group>";
@@ -1755,7 +1755,7 @@
 				B8C8BD3B1B83236400D2C016 /* GenericTransportInfo.h in Headers */,
 				B88836361BA1F15000ACAB4F /* LogRecord.h in Headers */,
 				391A91A01BBD6CCD00DBA851 /* SingleThreadExecutorContext.h in Headers */,
-				B8E5A0BE1BDD9B31008E9066 /* TCPDelegates.h in Headers */,
+				B8E5A0BE1BDD9B31008E9066 /* KAATCPDelegates.h in Headers */,
 				B81161241B4BCFA100C4E0C6 /* AccessPointCommand.h in Headers */,
 				B856EFB31B9C82CC00C065D9 /* KaaClientPropertiesState.h in Headers */,
 				B8B8ED271BA2D43C0067BC4C /* DefaultChannelManager.h in Headers */,

@@ -1,13 +1,13 @@
 //
-//  TCPDelegates.h
+//  KAATCPDelegates.h
 //  Kaa
 //
 //  Created by Anton Bohomol on 10/24/15.
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#ifndef TCPDelegates_h
-#define TCPDelegates_h
+#ifndef KAATCPDelegates_h
+#define KAATCPDelegates_h
 
 #import "KAATCPConnAck.h"
 #import "KAATCPConnect.h"
@@ -72,4 +72,4 @@
 
 @end
 
-#endif /* TCPDelegates_h */
+#endif /* KAATCPDelegates_h */

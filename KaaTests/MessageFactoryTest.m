@@ -13,7 +13,7 @@
 
 #import <XCTest/XCTest.h>
 #import "MessageFactory.h"
-#import "TCPDelegates.h"
+#import "KAATCPDelegates.h"
 #import "KeyUtils.h"
 #import "KeyPair.h"
 #import "AvroBytesConverter.h"

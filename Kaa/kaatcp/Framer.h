@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TCPDelegates.h"
+#import "KAATCPDelegates.h"
 
 /**
  * Kaatcp Framer class.
