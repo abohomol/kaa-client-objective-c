@@ -450,6 +450,7 @@
 		B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */; };
 		B8EC91BF1BC4058600D3723B /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BD1BC4058600D3723B /* libAFNetworking.a */; };
 		B8EC91C01BC4058600D3723B /* libCocoaLumberjack.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BE1BC4058600D3723B /* libCocoaLumberjack.a */; };
+		B8EC97931BF0992100F4B4CC /* KaaDefaults.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8A0B5111BEF65FA00105DFE /* KaaDefaults.h */; };
 		B8EFF1FA1BC8FE8C002551A9 /* MessageEncoderDecoderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EFF1F91BC8FE8C002551A9 /* MessageEncoderDecoderTests.m */; };
 		B8F14E251BD8E200001D1B02 /* BaseKaaClient.h in Headers */ = {isa = PBXBuildFile; fileRef = B8F14E221BD8E200001D1B02 /* BaseKaaClient.h */; };
 		B8F14E261BD8E200001D1B02 /* BaseKaaClient.m in Sources */ = {isa = PBXBuildFile; fileRef = B8F14E231BD8E200001D1B02 /* BaseKaaClient.m */; };
@@ -484,6 +485,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B8EC97931BF0992100F4B4CC /* KaaDefaults.h in Copy Files */,
 				B86212401BE3CEAB005C5FE7 /* DefaultKaaPlatformContext.h in Copy Files */,
 				B862123F1BE3CE77005C5FE7 /* EndpointGen.h in Copy Files */,
 				398CE97B1BE26E8300D31E34 /* io.h in Copy Files */,
