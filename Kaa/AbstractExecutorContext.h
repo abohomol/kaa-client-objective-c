@@ -15,7 +15,7 @@
 @property (nonatomic) NSInteger timeOut;
 @property (nonatomic) TimeUnit timeUnit;
 
-- (instancetype) initWithTimeOut:(NSInteger)timeOut andTimeUnit:(TimeUnit)timeUnit;
-- (void) shutDownExecutor:(NSOperationQueue*)queue;
+- (instancetype)initWithTimeOut:(NSInteger)timeOut andTimeUnit:(TimeUnit)timeUnit;
+- (void)shutDownExecutor:(NSOperationQueue*)queue;
 
 @end
