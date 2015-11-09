@@ -110,7 +110,7 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
     [input close];
 }
 
-- (MqttFrame *)upgradeFrame {
+- (KAAMqttFrame *)upgradeFrame {
     switch (self.kaaSyncMessageType) {
         case KAA_SYNC_MESSAGE_TYPE_SYNC:
             if (self.request) {

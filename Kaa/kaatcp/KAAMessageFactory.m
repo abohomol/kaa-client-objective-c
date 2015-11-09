@@ -6,9 +6,9 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "MessageFactory.h"
+#import "KAAMessageFactory.h"
 
-@interface MessageFactory ()
+@interface KAAMessageFactory ()
 
 @property (nonatomic,weak) id<ConnAckDelegate> connAckDelegate;
 @property (nonatomic,weak) id<ConnectDelegate> connectDelegate;
@@ -22,9 +22,9 @@
 
 @end
 
-@implementation MessageFactory
+@implementation KAAMessageFactory
 
-- (instancetype)initWithFramer:(Framer *)framer {
+- (instancetype)initWithFramer:(KAAFramer *)framer {
     self = [super init];
     if (self) {
         self.framer = framer;
@@ -34,10 +34,10 @@
 }
 
 - (instancetype)init {
-    return [self initWithFramer:[[Framer alloc] init]];
+    return [self initWithFramer:[[KAAFramer alloc] init]];
 }
 
-- (void)onMqttFrame:(MqttFrame *)frame {
+- (void)onMqttFrame:(KAAMqttFrame *)frame {
     switch (frame.messageType) {
         case TCP_MESSAGE_TYPE_CONNACK:
             if (self.connAckDelegate) {

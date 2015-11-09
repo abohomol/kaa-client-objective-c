@@ -6,18 +6,18 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "MqttFrame.h"
+#import "KAAMqttFrame.h"
 #import "KaaLogging.h"
 
 #define TAG @"MqttFrame >>>"
 
-@interface MqttFrame ()
+@interface KAAMqttFrame ()
 
 - (void)processByte:(char)byte;
 
 @end
 
-@implementation MqttFrame
+@implementation KAAMqttFrame
 
 - (instancetype)init {
     self = [super init];
@@ -28,7 +28,7 @@
     return self;
 }
 
-- (instancetype)initWithOld:(MqttFrame *)old {
+- (instancetype)initWithOld:(KAAMqttFrame *)old {
     self = [self init];
     if (self) {
         _messageType = old.messageType;
@@ -133,7 +133,7 @@
     return pos - position;
 }
 
-- (MqttFrame *)upgradeFrame {
+- (KAAMqttFrame *)upgradeFrame {
     return self;
 }
 

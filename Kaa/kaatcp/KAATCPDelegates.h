@@ -20,7 +20,7 @@
 
 @protocol MqttFrameDelegate
 
-- (void)onMqttFrame:(MqttFrame *)frame;
+- (void)onMqttFrame:(KAAMqttFrame *)frame;
 
 @end
 

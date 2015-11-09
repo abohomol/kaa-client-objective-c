@@ -6,7 +6,7 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "MqttFrame.h"
+#import "KAAMqttFrame.h"
 
 /**
  *  DISCONNECT reason
@@ -31,7 +31,7 @@ typedef enum {
 
 #define DISCONNECT_REMAINING_LEGTH_V1 2
 
-@interface KAATCPDisconnect : MqttFrame
+@interface KAATCPDisconnect : KAAMqttFrame
 
 @property (nonatomic) DisconnectReason reason;
 

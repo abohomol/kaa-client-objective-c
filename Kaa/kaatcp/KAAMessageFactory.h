@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KAATCPDelegates.h"
-#import "Framer.h"
+#import "KAAFramer.h"
 
 /**
  * MessageFactory Class. Used to transform byte stream to specific protocol messages.
@@ -22,11 +22,11 @@
  * Where delegate instance of class which implements one of protocol message
  * delegetes and bytes - NSData object received from TCP/IP.
  */
-@interface MessageFactory : NSObject <MqttFrameDelegate>
+@interface KAAMessageFactory : NSObject <MqttFrameDelegate>
 
-@property (nonatomic,strong) Framer *framer;
+@property (nonatomic,strong) KAAFramer *framer;
 
-- (instancetype)initWithFramer:(Framer *)framer;
+- (instancetype)initWithFramer:(KAAFramer *)framer;
 
 - (void)registerConnAckDelegate:(id<ConnAckDelegate>)delegate;
 - (void)registerConnectDelegate:(id<ConnectDelegate>)delegate;

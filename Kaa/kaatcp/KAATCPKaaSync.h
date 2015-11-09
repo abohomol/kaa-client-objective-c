@@ -6,7 +6,7 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "MqttFrame.h"
+#import "KAAMqttFrame.h"
 
 /**
  * KAASYNC subcomand id table
@@ -72,7 +72,7 @@ typedef enum {
 #define KAASYNC_ENCRYPTED_FLAG  0x04
 #define KAASYNC_VERSION         0x01
 
-@interface KAATCPKaaSync : MqttFrame
+@interface KAATCPKaaSync : KAAMqttFrame
 
 @property (nonatomic) uint16_t messageId;                            //message id if used, default 0
 @property (nonatomic) BOOL request;                             //Request/Response (bit 0) 1 - request, 0 - response

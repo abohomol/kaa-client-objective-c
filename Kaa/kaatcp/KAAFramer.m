@@ -6,17 +6,17 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "Framer.h"
+#import "KAAFramer.h"
 #import "KaaLogging.h"
 
 #define TAG @"Framer >>>"
 
-@interface Framer ()
+@interface KAAFramer ()
 
 @property (nonatomic,strong) NSMutableArray *delegates;
-@property (nonatomic,strong) MqttFrame *currentFrame;
+@property (nonatomic,strong) KAAMqttFrame *currentFrame;
 
-- (void)notifyDelegates:(MqttFrame *)frame;
+- (void)notifyDelegates:(KAAMqttFrame *)frame;
 
 /**
  * Creates specific Kaatcp message by MessageType
@@ -24,11 +24,11 @@
  * @return mqttFrame
  * @throws KaaTcpProtocolException if specified type is unsupported
  */
-- (MqttFrame *)getFrameByType:(char)type;
+- (KAAMqttFrame *)getFrameByType:(char)type;
 
 @end
 
-@implementation Framer
+@implementation KAAFramer
 
 - (instancetype)init {
     self = [super init];
@@ -69,14 +69,14 @@
     return used;
 }
 
-- (void)notifyDelegates:(MqttFrame *)frame {
+- (void)notifyDelegates:(KAAMqttFrame *)frame {
     for (id<MqttFrameDelegate> delegate in self.delegates) {
         [delegate onMqttFrame:frame];
     }
 }
 
-- (MqttFrame *)getFrameByType:(char)type {
-    MqttFrame *frame = nil;
+- (KAAMqttFrame *)getFrameByType:(char)type {
+    KAAMqttFrame *frame = nil;
     switch (type) {
         case TCP_MESSAGE_TYPE_CONNACK:
             frame = [[KAATCPConnAck alloc] init];

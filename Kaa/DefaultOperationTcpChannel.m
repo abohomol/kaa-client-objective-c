@@ -10,7 +10,7 @@
 #import "KaaLogging.h"
 #import "IPTransportInfo.h"
 #import "MessageEncoderDecoder.h"
-#import "MessageFactory.h"
+#import "KAAMessageFactory.h"
 #import "Constants.h"
 #import "TransportProtocolIdHolder.h"
 
@@ -65,7 +65,7 @@ typedef enum {
 @property (nonatomic,strong) MessageEncoderDecoder *encDec;
 @property (nonatomic,strong) id<FailoverManager> failoverManager;
 @property (nonatomic,strong) volatile ConnectivityChecker *checker;
-@property (nonatomic,strong) MessageFactory *messageFactory;
+@property (nonatomic,strong) KAAMessageFactory *messageFactory;
 @property (nonatomic,strong) NSOperation *pingTaskFuture;//volatile
 @property (nonatomic,strong) NSOperation *readTaskFuture;//volatile
 @property (nonatomic) volatile BOOL isOpenConnectionScheduled;
@@ -74,7 +74,7 @@ typedef enum {
 
 - (void)onServerFailed;
 - (void)closeConnection;
-- (void)sendFragme:(MqttFrame *)frame;
+- (void)sendFragme:(KAAMqttFrame *)frame;
 - (void)sendPingRequest;
 - (void)sendDisconnect;
 - (void)sendKaaSyncRequest:(NSDictionary *)types; //<TransportType, ChannelDirection> as key-value
@@ -101,7 +101,7 @@ typedef enum {
             [NSNumber numberWithInt:TRANSPORT_TYPE_LOGGING] : [NSNumber numberWithInt:CHANNEL_DIRECTION_BIDIRECTIONAL]
         };
         self.channelState = CHANNEL_STATE_CLOSED;
-        self.messageFactory = [[MessageFactory alloc] init];
+        self.messageFactory = [[KAAMessageFactory alloc] init];
         self.state = state;
         self.failoverManager = failoverMgr;
         [self.messageFactory registerConnAckDelegate:self];
@@ -175,7 +175,7 @@ typedef enum {
     }
 }
 
-- (void)sendFragme:(MqttFrame *)frame {
+- (void)sendFragme:(KAAMqttFrame *)frame {
     if (self.socket) {
         @synchronized(self.socket) {
             [self.socket.output write:[[frame getFrame] bytes] maxLength:[frame getFrame].length];
