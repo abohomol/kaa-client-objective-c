@@ -66,7 +66,7 @@
 - (void)testCreateRequest {
     [KeyUtils generateKeyPair];
     id <KaaClientState> clientState = mockProtocol(@protocol(KaaClientState));
-    [given([clientState publicKey]) willReturn:[KeyUtils getPublicKeyRef]];
+    [given([clientState publicKey]) willReturn:(id)[KeyUtils getPublicKeyRef]];
     [given([clientState isRegistred]) willReturnBool:NO];
     
     KaaClientProperties *properties = mock([KaaClientProperties class]);

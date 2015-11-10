@@ -97,7 +97,7 @@
             return;
         }
         
-        SyncResponse *syncResponse = [self.responseConverter fromBytes:data object:[[SyncResponse alloc] init]];
+        SyncResponse *syncResponse = (SyncResponse *)[self.responseConverter fromBytes:data object:[[SyncResponse alloc] init]];
         
         DDLogInfo(@"%@ Received Sync response: %@", TAG, syncResponse);
         if (self.configurationTransport && syncResponse.configurationSyncResponse
