@@ -374,7 +374,7 @@
     }
 }
 
-- (NSData *) getRawData {
+- (NSData *)getRawData {
     AvroBytesConverter *requestConverter = [[AvroBytesConverter alloc] init];
     SyncRequest *request = [[SyncRequest alloc] init];
     

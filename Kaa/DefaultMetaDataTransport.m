@@ -30,11 +30,15 @@
     
     SyncRequestMetaData *request = [[SyncRequestMetaData alloc] init];
     request.sdkToken = [self.properties sdkToken];
-    request.endpointPublicKeyHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_0
-                                                      andData:self.publicKeyHash.data];
-    
-    request.profileHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_0
-                                            andData:[self.state profileHash].data];
+    if (self.publicKeyHash.data) {
+        request.endpointPublicKeyHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_0
+                                                          andData:self.publicKeyHash.data];
+    }
+    NSData *profileHashData = [self.state profileHash].data;
+    if (profileHashData) {
+        request.profileHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_0
+                                                andData:profileHashData];
+    }
     
     request.timeout = [KAAUnion unionWithBranch:KAA_UNION_LONG_OR_NULL_BRANCH_0
                                         andData:[NSNumber numberWithLong:self.timeout]];

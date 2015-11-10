@@ -41,7 +41,7 @@
 
 - (EventSyncRequest *)createEventRequest:(NSInteger)requestId {
     if (!self.kaaEventManager) {
-        DDLogError(@"%@ Can't create EventSyncRequest becasue event manager is nil", TAG);
+        DDLogError(@"%@ Can't create EventSyncRequest because event manager is nil", TAG);
         return nil;
     }
     
