@@ -31,7 +31,7 @@ typedef enum {
 
 #define DISCONNECT_REMAINING_LEGTH_V1 2
 
-@interface KAATCPDisconnect : KAAMqttFrame
+@interface KAATcpDisconnect : KAAMqttFrame
 
 @property (nonatomic) DisconnectReason reason;
 

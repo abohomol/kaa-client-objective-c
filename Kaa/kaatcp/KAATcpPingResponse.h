@@ -13,6 +13,6 @@
  * A PINGRESP message is the response sent by a server to a PINGREQ message
  * and means "yes I am alive".
  */
-@interface KAATCPPingResponse : KAAMqttFrame
+@interface KAATcpPingResponse : KAAMqttFrame
 
 @end

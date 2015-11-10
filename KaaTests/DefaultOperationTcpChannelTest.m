@@ -19,10 +19,10 @@
 #import "AvroBytesConverter.h"
 #import "GenericTransportInfo.h"
 #import "TransportProtocolIdHolder.h"
-#import "KAATCPSyncResponse.h"
+#import "KAATcpSyncResponse.h"
 #import "IPTransportInfo.h"
-#import "KAATCPPingResponse.h"
-#import "KAATCPDisconnect.h"
+#import "KAATcpPingResponse.h"
+#import "KAATcpDisconnect.h"
 #import "TestsHelper.h"
 
 #pragma mark - TestOperationTcpChannelTest
@@ -118,12 +118,12 @@
     [verifyCount(multiplexer, times(3)) compileRequest:anything()];
     [verifyCount(tcpChannel.socketMock, times(3)) output];
     
-    [tcpChannel.outputStream write:[[[[KAATCPPingResponse alloc] init] getFrame] bytes] maxLength:[[[[KAATCPPingResponse alloc] init] getFrame] length]];
+    [tcpChannel.outputStream write:[[[[KAATcpPingResponse alloc] init] getFrame] bytes] maxLength:[[[[KAATcpPingResponse alloc] init] getFrame] length]];
     
     [tcpChannel syncAll];
     [verifyCount(multiplexer, times(2)) compileRequest:[tcpChannel getSupportedTransportTypes]];
     
-    KAATCPDisconnect *disconnect = [[KAATCPDisconnect alloc] initWithDisconnectReason:DISCONNECT_REASON_INTERNAL_ERROR];
+    KAATcpDisconnect *disconnect = [[KAATcpDisconnect alloc] initWithDisconnectReason:DISCONNECT_REASON_INTERNAL_ERROR];
     [tcpChannel.outputStream write:[[disconnect getFrame] bytes] maxLength:[[disconnect getFrame] length]];
     
     [tcpChannel syncAll];
@@ -157,7 +157,7 @@
 - (NSData *) getNewKAATcpSyncResponse:(SyncResponse *)syncResponse {
     AvroBytesConverter *responseCreator = [[AvroBytesConverter alloc] init];
     NSData *data = [responseCreator toBytes:syncResponse];
-    KAATCPSyncResponse *response = [[KAATCPSyncResponse alloc] initWithAvro:data zipped:NO encypted:NO];
+    KAATcpSyncResponse *response = [[KAATcpSyncResponse alloc] initWithAvro:data zipped:NO encypted:NO];
     return [response getFrame];
 }
 

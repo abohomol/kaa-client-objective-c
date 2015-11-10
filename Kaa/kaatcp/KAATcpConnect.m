@@ -6,12 +6,12 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KAATCPConnect.h"
+#import "KAATcpConnect.h"
 #import "KaaLogging.h"
 
 #define TAG @"Connect >>>"
 
-@interface KAATCPConnect ()
+@interface KAATcpConnect ()
 
 - (void)packVeriableHeader;
 
@@ -25,7 +25,7 @@
 
 static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONNECT_VERSION,CONNECT_FIXED_HEADER_FLAG};
 
-@implementation KAATCPConnect
+@implementation KAATcpConnect
 
 - (instancetype)init {
     self = [super init];

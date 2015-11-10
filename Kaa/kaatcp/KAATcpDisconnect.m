@@ -6,9 +6,9 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KAATCPDisconnect.h"
+#import "KAATcpDisconnect.h"
 
-@implementation KAATCPDisconnect
+@implementation KAATcpDisconnect
 
 - (instancetype)init {
     self = [super init];

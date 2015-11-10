@@ -112,7 +112,7 @@ typedef enum {
     return self;
 }
 
-- (void)onConnAckMessage:(KAATCPConnAck *)message {
+- (void)onConnAckMessage:(KAATcpConnAck *)message {
     DDLogInfo(@"%@ ConnAck [%i] message received for channel [%@]", TAG, message.returnCode, [self getId]);
     if (message.returnCode != RETURN_CODE_ACCEPTED) {
         DDLogError(@"%@ Connection for channel [%@] was rejected: %i", TAG, [self getId], message.returnCode);
@@ -124,11 +124,11 @@ typedef enum {
     }
 }
 
-- (void)onPingResponseMessage:(KAATCPPingResponse *)message {
+- (void)onPingResponseMessage:(KAATcpPingResponse *)message {
     DDLogInfo(@"%@ PingResponse message received for channel [%@]", TAG, [self getId]);
 }
 
-- (void)onSyncResponseMessage:(KAATCPSyncResponse *)message {
+- (void)onSyncResponseMessage:(KAATcpSyncResponse *)message {
     DDLogInfo(@"%@ KaaSync message (zipped:%i, encrypted:%i) received for channel [%@]",
               TAG, message.zipped, message.encrypted, [self getId]);
     NSData *resultBody = nil;
@@ -165,7 +165,7 @@ typedef enum {
     }
 }
 
-- (void)onDisconnectMessage:(KAATCPDisconnect *)message {
+- (void)onDisconnectMessage:(KAATcpDisconnect *)message {
     DDLogInfo(@"%@ Disconnect message (reason:%i) received for channel [%@]", TAG, message.reason, [self getId]);
     if (message.reason != DISCONNECT_REASON_NONE) {
         DDLogError(@"%@ Server error occurred: %i", TAG, message.reason);
@@ -185,19 +185,19 @@ typedef enum {
 
 - (void)sendPingRequest {
     DDLogDebug(@"%@ Sending PinRequest from channel: %@", TAG, [self getId]);
-    [self sendFragme:[[KAATCPPingRequest alloc] init]];
+    [self sendFragme:[[KAATcpPingRequest alloc] init]];
 }
 
 - (void)sendDisconnect {
     DDLogDebug(@"%@ Sending Disconnect from channel: %@", TAG, [self getId]);
-    [self sendFragme:[[KAATCPDisconnect alloc] initWithDisconnectReason:DISCONNECT_REASON_NONE]];
+    [self sendFragme:[[KAATcpDisconnect alloc] initWithDisconnectReason:DISCONNECT_REASON_NONE]];
 }
 
 - (void)sendKaaSyncRequest:(NSDictionary *)types {
     DDLogDebug(@"%@ Sending KaaSync from channel: %@", TAG, [self getId]);
     NSData *body = [self.multiplexer compileRequest:types];
     NSData *requestBodyEncoded = [self.encDec encodeData:body];
-    [self sendFragme:[[KAATCPSyncRequest alloc] initWithAvro:requestBodyEncoded zipped:NO encypted:YES]];
+    [self sendFragme:[[KAATcpSyncRequest alloc] initWithAvro:requestBodyEncoded zipped:NO encypted:YES]];
 }
 
 - (void)sendConnect {
@@ -206,7 +206,7 @@ typedef enum {
     NSData *requestBodyEncoded = [self.encDec encodeData:body];
     NSData *sessionKey = [self.encDec getEncodedSessionKey];
     NSData *signature = [self.encDec sign:sessionKey];
-    [self sendFragme:[[KAATCPConnect alloc] initWithAlivePeriod:CHANNEL_TIMEOUT
+    [self sendFragme:[[KAATcpConnect alloc] initWithAlivePeriod:CHANNEL_TIMEOUT
                                                  nextProtocolId:KAA_PLATFORM_PROTOCOL_AVRO_ID
                                                   aesSessionKey:sessionKey
                                                     syncRequest:requestBodyEncoded

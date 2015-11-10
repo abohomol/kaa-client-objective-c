@@ -13,7 +13,7 @@
 
 #import <XCTest/XCTest.h>
 #import "KAAMessageFactory.h"
-#import "KAATCPDelegates.h"
+#import "KAATcpDelegates.h"
 #import "KeyUtils.h"
 #import "KeyPair.h"
 #import "AvroBytesConverter.h"
@@ -321,7 +321,7 @@
 
 #pragma mark - Supporting methods
 
-- (void)onConnAckMessage:(KAATCPConnAck *)message {
+- (void)onConnAckMessage:(KAATcpConnAck *)message {
     switch (message.returnCode) {
         case RETURN_CODE_ACCEPTED:
             KAATestEqual(RETURN_CODE_ACCEPTED, message.returnCode);
@@ -356,7 +356,7 @@
     }
 }
 
-- (void)onConnectMessage:(KAATCPConnect *)message {
+- (void)onConnectMessage:(KAATcpConnect *)message {
     uint16_t keepAlive = 200;
     uint32_t nextProtocolId = 0xf291f2d4;
     KAATestEqual(keepAlive, message.keepAlive);
@@ -392,7 +392,7 @@
     return [requestConverter toBytes:request];
 }
 
-- (void)onSyncResponseMessage:(KAATCPSyncResponse *)message {
+- (void)onSyncResponseMessage:(KAATcpSyncResponse *)message {
     KAATestEqual(1, message.avroObject.length);
     KAATestEqual(5, message.messageId);
     KAATestEqual(NO, message.zipped);
@@ -400,7 +400,7 @@
     KAATestEqual(NO, message.request);
 }
 
-- (void)onSyncRequestMessage:(KAATCPSyncRequest *)message {
+- (void)onSyncRequestMessage:(KAATcpSyncRequest *)message {
     KAATestEqual(1, message.avroObject.length);
     KAATestEqual(5, message.messageId);
     KAATestEqual(NO, message.zipped);
@@ -408,7 +408,7 @@
     KAATestEqual(YES, message.request);
 }
 
-- (void)onDisconnectMessage:(KAATCPDisconnect *)message {
+- (void)onDisconnectMessage:(KAATcpDisconnect *)message {
     KAATestEqual(DISCONNECT_REASON_INTERNAL_ERROR, message.reason);
 }
 

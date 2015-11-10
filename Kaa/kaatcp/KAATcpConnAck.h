@@ -38,7 +38,7 @@ typedef enum {
  * byte 1  reserved (0)
  * byte 2 Return Code see enum ReturnCode
  **/
-@interface KAATCPConnAck : KAAMqttFrame
+@interface KAATcpConnAck : KAAMqttFrame
 
 @property (nonatomic) ReturnCode returnCode;
 

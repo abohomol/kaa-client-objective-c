@@ -6,11 +6,11 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KAATCPSync.h"
+#import "KAATcpSync.h"
 
-@implementation KAATCPSync
+@implementation KAATcpSync
 
-- (instancetype)initWithOldKaaSync:(KAATCPKaaSync *)old {
+- (instancetype)initWithOldKaaSync:(KAATcpKaaSync *)old {
     self = [super initWithOldKaaSync:old];
     if (self) {
         [self setKaaSyncMessageType:KAA_SYNC_MESSAGE_TYPE_SYNC];

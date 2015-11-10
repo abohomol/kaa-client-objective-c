@@ -47,16 +47,16 @@
 		398CE8F31BE26E0000D31E34 /* SimpleExecutorContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 39E404D31BBD0FF500A5B833 /* SimpleExecutorContext.h */; };
 		398CE8F41BE26E0000D31E34 /* SingleThreadExecutorContext.h in Copy Files */ = {isa = PBXBuildFile; fileRef = 391A919E1BBD6CCD00DBA851 /* SingleThreadExecutorContext.h */; };
 		398CE8F51BE26E0000D31E34 /* KAAMqttFrame.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA631BDA479D0016A721 /* KAAMqttFrame.h */; };
-		398CE8F61BE26E0000D31E34 /* KAATCPConnAck.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA6F1BDA65B80016A721 /* KAATCPConnAck.h */; };
-		398CE8F71BE26E0000D31E34 /* KAATCPConnect.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA731BDA71F70016A721 /* KAATCPConnect.h */; };
-		398CE8F81BE26E0000D31E34 /* KAATCPDisconnect.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA771BDAE9D10016A721 /* KAATCPDisconnect.h */; };
-		398CE8F91BE26E0000D31E34 /* KAATCPKaaSync.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA7B1BDAEC3D0016A721 /* KAATCPKaaSync.h */; };
-		398CE8FA1BE26E0000D31E34 /* KAATCPSync.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA7F1BDBAA4B0016A721 /* KAATCPSync.h */; };
-		398CE8FB1BE26E0000D31E34 /* KAATCPSyncResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA831BDBAEE00016A721 /* KAATCPSyncResponse.h */; };
-		398CE8FC1BE26E0000D31E34 /* KAATCPSyncRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA871BDBB4170016A721 /* KAATCPSyncRequest.h */; };
-		398CE8FD1BE26E0000D31E34 /* KAATCPPingRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA8B1BDBB56E0016A721 /* KAATCPPingRequest.h */; };
-		398CE8FE1BE26E0000D31E34 /* KAATCPPingResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA8F1BDBB6590016A721 /* KAATCPPingResponse.h */; };
-		398CE8FF1BE26E0000D31E34 /* KAATCPDelegates.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* KAATCPDelegates.h */; };
+		398CE8F61BE26E0000D31E34 /* KAATcpConnAck.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA6F1BDA65B80016A721 /* KAATcpConnAck.h */; };
+		398CE8F71BE26E0000D31E34 /* KAATcpConnect.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA731BDA71F70016A721 /* KAATcpConnect.h */; };
+		398CE8F81BE26E0000D31E34 /* KAATcpDisconnect.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA771BDAE9D10016A721 /* KAATcpDisconnect.h */; };
+		398CE8F91BE26E0000D31E34 /* KAATcpKaaSync.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA7B1BDAEC3D0016A721 /* KAATcpKaaSync.h */; };
+		398CE8FA1BE26E0000D31E34 /* KAATcpSync.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA7F1BDBAA4B0016A721 /* KAATcpSync.h */; };
+		398CE8FB1BE26E0000D31E34 /* KAATcpSyncResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA831BDBAEE00016A721 /* KAATcpSyncResponse.h */; };
+		398CE8FC1BE26E0000D31E34 /* KAATcpSyncRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA871BDBB4170016A721 /* KAATcpSyncRequest.h */; };
+		398CE8FD1BE26E0000D31E34 /* KAATcpPingRequest.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA8B1BDBB56E0016A721 /* KAATcpPingRequest.h */; };
+		398CE8FE1BE26E0000D31E34 /* KAATcpPingResponse.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA8F1BDBB6590016A721 /* KAATcpPingResponse.h */; };
+		398CE8FF1BE26E0000D31E34 /* KAATcpDelegates.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* KAATcpDelegates.h */; };
 		398CE9001BE26E0000D31E34 /* KAAFramer.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA671BDA5D1D0016A721 /* KAAFramer.h */; };
 		398CE9011BE26E0000D31E34 /* KAAMessageFactory.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B87FCA941BDBB8CA0016A721 /* KAAMessageFactory.h */; };
 		398CE9021BE26E0000D31E34 /* ConnectivityChecker.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B824A2231B1489FE0076C753 /* ConnectivityChecker.h */; };
@@ -345,24 +345,24 @@
 		B87FCA661BDA479D0016A721 /* KAAMqttFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA641BDA479D0016A721 /* KAAMqttFrame.m */; };
 		B87FCA691BDA5D1D0016A721 /* KAAFramer.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA671BDA5D1D0016A721 /* KAAFramer.h */; };
 		B87FCA6A1BDA5D1D0016A721 /* KAAFramer.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA681BDA5D1D0016A721 /* KAAFramer.m */; };
-		B87FCA711BDA65B80016A721 /* KAATCPConnAck.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA6F1BDA65B80016A721 /* KAATCPConnAck.h */; };
-		B87FCA721BDA65B80016A721 /* KAATCPConnAck.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA701BDA65B80016A721 /* KAATCPConnAck.m */; };
-		B87FCA751BDA71F70016A721 /* KAATCPConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA731BDA71F70016A721 /* KAATCPConnect.h */; };
-		B87FCA761BDA71F70016A721 /* KAATCPConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA741BDA71F70016A721 /* KAATCPConnect.m */; };
-		B87FCA791BDAE9D10016A721 /* KAATCPDisconnect.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA771BDAE9D10016A721 /* KAATCPDisconnect.h */; };
-		B87FCA7A1BDAE9D10016A721 /* KAATCPDisconnect.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA781BDAE9D10016A721 /* KAATCPDisconnect.m */; };
-		B87FCA7D1BDAEC3D0016A721 /* KAATCPKaaSync.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA7B1BDAEC3D0016A721 /* KAATCPKaaSync.h */; };
-		B87FCA7E1BDAEC3D0016A721 /* KAATCPKaaSync.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA7C1BDAEC3D0016A721 /* KAATCPKaaSync.m */; };
-		B87FCA811BDBAA4B0016A721 /* KAATCPSync.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA7F1BDBAA4B0016A721 /* KAATCPSync.h */; };
-		B87FCA821BDBAA4B0016A721 /* KAATCPSync.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA801BDBAA4B0016A721 /* KAATCPSync.m */; };
-		B87FCA851BDBAEE00016A721 /* KAATCPSyncResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA831BDBAEE00016A721 /* KAATCPSyncResponse.h */; };
-		B87FCA861BDBAEE00016A721 /* KAATCPSyncResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA841BDBAEE00016A721 /* KAATCPSyncResponse.m */; };
-		B87FCA891BDBB4170016A721 /* KAATCPSyncRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA871BDBB4170016A721 /* KAATCPSyncRequest.h */; };
-		B87FCA8A1BDBB4170016A721 /* KAATCPSyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA881BDBB4170016A721 /* KAATCPSyncRequest.m */; };
-		B87FCA8D1BDBB56E0016A721 /* KAATCPPingRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA8B1BDBB56E0016A721 /* KAATCPPingRequest.h */; };
-		B87FCA8E1BDBB56E0016A721 /* KAATCPPingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA8C1BDBB56E0016A721 /* KAATCPPingRequest.m */; };
-		B87FCA911BDBB6590016A721 /* KAATCPPingResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA8F1BDBB6590016A721 /* KAATCPPingResponse.h */; };
-		B87FCA921BDBB6590016A721 /* KAATCPPingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA901BDBB6590016A721 /* KAATCPPingResponse.m */; };
+		B87FCA711BDA65B80016A721 /* KAATcpConnAck.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA6F1BDA65B80016A721 /* KAATcpConnAck.h */; };
+		B87FCA721BDA65B80016A721 /* KAATcpConnAck.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA701BDA65B80016A721 /* KAATcpConnAck.m */; };
+		B87FCA751BDA71F70016A721 /* KAATcpConnect.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA731BDA71F70016A721 /* KAATcpConnect.h */; };
+		B87FCA761BDA71F70016A721 /* KAATcpConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA741BDA71F70016A721 /* KAATcpConnect.m */; };
+		B87FCA791BDAE9D10016A721 /* KAATcpDisconnect.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA771BDAE9D10016A721 /* KAATcpDisconnect.h */; };
+		B87FCA7A1BDAE9D10016A721 /* KAATcpDisconnect.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA781BDAE9D10016A721 /* KAATcpDisconnect.m */; };
+		B87FCA7D1BDAEC3D0016A721 /* KAATcpKaaSync.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA7B1BDAEC3D0016A721 /* KAATcpKaaSync.h */; };
+		B87FCA7E1BDAEC3D0016A721 /* KAATcpKaaSync.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA7C1BDAEC3D0016A721 /* KAATcpKaaSync.m */; };
+		B87FCA811BDBAA4B0016A721 /* KAATcpSync.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA7F1BDBAA4B0016A721 /* KAATcpSync.h */; };
+		B87FCA821BDBAA4B0016A721 /* KAATcpSync.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA801BDBAA4B0016A721 /* KAATcpSync.m */; };
+		B87FCA851BDBAEE00016A721 /* KAATcpSyncResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA831BDBAEE00016A721 /* KAATcpSyncResponse.h */; };
+		B87FCA861BDBAEE00016A721 /* KAATcpSyncResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA841BDBAEE00016A721 /* KAATcpSyncResponse.m */; };
+		B87FCA891BDBB4170016A721 /* KAATcpSyncRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA871BDBB4170016A721 /* KAATcpSyncRequest.h */; };
+		B87FCA8A1BDBB4170016A721 /* KAATcpSyncRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA881BDBB4170016A721 /* KAATcpSyncRequest.m */; };
+		B87FCA8D1BDBB56E0016A721 /* KAATcpPingRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA8B1BDBB56E0016A721 /* KAATcpPingRequest.h */; };
+		B87FCA8E1BDBB56E0016A721 /* KAATcpPingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA8C1BDBB56E0016A721 /* KAATcpPingRequest.m */; };
+		B87FCA911BDBB6590016A721 /* KAATcpPingResponse.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA8F1BDBB6590016A721 /* KAATcpPingResponse.h */; };
+		B87FCA921BDBB6590016A721 /* KAATcpPingResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA901BDBB6590016A721 /* KAATcpPingResponse.m */; };
 		B87FCA961BDBB8CA0016A721 /* KAAMessageFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA941BDBB8CA0016A721 /* KAAMessageFactory.h */; };
 		B87FCA971BDBB8CA0016A721 /* KAAMessageFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA951BDBB8CA0016A721 /* KAAMessageFactory.m */; };
 		B8807C1C1BA33B0F00F78BFC /* BlockingQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = B8807C1A1BA33B0F00F78BFC /* BlockingQueue.h */; };
@@ -445,7 +445,7 @@
 		B8E5A0BA1BDD2BAF008E9066 /* DefaultOperationTcpChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E5A0B61BDD2BAF008E9066 /* DefaultOperationTcpChannel.m */; };
 		B8E5A0BB1BDD2BAF008E9066 /* KAASocket.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E5A0B71BDD2BAF008E9066 /* KAASocket.h */; };
 		B8E5A0BC1BDD2BAF008E9066 /* KAASocket.m in Sources */ = {isa = PBXBuildFile; fileRef = B8E5A0B81BDD2BAF008E9066 /* KAASocket.m */; };
-		B8E5A0BE1BDD9B31008E9066 /* KAATCPDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* KAATCPDelegates.h */; };
+		B8E5A0BE1BDD9B31008E9066 /* KAATcpDelegates.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E5A0BD1BDD9B31008E9066 /* KAATcpDelegates.h */; };
 		B8E68AA31B8E241A00EE1065 /* NotificationTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B8E68AA21B8E241A00EE1065 /* NotificationTransport.h */; };
 		B8EC91BC1BC3E77500D3723B /* KaaClientPropertiesStateTest.m in Sources */ = {isa = PBXBuildFile; fileRef = B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */; };
 		B8EC91BF1BC4058600D3723B /* libAFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B8EC91BD1BC4058600D3723B /* libAFNetworking.a */; };
@@ -511,16 +511,16 @@
 				398CE8F31BE26E0000D31E34 /* SimpleExecutorContext.h in Copy Files */,
 				398CE8F41BE26E0000D31E34 /* SingleThreadExecutorContext.h in Copy Files */,
 				398CE8F51BE26E0000D31E34 /* KAAMqttFrame.h in Copy Files */,
-				398CE8F61BE26E0000D31E34 /* KAATCPConnAck.h in Copy Files */,
-				398CE8F71BE26E0000D31E34 /* KAATCPConnect.h in Copy Files */,
-				398CE8F81BE26E0000D31E34 /* KAATCPDisconnect.h in Copy Files */,
-				398CE8F91BE26E0000D31E34 /* KAATCPKaaSync.h in Copy Files */,
-				398CE8FA1BE26E0000D31E34 /* KAATCPSync.h in Copy Files */,
-				398CE8FB1BE26E0000D31E34 /* KAATCPSyncResponse.h in Copy Files */,
-				398CE8FC1BE26E0000D31E34 /* KAATCPSyncRequest.h in Copy Files */,
-				398CE8FD1BE26E0000D31E34 /* KAATCPPingRequest.h in Copy Files */,
-				398CE8FE1BE26E0000D31E34 /* KAATCPPingResponse.h in Copy Files */,
-				398CE8FF1BE26E0000D31E34 /* KAATCPDelegates.h in Copy Files */,
+				398CE8F61BE26E0000D31E34 /* KAATcpConnAck.h in Copy Files */,
+				398CE8F71BE26E0000D31E34 /* KAATcpConnect.h in Copy Files */,
+				398CE8F81BE26E0000D31E34 /* KAATcpDisconnect.h in Copy Files */,
+				398CE8F91BE26E0000D31E34 /* KAATcpKaaSync.h in Copy Files */,
+				398CE8FA1BE26E0000D31E34 /* KAATcpSync.h in Copy Files */,
+				398CE8FB1BE26E0000D31E34 /* KAATcpSyncResponse.h in Copy Files */,
+				398CE8FC1BE26E0000D31E34 /* KAATcpSyncRequest.h in Copy Files */,
+				398CE8FD1BE26E0000D31E34 /* KAATcpPingRequest.h in Copy Files */,
+				398CE8FE1BE26E0000D31E34 /* KAATcpPingResponse.h in Copy Files */,
+				398CE8FF1BE26E0000D31E34 /* KAATcpDelegates.h in Copy Files */,
 				398CE9001BE26E0000D31E34 /* KAAFramer.h in Copy Files */,
 				398CE9011BE26E0000D31E34 /* KAAMessageFactory.h in Copy Files */,
 				398CE9021BE26E0000D31E34 /* ConnectivityChecker.h in Copy Files */,
@@ -840,24 +840,24 @@
 		B87FCA641BDA479D0016A721 /* KAAMqttFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAAMqttFrame.m; path = kaatcp/KAAMqttFrame.m; sourceTree = "<group>"; };
 		B87FCA671BDA5D1D0016A721 /* KAAFramer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAAFramer.h; path = kaatcp/KAAFramer.h; sourceTree = "<group>"; };
 		B87FCA681BDA5D1D0016A721 /* KAAFramer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAAFramer.m; path = kaatcp/KAAFramer.m; sourceTree = "<group>"; };
-		B87FCA6F1BDA65B80016A721 /* KAATCPConnAck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPConnAck.h; path = kaatcp/KAATCPConnAck.h; sourceTree = "<group>"; };
-		B87FCA701BDA65B80016A721 /* KAATCPConnAck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPConnAck.m; path = kaatcp/KAATCPConnAck.m; sourceTree = "<group>"; };
-		B87FCA731BDA71F70016A721 /* KAATCPConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPConnect.h; path = kaatcp/KAATCPConnect.h; sourceTree = "<group>"; };
-		B87FCA741BDA71F70016A721 /* KAATCPConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPConnect.m; path = kaatcp/KAATCPConnect.m; sourceTree = "<group>"; };
-		B87FCA771BDAE9D10016A721 /* KAATCPDisconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPDisconnect.h; path = kaatcp/KAATCPDisconnect.h; sourceTree = "<group>"; };
-		B87FCA781BDAE9D10016A721 /* KAATCPDisconnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPDisconnect.m; path = kaatcp/KAATCPDisconnect.m; sourceTree = "<group>"; };
-		B87FCA7B1BDAEC3D0016A721 /* KAATCPKaaSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPKaaSync.h; path = kaatcp/KAATCPKaaSync.h; sourceTree = "<group>"; };
-		B87FCA7C1BDAEC3D0016A721 /* KAATCPKaaSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPKaaSync.m; path = kaatcp/KAATCPKaaSync.m; sourceTree = "<group>"; };
-		B87FCA7F1BDBAA4B0016A721 /* KAATCPSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPSync.h; path = kaatcp/KAATCPSync.h; sourceTree = "<group>"; };
-		B87FCA801BDBAA4B0016A721 /* KAATCPSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPSync.m; path = kaatcp/KAATCPSync.m; sourceTree = "<group>"; };
-		B87FCA831BDBAEE00016A721 /* KAATCPSyncResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPSyncResponse.h; path = kaatcp/KAATCPSyncResponse.h; sourceTree = "<group>"; };
-		B87FCA841BDBAEE00016A721 /* KAATCPSyncResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPSyncResponse.m; path = kaatcp/KAATCPSyncResponse.m; sourceTree = "<group>"; };
-		B87FCA871BDBB4170016A721 /* KAATCPSyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPSyncRequest.h; path = kaatcp/KAATCPSyncRequest.h; sourceTree = "<group>"; };
-		B87FCA881BDBB4170016A721 /* KAATCPSyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPSyncRequest.m; path = kaatcp/KAATCPSyncRequest.m; sourceTree = "<group>"; };
-		B87FCA8B1BDBB56E0016A721 /* KAATCPPingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPPingRequest.h; path = kaatcp/KAATCPPingRequest.h; sourceTree = "<group>"; };
-		B87FCA8C1BDBB56E0016A721 /* KAATCPPingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPPingRequest.m; path = kaatcp/KAATCPPingRequest.m; sourceTree = "<group>"; };
-		B87FCA8F1BDBB6590016A721 /* KAATCPPingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPPingResponse.h; path = kaatcp/KAATCPPingResponse.h; sourceTree = "<group>"; };
-		B87FCA901BDBB6590016A721 /* KAATCPPingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATCPPingResponse.m; path = kaatcp/KAATCPPingResponse.m; sourceTree = "<group>"; };
+		B87FCA6F1BDA65B80016A721 /* KAATcpConnAck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpConnAck.h; path = kaatcp/KAATcpConnAck.h; sourceTree = "<group>"; };
+		B87FCA701BDA65B80016A721 /* KAATcpConnAck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpConnAck.m; path = kaatcp/KAATcpConnAck.m; sourceTree = "<group>"; };
+		B87FCA731BDA71F70016A721 /* KAATcpConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpConnect.h; path = kaatcp/KAATcpConnect.h; sourceTree = "<group>"; };
+		B87FCA741BDA71F70016A721 /* KAATcpConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpConnect.m; path = kaatcp/KAATcpConnect.m; sourceTree = "<group>"; };
+		B87FCA771BDAE9D10016A721 /* KAATcpDisconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpDisconnect.h; path = kaatcp/KAATcpDisconnect.h; sourceTree = "<group>"; };
+		B87FCA781BDAE9D10016A721 /* KAATcpDisconnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpDisconnect.m; path = kaatcp/KAATcpDisconnect.m; sourceTree = "<group>"; };
+		B87FCA7B1BDAEC3D0016A721 /* KAATcpKaaSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpKaaSync.h; path = kaatcp/KAATcpKaaSync.h; sourceTree = "<group>"; };
+		B87FCA7C1BDAEC3D0016A721 /* KAATcpKaaSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpKaaSync.m; path = kaatcp/KAATcpKaaSync.m; sourceTree = "<group>"; };
+		B87FCA7F1BDBAA4B0016A721 /* KAATcpSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpSync.h; path = kaatcp/KAATcpSync.h; sourceTree = "<group>"; };
+		B87FCA801BDBAA4B0016A721 /* KAATcpSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpSync.m; path = kaatcp/KAATcpSync.m; sourceTree = "<group>"; };
+		B87FCA831BDBAEE00016A721 /* KAATcpSyncResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpSyncResponse.h; path = kaatcp/KAATcpSyncResponse.h; sourceTree = "<group>"; };
+		B87FCA841BDBAEE00016A721 /* KAATcpSyncResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpSyncResponse.m; path = kaatcp/KAATcpSyncResponse.m; sourceTree = "<group>"; };
+		B87FCA871BDBB4170016A721 /* KAATcpSyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpSyncRequest.h; path = kaatcp/KAATcpSyncRequest.h; sourceTree = "<group>"; };
+		B87FCA881BDBB4170016A721 /* KAATcpSyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpSyncRequest.m; path = kaatcp/KAATcpSyncRequest.m; sourceTree = "<group>"; };
+		B87FCA8B1BDBB56E0016A721 /* KAATcpPingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpPingRequest.h; path = kaatcp/KAATcpPingRequest.h; sourceTree = "<group>"; };
+		B87FCA8C1BDBB56E0016A721 /* KAATcpPingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpPingRequest.m; path = kaatcp/KAATcpPingRequest.m; sourceTree = "<group>"; };
+		B87FCA8F1BDBB6590016A721 /* KAATcpPingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpPingResponse.h; path = kaatcp/KAATcpPingResponse.h; sourceTree = "<group>"; };
+		B87FCA901BDBB6590016A721 /* KAATcpPingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpPingResponse.m; path = kaatcp/KAATcpPingResponse.m; sourceTree = "<group>"; };
 		B87FCA941BDBB8CA0016A721 /* KAAMessageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAAMessageFactory.h; path = kaatcp/KAAMessageFactory.h; sourceTree = "<group>"; };
 		B87FCA951BDBB8CA0016A721 /* KAAMessageFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAAMessageFactory.m; path = kaatcp/KAAMessageFactory.m; sourceTree = "<group>"; };
 		B8807C1A1BA33B0F00F78BFC /* BlockingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockingQueue.h; sourceTree = "<group>"; };
@@ -941,7 +941,7 @@
 		B8E5A0B61BDD2BAF008E9066 /* DefaultOperationTcpChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationTcpChannel.m; sourceTree = "<group>"; };
 		B8E5A0B71BDD2BAF008E9066 /* KAASocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KAASocket.h; sourceTree = "<group>"; };
 		B8E5A0B81BDD2BAF008E9066 /* KAASocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KAASocket.m; sourceTree = "<group>"; };
-		B8E5A0BD1BDD9B31008E9066 /* KAATCPDelegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATCPDelegates.h; path = kaatcp/KAATCPDelegates.h; sourceTree = "<group>"; };
+		B8E5A0BD1BDD9B31008E9066 /* KAATcpDelegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpDelegates.h; path = kaatcp/KAATcpDelegates.h; sourceTree = "<group>"; };
 		B8E68AA21B8E241A00EE1065 /* NotificationTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTransport.h; sourceTree = "<group>"; };
 		B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesStateTest.m; sourceTree = "<group>"; };
 		B8EC91BD1BC4058600D3723B /* libAFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libAFNetworking.a; path = "Pods/../build/Debug-iphoneos/libAFNetworking.a"; sourceTree = "<group>"; };
@@ -1439,7 +1439,7 @@
 		B87FCA611BDA41AE0016A721 /* delegates */ = {
 			isa = PBXGroup;
 			children = (
-				B8E5A0BD1BDD9B31008E9066 /* KAATCPDelegates.h */,
+				B8E5A0BD1BDD9B31008E9066 /* KAATcpDelegates.h */,
 			);
 			name = delegates;
 			sourceTree = "<group>";
@@ -1449,24 +1449,24 @@
 			children = (
 				B87FCA631BDA479D0016A721 /* KAAMqttFrame.h */,
 				B87FCA641BDA479D0016A721 /* KAAMqttFrame.m */,
-				B87FCA6F1BDA65B80016A721 /* KAATCPConnAck.h */,
-				B87FCA701BDA65B80016A721 /* KAATCPConnAck.m */,
-				B87FCA731BDA71F70016A721 /* KAATCPConnect.h */,
-				B87FCA741BDA71F70016A721 /* KAATCPConnect.m */,
-				B87FCA771BDAE9D10016A721 /* KAATCPDisconnect.h */,
-				B87FCA781BDAE9D10016A721 /* KAATCPDisconnect.m */,
-				B87FCA7B1BDAEC3D0016A721 /* KAATCPKaaSync.h */,
-				B87FCA7C1BDAEC3D0016A721 /* KAATCPKaaSync.m */,
-				B87FCA7F1BDBAA4B0016A721 /* KAATCPSync.h */,
-				B87FCA801BDBAA4B0016A721 /* KAATCPSync.m */,
-				B87FCA831BDBAEE00016A721 /* KAATCPSyncResponse.h */,
-				B87FCA841BDBAEE00016A721 /* KAATCPSyncResponse.m */,
-				B87FCA871BDBB4170016A721 /* KAATCPSyncRequest.h */,
-				B87FCA881BDBB4170016A721 /* KAATCPSyncRequest.m */,
-				B87FCA8B1BDBB56E0016A721 /* KAATCPPingRequest.h */,
-				B87FCA8C1BDBB56E0016A721 /* KAATCPPingRequest.m */,
-				B87FCA8F1BDBB6590016A721 /* KAATCPPingResponse.h */,
-				B87FCA901BDBB6590016A721 /* KAATCPPingResponse.m */,
+				B87FCA6F1BDA65B80016A721 /* KAATcpConnAck.h */,
+				B87FCA701BDA65B80016A721 /* KAATcpConnAck.m */,
+				B87FCA731BDA71F70016A721 /* KAATcpConnect.h */,
+				B87FCA741BDA71F70016A721 /* KAATcpConnect.m */,
+				B87FCA771BDAE9D10016A721 /* KAATcpDisconnect.h */,
+				B87FCA781BDAE9D10016A721 /* KAATcpDisconnect.m */,
+				B87FCA7B1BDAEC3D0016A721 /* KAATcpKaaSync.h */,
+				B87FCA7C1BDAEC3D0016A721 /* KAATcpKaaSync.m */,
+				B87FCA7F1BDBAA4B0016A721 /* KAATcpSync.h */,
+				B87FCA801BDBAA4B0016A721 /* KAATcpSync.m */,
+				B87FCA831BDBAEE00016A721 /* KAATcpSyncResponse.h */,
+				B87FCA841BDBAEE00016A721 /* KAATcpSyncResponse.m */,
+				B87FCA871BDBB4170016A721 /* KAATcpSyncRequest.h */,
+				B87FCA881BDBB4170016A721 /* KAATcpSyncRequest.m */,
+				B87FCA8B1BDBB56E0016A721 /* KAATcpPingRequest.h */,
+				B87FCA8C1BDBB56E0016A721 /* KAATcpPingRequest.m */,
+				B87FCA8F1BDBB6590016A721 /* KAATcpPingResponse.h */,
+				B87FCA901BDBB6590016A721 /* KAATcpPingResponse.m */,
 			);
 			name = messages;
 			sourceTree = "<group>";
@@ -1698,17 +1698,17 @@
 			files = (
 				B824A2341B149F050076C753 /* KaaClientState.h in Headers */,
 				B811612C1B4BD45200C4E0C6 /* EndpointRegistrationManager.h in Headers */,
-				B87FCA791BDAE9D10016A721 /* KAATCPDisconnect.h in Headers */,
-				B87FCA851BDBAEE00016A721 /* KAATCPSyncResponse.h in Headers */,
+				B87FCA791BDAE9D10016A721 /* KAATcpDisconnect.h in Headers */,
+				B87FCA851BDBAEE00016A721 /* KAATcpSyncResponse.h in Headers */,
 				B824A20B1B1458AE0076C753 /* Kaa.h in Headers */,
 				B824A20C1B1458C90076C753 /* TransportCommon.h in Headers */,
 				B824A20D1B1458CC0076C753 /* KaaTransport.h in Headers */,
 				B87A74341B95BBDC0052858F /* NSData+Conversion.h in Headers */,
 				B878C2981B45730700453947 /* AvroBased.h in Headers */,
-				B87FCA8D1BDBB56E0016A721 /* KAATCPPingRequest.h in Headers */,
+				B87FCA8D1BDBB56E0016A721 /* KAATcpPingRequest.h in Headers */,
 				B81935C31B15D0660053486A /* EndpointObjectHash.h in Headers */,
 				B8F14E251BD8E200001D1B02 /* BaseKaaClient.h in Headers */,
-				B87FCA891BDBB4170016A721 /* KAATCPSyncRequest.h in Headers */,
+				B87FCA891BDBB4170016A721 /* KAATcpSyncRequest.h in Headers */,
 				B8A13B161BB01AD000265729 /* CommonEPConstants.h in Headers */,
 				B8C055D01B57AF1E00F5AA1C /* ExecutorContext.h in Headers */,
 				39E404D51BBD0FF500A5B833 /* SimpleExecutorContext.h in Headers */,
@@ -1742,7 +1742,7 @@
 				B83CCD031B8B37DF003D4B0B /* MemBucket.h in Headers */,
 				B824A20F1B145A7C0076C753 /* KaaDataChannel.h in Headers */,
 				B86D1C1F1BE3795E000A0073 /* EndpointGen.h in Headers */,
-				B87FCA911BDBB6590016A721 /* KAATCPPingResponse.h in Headers */,
+				B87FCA911BDBB6590016A721 /* KAATcpPingResponse.h in Headers */,
 				B85447F61BD51ECA000889BF /* KAAProfile.h in Headers */,
 				B8A13B051BAFE47A00265729 /* DefaultBootstrapDataProcessor.h in Headers */,
 				B86229E91BE352EF0045ED0D /* DefaultKaaPlatformContext.h in Headers */,
@@ -1755,7 +1755,7 @@
 				B8C8BD3B1B83236400D2C016 /* GenericTransportInfo.h in Headers */,
 				B88836361BA1F15000ACAB4F /* LogRecord.h in Headers */,
 				391A91A01BBD6CCD00DBA851 /* SingleThreadExecutorContext.h in Headers */,
-				B8E5A0BE1BDD9B31008E9066 /* KAATCPDelegates.h in Headers */,
+				B8E5A0BE1BDD9B31008E9066 /* KAATcpDelegates.h in Headers */,
 				B81161241B4BCFA100C4E0C6 /* AccessPointCommand.h in Headers */,
 				B856EFB31B9C82CC00C065D9 /* KaaClientPropertiesState.h in Headers */,
 				B8B8ED271BA2D43C0067BC4C /* DefaultChannelManager.h in Headers */,
@@ -1769,13 +1769,13 @@
 				B8DBE3581BB138550036058B /* DefaultFailoverManager.h in Headers */,
 				B876299E1B8CD2C6006AD5EF /* EventTransport.h in Headers */,
 				B8E5A0BB1BDD2BAF008E9066 /* KAASocket.h in Headers */,
-				B87FCA751BDA71F70016A721 /* KAATCPConnect.h in Headers */,
+				B87FCA751BDA71F70016A721 /* KAATcpConnect.h in Headers */,
 				B85447F01BD51ECA000889BF /* KAAConfiguration.h in Headers */,
 				B88836201BA0930600ACAB4F /* AbstractKaaClient.h in Headers */,
 				B8DBE3541BB073040036058B /* DefaultOperationHttpChannel.h in Headers */,
 				B87FCA961BDBB8CA0016A721 /* KAAMessageFactory.h in Headers */,
 				B81161221B4BCCEC00C4E0C6 /* LogUploadStrategy.h in Headers */,
-				B87FCA711BDA65B80016A721 /* KAATCPConnAck.h in Headers */,
+				B87FCA711BDA65B80016A721 /* KAATcpConnAck.h in Headers */,
 				B8FC09521B904CFD002109A4 /* DefaultEndpointRegistrationManager.h in Headers */,
 				B8330C3F1B38051B00D1A573 /* GenericKaaClient.h in Headers */,
 				B8E5A0B91BDD2BAF008E9066 /* DefaultOperationTcpChannel.h in Headers */,
@@ -1825,7 +1825,7 @@
 				B8A13B111BB0198F00265729 /* HttpRequestCreator.h in Headers */,
 				B8FBD9EF1B9E0243009A2BA3 /* SimpleConfigurationStorage.h in Headers */,
 				B8807C1C1BA33B0F00F78BFC /* BlockingQueue.h in Headers */,
-				B87FCA7D1BDAEC3D0016A721 /* KAATCPKaaSync.h in Headers */,
+				B87FCA7D1BDAEC3D0016A721 /* KAATcpKaaSync.h in Headers */,
 				B803FD3B1B9EF65600187E61 /* RedirectionTransport.h in Headers */,
 				B84822891B8DBB05004E370B /* NotificationManager.h in Headers */,
 				B84462321BB5BAD4009826FC /* avro_private.h in Headers */,
@@ -1842,7 +1842,7 @@
 				B856C00C1B9360EB00A9F65D /* NSMutableArray+Shuffling.h in Headers */,
 				B848227A1B8DAE78004E370B /* ProfileManager.h in Headers */,
 				B87D498E1B94AF0300AD7CFC /* MessageEncoderDecoder.h in Headers */,
-				B87FCA811BDBAA4B0016A721 /* KAATCPSync.h in Headers */,
+				B87FCA811BDBAA4B0016A721 /* KAATcpSync.h in Headers */,
 				B87629921B8CC595006AD5EF /* BaseEventFamily.h in Headers */,
 				B83CCD071B8B3F96003D4B0B /* DefaultLogCollector.h in Headers */,
 				B878C29C1B45773E00453947 /* KAAUnion.h in Headers */,
@@ -2024,7 +2024,7 @@
 				B88D00BA1BA88533002E0144 /* DefaultConfigurationTransport.m in Sources */,
 				B8D1D10B1B9442940097E64A /* KeyUtils.m in Sources */,
 				B8D415B01B8476A600B0D551 /* SHAMessageDigest.m in Sources */,
-				B87FCA8E1BDBB56E0016A721 /* KAATCPPingRequest.m in Sources */,
+				B87FCA8E1BDBB56E0016A721 /* KAATcpPingRequest.m in Sources */,
 				B860B12B1BB2AC84001A89E1 /* TimeCommons.m in Sources */,
 				B87FCA6A1BDA5D1D0016A721 /* KAAFramer.m in Sources */,
 				B85447F51BD51ECA000889BF /* KAANotification.m in Sources */,
@@ -2040,12 +2040,12 @@
 				B824A2191B1461DC0076C753 /* TransportProtocolId.m in Sources */,
 				B8A8DFA41BA03BA0002CEF3E /* DefaultBootstrapTransport.m in Sources */,
 				B8DBE3591BB138550036058B /* DefaultFailoverManager.m in Sources */,
-				B87FCA821BDBAA4B0016A721 /* KAATCPSync.m in Sources */,
+				B87FCA821BDBAA4B0016A721 /* KAATcpSync.m in Sources */,
 				B88836211BA0930600ACAB4F /* AbstractKaaClient.m in Sources */,
-				B87FCA7A1BDAE9D10016A721 /* KAATCPDisconnect.m in Sources */,
+				B87FCA7A1BDAE9D10016A721 /* KAATcpDisconnect.m in Sources */,
 				B856C0091B9337F700A9F65D /* DefaultBootstrapManager.m in Sources */,
 				B8D1D10F1B945FF10097E64A /* KeyPair.m in Sources */,
-				B87FCA7E1BDAEC3D0016A721 /* KAATCPKaaSync.m in Sources */,
+				B87FCA7E1BDAEC3D0016A721 /* KAATcpKaaSync.m in Sources */,
 				B85447F11BD51ECA000889BF /* KAAConfiguration.m in Sources */,
 				B8D47D891B4FF8490003BAF3 /* AvroBytesConverter.m in Sources */,
 				B856EFB81B9D61D200C065D9 /* UUID.m in Sources */,
@@ -2068,7 +2068,7 @@
 				B8A13B0A1BAFE93A00265729 /* DefaultOperationDataProcessor.m in Sources */,
 				B84822831B8DAFC0004E370B /* DefaultProfileManager.m in Sources */,
 				B81935BE1B15CC7C0053486A /* EndpointKeyHash.m in Sources */,
-				B87FCA921BDBB6590016A721 /* KAATCPPingResponse.m in Sources */,
+				B87FCA921BDBB6590016A721 /* KAATcpPingResponse.m in Sources */,
 				B8E5A0BC1BDD2BAF008E9066 /* KAASocket.m in Sources */,
 				B81935C41B15D0660053486A /* EndpointObjectHash.m in Sources */,
 				B88D00B21BA87F8D002E0144 /* DefaultRedirectionTransport.m in Sources */,
@@ -2078,7 +2078,7 @@
 				B86D1C201BE3795E000A0073 /* EndpointGen.m in Sources */,
 				B84462351BB5BAD4009826FC /* io.c in Sources */,
 				39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */,
-				B87FCA761BDA71F70016A721 /* KAATCPConnect.m in Sources */,
+				B87FCA761BDA71F70016A721 /* KAATcpConnect.m in Sources */,
 				B83CCD081B8B3F96003D4B0B /* DefaultLogCollector.m in Sources */,
 				B8B8ED281BA2D43C0067BC4C /* DefaultChannelManager.m in Sources */,
 				B8C8BD3C1B83236400D2C016 /* GenericTransportInfo.m in Sources */,
@@ -2091,7 +2091,7 @@
 				B863B32C1B3D7B3D00E58F50 /* AvroUtils.m in Sources */,
 				B87A74351B95BBDC0052858F /* NSData+Conversion.m in Sources */,
 				B8DBE3551BB073040036058B /* DefaultOperationHttpChannel.m in Sources */,
-				B87FCA861BDBAEE00016A721 /* KAATCPSyncResponse.m in Sources */,
+				B87FCA861BDBAEE00016A721 /* KAATcpSyncResponse.m in Sources */,
 				B8B8ED241BA2D0640067BC4C /* DefaultMetaDataTransport.m in Sources */,
 				B8FBD9F51B9E02DB009A2BA3 /* AbstractHttpClient.m in Sources */,
 				B85E35671B860218008B663E /* AbstractConfigurationManager.m in Sources */,
@@ -2099,7 +2099,7 @@
 				B876299C1B8CD026006AD5EF /* EventListenersRequestBinding.m in Sources */,
 				B85447F71BD51ECA000889BF /* KAAProfile.m in Sources */,
 				B83CCCFF1B8B30A2003D4B0B /* DefaultLogUploadStrategy.m in Sources */,
-				B87FCA721BDA65B80016A721 /* KAATCPConnAck.m in Sources */,
+				B87FCA721BDA65B80016A721 /* KAATcpConnAck.m in Sources */,
 				B80084501B7B2DDD003A3D5E /* ResyncConfigurationManager.m in Sources */,
 				B8E5A0BA1BDD2BAF008E9066 /* DefaultOperationTcpChannel.m in Sources */,
 				39AEB27D1BBA6A3E0045FB32 /* RecordCountLogUploadStrategy.m in Sources */,
@@ -2108,7 +2108,7 @@
 				39AEB27B1BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m in Sources */,
 				B87629981B8CCFD5006AD5EF /* DefaultEventManager.m in Sources */,
 				B8B4CDC61B8215C4007FE20D /* KAABase64.m in Sources */,
-				B87FCA8A1BDBB4170016A721 /* KAATCPSyncRequest.m in Sources */,
+				B87FCA8A1BDBB4170016A721 /* KAATcpSyncRequest.m in Sources */,
 				B87FCA661BDA479D0016A721 /* KAAMqttFrame.m in Sources */,
 				B84822911B8DC269004E370B /* DefaultNotificationManager.m in Sources */,
 				B878C2991B45730700453947 /* AvroBased.m in Sources */,

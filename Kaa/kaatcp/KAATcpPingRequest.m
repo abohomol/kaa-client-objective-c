@@ -6,9 +6,9 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KAATCPPingRequest.h"
+#import "KAATcpPingRequest.h"
 
-@implementation KAATCPPingRequest
+@implementation KAATcpPingRequest
 
 - (instancetype)init {
     self = [super init];

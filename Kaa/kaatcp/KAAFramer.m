@@ -79,22 +79,22 @@
     KAAMqttFrame *frame = nil;
     switch (type) {
         case TCP_MESSAGE_TYPE_CONNACK:
-            frame = [[KAATCPConnAck alloc] init];
+            frame = [[KAATcpConnAck alloc] init];
             break;
         case TCP_MESSAGE_TYPE_CONNECT:
-            frame = [[KAATCPConnect alloc] init];
+            frame = [[KAATcpConnect alloc] init];
             break;
         case TCP_MESSAGE_TYPE_DISCONNECT:
-            frame = [[KAATCPDisconnect alloc] init];
+            frame = [[KAATcpDisconnect alloc] init];
             break;
         case TCP_MESSAGE_TYPE_KAASYNC:
-            frame = [[KAATCPKaaSync alloc] init];
+            frame = [[KAATcpKaaSync alloc] init];
             break;
         case TCP_MESSAGE_TYPE_PINGREQ:
-            frame = [[KAATCPPingRequest alloc] init];
+            frame = [[KAATcpPingRequest alloc] init];
             break;
         case TCP_MESSAGE_TYPE_PINGRESP:
-            frame = [[KAATCPPingResponse alloc] init];
+            frame = [[KAATcpPingResponse alloc] init];
             break;
         default:
             [NSException raise:@"KaaTcpProtocolException" format:@"Got incorrect messageType format: %i", type];
