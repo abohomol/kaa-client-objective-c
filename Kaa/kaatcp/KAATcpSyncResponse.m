@@ -6,15 +6,15 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KAATCPSyncResponse.h"
+#import "KAATcpSyncResponse.h"
 
-@implementation KAATCPSyncResponse
+@implementation KAATcpSyncResponse
 
 - (instancetype)initWithAvro:(NSData *)avroObject zipped:(BOOL)isZipped encypted:(BOOL)isEncrypted {
     return [self initWithAvro:avroObject request:NO zipped:isZipped encypted:isEncrypted];
 }
 
-- (instancetype)initWithOldKaaSync:(KAATCPKaaSync *)old {
+- (instancetype)initWithOldKaaSync:(KAATcpKaaSync *)old {
     self = [super initWithOldKaaSync:old];
     if (self) {
         [self setRequest:NO];

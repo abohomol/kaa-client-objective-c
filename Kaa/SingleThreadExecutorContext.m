@@ -19,30 +19,29 @@
 
 @implementation SingleThreadExecutorContext
 
-- (void)initiate
-{
+- (void)initiate {
     DDLogDebug(@"%@ Creating executor service", TAG);
     self.singleThreadExecutor = [[NSOperationQueue alloc] init];
     DDLogDebug(@"%@ Created executor service", TAG);
 }
 
-- (void) stop {
+- (void)stop {
     [self.singleThreadExecutor cancelAllOperations];
 }
 
-- (NSOperationQueue*) getLifeCycleExecutor {
+- (NSOperationQueue *)getLifeCycleExecutor {
     return self.singleThreadExecutor;
 }
 
-- (NSOperationQueue*) getApiExecutor {
+- (NSOperationQueue *)getApiExecutor {
     return self.singleThreadExecutor;
 }
 
-- (NSOperationQueue*) getCallbackExecutor {
+- (NSOperationQueue *)getCallbackExecutor {
     return self.singleThreadExecutor;
 }
 
-- (dispatch_queue_t) getSheduledExecutor {
+- (dispatch_queue_t)getSheduledExecutor {
     return [self.singleThreadExecutor underlyingQueue];
 }
 

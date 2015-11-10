@@ -6,7 +6,7 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "MqttFrame.h"
+#import "KAAMqttFrame.h"
 
 /**
  * Connect message Class.
@@ -52,7 +52,7 @@
 #define CONNECT_SESSION_KEY_FLAGS           0x11
 #define CONNECT_SIGNATURE_FLAGS             0x01
 
-@interface KAATCPConnect : MqttFrame
+@interface KAATcpConnect : KAAMqttFrame
 
 @property (nonatomic) uint16_t keepAlive;                //kaatcp keep alive interval, default 200 seconds
 

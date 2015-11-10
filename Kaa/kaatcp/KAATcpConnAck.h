@@ -6,7 +6,7 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "MqttFrame.h"
+#import "KAAMqttFrame.h"
 
 #define CONNACK_REMAINING_LEGTH_V1 (2)
 
@@ -38,7 +38,7 @@ typedef enum {
  * byte 1  reserved (0)
  * byte 2 Return Code see enum ReturnCode
  **/
-@interface KAATCPConnAck : MqttFrame
+@interface KAATcpConnAck : KAAMqttFrame
 
 @property (nonatomic) ReturnCode returnCode;
 

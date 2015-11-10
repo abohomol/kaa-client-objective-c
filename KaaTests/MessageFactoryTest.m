@@ -12,8 +12,8 @@
 #import <OCMockito/OCMockito.h>
 
 #import <XCTest/XCTest.h>
-#import "MessageFactory.h"
-#import "TCPDelegates.h"
+#import "KAAMessageFactory.h"
+#import "KAATcpDelegates.h"
 #import "KeyUtils.h"
 #import "KeyPair.h"
 #import "AvroBytesConverter.h"
@@ -74,7 +74,7 @@
 }
 
 - (void)testConnackMessageDelegateMethods {
-    MessageFactory *factory = [[MessageFactory alloc] initWithFramer:[[Framer alloc] init]];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] initWithFramer:[[KAAFramer alloc] init]];
     char reject[] = {0x20, 0x02, 0x00, 0x03};
     [factory.framer pushBytes:[NSMutableData dataWithBytes:&reject length:sizeof(reject)]];
     id <ConnAckDelegate> idRejectDelegate = mockProtocol(@protocol(ConnAckDelegate));
@@ -114,7 +114,7 @@
 }
 
 - (void)testConnackMessageReturnTypes {
-    MessageFactory *factory = [[MessageFactory alloc] initWithFramer:[[Framer alloc] init]];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] initWithFramer:[[KAAFramer alloc] init]];
     char reject[] = {0x20, 0x02, 0x00, 0x03};
     [factory.framer pushBytes:[NSMutableData dataWithBytes:&reject length:sizeof(reject)]];
     [factory registerConnAckDelegate:self];
@@ -162,7 +162,7 @@
     [connectBuffer appendData:self.signature];
     [connectBuffer appendData:self.payload];
     
-    MessageFactory *factory = [[MessageFactory alloc] init];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] init];
     [factory.framer pushBytes:connectBuffer];
     
     [factory registerConnectDelegate:self];
@@ -186,7 +186,7 @@
     [connectBuffer appendBytes:&charConnectHeaderPart length:sizeof(charConnectHeaderPart)];
     [connectBuffer appendData:rawData];
     
-    MessageFactory *factory = [[MessageFactory alloc] init];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] init];
     [factory.framer pushBytes:connectBuffer];
     
     [factory registerConnectDelegate:self];
@@ -201,7 +201,7 @@
 - (void)testSyncResponse {
     char charConnectHeaderPart2[] = {0xF0, 0x0D, 0x00, 0x06, 'K','a','a','t','c','p', 0x01, 0x00, 0x05, 0x14, 0xFF};
     NSMutableData *syncRequest = [NSMutableData dataWithBytes:charConnectHeaderPart2 length:sizeof(charConnectHeaderPart2)];
-    MessageFactory *factory = [[MessageFactory alloc] init];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] init];
     
     [factory registerSyncResponseDelegate:self];
     [factory.framer pushBytes:syncRequest];
@@ -216,7 +216,7 @@
     char charConnectHeaderPart2[] = {0xF0, 0x0D, 0x00, 0x06, 'K','a','a','t','c','p', 0x01, 0x00, 0x05, 0x15, 0xFF};
     NSMutableData *syncRequest = [NSMutableData dataWithBytes:charConnectHeaderPart2 length:sizeof(charConnectHeaderPart2)];
     
-    MessageFactory *factory = [[MessageFactory alloc] init];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] init];
     [factory registerSyncRequestDelegate:self];
     [factory.framer pushBytes:syncRequest];
     
@@ -230,7 +230,7 @@
     char pingRequestChar[] = {0xC0, 0x00};
     NSMutableData *pingRequest = [NSMutableData dataWithBytes:&pingRequestChar length:sizeof(pingRequestChar)];
     
-    MessageFactory *factory = [[MessageFactory alloc] init];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] init];
     [factory.framer pushBytes:pingRequest];
     id <PingRequestDelegate> delegate = mockProtocol(@protocol(PingRequestDelegate));
     [factory registerPingRequestDelegate:delegate];
@@ -242,7 +242,7 @@
     char pingResponseChar[] = {0xD0, 0x00};
     NSMutableData *pingResponse = [NSMutableData dataWithBytes:&pingResponseChar length:sizeof(pingResponseChar)];
     
-    MessageFactory *factory = [[MessageFactory alloc] init];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] init];
     [factory.framer pushBytes:pingResponse];
     id <PingResponseDelegate> delegate = mockProtocol(@protocol(PingResponseDelegate));
     [factory registerPingResponseDelegate:delegate];
@@ -254,7 +254,7 @@
     char disconnectChar[] = {0xE0, 0x02, 0x00, 0x02};
     NSMutableData *disconnect = [NSMutableData dataWithBytes:&disconnectChar length:sizeof(disconnectChar)];
     
-    MessageFactory *factory = [[MessageFactory alloc] init];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] init];
     [factory.framer pushBytes:disconnect];
     
     [factory registerDisconnectDelegate:self];
@@ -290,7 +290,7 @@
     [stream read:thirdBuffer maxLength:(syncRequest3.length - 2)];
     [stream close];
     
-    MessageFactory *factory = [[MessageFactory alloc] init];
+    KAAMessageFactory *factory = [[KAAMessageFactory alloc] init];
     
     [factory registerSyncRequestDelegate:self];
     
@@ -321,7 +321,7 @@
 
 #pragma mark - Supporting methods
 
-- (void)onConnAckMessage:(KAATCPConnAck *)message {
+- (void)onConnAckMessage:(KAATcpConnAck *)message {
     switch (message.returnCode) {
         case RETURN_CODE_ACCEPTED:
             KAATestEqual(RETURN_CODE_ACCEPTED, message.returnCode);
@@ -356,7 +356,7 @@
     }
 }
 
-- (void)onConnectMessage:(KAATCPConnect *)message {
+- (void)onConnectMessage:(KAATcpConnect *)message {
     uint16_t keepAlive = 200;
     uint32_t nextProtocolId = 0xf291f2d4;
     KAATestEqual(keepAlive, message.keepAlive);
@@ -392,7 +392,7 @@
     return [requestConverter toBytes:request];
 }
 
-- (void)onSyncResponseMessage:(KAATCPSyncResponse *)message {
+- (void)onSyncResponseMessage:(KAATcpSyncResponse *)message {
     KAATestEqual(1, message.avroObject.length);
     KAATestEqual(5, message.messageId);
     KAATestEqual(NO, message.zipped);
@@ -400,7 +400,7 @@
     KAATestEqual(NO, message.request);
 }
 
-- (void)onSyncRequestMessage:(KAATCPSyncRequest *)message {
+- (void)onSyncRequestMessage:(KAATcpSyncRequest *)message {
     KAATestEqual(1, message.avroObject.length);
     KAATestEqual(5, message.messageId);
     KAATestEqual(NO, message.zipped);
@@ -408,7 +408,7 @@
     KAATestEqual(YES, message.request);
 }
 
-- (void)onDisconnectMessage:(KAATCPDisconnect *)message {
+- (void)onDisconnectMessage:(KAATcpDisconnect *)message {
     KAATestEqual(DISCONNECT_REASON_INTERNAL_ERROR, message.reason);
 }
 

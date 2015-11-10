@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "TCPDelegates.h"
+#import "KAATcpDelegates.h"
 
 /**
  * Kaatcp Framer class.
  * Used to cut incoming byte stream into MQTT frames, and deliver frames to MqttFrameDelegate.
  * Framer Class typically used from MessageFactory class.
  */
-@interface Framer : NSObject
+@interface KAAFramer : NSObject
 
 - (void)registerFrameDelegate:(id<MqttFrameDelegate>)delegate;
 

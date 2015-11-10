@@ -6,9 +6,9 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KAATCPConnAck.h"
+#import "KAATcpConnAck.h"
 
-@implementation KAATCPConnAck
+@implementation KAATcpConnAck
 
 - (instancetype)init {
     self = [super init];

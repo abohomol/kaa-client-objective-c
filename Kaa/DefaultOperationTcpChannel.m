@@ -10,7 +10,7 @@
 #import "KaaLogging.h"
 #import "IPTransportInfo.h"
 #import "MessageEncoderDecoder.h"
-#import "MessageFactory.h"
+#import "KAAMessageFactory.h"
 #import "Constants.h"
 #import "TransportProtocolIdHolder.h"
 
@@ -65,7 +65,7 @@ typedef enum {
 @property (nonatomic,strong) MessageEncoderDecoder *encDec;
 @property (nonatomic,strong) id<FailoverManager> failoverManager;
 @property (nonatomic,strong) volatile ConnectivityChecker *checker;
-@property (nonatomic,strong) MessageFactory *messageFactory;
+@property (nonatomic,strong) KAAMessageFactory *messageFactory;
 @property (nonatomic,strong) NSOperation *pingTaskFuture;//volatile
 @property (nonatomic,strong) NSOperation *readTaskFuture;//volatile
 @property (nonatomic) volatile BOOL isOpenConnectionScheduled;
@@ -74,7 +74,7 @@ typedef enum {
 
 - (void)onServerFailed;
 - (void)closeConnection;
-- (void)sendFragme:(MqttFrame *)frame;
+- (void)sendFragme:(KAAMqttFrame *)frame;
 - (void)sendPingRequest;
 - (void)sendDisconnect;
 - (void)sendKaaSyncRequest:(NSDictionary *)types; //<TransportType, ChannelDirection> as key-value
@@ -101,7 +101,7 @@ typedef enum {
             [NSNumber numberWithInt:TRANSPORT_TYPE_LOGGING] : [NSNumber numberWithInt:CHANNEL_DIRECTION_BIDIRECTIONAL]
         };
         self.channelState = CHANNEL_STATE_CLOSED;
-        self.messageFactory = [[MessageFactory alloc] init];
+        self.messageFactory = [[KAAMessageFactory alloc] init];
         self.state = state;
         self.failoverManager = failoverMgr;
         [self.messageFactory registerConnAckDelegate:self];
@@ -112,7 +112,7 @@ typedef enum {
     return self;
 }
 
-- (void)onConnAckMessage:(KAATCPConnAck *)message {
+- (void)onConnAckMessage:(KAATcpConnAck *)message {
     DDLogInfo(@"%@ ConnAck [%i] message received for channel [%@]", TAG, message.returnCode, [self getId]);
     if (message.returnCode != RETURN_CODE_ACCEPTED) {
         DDLogError(@"%@ Connection for channel [%@] was rejected: %i", TAG, [self getId], message.returnCode);
@@ -124,11 +124,11 @@ typedef enum {
     }
 }
 
-- (void)onPingResponseMessage:(KAATCPPingResponse *)message {
+- (void)onPingResponseMessage:(KAATcpPingResponse *)message {
     DDLogInfo(@"%@ PingResponse message received for channel [%@]", TAG, [self getId]);
 }
 
-- (void)onSyncResponseMessage:(KAATCPSyncResponse *)message {
+- (void)onSyncResponseMessage:(KAATcpSyncResponse *)message {
     DDLogInfo(@"%@ KaaSync message (zipped:%i, encrypted:%i) received for channel [%@]",
               TAG, message.zipped, message.encrypted, [self getId]);
     NSData *resultBody = nil;
@@ -165,7 +165,7 @@ typedef enum {
     }
 }
 
-- (void)onDisconnectMessage:(KAATCPDisconnect *)message {
+- (void)onDisconnectMessage:(KAATcpDisconnect *)message {
     DDLogInfo(@"%@ Disconnect message (reason:%i) received for channel [%@]", TAG, message.reason, [self getId]);
     if (message.reason != DISCONNECT_REASON_NONE) {
         DDLogError(@"%@ Server error occurred: %i", TAG, message.reason);
@@ -175,7 +175,7 @@ typedef enum {
     }
 }
 
-- (void)sendFragme:(MqttFrame *)frame {
+- (void)sendFragme:(KAAMqttFrame *)frame {
     if (self.socket) {
         @synchronized(self.socket) {
             [self.socket.output write:[[frame getFrame] bytes] maxLength:[frame getFrame].length];
@@ -185,19 +185,19 @@ typedef enum {
 
 - (void)sendPingRequest {
     DDLogDebug(@"%@ Sending PinRequest from channel: %@", TAG, [self getId]);
-    [self sendFragme:[[KAATCPPingRequest alloc] init]];
+    [self sendFragme:[[KAATcpPingRequest alloc] init]];
 }
 
 - (void)sendDisconnect {
     DDLogDebug(@"%@ Sending Disconnect from channel: %@", TAG, [self getId]);
-    [self sendFragme:[[KAATCPDisconnect alloc] initWithDisconnectReason:DISCONNECT_REASON_NONE]];
+    [self sendFragme:[[KAATcpDisconnect alloc] initWithDisconnectReason:DISCONNECT_REASON_NONE]];
 }
 
 - (void)sendKaaSyncRequest:(NSDictionary *)types {
     DDLogDebug(@"%@ Sending KaaSync from channel: %@", TAG, [self getId]);
     NSData *body = [self.multiplexer compileRequest:types];
     NSData *requestBodyEncoded = [self.encDec encodeData:body];
-    [self sendFragme:[[KAATCPSyncRequest alloc] initWithAvro:requestBodyEncoded zipped:NO encypted:YES]];
+    [self sendFragme:[[KAATcpSyncRequest alloc] initWithAvro:requestBodyEncoded zipped:NO encypted:YES]];
 }
 
 - (void)sendConnect {
@@ -206,7 +206,7 @@ typedef enum {
     NSData *requestBodyEncoded = [self.encDec encodeData:body];
     NSData *sessionKey = [self.encDec getEncodedSessionKey];
     NSData *signature = [self.encDec sign:sessionKey];
-    [self sendFragme:[[KAATCPConnect alloc] initWithAlivePeriod:CHANNEL_TIMEOUT
+    [self sendFragme:[[KAATcpConnect alloc] initWithAlivePeriod:CHANNEL_TIMEOUT
                                                  nextProtocolId:KAA_PLATFORM_PROTOCOL_AVRO_ID
                                                   aesSessionKey:sessionKey
                                                     syncRequest:requestBodyEncoded

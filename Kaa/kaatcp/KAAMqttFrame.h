@@ -35,7 +35,7 @@ typedef enum {
  * byte 1  Message Type    Dup flag    QoS level   RETAIN
  * byte 2           Remaining length
  */
-@interface MqttFrame : NSObject
+@interface KAAMqttFrame : NSObject
 
 @property (nonatomic,strong) NSMutableData *buffer;
 @property (nonatomic) NSUInteger bufferPosition;
@@ -49,7 +49,7 @@ typedef enum {
 @property (nonatomic) int multiplier;
 @property (nonatomic) FrameParsingState currentState;
 
-- (instancetype)initWithOld:(MqttFrame *)old;
+- (instancetype)initWithOld:(KAAMqttFrame *)old;
 
 - (NSData *)getFrame;
 
@@ -94,7 +94,7 @@ typedef enum {
  * @return new MqttFrame as specific class.
  * @throws KaaTcpProtocolException
  */
-- (MqttFrame *)upgradeFrame;
+- (KAAMqttFrame *)upgradeFrame;
 
 - (NSInputStream *)remainingStream;
 

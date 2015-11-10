@@ -6,17 +6,17 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "Framer.h"
+#import "KAAFramer.h"
 #import "KaaLogging.h"
 
 #define TAG @"Framer >>>"
 
-@interface Framer ()
+@interface KAAFramer ()
 
 @property (nonatomic,strong) NSMutableArray *delegates;
-@property (nonatomic,strong) MqttFrame *currentFrame;
+@property (nonatomic,strong) KAAMqttFrame *currentFrame;
 
-- (void)notifyDelegates:(MqttFrame *)frame;
+- (void)notifyDelegates:(KAAMqttFrame *)frame;
 
 /**
  * Creates specific Kaatcp message by MessageType
@@ -24,11 +24,11 @@
  * @return mqttFrame
  * @throws KaaTcpProtocolException if specified type is unsupported
  */
-- (MqttFrame *)getFrameByType:(char)type;
+- (KAAMqttFrame *)getFrameByType:(char)type;
 
 @end
 
-@implementation Framer
+@implementation KAAFramer
 
 - (instancetype)init {
     self = [super init];
@@ -69,32 +69,32 @@
     return used;
 }
 
-- (void)notifyDelegates:(MqttFrame *)frame {
+- (void)notifyDelegates:(KAAMqttFrame *)frame {
     for (id<MqttFrameDelegate> delegate in self.delegates) {
         [delegate onMqttFrame:frame];
     }
 }
 
-- (MqttFrame *)getFrameByType:(char)type {
-    MqttFrame *frame = nil;
+- (KAAMqttFrame *)getFrameByType:(char)type {
+    KAAMqttFrame *frame = nil;
     switch (type) {
         case TCP_MESSAGE_TYPE_CONNACK:
-            frame = [[KAATCPConnAck alloc] init];
+            frame = [[KAATcpConnAck alloc] init];
             break;
         case TCP_MESSAGE_TYPE_CONNECT:
-            frame = [[KAATCPConnect alloc] init];
+            frame = [[KAATcpConnect alloc] init];
             break;
         case TCP_MESSAGE_TYPE_DISCONNECT:
-            frame = [[KAATCPDisconnect alloc] init];
+            frame = [[KAATcpDisconnect alloc] init];
             break;
         case TCP_MESSAGE_TYPE_KAASYNC:
-            frame = [[KAATCPKaaSync alloc] init];
+            frame = [[KAATcpKaaSync alloc] init];
             break;
         case TCP_MESSAGE_TYPE_PINGREQ:
-            frame = [[KAATCPPingRequest alloc] init];
+            frame = [[KAATcpPingRequest alloc] init];
             break;
         case TCP_MESSAGE_TYPE_PINGRESP:
-            frame = [[KAATCPPingResponse alloc] init];
+            frame = [[KAATcpPingResponse alloc] init];
             break;
         default:
             [NSException raise:@"KaaTcpProtocolException" format:@"Got incorrect messageType format: %i", type];

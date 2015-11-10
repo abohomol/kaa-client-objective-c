@@ -6,15 +6,15 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KAATCPKaaSync.h"
-#import "KAATCPSyncResponse.h"
-#import "KAATCPSyncRequest.h"
+#import "KAATcpKaaSync.h"
+#import "KAATcpSyncResponse.h"
+#import "KAATcpSyncRequest.h"
 
 #define KAASYNC_MESSAGE_TYPE_SHIFT 4
 
 static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAASYNC_VERSION};
 
-@implementation KAATCPKaaSync
+@implementation KAATcpKaaSync
 
 - (instancetype)init {
     self = [super init];
@@ -36,7 +36,7 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
     return self;
 }
 
-- (instancetype)initWithOldKaaSync:(KAATCPKaaSync *)old {
+- (instancetype)initWithOldKaaSync:(KAATcpKaaSync *)old {
     self = [super initWithOld:old];
     if (self) {
         [self setMessageType:TCP_MESSAGE_TYPE_KAASYNC];
@@ -110,13 +110,13 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
     [input close];
 }
 
-- (MqttFrame *)upgradeFrame {
+- (KAAMqttFrame *)upgradeFrame {
     switch (self.kaaSyncMessageType) {
         case KAA_SYNC_MESSAGE_TYPE_SYNC:
             if (self.request) {
-                return [[KAATCPSyncRequest alloc] initWithOldKaaSync:self];
+                return [[KAATcpSyncRequest alloc] initWithOldKaaSync:self];
             } else {
-                return [[KAATCPSyncResponse alloc] initWithOldKaaSync:self];
+                return [[KAATcpSyncResponse alloc] initWithOldKaaSync:self];
             }
             break;
         case KAA_SYNC_MESSAGE_TYPE_UNUSED:

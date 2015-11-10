@@ -6,13 +6,13 @@
 //  Copyright © 2015 CYBERVISION INC. All rights reserved.
 //
 
-#import "KAATCPSync.h"
+#import "KAATcpSync.h"
 
 /**
  * SyncRequest Class.
  * Extend Sync and set request flag to true.
  */
-@interface KAATCPSyncRequest : KAATCPSync
+@interface KAATcpSyncRequest : KAATcpSync
 
 - (instancetype)initWithAvro:(NSData *)avroObject zipped:(BOOL)isZipped encypted:(BOOL)isEncrypted;
 
