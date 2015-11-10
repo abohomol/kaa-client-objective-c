@@ -55,8 +55,10 @@
     }
     
     UserSyncRequest *request = [[UserSyncRequest alloc] init];
-    request.userAttachRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_REQUEST_OR_NULL_BRANCH_0
-                                                  andData:[self.processor getUserAttachRequest]];
+    if ([self.processor getUserAttachRequest]) {
+        request.userAttachRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_REQUEST_OR_NULL_BRANCH_0
+                                                      andData:[self.processor getUserAttachRequest]];
+    }
     request.endpointAttachRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_REQUEST_OR_NULL_BRANCH_0
                                                        andData:attachEPRequestList];
     request.endpointDetachRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_REQUEST_OR_NULL_BRANCH_0
