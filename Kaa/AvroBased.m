@@ -30,4 +30,8 @@
     return 0;
 }
 
++ (NSString *)FQN {
+    return nil;
+}
+
 @end
