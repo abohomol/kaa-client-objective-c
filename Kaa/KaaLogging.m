@@ -8,4 +8,4 @@
 
 #import "KaaLogging.h"
 
-const DDLogLevel ddLogLevel = DDLogLevelVerbose;
+const DDLogLevel ddLogLevel = DDLogLevelWarning;
