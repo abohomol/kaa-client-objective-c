@@ -488,9 +488,14 @@
         } else {
             DDLogWarn(@"%@ Failover manager is nil", TAG);
         }
-    } else {
-        DDLogWarn(@"%@ Failed to find bootstrap server for channel %@ type %@",
-                  TAG, [channel getId], [channel getTransportProtocolId]);
+    } else if (self.lastServers.count == 0){
+        if ([channel getServerType] == SERVER_BOOTSTRAP) {
+            DDLogWarn(@"%@ Failed to find bootstrap server for channel %@ type %@",
+                      TAG, [channel getId], [channel getTransportProtocolId]);
+        } else {
+            DDLogInfo(@"%@ Failed to find operation server for channel %@ type %@",
+                      TAG, [channel getId], [channel getTransportProtocolId]);
+        }
     }
 }
 
