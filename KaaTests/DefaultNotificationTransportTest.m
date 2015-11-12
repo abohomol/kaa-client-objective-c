@@ -158,7 +158,7 @@
 - (void)testFilterStaleNotification {
     id <KaaClientState> state = mockProtocol(@protocol(KaaClientState));
     id <NotificationProcessor> processor = mockProtocol(@protocol(NotificationProcessor));
-    [given([state updateTopicSubscriptionInfo:anything() sequence:anything()]) willReturnBool:YES];
+    [given([state updateTopicSubscriptionInfo:anything() sequence:(int)anything()]) willReturnBool:YES];
     
     NotificationSyncResponse *response = [self getNewNotificationResponseWithResponseStatus:SYNC_RESPONSE_STATUS_DELTA];
     

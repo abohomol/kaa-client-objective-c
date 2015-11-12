@@ -97,7 +97,7 @@
             return;
         }
         
-        SyncResponse *syncResponse = [self.responseConverter fromBytes:data object:[[SyncResponse alloc] init]];
+        SyncResponse *syncResponse = (SyncResponse *)[self.responseConverter fromBytes:data object:[[SyncResponse alloc] init]];
         
         DDLogInfo(@"%@ Received Sync response: %@", TAG, syncResponse);
         if (self.configurationTransport && syncResponse.configurationSyncResponse
@@ -146,8 +146,11 @@
         request.requestId = self.requestsCounter;
         
         if (self.mdTransport) {
-            request.syncRequestMetaData = [KAAUnion unionWithBranch:KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_0
-                                                           andData:[self.mdTransport createMetaDataRequest]];
+            SyncRequestMetaData *mdRequest = [self.mdTransport createMetaDataRequest];
+            if (mdRequest) {
+                request.syncRequestMetaData = [KAAUnion unionWithBranch:KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_0
+                                                                andData:mdRequest];
+            }
         }
         
         for (NSNumber *key in types.allKeys) {
@@ -155,9 +158,12 @@
             switch ([key intValue]) {
                 case TRANSPORT_TYPE_CONFIGURATION:
                     if (self.configurationTransport) {
-                        request.configurationSyncRequest =
-                        [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_0
-                                          andData:[self.configurationTransport createConfigurationRequest]];
+                        ConfigurationSyncRequest *cfRequest = [self.configurationTransport createConfigurationRequest];
+                        if (cfRequest) {
+                            request.configurationSyncRequest =
+                            [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_0
+                                              andData:cfRequest];
+                        }
                     }
                     break;
                 case TRANSPORT_TYPE_EVENT:
@@ -167,57 +173,66 @@
                         eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
                                                        andData:[[EventSyncRequest alloc] init]];
                     } else if (self.eventTransport) {
-                        eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                       andData:[self.eventTransport createEventRequest:request.requestId]];
+                        EventSyncRequest *evRequest = [self.eventTransport createEventRequest:request.requestId];
+                        if (evRequest) {
+                            eventUnion = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_0
+                                                           andData:evRequest];
+                        }
                     }
                     request.eventSyncRequest = eventUnion;
                 }
                     break;
                 case TRANSPORT_TYPE_NOTIFICATION:
                 {
-                    KAAUnion *nfUnion;
                     if (self.notificationTransport) {
+                        NotificationSyncRequest *nfRequest;
                         if (isDownDirection) {
-                            nfUnion = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                        andData:[self.notificationTransport createEmptyNotificationRequest]];
+                            nfRequest = [self.notificationTransport createEmptyNotificationRequest];
                         } else {
-                            nfUnion = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                        andData:[self.notificationTransport createNotificationRequest]];
+                            nfRequest = [self.notificationTransport createNotificationRequest];
+                        }
+                        if (nfRequest) {
+                            request.notificationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_0
+                                                                                andData:nfRequest];
                         }
                     }
-                    request.notificationSyncRequest = nfUnion;
                 }
                     break;
                 case TRANSPORT_TYPE_PROFILE:
                     if (!isDownDirection && self.profileTransport) {
-                        request.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                                       andData:[self.profileTransport createProfileRequest]];
+                        ProfileSyncRequest *pfRequest = [self.profileTransport createProfileRequest];
+                        if (pfRequest) {
+                            request.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_0
+                                                                           andData:pfRequest];
+                        }
                     }
                     break;
                 case TRANSPORT_TYPE_USER:
                 {
-                    KAAUnion *userUnion;
+                    UserSyncRequest *userRequest = nil;
                     if (isDownDirection) {
-                        userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                      andData:[[UserSyncRequest alloc] init]];
+                        userRequest = [[UserSyncRequest alloc] init];
                     } else if (self.userTransport) {
-                        userUnion = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                      andData:[self.userTransport createUserRequest]];
+                        userRequest = [self.userTransport createUserRequest];
                     }
-                    request.userSyncRequest = userUnion;
+                    if (userRequest) {
+                        request.userSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_0
+                                                                    andData:userRequest];
+                    }
                 }
                     break;
                 case TRANSPORT_TYPE_LOGGING:
                 {
-                    KAAUnion *logUnion;
+                    LogSyncRequest *logRequest = nil;
                     if (isDownDirection) {
-                        logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                     andData:[[LogSyncRequest alloc] init]];
+                        logRequest = [[LogSyncRequest alloc] init];
                     } else if (self.logTransport) {
-                        logUnion = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
-                                                     andData:[self.logTransport createLogRequest]];
+                        logRequest = [self.logTransport createLogRequest];
                     }
-                    request.logSyncRequest = logUnion;
+                    if (logRequest) {
+                        request.logSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_0
+                                                                   andData:logRequest];
+                    }
                 }
                     break;
                 default:

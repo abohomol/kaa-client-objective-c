@@ -198,7 +198,7 @@
         }
         size += [self getPlainLongSize:[array count]];
     }
-    size += [self getPlainLongSize:0]; //wtf??
+    size += [self getPlainLongSize:0];
     return size;
 }
 
@@ -206,10 +206,15 @@
                  withSelector:(SEL)deserializeFunc
                      andParam:(id)param
                        target:(id)target {
-    long long size;
+    int64_t size;
     avro_binary_encoding.read_long(reader, &size);
     NSMutableArray *array = [NSMutableArray arrayWithCapacity:size];
-    if (size > 0 && [(target ? target : self) respondsToSelector:deserializeFunc]) {
+    if (size != 0 && [(target ? target : self) respondsToSelector:deserializeFunc]) {
+        if (size < 0) {
+            int64_t temp;
+            size *= (-1);
+            avro_binary_encoding.read_long(reader, &temp);
+        }
         __unsafe_unretained id parameter = param;
         NSMethodSignature *signature = [(target ? target : self) methodSignatureForSelector:deserializeFunc];
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
@@ -227,6 +232,8 @@
             [invocation getReturnValue:&object];
             [array addObject:object];
         }
+        
+        avro_binary_encoding.read_long(reader, &size);
     }
     return array;
 }

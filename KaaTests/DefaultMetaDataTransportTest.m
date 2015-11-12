@@ -41,7 +41,7 @@
     [verifyCount(clientState, times(1)) profileHash];
     [verifyCount(properties, times(1)) sdkToken];
     
-    XCTAssertEqualObjects([NSNumber numberWithInt:5], request.timeout.data);
+    XCTAssertEqualObjects([NSNumber numberWithLong:5], request.timeout.data);
 }
 
 #pragma mark - Supporting methods

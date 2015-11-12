@@ -31,7 +31,7 @@
     
     NSData *serialized = [self.converter toBytes:state];
     
-    TopicState *deserializedState = [self.converter fromBytes:serialized object:[TopicState new]];
+    TopicState *deserializedState = (TopicState *)[self.converter fromBytes:serialized object:[TopicState new]];
     
     XCTAssertTrue([state.topicId isEqualToString:deserializedState.topicId]);
     XCTAssertEqual(state.seqNumber, deserializedState.seqNumber);
@@ -43,7 +43,8 @@
     
     serialized = [self.converter toBytes:command];
     
-    SubscriptionCommand *deserializedCommand = [self.converter fromBytes:serialized object:[SubscriptionCommand new]];
+    SubscriptionCommand *deserializedCommand = (SubscriptionCommand *)[self.converter fromBytes:serialized
+                                                                                         object:[SubscriptionCommand new]];
     
     XCTAssertTrue([command.topicId isEqualToString:deserializedCommand.topicId]);
     XCTAssertEqual(command.command, deserializedCommand.command);
@@ -55,7 +56,8 @@
     
     serialized = [self.converter toBytes:notification];
     
-    UserAttachNotification *deserializedNotification = [self.converter fromBytes:serialized object:[UserAttachNotification new]];
+    UserAttachNotification *deserializedNotification = (UserAttachNotification *)[self.converter fromBytes:serialized
+                                                                                                    object:[UserAttachNotification new]];
     
     XCTAssertTrue([notification.userExternalId isEqualToString:deserializedNotification.userExternalId]);
     XCTAssertTrue([notification.endpointAccessToken isEqualToString:deserializedNotification.endpointAccessToken]);
@@ -72,7 +74,8 @@
     
     NSData *serialized = [self.converter toBytes:response];
     
-    UserAttachResponse *deserializedResponse = [self.converter fromBytes:serialized object:[UserAttachResponse new]];
+    UserAttachResponse *deserializedResponse = (UserAttachResponse *)[self.converter fromBytes:serialized
+                                                                                        object:[UserAttachResponse new]];
     
     XCTAssertEqual(response.result, deserializedResponse.result);
     XCTAssertEqual(response.errorCode.branch, deserializedResponse.errorCode.branch);
@@ -103,7 +106,7 @@
     
     NSData *serialized = [self.converter toBytes:request];
     
-    LogSyncRequest *deserializedRequest = [self.converter fromBytes:serialized object:[LogSyncRequest new]];
+    LogSyncRequest *deserializedRequest = (LogSyncRequest *)[self.converter fromBytes:serialized object:[LogSyncRequest new]];
     XCTAssertEqual(request.requestId, deserializedRequest.requestId);
     
 }

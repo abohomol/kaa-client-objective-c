@@ -130,9 +130,4 @@
     return [self.properties defaultConfigData];
 }
 
-- (KAAConfiguration *)getConfiguration {
-    [NSException raise:NSInternalInconsistencyException format:@"Not implemented in abstract class!"];
-    return nil;
-}
-
 @end

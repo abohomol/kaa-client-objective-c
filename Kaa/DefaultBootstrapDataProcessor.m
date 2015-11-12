@@ -56,7 +56,7 @@
             return;
         }
         
-        SyncResponse *list = [self.responseConverter fromBytes:data object:[[SyncResponse alloc] init]];
+        SyncResponse *list = (SyncResponse *)[self.responseConverter fromBytes:data object:[[SyncResponse alloc] init]];
         DDLogVerbose(@"%@ Received OperationsServerList response: %@", TAG, list);
         [self.btTransport onResolveResponse:list];
     }

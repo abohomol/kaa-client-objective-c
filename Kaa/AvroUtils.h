@@ -11,11 +11,12 @@
 #import "io.h"
 #import "encoding.h"
 
-@protocol Avro <NSObject>
+@protocol Avro
 
 - (void)serialize:(avro_writer_t)writer;
 - (void)deserialize:(avro_reader_t)reader;
 - (size_t)getSize;
++ (NSString *)FQN;
 
 @end
 

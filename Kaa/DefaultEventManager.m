@@ -92,7 +92,9 @@
                 event.seqNum = -1;
                 event.eventClassFQN = eventFQN;
                 event.eventData = [NSData dataWithData:data];
-                event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
+                if (target) {
+                    event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
+                }
                 [events addObject:event];
             } else {
                 DDLogWarn(@"%@ Transaction with id %@ is missing. Ignoring event.", TAG, transactionId);
@@ -105,7 +107,9 @@
             event.seqNum = [self.state getAndIncrementEventSequenceNumber];
             event.eventClassFQN = eventFQN;
             event.eventData = [NSData dataWithData:data];
-            event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
+            if (target) {
+                event.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_0 andData:target];
+            }
             [self.currentEvents addObject:event];
         }
         
