@@ -114,7 +114,7 @@ static const uint8_t remotePublicKeyIdentifier[] = "org.kaaproject.kaa.remotepub
                                 cipherBuffer,
                                 &cipherBufferSize);
     
-    if (sessionKey != noErr) {
+    if (sanityCheck != noErr) {
         DDLogError(@"%@ Error encrypting, OSStatus: %i", TAG, (int)sanityCheck);
     }
     
