@@ -614,6 +614,7 @@ uint8_t buffer[1024];
                 [self.channel.messageFactory.framer pushBytes:[NSMutableData dataWithBytes:buffer length:read]];
             } else if (read == -1) {
                 DDLogInfo(@"%@ Channel [%@] received end of stream", TAG, [self.channel getId]);
+                [self.channel onServerFailed];
             }
         }
         @catch (NSException *ex) {
