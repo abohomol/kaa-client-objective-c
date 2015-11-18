@@ -496,6 +496,8 @@
             DDLogInfo(@"%@ Failed to find operation server for channel %@ type %@",
                       TAG, [channel getId], [channel getTransportProtocolId]);
         }
+    } else {
+        DDLogDebug(@"%@ List of servers is empty for channel %@ type %@", TAG, [channel getId], [channel getTransportProtocolId]);
     }
 }
 
