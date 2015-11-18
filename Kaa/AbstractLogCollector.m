@@ -221,8 +221,4 @@
     });
 }
 
-- (void)addLogRecord:(KAALog *)record {
-    [NSException raise:NSInternalInconsistencyException format:@"Not implemented in abstract class"];
-}
-
 @end
