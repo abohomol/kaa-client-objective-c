@@ -225,24 +225,24 @@ typedef enum {
         
         if (self.socket) {
             DDLogInfo(@"%@ Channel [%@]: closing current connection", TAG, [self getId]);
-        }
-        @try {
-            [self sendDisconnect];
-        }
-        @catch (NSException *ex) {
-            DDLogError(@"%@ Failed to send Disconnect to server: %@. Reason: %@", TAG, ex.name, ex.reason);
-        }
-        @finally {
             @try {
-                [self.socket close];
+                [self sendDisconnect];
             }
-            @catch (NSException *exception) {
-                DDLogError(@"%@ Failed to close socket: %@. Reason: %@", TAG, exception.name, exception.reason);
+            @catch (NSException *ex) {
+                DDLogError(@"%@ Failed to send Disconnect to server: %@. Reason: %@", TAG, ex.name, ex.reason);
             }
             @finally {
-                self.socket = nil;
-                [self.messageFactory.framer flush];
-                self.channelState = CHANNEL_STATE_CLOSED;
+                @try {
+                    [self.socket close];
+                }
+                @catch (NSException *exception) {
+                    DDLogError(@"%@ Failed to close socket: %@. Reason: %@", TAG, exception.name, exception.reason);
+                }
+                @finally {
+                    self.socket = nil;
+                    [self.messageFactory.framer flush];
+                    self.channelState = CHANNEL_STATE_CLOSED;
+                }
             }
         }
     }
