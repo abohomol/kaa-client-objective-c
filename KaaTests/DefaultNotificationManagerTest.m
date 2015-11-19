@@ -20,6 +20,7 @@
 #import "AvroBytesConverter.h"
 #import "EndpointGen.h"
 #import "TestsHelper.h"
+#import "KAANotification.h"
 
 @interface DefaultNotificationManagerTest : XCTestCase <NotificationTopicListDelegate>
 
