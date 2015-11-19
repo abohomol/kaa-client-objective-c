@@ -207,7 +207,7 @@
 }
 
 - (EndpointKeyHash *)endpointKeyHash {
-    if (!self.endpointKeyHash) {
+    if (!_endpointKeyHash) {
         
         //to ensure key pair generated
         [self getOrGenerateKeyPair];
@@ -216,7 +216,7 @@
         NSString *base64Str = [[NSString alloc] initWithData:[self.base64 encodeBase64:publicKeyHash.data] encoding:NSUTF8StringEncoding];
         _endpointKeyHash = [[EndpointKeyHash alloc] initWithKeyHash:base64Str];
     }
-    return self.endpointKeyHash;
+    return _endpointKeyHash;
 }
 
 - (int32_t)appStateSequenceNumber {
