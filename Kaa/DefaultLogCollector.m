@@ -43,6 +43,8 @@
         @catch (NSException *exception) {
             DDLogWarn(@"%@ Can't serialize log record: %@", TAG, record);
         }
+        
+        [weakSelf uploadIfNeeded];
     }];
 }
 
