@@ -74,7 +74,7 @@ typedef enum {
 
 - (void)onServerFailed;
 - (void)closeConnection;
-- (void)sendFragme:(KAAMqttFrame *)frame;
+- (void)sendFrame:(KAAMqttFrame *)frame;
 - (void)sendPingRequest;
 - (void)sendDisconnect;
 - (void)sendKaaSyncRequest:(NSDictionary *)types; //<TransportType, ChannelDirection> as key-value
@@ -175,7 +175,7 @@ typedef enum {
     }
 }
 
-- (void)sendFragme:(KAAMqttFrame *)frame {
+- (void)sendFrame:(KAAMqttFrame *)frame {
     if (self.socket) {
         @synchronized(self.socket) {
             [self.socket.output write:[[frame getFrame] bytes] maxLength:[frame getFrame].length];
@@ -185,19 +185,19 @@ typedef enum {
 
 - (void)sendPingRequest {
     DDLogDebug(@"%@ Sending PinRequest from channel: %@", TAG, [self getId]);
-    [self sendFragme:[[KAATcpPingRequest alloc] init]];
+    [self sendFrame:[[KAATcpPingRequest alloc] init]];
 }
 
 - (void)sendDisconnect {
     DDLogDebug(@"%@ Sending Disconnect from channel: %@", TAG, [self getId]);
-    [self sendFragme:[[KAATcpDisconnect alloc] initWithDisconnectReason:DISCONNECT_REASON_NONE]];
+    [self sendFrame:[[KAATcpDisconnect alloc] initWithDisconnectReason:DISCONNECT_REASON_NONE]];
 }
 
 - (void)sendKaaSyncRequest:(NSDictionary *)types {
     DDLogDebug(@"%@ Sending KaaSync from channel: %@", TAG, [self getId]);
     NSData *body = [self.multiplexer compileRequest:types];
     NSData *requestBodyEncoded = [self.encDec encodeData:body];
-    [self sendFragme:[[KAATcpSyncRequest alloc] initWithAvro:requestBodyEncoded zipped:NO encypted:YES]];
+    [self sendFrame:[[KAATcpSyncRequest alloc] initWithAvro:requestBodyEncoded zipped:NO encypted:YES]];
 }
 
 - (void)sendConnect {
@@ -206,7 +206,7 @@ typedef enum {
     NSData *requestBodyEncoded = [self.encDec encodeData:body];
     NSData *sessionKey = [self.encDec getEncodedSessionKey];
     NSData *signature = [self.encDec sign:sessionKey];
-    [self sendFragme:[[KAATcpConnect alloc] initWithAlivePeriod:CHANNEL_TIMEOUT
+    [self sendFrame:[[KAATcpConnect alloc] initWithAlivePeriod:CHANNEL_TIMEOUT
                                                  nextProtocolId:KAA_PLATFORM_PROTOCOL_AVRO_ID
                                                   aesSessionKey:sessionKey
                                                     syncRequest:requestBodyEncoded
