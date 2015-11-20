@@ -16,10 +16,9 @@
 @implementation KAASocketTest
 
 - (void)testExample {
-    KAASocket *socket = [KAASocket openWithHost:@"localhost" andPort:8080];
+    KAASocket *socket = [KAASocket socketWithHost:@"localhost" andPort:8080];
     XCTAssertNotNil(socket.input);
     XCTAssertNotNil(socket.output);
-    [socket close];
 }
 
 @end

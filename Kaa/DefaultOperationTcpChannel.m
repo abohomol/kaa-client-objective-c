@@ -54,7 +54,7 @@ typedef enum {
 
 @end
 
-@interface DefaultOperationTcpChannel () <ConnAckDelegate,PingResponseDelegate,SyncResponseDelegate,DisconnectDelegate>
+@interface DefaultOperationTcpChannel () <ConnAckDelegate,PingResponseDelegate,SyncResponseDelegate,DisconnectDelegate,NSStreamDelegate>
 
 @property (nonatomic,strong) NSDictionary *SUPPORTED_TYPES; //<TransportType,ChannelDirection> as key-value
 @property (nonatomic,strong) IPTransportInfo *currentServer;
@@ -258,6 +258,20 @@ typedef enum {
             DDLogInfo(@"%@ Channel [%@]: opening connection to server %@", TAG, [self getId], self.currentServer);
             self.isOpenConnectionScheduled = NO;
             self.socket = [self createSocket];
+           
+            __weak typeof(self) weakSelf = self;
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [weakSelf.socket.input setDelegate:weakSelf];
+                [weakSelf.socket.output setDelegate:weakSelf];
+                
+                [weakSelf.socket.input scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+                [weakSelf.socket.output scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
+                
+                [weakSelf.socket.input open];
+                [weakSelf.socket.output open];
+            });
+            
             [self sendConnect];
             [self scheduleReadTask:self.socket];
             [self schedulePingTask];
@@ -270,8 +284,14 @@ typedef enum {
     }
 }
 
+- (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
+    if (eventCode == NSStreamEventErrorOccurred || eventCode == NSStreamEventEndEncountered) {
+        [self onServerFailed];
+    }
+}
+
 - (KAASocket *)createSocket {
-    return [KAASocket openWithHost:[self.currentServer getHost] andPort:[self.currentServer getPort]];
+    return [KAASocket socketWithHost:[self.currentServer getHost] andPort:[self.currentServer getPort]];
 }
 
 - (void)onServerFailed {
@@ -608,13 +628,15 @@ uint8_t buffer[1024];
     }
     while (!self.isCancelled) {
         @try {
-            NSInteger read = [self.socket.input read:buffer maxLength:sizeof(buffer)];
+            long read = [self.socket.input read:buffer maxLength:sizeof(buffer)];
             if (read > 0) {
-                DDLogVerbose(@"%@ Read %li bytes from input stream", TAG, (long)read);
+                DDLogVerbose(@"%@ Read %li bytes from input stream", TAG, read);
                 [self.channel.messageFactory.framer pushBytes:[NSMutableData dataWithBytes:buffer length:read]];
             } else if (read == -1) {
                 DDLogInfo(@"%@ Channel [%@] received end of stream", TAG, [self.channel getId]);
-                [self.channel onServerFailed];
+                if (!self.isCancelled) {
+                    [self.channel onServerFailed];
+                }
             }
         }
         @catch (NSException *ex) {
@@ -622,6 +644,7 @@ uint8_t buffer[1024];
                       TAG, [self.channel getId], ex.name, ex.reason);
             if (self.isCancelled) {
                 DDLogWarn(@"%@ Socket connection for channel [%@] was interrupted", TAG, [self.channel getId]);
+                return;
             }
             
             if ([self.socket isEqual:self.channel.socket]) {

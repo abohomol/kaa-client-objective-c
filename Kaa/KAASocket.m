@@ -17,7 +17,7 @@
 
 @implementation KAASocket
 
-+ (instancetype)openWithHost:(NSString *)host andPort:(int)port {
++ (instancetype)socketWithHost:(NSString *)host andPort:(int)port {
     KAASocket *socket = [[KAASocket alloc] init];
     socket.host = host;
     socket.port = port;
@@ -26,9 +26,12 @@
     CFStreamCreatePairWithSocketToHost(NULL, (__bridge CFStringRef)host, port, &readStream, &writeStream);
     socket.input = (__bridge NSInputStream *)readStream;
     socket.output = (__bridge NSOutputStream *)writeStream;
-    [socket.input open];
-    [socket.output open];
     return socket;
+}
+
+- (void)open {
+    [self.input open];
+    [self.output open];
 }
 
 - (void)close {
