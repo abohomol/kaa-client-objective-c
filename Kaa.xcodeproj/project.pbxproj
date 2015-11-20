@@ -341,6 +341,11 @@
 		B87A74351B95BBDC0052858F /* NSData+Conversion.m in Sources */ = {isa = PBXBuildFile; fileRef = B87A74331B95BBDC0052858F /* NSData+Conversion.m */; };
 		B87D498E1B94AF0300AD7CFC /* MessageEncoderDecoder.h in Headers */ = {isa = PBXBuildFile; fileRef = B87D498C1B94AF0300AD7CFC /* MessageEncoderDecoder.h */; };
 		B87D498F1B94AF0300AD7CFC /* MessageEncoderDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = B87D498D1B94AF0300AD7CFC /* MessageEncoderDecoder.m */; };
+		B87DC0531BFF635D001799D7 /* ConfigurationGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B897CEF81BFF38A10088742B /* ConfigurationGen.h */; };
+		B87DC0541BFF635D001799D7 /* EventGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B897CEFA1BFF38A10088742B /* EventGen.h */; };
+		B87DC0551BFF635D001799D7 /* LogGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B897CEFC1BFF38A10088742B /* LogGen.h */; };
+		B87DC0561BFF635D001799D7 /* NotificationGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B897CEFE1BFF38A10088742B /* NotificationGen.h */; };
+		B87DC0571BFF635D001799D7 /* ProfileGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B897CF001BFF38A10088742B /* ProfileGen.h */; };
 		B87FCA651BDA479D0016A721 /* KAAMqttFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA631BDA479D0016A721 /* KAAMqttFrame.h */; };
 		B87FCA661BDA479D0016A721 /* KAAMqttFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA641BDA479D0016A721 /* KAAMqttFrame.m */; };
 		B87FCA691BDA5D1D0016A721 /* KAAFramer.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA671BDA5D1D0016A721 /* KAAFramer.h */; };
@@ -389,6 +394,16 @@
 		B88D00BE1BA88CAD002E0144 /* DefaultProfileTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D00BC1BA88CAD002E0144 /* DefaultProfileTransport.m */; };
 		B88D00C11BA8AE9F002E0144 /* DefaultEventTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B88D00BF1BA8AE9F002E0144 /* DefaultEventTransport.h */; };
 		B88D00C21BA8AE9F002E0144 /* DefaultEventTransport.m in Sources */ = {isa = PBXBuildFile; fileRef = B88D00C01BA8AE9F002E0144 /* DefaultEventTransport.m */; };
+		B897CF021BFF38A10088742B /* ConfigurationGen.h in Headers */ = {isa = PBXBuildFile; fileRef = B897CEF81BFF38A10088742B /* ConfigurationGen.h */; };
+		B897CF031BFF38A10088742B /* ConfigurationGen.m in Sources */ = {isa = PBXBuildFile; fileRef = B897CEF91BFF38A10088742B /* ConfigurationGen.m */; };
+		B897CF041BFF38A10088742B /* EventGen.h in Headers */ = {isa = PBXBuildFile; fileRef = B897CEFA1BFF38A10088742B /* EventGen.h */; };
+		B897CF051BFF38A10088742B /* EventGen.m in Sources */ = {isa = PBXBuildFile; fileRef = B897CEFB1BFF38A10088742B /* EventGen.m */; };
+		B897CF061BFF38A10088742B /* LogGen.h in Headers */ = {isa = PBXBuildFile; fileRef = B897CEFC1BFF38A10088742B /* LogGen.h */; };
+		B897CF071BFF38A10088742B /* LogGen.m in Sources */ = {isa = PBXBuildFile; fileRef = B897CEFD1BFF38A10088742B /* LogGen.m */; };
+		B897CF081BFF38A10088742B /* NotificationGen.h in Headers */ = {isa = PBXBuildFile; fileRef = B897CEFE1BFF38A10088742B /* NotificationGen.h */; };
+		B897CF091BFF38A10088742B /* NotificationGen.m in Sources */ = {isa = PBXBuildFile; fileRef = B897CEFF1BFF38A10088742B /* NotificationGen.m */; };
+		B897CF0A1BFF38A10088742B /* ProfileGen.h in Headers */ = {isa = PBXBuildFile; fileRef = B897CF001BFF38A10088742B /* ProfileGen.h */; };
+		B897CF0B1BFF38A10088742B /* ProfileGen.m in Sources */ = {isa = PBXBuildFile; fileRef = B897CF011BFF38A10088742B /* ProfileGen.m */; };
 		B8A13B051BAFE47A00265729 /* DefaultBootstrapDataProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A13B031BAFE47A00265729 /* DefaultBootstrapDataProcessor.h */; };
 		B8A13B061BAFE47A00265729 /* DefaultBootstrapDataProcessor.m in Sources */ = {isa = PBXBuildFile; fileRef = B8A13B041BAFE47A00265729 /* DefaultBootstrapDataProcessor.m */; };
 		B8A13B091BAFE93A00265729 /* DefaultOperationDataProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = B8A13B071BAFE93A00265729 /* DefaultOperationDataProcessor.h */; };
@@ -485,6 +500,11 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B87DC0531BFF635D001799D7 /* ConfigurationGen.h in Copy Files */,
+				B87DC0541BFF635D001799D7 /* EventGen.h in Copy Files */,
+				B87DC0551BFF635D001799D7 /* LogGen.h in Copy Files */,
+				B87DC0561BFF635D001799D7 /* NotificationGen.h in Copy Files */,
+				B87DC0571BFF635D001799D7 /* ProfileGen.h in Copy Files */,
 				B8EC97931BF0992100F4B4CC /* KaaDefaults.h in Copy Files */,
 				B86212401BE3CEAB005C5FE7 /* DefaultKaaPlatformContext.h in Copy Files */,
 				B862123F1BE3CE77005C5FE7 /* EndpointGen.h in Copy Files */,
@@ -884,6 +904,16 @@
 		B88D00BC1BA88CAD002E0144 /* DefaultProfileTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileTransport.m; sourceTree = "<group>"; };
 		B88D00BF1BA8AE9F002E0144 /* DefaultEventTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEventTransport.h; sourceTree = "<group>"; };
 		B88D00C01BA8AE9F002E0144 /* DefaultEventTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEventTransport.m; sourceTree = "<group>"; };
+		B897CEF81BFF38A10088742B /* ConfigurationGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConfigurationGen.h; path = gen/ConfigurationGen.h; sourceTree = "<group>"; };
+		B897CEF91BFF38A10088742B /* ConfigurationGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConfigurationGen.m; path = gen/ConfigurationGen.m; sourceTree = "<group>"; };
+		B897CEFA1BFF38A10088742B /* EventGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventGen.h; path = gen/EventGen.h; sourceTree = "<group>"; };
+		B897CEFB1BFF38A10088742B /* EventGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventGen.m; path = gen/EventGen.m; sourceTree = "<group>"; };
+		B897CEFC1BFF38A10088742B /* LogGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LogGen.h; path = gen/LogGen.h; sourceTree = "<group>"; };
+		B897CEFD1BFF38A10088742B /* LogGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LogGen.m; path = gen/LogGen.m; sourceTree = "<group>"; };
+		B897CEFE1BFF38A10088742B /* NotificationGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NotificationGen.h; path = gen/NotificationGen.h; sourceTree = "<group>"; };
+		B897CEFF1BFF38A10088742B /* NotificationGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NotificationGen.m; path = gen/NotificationGen.m; sourceTree = "<group>"; };
+		B897CF001BFF38A10088742B /* ProfileGen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ProfileGen.h; path = gen/ProfileGen.h; sourceTree = "<group>"; };
+		B897CF011BFF38A10088742B /* ProfileGen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ProfileGen.m; path = gen/ProfileGen.m; sourceTree = "<group>"; };
 		B8A0B5111BEF65FA00105DFE /* KaaDefaults.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KaaDefaults.h; sourceTree = "<group>"; };
 		B8A13B031BAFE47A00265729 /* DefaultBootstrapDataProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultBootstrapDataProcessor.h; sourceTree = "<group>"; };
 		B8A13B041BAFE47A00265729 /* DefaultBootstrapDataProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultBootstrapDataProcessor.m; sourceTree = "<group>"; };
@@ -1409,6 +1439,16 @@
 		B86D7F091BA2BD3E00563592 /* gen */ = {
 			isa = PBXGroup;
 			children = (
+				B897CEF81BFF38A10088742B /* ConfigurationGen.h */,
+				B897CEF91BFF38A10088742B /* ConfigurationGen.m */,
+				B897CEFA1BFF38A10088742B /* EventGen.h */,
+				B897CEFB1BFF38A10088742B /* EventGen.m */,
+				B897CEFC1BFF38A10088742B /* LogGen.h */,
+				B897CEFD1BFF38A10088742B /* LogGen.m */,
+				B897CEFE1BFF38A10088742B /* NotificationGen.h */,
+				B897CEFF1BFF38A10088742B /* NotificationGen.m */,
+				B897CF001BFF38A10088742B /* ProfileGen.h */,
+				B897CF011BFF38A10088742B /* ProfileGen.m */,
 				B86D1C1D1BE3795E000A0073 /* EndpointGen.h */,
 				B86D1C1E1BE3795E000A0073 /* EndpointGen.m */,
 				B85447E81BD51ECA000889BF /* KAAConfiguration.h */,
@@ -1754,11 +1794,13 @@
 				B8B4CDC51B8215C4007FE20D /* KAABase64.h in Headers */,
 				B8C8BD3B1B83236400D2C016 /* GenericTransportInfo.h in Headers */,
 				B88836361BA1F15000ACAB4F /* LogRecord.h in Headers */,
+				B897CF061BFF38A10088742B /* LogGen.h in Headers */,
 				391A91A01BBD6CCD00DBA851 /* SingleThreadExecutorContext.h in Headers */,
 				B8E5A0BE1BDD9B31008E9066 /* KAATcpDelegates.h in Headers */,
 				B81161241B4BCFA100C4E0C6 /* AccessPointCommand.h in Headers */,
 				B856EFB31B9C82CC00C065D9 /* KaaClientPropertiesState.h in Headers */,
 				B8B8ED271BA2D43C0067BC4C /* DefaultChannelManager.h in Headers */,
+				B897CF041BFF38A10088742B /* EventGen.h in Headers */,
 				B824A2181B1461DC0076C753 /* TransportProtocolId.h in Headers */,
 				B87A74301B95AF120052858F /* NSData+CommonCrypto.h in Headers */,
 				B803F8F11B7A5C86009C2C28 /* ConfigurationDeserializer.h in Headers */,
@@ -1772,6 +1814,7 @@
 				B87FCA751BDA71F70016A721 /* KAATcpConnect.h in Headers */,
 				B85447F01BD51ECA000889BF /* KAAConfiguration.h in Headers */,
 				B88836201BA0930600ACAB4F /* AbstractKaaClient.h in Headers */,
+				B897CF021BFF38A10088742B /* ConfigurationGen.h in Headers */,
 				B8DBE3541BB073040036058B /* DefaultOperationHttpChannel.h in Headers */,
 				B87FCA961BDBB8CA0016A721 /* KAAMessageFactory.h in Headers */,
 				B81161221B4BCCEC00C4E0C6 /* LogUploadStrategy.h in Headers */,
@@ -1797,6 +1840,7 @@
 				B8D47D881B4FF8490003BAF3 /* AvroBytesConverter.h in Headers */,
 				B81161131B4BBB3D00C4E0C6 /* ConfigurationStorage.h in Headers */,
 				B8A8DF961B9F468B002CEF3E /* MetaDataTransport.h in Headers */,
+				B897CF081BFF38A10088742B /* NotificationGen.h in Headers */,
 				B8FBD9F41B9E02DB009A2BA3 /* AbstractHttpClient.h in Headers */,
 				B840CF351B172016001D0F74 /* EndpointAccessToken.h in Headers */,
 				B88836391BA1F1FD00ACAB4F /* LogCollector.h in Headers */,
@@ -1837,6 +1881,7 @@
 				B81161261B4BCFF600C4E0C6 /* LogFailoverCommand.h in Headers */,
 				B87629971B8CCFD5006AD5EF /* DefaultEventManager.h in Headers */,
 				B844623C1BB5C377009826FC /* KaaLogging.h in Headers */,
+				B897CF0A1BFF38A10088742B /* ProfileGen.h in Headers */,
 				B85447F41BD51ECA000889BF /* KAANotification.h in Headers */,
 				B8E68AA31B8E241A00EE1065 /* NotificationTransport.h in Headers */,
 				B856C00C1B9360EB00A9F65D /* NSMutableArray+Shuffling.h in Headers */,
@@ -2032,6 +2077,7 @@
 				B840CF361B172016001D0F74 /* EndpointAccessToken.m in Sources */,
 				B88D00C21BA8AE9F002E0144 /* DefaultEventTransport.m in Sources */,
 				B8F14E261BD8E200001D1B02 /* BaseKaaClient.m in Sources */,
+				B897CF071BFF38A10088742B /* LogGen.m in Sources */,
 				B856EFB41B9C82CC00C065D9 /* KaaClientPropertiesState.m in Sources */,
 				391A91A11BBD6CCD00DBA851 /* SingleThreadExecutorContext.m in Sources */,
 				B8807C1D1BA33B0F00F78BFC /* BlockingQueue.m in Sources */,
@@ -2052,6 +2098,7 @@
 				B87D498F1B94AF0300AD7CFC /* MessageEncoderDecoder.m in Sources */,
 				B88836291BA09A5F00ACAB4F /* TransportContext.m in Sources */,
 				39AEB27F1BBA6A3E0045FB32 /* RecordCountWithTimeLimitLogUploadStrategy.m in Sources */,
+				B897CF091BFF38A10088742B /* NotificationGen.m in Sources */,
 				B88836331BA17C0100ACAB4F /* DefaultUserTransport.m in Sources */,
 				B87A74311B95AF120052858F /* NSData+CommonCrypto.m in Sources */,
 				B8DBE35F1BB1448D0036058B /* DefaultHttpClient.m in Sources */,
@@ -2073,11 +2120,13 @@
 				B81935C41B15D0660053486A /* EndpointObjectHash.m in Sources */,
 				B88D00B21BA87F8D002E0144 /* DefaultRedirectionTransport.m in Sources */,
 				B8A13B121BB0198F00265729 /* HttpRequestCreator.m in Sources */,
+				B897CF031BFF38A10088742B /* ConfigurationGen.m in Sources */,
 				B85447F31BD51ECA000889BF /* KAALog.m in Sources */,
 				B824A2261B1489FE0076C753 /* ConnectivityChecker.m in Sources */,
 				B86D1C201BE3795E000A0073 /* EndpointGen.m in Sources */,
 				B84462351BB5BAD4009826FC /* io.c in Sources */,
 				39E404D61BBD0FF500A5B833 /* SimpleExecutorContext.m in Sources */,
+				B897CF0B1BFF38A10088742B /* ProfileGen.m in Sources */,
 				B87FCA761BDA71F70016A721 /* KAATcpConnect.m in Sources */,
 				B83CCD081B8B3F96003D4B0B /* DefaultLogCollector.m in Sources */,
 				B8B8ED281BA2D43C0067BC4C /* DefaultChannelManager.m in Sources */,
@@ -2090,6 +2139,7 @@
 				B83CCD1A1B8CAB3B003D4B0B /* TransactionId.m in Sources */,
 				B863B32C1B3D7B3D00E58F50 /* AvroUtils.m in Sources */,
 				B87A74351B95BBDC0052858F /* NSData+Conversion.m in Sources */,
+				B897CF051BFF38A10088742B /* EventGen.m in Sources */,
 				B8DBE3551BB073040036058B /* DefaultOperationHttpChannel.m in Sources */,
 				B87FCA861BDBAEE00016A721 /* KAATcpSyncResponse.m in Sources */,
 				B8B8ED241BA2D0640067BC4C /* DefaultMetaDataTransport.m in Sources */,
