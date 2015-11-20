@@ -104,7 +104,7 @@
             currentResolutionTime = pointResolution.resolutionTime;
             if (pointResolution.accessPointId == [connectionInfo accessPointId]
                 && pointResolution.resolution
-                && ([[NSDate alloc] timeIntervalSince1970] * 1000) < currentResolutionTime) {
+                && ([[NSDate date] timeIntervalSince1970] * 1000) < currentResolutionTime) {
                 DDLogDebug(@"%@ Resolution is in progress for %@ server", TAG, connectionInfo);
                 return;
             } else if (pointResolution.resolution) {
@@ -206,7 +206,7 @@
                                             from:self.timeUnit
                                               to:TIME_UNIT_MILLISECONDS];
                 if (btResolution) {
-                    btResolution.resolutionTime = [[NSDate alloc] timeIntervalSince1970] * 1000 + period;
+                    btResolution.resolutionTime = [[NSDate date] timeIntervalSince1970] * 1000 + period;
                 }
                 return [[FailoverDecision alloc] initWithFailoverAction:FAILOVER_ACTION_RETRY
                                               retryPeriodInMilliseconds:period];
@@ -220,7 +220,7 @@
                                             from:self.timeUnit
                                               to:TIME_UNIT_MILLISECONDS];
                 if (btResolution) {
-                    btResolution.resolutionTime = [[NSDate alloc] timeIntervalSince1970] * 1000 + period;
+                    btResolution.resolutionTime = [[NSDate date] timeIntervalSince1970] * 1000 + period;
                 }
                 return [[FailoverDecision alloc] initWithFailoverAction:FAILOVER_ACTION_USE_NEXT_BOOTSTRAP
                                               retryPeriodInMilliseconds:period];
@@ -231,7 +231,7 @@
                 serverTypeKey = [NSNumber numberWithInt:SERVER_BOOTSTRAP];
                 AccessPointIdResolution *btResolution = [self.resolutionProgressMap objectForKey:serverTypeKey];
                 if (btResolution) {
-                    btResolution.resolutionTime = [[NSDate alloc] timeIntervalSince1970] * 1000;
+                    btResolution.resolutionTime = [[NSDate date] timeIntervalSince1970] * 1000;
                 }
                 long period = [TimeUtils convert:self.bootstrapServersRetryPeriod
                                             from:self.timeUnit
@@ -248,7 +248,7 @@
                                             from:self.timeUnit
                                               to:TIME_UNIT_MILLISECONDS];
                 if (opResolution) {
-                    opResolution.resolutionTime = [[NSDate alloc] timeIntervalSince1970] * 1000 + period;
+                    opResolution.resolutionTime = [[NSDate date] timeIntervalSince1970] * 1000 + period;
                 }
                 return [[FailoverDecision alloc] initWithFailoverAction:FAILOVER_ACTION_RETRY
                                               retryPeriodInMilliseconds:period];

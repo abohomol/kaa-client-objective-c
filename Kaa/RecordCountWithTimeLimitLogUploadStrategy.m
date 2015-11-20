@@ -32,7 +32,7 @@
 {
     self = [super init];
     if (self) {
-        [self setLastUploadTime:[[NSDate alloc] timeIntervalSince1970] * 1000];
+        [self setLastUploadTime:[[NSDate date] timeIntervalSince1970] * 1000];
     }
     return self;
 }
@@ -48,7 +48,7 @@
 
 - (LogUploadStrategyDecision)checkUploadNeeded:(id<LogStorageStatus>)status {
     LogUploadStrategyDecision decision = LOG_UPLOAD_STRATEGY_DECISION_NOOP;
-    long currentTime = [[NSDate alloc] timeIntervalSince1970] * 1000;
+    long currentTime = [[NSDate date] timeIntervalSince1970] * 1000;
     long currentRecordCount = [status getRecordCount];
 
     if (currentRecordCount == self.countThreshold) {
