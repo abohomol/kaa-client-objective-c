@@ -9,6 +9,7 @@
 #import "KAATcpKaaSync.h"
 #import "KAATcpSyncResponse.h"
 #import "KAATcpSyncRequest.h"
+#import "KaaExceptions.h"
 
 #define KAASYNC_MESSAGE_TYPE_SHIFT 4
 
@@ -78,7 +79,7 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
     self.bufferPosition += sizeof(FIXED_HEADER_CONST);
     for (int i = 0; i < sizeof(FIXED_HEADER_CONST); i++) {
         if (header[i] != FIXED_HEADER_CONST[i]) {
-            [NSException raise:@"KaaTcpProtocolException" format:@"Kaatcp protocol version missmatch"];
+            [NSException raise:KaaTcpProtocolException format:@"Kaatcp protocol version missmatch"];
         }
     }
     
@@ -120,10 +121,10 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',KAAS
             }
             break;
         case KAA_SYNC_MESSAGE_TYPE_UNUSED:
-            [NSException raise:@"KaaTcpProtocolException" format:@"KaaSync Message type is incorrect"];
+            [NSException raise:KaaTcpProtocolException format:@"KaaSync Message type is incorrect"];
             break;
     }
-    [NSException raise:@"KaaTcpProtocolException" format:@"KaaSync Message type is incorrect"];
+    [NSException raise:KaaTcpProtocolException format:@"KaaSync Message type is incorrect"];
     return nil;
 }
 

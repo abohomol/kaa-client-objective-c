@@ -10,6 +10,7 @@
 #import <AFNetworking/AFNetworking.h>
 #import "CommonEPConstants.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"DefaultHttpClient >>>"
 
@@ -41,7 +42,7 @@
 - (NSData *)executeHttpRequest:(NSString *)uri entity:(NSDictionary *)entity verifyResponse:(BOOL)verifyResponse {
     if (self.isShutDown) {
         DDLogError(@"%@ Can't proceed with request because service is down: %@", TAG, uri);
-        [NSException raise:@"InterruptedException" format:@"Client is already down"];
+        [NSException raise:KaaInterruptedException format:@"Client is already down"];
         return nil;
     }
     
@@ -68,7 +69,7 @@
         result = [self getResponseBody:self.operation verify:verifyResponse];
     } else {
         DDLogError(@"%@ TransportException response status: %li", TAG, (long)statusCode);
-        [NSException raise:@"TransportException" format:@"%li", (long)statusCode];
+        [NSException raise:KaaTransportException format:@"%li", (long)statusCode];
     }
     self.operation = nil;
     return result;
@@ -94,7 +95,7 @@
 
 - (NSData *)getResponseBody:(AFHTTPRequestOperation *)response verify:(BOOL)verify {
     if (!response || !response.responseData) {
-        [NSException raise:@"IOException" format:@"Can't read message!"];
+        [NSException raise:KaaIOException format:@"Can't read message!"];
     }
     
     NSData *result = nil;
@@ -103,7 +104,7 @@
         DDLogVerbose(@"%@ %@", TAG, [headers description]);
         NSString *signatureHeader = [headers objectForKey:SIGNATURE_HEADER_NAME];
         if (!signatureHeader) {
-            [NSException raise:@"IOException" format:@"Can't verify message"];
+            [NSException raise:KaaIOException format:@"Can't verify message"];
         }
         
         NSData *signature = [signatureHeader dataUsingEncoding:NSUTF8StringEncoding];

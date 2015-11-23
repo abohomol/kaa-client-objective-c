@@ -8,6 +8,7 @@
 
 #import "KAAFramer.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"Framer >>>"
 
@@ -44,7 +45,7 @@
 
 - (int)pushBytes:(NSMutableData *)data {
     if (!data) {
-        [NSException raise:@"KaaTcpProtocolException" format:@"%@ Received nil data", TAG];
+        [NSException raise:KaaTcpProtocolException format:@"%@ Received nil data", TAG];
         return -1;
     }
     
@@ -97,7 +98,7 @@
             frame = [[KAATcpPingResponse alloc] init];
             break;
         default:
-            [NSException raise:@"KaaTcpProtocolException" format:@"Got incorrect messageType format: %i", type];
+            [NSException raise:KaaTcpProtocolException format:@"Got incorrect messageType format: %i", type];
             break;
     }
     return frame;

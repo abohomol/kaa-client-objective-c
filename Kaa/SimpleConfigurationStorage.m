@@ -9,6 +9,7 @@
 #import "SimpleConfigurationStorage.h"
 #import "NSData+Conversion.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"SimpleConfigurationStorage >>>"
 #define _8KB (1024 * 8)
@@ -63,7 +64,7 @@
         unsigned long long fileSize = [[self.fileManager attributesOfItemAtPath:self.path error:NULL] fileSize];
         configFile = [NSFileHandle fileHandleForReadingAtPath:self.path];
         if (!configFile) {
-            [NSException raise:@"UnableOpenFile" format:@"Failed to open configuration file"];
+            [NSException raise:KaaUnableOpenFile format:@"Failed to open configuration file"];
         }
         NSData *buffer = nil;
         do {

@@ -8,6 +8,7 @@
 
 #import "KAATcpConnect.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"Connect >>>"
 
@@ -163,7 +164,7 @@ static const char FIXED_HEADER_CONST[] = {0x00,0x06,'K','a','a','t','c','p',CONN
     self.bufferPosition += headerSize;
     for (int i = 0; i < headerSize; i++) {
         if (header[i] != FIXED_HEADER_CONST[i]) {
-            [NSException raise:@"KaaTcpProtocolException" format:@"Kaatcp protocol version missmatch"];
+            [NSException raise:KaaTcpProtocolException format:@"Kaatcp protocol version missmatch"];
         }
     }
 }

@@ -7,7 +7,7 @@
 //
 
 #import "AbstractHttpClient.h"
-
+#import "KaaExceptions.h"
 @interface AbstractHttpClient ()
 
 @property (nonatomic,strong) MessageEncoderDecoder *encoderDecoder;
@@ -53,7 +53,7 @@
     if (!self.verificationEnabled || [self.encoderDecoder verify:body withSignature:signature]) {
         return body;
     } else {
-        [NSException raise:@"SecurityException" format:@"Message can't be verified"];
+        [NSException raise:KaaSecurityException format:@"Message can't be verified"];
         return nil;
     }
 }
