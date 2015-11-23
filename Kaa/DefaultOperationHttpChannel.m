@@ -9,6 +9,7 @@
 #import "DefaultOperationHttpChannel.h"
 #import "HttpRequestCreator.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG         @"DefaultOperationHttpChannel >>>"
 #define CHANNEL_ID  @"default_operations_http_channel"
@@ -106,7 +107,7 @@
     @catch (NSException *ex) {
         DDLogError(@"%@ Failed to receive response from the operation: %@, reason: %@", TAG, ex.name, ex.reason);
         //TODO replace fckg strings with constants
-        if ([ex.name isEqualToString:@"TransportException"]) {
+        if ([ex.name isEqualToString:KaaTransportException]) {
             [self.opChannel connectionStateChanged:YES withStatus:[ex.reason intValue]];
 
         } else {
