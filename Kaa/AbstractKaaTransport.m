@@ -8,6 +8,7 @@
 
 #import "AbstractKaaTransport.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"AbstractKaaTransport >>>"
 
@@ -40,7 +41,7 @@
 - (void)syncByType:(TransportType)type ack:(BOOL)ack all:(BOOL)all {
     if (!self.channelManager) {
         DDLogError(@"%@ Channel manager is not set during sync for type %i", TAG, type);
-        [NSException raise:@"ChannelRuntimeException" format:@"Failed to find channel for transport %i", type];
+        [NSException raise:KaaChannelRuntimeException format:@"Failed to find channel for transport %i", type];
     }
     
     if (ack) {

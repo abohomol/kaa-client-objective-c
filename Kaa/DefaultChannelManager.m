@@ -12,6 +12,7 @@
 #import "TransportConnectionInfo.h"
 #import "FailoverDecision.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"DefaultChannelManager >>>"
 
@@ -65,7 +66,7 @@
     self = [super init];
     if (self) {
         if (!bootstrapMgr || !servers || [servers count] <= 0) {
-            [NSException raise:@"ChannelRuntimeException" format:@"Failed to create channel manager!"];
+            [NSException raise:KaaChannelRuntimeException format:@"Failed to create channel manager!"];
         }
         
         self.bootstrapManager = bootstrapMgr;
@@ -91,7 +92,7 @@
         
         if (channel) {
             if (![self useChannel:channel forType:type]) {
-                [NSException raise:@"KaaInvalidChannelException"
+                [NSException raise:KaaInvalidChannelException
                             format:@"Unsupported transport type %i for channel with ID: %@", type, [channel getId]];
             }
             if (self.isPaused) {
@@ -422,7 +423,7 @@
     id<KaaDataChannel> result = [self.upChannels objectForKey:[NSNumber numberWithInt:type]];
     if (!result || [[NSNull null] isEqual:result]) {
         DDLogError(@"%@ Failed to find channel for transport: [%i]", TAG, type);
-        [NSException raise:@"ChannelRuntimeException" format:@"Failed to find channel for transport: [%i]", type];
+        [NSException raise:KaaChannelRuntimeException format:@"Failed to find channel for transport: [%i]", type];
     }
     return result;
 }

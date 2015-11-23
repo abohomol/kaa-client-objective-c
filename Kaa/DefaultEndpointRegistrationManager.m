@@ -12,6 +12,7 @@
 #import "UserVerifierConstants.h"
 #include <stdlib.h>
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"DefaultEndpointRegistrationManager >>>"
 
@@ -121,7 +122,7 @@
     if (DEFAULT_USER_VERIFIER_TOKEN != nil) {
         [self attachUser:DEFAULT_USER_VERIFIER_TOKEN userExternalId:userExternalId userAccessToken:token delegate:delegate];
     } else {
-        [NSException raise:@"IllegalStateException" format:@"Default user verifier was not defined during SDK generation process!"];
+        [NSException raise:KaaIllegalStateException format:@"Default user verifier was not defined during SDK generation process!"];
     }
 }
 

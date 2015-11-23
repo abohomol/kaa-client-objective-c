@@ -9,6 +9,7 @@
 #import "Kaa.h"
 #import "KaaLogging.h"
 #import "BaseKaaClient.h"
+#import "KaaExceptions.h"
 
 #define TAG @"Kaa >>>"
 
@@ -24,7 +25,7 @@
     }
     @catch (NSException *exception) {
         DDLogError(@"%@ Failed to create Kaa client: %@. Reason: %@", TAG, exception.name, exception.reason);
-        [NSException raise:@"KaaInvalidConfigurationException" format:@"%@:%@", exception.name, exception.reason];
+        [NSException raise:KaaInvalidChannelException format:@"%@:%@", exception.name, exception.reason];
     }
 }
 

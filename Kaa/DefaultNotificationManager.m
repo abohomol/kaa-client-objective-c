@@ -10,6 +10,7 @@
 #import "NotificationCommon.h"
 #import "EndpointGen.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"DefaultNotificationManager >>>"
 
@@ -119,7 +120,7 @@
     Topic *topic = [self findTopicById:topicId];
     if (topic.subscriptionType != SUBSCRIPTION_TYPE_OPTIONAL_SUBSCRIPTION) {
         DDLogWarn(@"%@ Failed to subscribe: topic [%@] isn't optional", TAG, topicId);
-        [NSException raise:@"UnavailableTopic" format:@"Topic [%@] isn't optional", topicId];
+        [NSException raise:KaaUnavailableTopic format:@"Topic [%@] isn't optional", topicId];
     }
     
     [self updateSubscriptionInfo:topicId commandType:SUBSCRIPTION_COMMAND_TYPE_ADD];
@@ -135,7 +136,7 @@
         Topic *topic = [self findTopicById:topicId];
         if (topic.subscriptionType != SUBSCRIPTION_TYPE_OPTIONAL_SUBSCRIPTION) {
             DDLogWarn(@"%@ Failed to subscribe: topic [%@] isn't optional", TAG, topicId);
-            [NSException raise:@"UnavailableTopic" format:@"Topic [%@] isn't optional", topicId];
+            [NSException raise:KaaUnavailableTopic format:@"Topic [%@] isn't optional", topicId];
         }
         SubscriptionCommand *subscriptionCommand = [[SubscriptionCommand alloc] init];
         subscriptionCommand.topicId = topicId;
@@ -154,7 +155,7 @@
     Topic *topic = [self findTopicById:topicId];
     if (topic.subscriptionType != SUBSCRIPTION_TYPE_OPTIONAL_SUBSCRIPTION) {
         DDLogWarn(@"%@ Failed to unsubscribe: topic [%@] isn't optional", TAG, topicId);
-        [NSException raise:@"UnavailableTopic" format:@"Topic [%@] isn't optional", topicId];
+        [NSException raise:KaaUnavailableTopic format:@"Topic [%@] isn't optional", topicId];
     }
     
     [self updateSubscriptionInfo:topicId commandType:SUBSCRIPTION_COMMAND_TYPE_REMOVE];
@@ -170,7 +171,7 @@
         Topic *topic = [self findTopicById:topicId];
         if (topic.subscriptionType != SUBSCRIPTION_TYPE_OPTIONAL_SUBSCRIPTION) {
             DDLogWarn(@"%@ Failed to unsubscribe: topic [%@] isn't optional", TAG, topicId);
-            [NSException raise:@"UnavailableTopic" format:@"Topic [%@] isn't optional", topicId];
+            [NSException raise:KaaUnavailableTopic format:@"Topic [%@] isn't optional", topicId];
         }
         SubscriptionCommand *subscriptionCommand = [[SubscriptionCommand alloc] init];
         subscriptionCommand.topicId = topicId;
@@ -316,7 +317,7 @@
         Topic *topic = [self.topics objectForKey:topicId];
         if (!topic) {
             DDLogWarn(@"%@ Failed to find topic: [id:%@] is unknown", TAG, topicId);
-            [NSException raise:@"UnavailableTopic" format:@"Topic id [%@] is unknown", topicId];
+            [NSException raise:KaaUnavailableTopic format:@"Topic id [%@] is unknown", topicId];
         }
         return topic;
     }

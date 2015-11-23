@@ -12,6 +12,7 @@
 #import <CommonCrypto/CommonCryptor.h>
 #import "NSData+Conversion.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"KeyUtil >>>"
 
@@ -80,7 +81,7 @@ static const unsigned char _encodedRSAEncryptionOID[15] = {
         return [[KeyPair alloc] initWithPrivate:privateKeyRef andPublic:publicKeyRef];
     } else {
         DDLogError(@"%@ Failed to generate new key pair", TAG);
-        [NSException raise:@"KeyPairGenerationException" format:@"Failed to generate new key pair!"];
+        [NSException raise:KaaKeyPairGenerationException format:@"Failed to generate new key pair!"];
         return nil;
     }
     

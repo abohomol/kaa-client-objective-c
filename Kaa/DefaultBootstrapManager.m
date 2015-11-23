@@ -11,6 +11,7 @@
 #import "NSMutableArray+Shuffling.h"
 #import "TransportConnectionInfo.h"
 #import "KaaLogging.h"
+#import "KaaExceptions.h"
 
 #define TAG @"DefaultBootstrapManager"
 #define EXIT_FAILURE 1
@@ -68,7 +69,7 @@
             [self applyDecision:decision];
         }
     } else {
-        [NSException raise:@"BootstrapRuntimeException" format:@"Operations Server list is empty"];
+        [NSException raise:KaaBootstrapRuntimeException format:@"Operations Server list is empty"];
     }
 }
 
@@ -156,7 +157,7 @@
 
 - (NSMutableArray *)getTransportsByAccessPointId:(int)accessPointId {
     if (!self.operationsServerList || [self.operationsServerList count] <= 0) {
-        [NSException raise:@"BootstrapRuntimeException" format:@"Operations Server list is empty"];
+        [NSException raise:KaaBootstrapRuntimeException format:@"Operations Server list is empty"];
     }
     NSMutableArray *result = [NSMutableArray array];
     for (ProtocolMetaData *meta in self.operationsServerList) {

@@ -205,6 +205,7 @@
 		39FF8B0D1BCC008000666D1F /* IPTransportInfoTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0C1BCC008000666D1F /* IPTransportInfoTest.m */; };
 		39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 39FF8B0F1BCD49DF00666D1F /* AbstractHttpClientTest.m */; };
 		555D709CF7DB758766ABDA97 /* libPods-KaaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 859AA00A9E215058D7F33E50 /* libPods-KaaTests.a */; };
+		AF7DBEC9ACBF5F012466DBA0 /* libPods-libKaa.a.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */; };
 		B800844F1B7B2DDD003A3D5E /* ResyncConfigurationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B800844D1B7B2DDD003A3D5E /* ResyncConfigurationManager.h */; };
 		B80084501B7B2DDD003A3D5E /* ResyncConfigurationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B800844E1B7B2DDD003A3D5E /* ResyncConfigurationManager.m */; };
 		B803F8EE1B7A5AA8009C2C28 /* ConfigurationCommon.h in Headers */ = {isa = PBXBuildFile; fileRef = B803F8ED1B7A5AA2009C2C28 /* ConfigurationCommon.h */; };
@@ -478,6 +479,7 @@
 		B8FC094F1B904BD2002109A4 /* UserTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FC094E1B904BD2002109A4 /* UserTransport.h */; };
 		B8FC09521B904CFD002109A4 /* DefaultEndpointRegistrationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */; };
 		B8FC09531B904CFD002109A4 /* DefaultEndpointRegistrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */; };
+		E847D1E41C03342200147BAE /* KaaExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = E847D1E31C03342200147BAE /* KaaExceptions.h */; };
 		E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF13C1BCE7910005076FC /* MemBucketTest.m */; };
 		E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */; };
 		E8C9EC621BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E8C9EC611BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m */; };
@@ -989,6 +991,7 @@
 		B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEndpointRegistrationManager.h; sourceTree = "<group>"; };
 		B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEndpointRegistrationManager.m; sourceTree = "<group>"; };
 		DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-libKaa.a.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E847D1E31C03342200147BAE /* KaaExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaExceptions.h; sourceTree = "<group>"; };
 		E88FF13C1BCE7910005076FC /* MemBucketTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemBucketTest.m; sourceTree = "<group>"; };
 		E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemLogStorageTest.m; sourceTree = "<group>"; };
 		E8C9EC611BD3AB3F00462794 /* DefaultEndpointRegistrationManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEndpointRegistrationManagerTest.m; sourceTree = "<group>"; };
@@ -1003,6 +1006,7 @@
 				B8EC91C01BC4058600D3723B /* libCocoaLumberjack.a in Frameworks */,
 				B81935B91B15C3880053486A /* Security.framework in Frameworks */,
 				B824A22C1B148CFA0076C753 /* SystemConfiguration.framework in Frameworks */,
+				AF7DBEC9ACBF5F012466DBA0 /* libPods-libKaa.a.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1263,6 +1267,7 @@
 				B86229E71BE352EF0045ED0D /* DefaultKaaPlatformContext.h */,
 				B86229E81BE352EF0045ED0D /* DefaultKaaPlatformContext.m */,
 				B8A0B5111BEF65FA00105DFE /* KaaDefaults.h */,
+				E847D1E31C03342200147BAE /* KaaExceptions.h */,
 			);
 			path = Kaa;
 			sourceTree = "<group>";
@@ -1874,6 +1879,7 @@
 				B84822891B8DBB05004E370B /* NotificationManager.h in Headers */,
 				B84462321BB5BAD4009826FC /* avro_private.h in Headers */,
 				B824A2251B1489FE0076C753 /* ConnectivityChecker.h in Headers */,
+				E847D1E41C03342200147BAE /* KaaExceptions.h in Headers */,
 				B8A8DF9D1BA02878002CEF3E /* SyncTask.h in Headers */,
 				B8D415AF1B8476A600B0D551 /* SHAMessageDigest.h in Headers */,
 				B8DBE35B1BB139200036058B /* TimeCommons.h in Headers */,
