@@ -285,9 +285,10 @@
 - (void)notifyDelegates:(NSArray *)delegates topic:(Topic *)topic notification:(Notification *)notification {
     if (notification.body) {
         __weak typeof(self)weakSelf = self;
+        __block NSArray *blockDelegates = [delegates copy];
         [[self.context getCallbackExecutor] addOperationWithBlock:^{
             @try {
-                [weakSelf.deserializer notify:[NSArray arrayWithArray:delegates] topic:topic data:notification.body];
+                [weakSelf.deserializer notify:blockDelegates topic:topic data:notification.body];
             }
             @catch (NSException *exception) {
                 DDLogError(@"%@ Failed to process notification for topic %@. Error: %@ reason: %@",
