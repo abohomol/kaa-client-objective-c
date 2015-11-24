@@ -254,41 +254,43 @@ typedef enum {
             DDLogInfo(@"%@ Can't open connection, as channel is in the %i state", TAG, self.channelState);
             return;
         }
-        @try {
-            DDLogInfo(@"%@ Channel [%@]: opening connection to server %@", TAG, [self getId], self.currentServer);
-            self.isOpenConnectionScheduled = NO;
-            self.socket = [self createSocket];
-           
-            __weak typeof(self) weakSelf = self;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [weakSelf.socket.input setDelegate:weakSelf];
-                [weakSelf.socket.output setDelegate:weakSelf];
-                
-                [weakSelf.socket.input scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-                [weakSelf.socket.output scheduleInRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
-                
-                [weakSelf.socket.input open];
-                [weakSelf.socket.output open];
-            });
-            
-            [self sendConnect];
-            [self scheduleReadTask:self.socket];
-            [self schedulePingTask];
-        }
-        @catch (NSException *ex) {
-            DDLogError(@"%@ Failed to create a socket for server %@:%i %@, reason: %@",
-                       TAG, [self.currentServer getHost], [self.currentServer getPort], ex.name, ex.reason);
-            [self onServerFailed];
-        }
+        DDLogInfo(@"%@ Channel [%@]: opening connection to server %@", TAG, [self getId], self.currentServer);
+        self.isOpenConnectionScheduled = NO;
+        self.socket = [self createSocket];
+        
+        [self.socket.input setDelegate:self];
+        [self.socket.input scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+        
+        [self.socket.input open];
+        [self.socket.output open];
     }
 }
 
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
-    if (eventCode == NSStreamEventErrorOccurred || eventCode == NSStreamEventEndEncountered) {
-        [self onServerFailed];
+    switch (eventCode) {
+        case NSStreamEventOpenCompleted: {
+            __weak typeof(self) weakSelf = self;
+            [self.executor addOperationWithBlock:^{
+                [weakSelf sendConnect];
+                [weakSelf scheduleReadTask:weakSelf.socket];
+                [weakSelf schedulePingTask];
+            }];
+            break;
+        }
+            
+        case NSStreamEventErrorOccurred:
+            [self onServerFailed];
+            break;
+            
+        case NSStreamEventEndEncountered:
+            DDLogInfo(@"%@ End of stream detected for channel [%@]", TAG, [self getId]);
+            break;
+            
+        default:
+            break;
     }
 }
+
 
 - (KAASocket *)createSocket {
     return [KAASocket socketWithHost:[self.currentServer getHost] andPort:[self.currentServer getPort]];
