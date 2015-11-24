@@ -17,18 +17,18 @@
 #ifndef KaaExceptions_h
 #define KaaExceptions_h
 
-#define KaaSecurityException @"KaaSecurityException"
-#define KaaChannelRuntimeException @"KaaChannelRuntimeException"
-#define KaaBootstrapRuntimeException @"KaaBootstrapRuntimeException"
-#define KaaInvalidChannelException @"KaaInvalidChannelException"
-#define KaaIllegalStateException @"KaaIllegalStateException"
-#define KaaInterruptedException @"KaaInterruptedException"
-#define KaaTransportException @"KaaTransportException"
-#define KaaIOException @"KaaIOException"
-#define KaaUnavailableTopic @"KaaUnavailableTopic"
+#define KaaSecurityException                @"KaaSecurityException"
+#define KaaChannelRuntimeException          @"KaaChannelRuntimeException"
+#define KaaBootstrapRuntimeException        @"KaaBootstrapRuntimeException"
+#define KaaInvalidChannelException          @"KaaInvalidChannelException"
+#define KaaIllegalStateException            @"KaaIllegalStateException"
+#define KaaInterruptedException             @"KaaInterruptedException"
+#define KaaTransportException               @"KaaTransportException"
+#define KaaIOException                      @"KaaIOException"
+#define KaaUnavailableTopic                 @"KaaUnavailableTopic"
 #define KaaKaaInvalidConfigurationException @"KaaKaaInvalidConfigurationException"
-#define KaaTcpProtocolException @"KaaTcpProtocolException"
-#define KaaKeyPairGenerationException @"KaaKeyPairGenerationException"
-#define KaaUnableOpenFile @"KaaUnableOpenFile"
+#define KaaTcpProtocolException             @"KaaTcpProtocolException"
+#define KaaKeyPairGenerationException       @"KaaKeyPairGenerationException"
+#define KaaUnableOpenFile                   @"KaaUnableOpenFile"
 
 #endif /* KaaExceptions_h */

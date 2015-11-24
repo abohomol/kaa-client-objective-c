@@ -334,7 +334,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testAddDelegateForUnknownTopic sucseed");
+        NSLog(@"testAddDelegateForUnknownTopic succeeded");
     }
 }
 
@@ -362,7 +362,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testRemoveDelegateForUnknownTopic sucseed");
+        NSLog(@"testRemoveDelegateForUnknownTopic succeeded");
     }
 }
 
@@ -389,7 +389,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testSubsribeForUnknownTopic1 sucseed");
+        NSLog(@"testSubsribeForUnknownTopic1 succeeded");
     }
 }
 
@@ -416,7 +416,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testSubsribeForUnknownTopic2 sucseed");
+        NSLog(@"testSubsribeForUnknownTopic2 succeeded");
     }
 }
 
@@ -442,7 +442,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testSubsribeForUnknownTopic1 sucseed");
+        NSLog(@"testSubsribeForUnknownTopic1 succeeded");
     }
 }
 
@@ -469,7 +469,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testSubsribeForUnknownTopic1 sucseed");
+        NSLog(@"testSubsribeForUnknownTopic1 succeeded");
     }
 }
 
@@ -494,7 +494,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testSubscribeOnMandatoryTopic1 succseed");
+        NSLog(@"testSubscribeOnMandatoryTopic1 succeeded");
     }
 }
 
@@ -520,7 +520,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testSubscribeOnMandatoryTopic2 succseed");
+        NSLog(@"testSubscribeOnMandatoryTopic2 succeeded");
     }
 }
 
@@ -545,7 +545,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testSubscribeOnMandatoryTopic2 succseed");
+        NSLog(@"testSubscribeOnMandatoryTopic2 succeeded");
     }
 }
 
@@ -571,7 +571,7 @@
         XCTFail();
     }
     @catch (NSException *exception) {
-        NSLog(@"testSubscribeOnMandatoryTopic2 succseed");
+        NSLog(@"testSubscribeOnMandatoryTopic2 succeeded");
     }
 }
 
