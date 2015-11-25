@@ -270,6 +270,7 @@
     Topic *topic2 = [[Topic alloc] init];
     topic2.id = @"id2";
     topic2.name = @"topic_name1";
+    topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
     self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
     KAANotification *notification = [[KAANotification alloc] init];

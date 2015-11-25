@@ -7,6 +7,6 @@ target 'libKaa.a' do
 end
 
 target :KaaTests, :exclusive => true do
-  pod 'OCMockito', '~> 1.0'
+  pod 'OCMockito', '~> 2.0.1'
 end
 

@@ -479,6 +479,7 @@
 		B8FC094F1B904BD2002109A4 /* UserTransport.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FC094E1B904BD2002109A4 /* UserTransport.h */; };
 		B8FC09521B904CFD002109A4 /* DefaultEndpointRegistrationManager.h in Headers */ = {isa = PBXBuildFile; fileRef = B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */; };
 		B8FC09531B904CFD002109A4 /* DefaultEndpointRegistrationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */; };
+		E815A8531C05984D00FEDECA /* KaaClientTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E815A8521C05984D00FEDECA /* KaaClientTest.m */; };
 		E847D1E41C03342200147BAE /* KaaExceptions.h in Headers */ = {isa = PBXBuildFile; fileRef = E847D1E31C03342200147BAE /* KaaExceptions.h */; };
 		E88FF13D1BCE7910005076FC /* MemBucketTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF13C1BCE7910005076FC /* MemBucketTest.m */; };
 		E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */ = {isa = PBXBuildFile; fileRef = E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */; };
@@ -991,6 +992,7 @@
 		B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEndpointRegistrationManager.h; sourceTree = "<group>"; };
 		B8FC09511B904CFD002109A4 /* DefaultEndpointRegistrationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEndpointRegistrationManager.m; sourceTree = "<group>"; };
 		DF8CCE0CCC93539D61CC4CDC /* libPods-libKaa.a.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-libKaa.a.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E815A8521C05984D00FEDECA /* KaaClientTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientTest.m; sourceTree = "<group>"; };
 		E847D1E31C03342200147BAE /* KaaExceptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaExceptions.h; sourceTree = "<group>"; };
 		E88FF13C1BCE7910005076FC /* MemBucketTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemBucketTest.m; sourceTree = "<group>"; };
 		E88FF1411BCEDA7A005076FC /* MemLogStorageTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemLogStorageTest.m; sourceTree = "<group>"; };
@@ -1285,8 +1287,9 @@
 				B81B98BD1BC7A27600C2DFF4 /* security */,
 				391292511BDE0FE70013F631 /* kaatcp */,
 				B8C10A1A1BC2DE00001A2236 /* channel */,
-				B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */,
 				391A91A21BBE604C00DBA851 /* EndPointObjectHashTest.m */,
+				E815A8521C05984D00FEDECA /* KaaClientTest.m */,
+				B8C10A131BC2BBBF001A2236 /* KaaClientPropertiesTest.m */,
 				B8EC91BB1BC3E77500D3723B /* KaaClientPropertiesStateTest.m */,
 				B843B49C1BE67F950060519D /* TestsHelper.h */,
 				B843B49D1BE67F950060519D /* TestsHelper.m */,
@@ -2177,6 +2180,7 @@
 			files = (
 				393331351BD7AF84003BCC45 /* DefaultLogTransportTest.m in Sources */,
 				392D3ED71BD102BF007CC7DA /* EventManagerTest.m in Sources */,
+				E815A8531C05984D00FEDECA /* KaaClientTest.m in Sources */,
 				393331391BD7BA72003BCC45 /* DefaultNotificationTransportTest.m in Sources */,
 				E88FF1421BCEDA7A005076FC /* MemLogStorageTest.m in Sources */,
 				392D3ED11BCFC88D007CC7DA /* DefaultLogUploadStrategyTest.m in Sources */,
