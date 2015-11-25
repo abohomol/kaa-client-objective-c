@@ -148,7 +148,7 @@ userDetachNotification:(UserDetachNotification *)detachNotification {
     
     if (userResponse) {
         if (self.userAttachDelegate) {
-            id<UserAttachDelegate> delegate = self.userAttachDelegate;
+            __block id<UserAttachDelegate> delegate = self.userAttachDelegate;
             __weak typeof(self)weakSelf = self;
             [[self.context getCallbackExecutor] addOperationWithBlock:^{
                 [delegate onAttachResult:userResponse];
@@ -158,7 +158,7 @@ userDetachNotification:(UserDetachNotification *)detachNotification {
         if (userResponse.result == SYNC_RESPONSE_RESULT_TYPE_SUCCESS) {
             [self.state setIsAttachedToUser:YES];
             if (self.attachEndpointToUserDelegate && self.userAttachRequest) {
-                UserAttachRequest *request = self.userAttachRequest;
+                __block UserAttachRequest *request = self.userAttachRequest;
                 __weak typeof(self)weakSelf = self;
                 [[self.context getCallbackExecutor] addOperationWithBlock:^{
                     [weakSelf.attachEndpointToUserDelegate onAttachedToUser:request.userExternalId token:[weakSelf.state endpointAccessToken]];

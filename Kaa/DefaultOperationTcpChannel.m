@@ -23,19 +23,10 @@ typedef enum {
 
 #define TAG                 @"DefaultOperationTcpChannel >>>"
 #define EXIT_FAILURE        1
-#define PING_TIMEOUT_MS     100.0
+#define PING_TIMEOUT_SEC    0.5
 #define CHANNEL_TIMEOUT     200
 #define MAX_THREADS_COUNT   2
 #define CHANNEL_ID          @"default_operation_tcp_channel"
-
-@interface SocketReadTask : NSOperation
-
-@property (nonatomic,weak) DefaultOperationTcpChannel *channel;
-@property (nonatomic,strong) KAASocket *socket;
-
-- (instancetype)initWithChannel:(DefaultOperationTcpChannel *)channel;
-
-@end
 
 @interface PingTask : NSOperation
 
@@ -67,7 +58,6 @@ typedef enum {
 @property (nonatomic,strong) volatile ConnectivityChecker *checker;
 @property (nonatomic,strong) KAAMessageFactory *messageFactory;
 @property (nonatomic,strong) NSOperation *pingTaskFuture;//volatile
-@property (nonatomic,strong) NSOperation *readTaskFuture;//volatile
 @property (nonatomic) volatile BOOL isOpenConnectionScheduled;
 @property (nonatomic,strong) NSOperationQueue *executor;
 @property (nonatomic,strong) KAASocket *socket;//volatile
@@ -81,7 +71,6 @@ typedef enum {
 - (void)sendConnect;
 - (void)openConnection;
 - (void)scheduleOpenConnectionTask:(NSInteger)retryPeriod;
-- (void)scheduleReadTask:(KAASocket *)socket;
 - (void)schedulePingTask;
 - (void)destroyExecutor;
 
@@ -219,30 +208,28 @@ typedef enum {
             [self.pingTaskFuture cancel];
         }
         
-        if (self.readTaskFuture && !self.readTaskFuture.isCancelled) {
-            [self.readTaskFuture cancel];
+        if (!self.socket) {
+            return;
         }
-        
-        if (self.socket) {
-            DDLogInfo(@"%@ Channel [%@]: closing current connection", TAG, [self getId]);
+        DDLogInfo(@"%@ Channel [%@]: closing current connection", TAG, [self getId]);
+        @try {
+            [self sendDisconnect];
+        }
+        @catch (NSException *ex) {
+            DDLogError(@"%@ Failed to send Disconnect to server: %@. Reason: %@", TAG, ex.name, ex.reason);
+        }
+        @finally {
             @try {
-                [self sendDisconnect];
+                [self.socket.input removeFromRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
+                [self.socket close];
             }
-            @catch (NSException *ex) {
-                DDLogError(@"%@ Failed to send Disconnect to server: %@. Reason: %@", TAG, ex.name, ex.reason);
+            @catch (NSException *exception) {
+                DDLogError(@"%@ Failed to close socket: %@. Reason: %@", TAG, exception.name, exception.reason);
             }
             @finally {
-                @try {
-                    [self.socket close];
-                }
-                @catch (NSException *exception) {
-                    DDLogError(@"%@ Failed to close socket: %@. Reason: %@", TAG, exception.name, exception.reason);
-                }
-                @finally {
-                    self.socket = nil;
-                    [self.messageFactory.framer flush];
-                    self.channelState = CHANNEL_STATE_CLOSED;
-                }
+                self.socket = nil;
+                [self.messageFactory.framer flush];
+                self.channelState = CHANNEL_STATE_CLOSED;
             }
         }
     }
@@ -254,6 +241,7 @@ typedef enum {
             DDLogInfo(@"%@ Can't open connection, as channel is in the %i state", TAG, self.channelState);
             return;
         }
+
         DDLogInfo(@"%@ Channel [%@]: opening connection to server %@", TAG, [self getId], self.currentServer);
         self.isOpenConnectionScheduled = NO;
         self.socket = [self createSocket];
@@ -261,23 +249,22 @@ typedef enum {
         [self.socket.input setDelegate:self];
         [self.socket.input scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSDefaultRunLoopMode];
         
-        [self.socket.input open];
-        [self.socket.output open];
+        [self.socket open];
     }
 }
 
 - (void)stream:(NSStream *)aStream handleEvent:(NSStreamEvent)eventCode {
     switch (eventCode) {
-        case NSStreamEventOpenCompleted: {
+        case NSStreamEventOpenCompleted:
+        {
             __weak typeof(self) weakSelf = self;
             [self.executor addOperationWithBlock:^{
                 [weakSelf sendConnect];
-                [weakSelf scheduleReadTask:weakSelf.socket];
                 [weakSelf schedulePingTask];
             }];
-            break;
-        }
             
+        }
+           break;
         case NSStreamEventErrorOccurred:
             [self onServerFailed];
             break;
@@ -285,7 +272,30 @@ typedef enum {
         case NSStreamEventEndEncountered:
             DDLogInfo(@"%@ End of stream detected for channel [%@]", TAG, [self getId]);
             break;
+        case NSStreamEventHasBytesAvailable:
+        {
+            __weak typeof(self) weakSelf = self;
             
+            [self.executor addOperationWithBlock:^{
+                
+                if (aStream != weakSelf.socket.input) {
+                    DDLogWarn(@"%@ Found outdated ref to socket stream", TAG);
+                    return;
+                }
+                
+                uint8_t buffer[1024];
+                while ([weakSelf.socket.input hasBytesAvailable]) {
+                    long read = [weakSelf.socket.input read:buffer maxLength:sizeof(buffer)];
+                    if (read > 0) {
+                        DDLogVerbose(@"%@ Read %li bytes from input stream", TAG, read);
+                        [weakSelf.messageFactory.framer pushBytes:[NSMutableData dataWithBytes:buffer length:read]];
+                    } else if (read == -1) {
+                        DDLogInfo(@"%@ Channel [%@] received end of stream", TAG, [weakSelf getId]);
+                    }
+                }
+            }];
+        }
+            break;
         default:
             break;
     }
@@ -337,16 +347,6 @@ typedef enum {
         } else {
             DDLogInfo(@"%@ Reconnect is already scheduled, ignoring the call", TAG);
         }
-    }
-}
-
-- (void)scheduleReadTask:(KAASocket *)socket {
-    if (self.executor) {
-        self.readTaskFuture = [[SocketReadTask alloc] initWithChannel:self];
-        [self.executor addOperation:self.readTaskFuture];
-        DDLogDebug(@"%@ Submitting a read task for channel [%@]", TAG, [self getId]);
-    } else {
-        DDLogWarn(@"%@ Executor is nil, can't schedule open connection task", TAG);
     }
 }
 
@@ -611,57 +611,6 @@ typedef enum {
 @end
 
 
-@implementation SocketReadTask
-
-- (instancetype)initWithChannel:(DefaultOperationTcpChannel *)channel {
-    self = [super init];
-    if (self) {
-        _channel = channel;
-        _socket = channel.socket;
-    }
-    return self;
-}
-
-uint8_t buffer[1024];
-
-- (void)main {
-    if (self.isFinished) {
-        return;
-    }
-    while (!self.isCancelled) {
-        @try {
-            long read = [self.socket.input read:buffer maxLength:sizeof(buffer)];
-            if (read > 0) {
-                DDLogVerbose(@"%@ Read %li bytes from input stream", TAG, read);
-                [self.channel.messageFactory.framer pushBytes:[NSMutableData dataWithBytes:buffer length:read]];
-            } else if (read == -1) {
-                DDLogInfo(@"%@ Channel [%@] received end of stream", TAG, [self.channel getId]);
-                if (!self.isCancelled) {
-                    [self.channel onServerFailed];
-                }
-            }
-        }
-        @catch (NSException *ex) {
-            DDLogWarn(@"%@ Failed to read from socket for channel [%@]: %@. Reason: %@",
-                      TAG, [self.channel getId], ex.name, ex.reason);
-            if (self.isCancelled) {
-                DDLogWarn(@"%@ Socket connection for channel [%@] was interrupted", TAG, [self.channel getId]);
-                return;
-            }
-            
-            if ([self.socket isEqual:self.channel.socket]) {
-                [self.channel onServerFailed];
-            } else {
-                DDLogDebug(@"%@ Stale socket: %@ is detected, killing read task... ", TAG, self.socket);
-            }
-        }
-    }
-    DDLogInfo(@"%@ Read Task is finished for channel [%@]", TAG, [self.channel getId]);
-}
-
-@end
-
-
 @implementation PingTask
 
 - (instancetype)initWithChannel:(DefaultOperationTcpChannel *)channel {
@@ -673,7 +622,7 @@ uint8_t buffer[1024];
 }
 
 - (void)main {
-    [NSThread sleepForTimeInterval:PING_TIMEOUT_MS];
+    [NSThread sleepForTimeInterval:PING_TIMEOUT_SEC];
     
     if (self.isCancelled || self.isFinished) {
         DDLogInfo(@"%@ Can't execute ping task for channel [%@]. Task was cancelled.", TAG, [self.channel getId]);
