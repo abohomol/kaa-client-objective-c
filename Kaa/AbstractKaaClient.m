@@ -167,7 +167,7 @@
             }
         }
         @finally {
-            [[self.context getExecutorContext] stop];
+            [[weakSelf.context getExecutorContext] stop];
         }
     }];
 }
