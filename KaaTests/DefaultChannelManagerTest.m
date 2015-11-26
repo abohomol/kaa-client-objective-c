@@ -50,6 +50,7 @@
     id <BootstrapManager> bootstrapManager = mockProtocol(@protocol(BootstrapManager));
     @try {
         DefaultChannelManager *channel = [[DefaultChannelManager alloc] initWith:bootstrapManager bootstrapServers:nil context:nil];
+        XCTAssertNil(channel);
         XCTFail();
     }
     @catch (NSException *exception) {
@@ -61,6 +62,7 @@
     id <BootstrapManager> bootstrapManager = mockProtocol(@protocol(BootstrapManager));
     @try {
         DefaultChannelManager *channel = [[DefaultChannelManager alloc] initWith:bootstrapManager bootstrapServers:[[NSDictionary alloc] init] context:nil];
+        XCTAssertNil(channel);
         XCTFail();
     }
     @catch (NSException *exception) {
@@ -71,6 +73,7 @@
 - (void)testEmptyBootstrapManager {
     @try {
         DefaultChannelManager *channel = [[DefaultChannelManager alloc] initWith:nil bootstrapServers:nil context:nil];
+        XCTAssertNil(channel);
         XCTFail();
     }
     @catch (NSException *exception) {

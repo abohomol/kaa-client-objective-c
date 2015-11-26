@@ -328,6 +328,9 @@ typedef enum {
                 exit(EXIT_FAILURE);
                 //TODO review how to exit application
                 break;
+            case FAILOVER_ACTION_USE_NEXT_BOOTSTRAP:
+            case FAILOVER_ACTION_USE_NEXT_OPERATIONS:
+                DDLogWarn(@"%@ Failover actions NEXT_BOOTSTRAP & NEXT_OPERATIONS not supported yet!", TAG);
         }
     } else {
         [self.failoverManager onServerFailed:self.currentServer];
