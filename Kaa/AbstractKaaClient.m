@@ -167,8 +167,10 @@
                 [weakSelf.stateDelegate onStopFailure:exception];
             }
         }
+        @finally {
+            [[self.context getExecutorContext] stop];
+        }
     }];
-    [[self.context getExecutorContext] stop];
 }
 
 - (void)pause {
