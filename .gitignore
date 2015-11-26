@@ -2,7 +2,7 @@ build/
 DerivedData
 Pods/
 
-!Podfile.lock
+Podfile.lock
 !Manifest.lock
 
 .DS_Store

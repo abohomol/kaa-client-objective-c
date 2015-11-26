@@ -140,7 +140,6 @@
             }
         }
         @catch (NSException *exception) {
-            //TODO handle different exception types
             DDLogError(@"%@ Start failed: %@. Reason: %@", TAG, exception.name, exception.reason);
             if (self.stateDelegate) {
                 [self.stateDelegate onStartFailure:exception];

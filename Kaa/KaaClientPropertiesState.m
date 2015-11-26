@@ -83,7 +83,7 @@
         self.state = [NSMutableDictionary dictionary];
         NSFileManager *fileManager = [NSFileManager defaultManager];
         if ([fileManager fileExistsAtPath:self.stateFileLocation]) {
-            //TODO ensure stateFileLocation is PLIST and it has correct path for both iOS and OS X
+            //TODO check if stateFileLocation is PLIST and it has correct path for both iOS and OS X
             @try {
                 self.state = [[NSMutableDictionary alloc] initWithContentsOfFile:self.stateFileLocation];
                 if ([self isSDKProperyListUpdated:properties]) {

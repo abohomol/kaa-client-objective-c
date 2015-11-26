@@ -13,7 +13,6 @@
 #import "KaaClientPlatformContext.h"
 #import "KaaClientStateDelegate.h"
 
-//TODO: remove, because it's used only to compile headers below
 #import "GenericKaaClient.h"
 #import "KaaChannelManager.h"
 #import "ConfigurationCommon.h"
@@ -35,6 +34,7 @@
 #import "Constants.h"
 #import "CommonEPConstants.h"
 #import "DefaultKaaPlatformContext.h"
+#import "KaaExceptions.h"
 
 /**
  * Creates new Kaa client based on platform context and optional state delegate.
