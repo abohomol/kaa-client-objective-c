@@ -106,10 +106,8 @@
     }
     @catch (NSException *ex) {
         DDLogError(@"%@ Failed to receive response from the operation: %@, reason: %@", TAG, ex.name, ex.reason);
-        //TODO replace fckg strings with constants
         if ([ex.name isEqualToString:KaaTransportException]) {
             [self.opChannel connectionStateChanged:YES withStatus:[ex.reason intValue]];
-
         } else {
             [self.opChannel connectionStateChanged:YES];
         }

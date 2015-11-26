@@ -122,7 +122,6 @@
         [self.clientState setAttachedEndpoints:self.attachedEndpoints];
     }
     
-    //TODO check assume that all data exists and is valid
     [self.processor onUpdate:response.endpointAttachResponses.data
              detachResponses:response.endpointDetachResponses.data
                 userResponse:response.userAttachResponse.data
