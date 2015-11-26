@@ -32,7 +32,7 @@
     return bytes;
 }
 
-- (id<Avro>)fromBytes:(NSData *)bytes object:(id<Avro>)object {
+- (id)fromBytes:(NSData *)bytes object:(id<Avro>)object {
     avro_reader_t reader = avro_reader_memory([bytes bytes], [bytes length]);
     [object deserialize:reader];
     avro_reader_free(reader);

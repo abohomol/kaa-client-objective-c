@@ -12,6 +12,6 @@
 @interface AvroBytesConverter : NSObject
 
 - (NSData *)toBytes:(id<Avro>)object;
-- (id<Avro>)fromBytes:(NSData *)bytes object:(id<Avro>)object;
+- (id)fromBytes:(NSData *)bytes object:(id<Avro>)object;
 
 @end
