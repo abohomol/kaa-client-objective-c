@@ -43,7 +43,6 @@
             <includes>
                 <include>README.md</include>
                 <include>Podfile</include>
-                <include>Podfile.lock</include>
             </includes>
         </fileSet>
     </fileSets>
