@@ -23,7 +23,7 @@ typedef enum {
 
 #define TAG                 @"DefaultOperationTcpChannel >>>"
 #define EXIT_FAILURE        1
-#define PING_TIMEOUT_SEC    0.5
+#define PING_TIMEOUT_SEC    100
 #define CHANNEL_TIMEOUT     200
 #define MAX_THREADS_COUNT   2
 #define CHANNEL_ID          @"default_operation_tcp_channel"
@@ -633,7 +633,7 @@ typedef enum {
         DDLogInfo(@"%@ Executing ping task for channel [%@]", TAG, [self.channel getId]);
         [self.channel sendPingRequest];
         if (self.isCancelled) {
-            DDLogInfo(@"%@ Can't execute ping task for channel [%@]. Task was cancelled.", TAG, [self.channel getId]);
+            DDLogInfo(@"%@ Can't schedule new ping task for channel [%@]. Task was cancelled.", TAG, [self.channel getId]);
         } else {
             [self.channel schedulePingTask];
         }
