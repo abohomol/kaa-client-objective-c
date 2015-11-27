@@ -347,6 +347,7 @@
 		B87DC0551BFF635D001799D7 /* LogGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B897CEFC1BFF38A10088742B /* LogGen.h */; };
 		B87DC0561BFF635D001799D7 /* NotificationGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B897CEFE1BFF38A10088742B /* NotificationGen.h */; };
 		B87DC0571BFF635D001799D7 /* ProfileGen.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B897CF001BFF38A10088742B /* ProfileGen.h */; };
+		B87E26041C0896BB00E47D24 /* KaaExceptions.h in Copy Files */ = {isa = PBXBuildFile; fileRef = E847D1E31C03342200147BAE /* KaaExceptions.h */; };
 		B87FCA651BDA479D0016A721 /* KAAMqttFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA631BDA479D0016A721 /* KAAMqttFrame.h */; };
 		B87FCA661BDA479D0016A721 /* KAAMqttFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = B87FCA641BDA479D0016A721 /* KAAMqttFrame.m */; };
 		B87FCA691BDA5D1D0016A721 /* KAAFramer.h in Headers */ = {isa = PBXBuildFile; fileRef = B87FCA671BDA5D1D0016A721 /* KAAFramer.h */; };
@@ -503,6 +504,7 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
+				B87E26041C0896BB00E47D24 /* KaaExceptions.h in Copy Files */,
 				B87DC0531BFF635D001799D7 /* ConfigurationGen.h in Copy Files */,
 				B87DC0541BFF635D001799D7 /* EventGen.h in Copy Files */,
 				B87DC0551BFF635D001799D7 /* LogGen.h in Copy Files */,
