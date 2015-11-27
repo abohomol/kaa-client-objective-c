@@ -16,6 +16,7 @@
 #import "DefaultProfileTransport.h"
 #import "KeyUtils.h"
 #import "DefaultProfileManager.h"
+#import "KAADummyProfile.h"
 
 #pragma mark ConcreteProfileContainer
 
@@ -25,8 +26,8 @@
 
 @implementation ConcreteProfileContainer
 
-- (KAAProfile *)getProfile {
-    return [[KAAProfile alloc] init];
+- (KAADummyProfile *)getProfile {
+    return [[KAADummyProfile alloc] init];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import <XCTest/XCTest.h>
 #import "DefaultProfileManager.h"
 #import "ProfileTransport.h"
+#import "KAADummyProfile.h"
 
 #define HC_SHORTHAND
 #import <OCHamcrest/OCHamcrest.h>
@@ -22,8 +23,8 @@
 
 @implementation TestProfileContainer
 
-- (KAAProfile *)getProfile {
-    return [[KAAProfile alloc] init];
+- (KAADummyProfile *)getProfile {
+    return [[KAADummyProfile alloc] init];
 }
 
 @end

@@ -16,14 +16,14 @@
 
 #import <Foundation/Foundation.h>
 #import "EndpointGen.h"
-#import "KAANotification.h"
+#import "KAADummyNotification.h"
 
 @protocol NotificationDelegate
 
 /**
  * Called on each new notification.
  */
-- (void)onNotification:(KAANotification *)notification withTopicId:(NSString *)topicId;
+- (void)onNotification:(KAADummyNotification *)notification withTopicId:(NSString *)topicId;
 
 @end
 

@@ -15,7 +15,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "KAAConfiguration.h"
+#import "KAADummyConfiguration.h"
 
 /**
  * This class deserialize binary data to configuration object.
@@ -28,6 +28,6 @@
 
 - (void)notify:(NSSet *)configurationDelegates withData:(NSData *)configurationData;
 
-- (KAAConfiguration *)fromBytes:(NSData *)bytes;
+- (KAADummyConfiguration *)fromBytes:(NSData *)bytes;
 
 @end

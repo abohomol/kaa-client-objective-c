@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-#import "KAANotification.h"
+#import "KAADummyLog.h"
 
 /*
  * AUTO-GENERATED CODE
  */
 
-@implementation KAANotification
+@implementation KAADummyLog
 
 - (void)serialize:(avro_writer_t)writer {
 }

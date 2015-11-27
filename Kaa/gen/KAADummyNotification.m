@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-#import "KAAProfile.h"
+#import "KAADummyNotification.h"
 
 /*
  * AUTO-GENERATED CODE
  */
 
-@implementation KAAProfile
+@implementation KAADummyNotification
 
 - (void)serialize:(avro_writer_t)writer {
 }

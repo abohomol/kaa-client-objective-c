@@ -18,7 +18,7 @@
 #define Kaa_ConfigurationCommon_h
 
 #import <Foundation/Foundation.h>
-#import "KAAConfiguration.h"
+#import "KAADummyConfiguration.h"
 #import "ConfigurationStorage.h"
 #import "EndpointObjectHash.h"
 
@@ -32,7 +32,7 @@
 /**
  * Called on each configuration update.
  */
-- (void)onConfigurationUpdate:(KAAConfiguration *)configuration;
+- (void)onConfigurationUpdate:(KAADummyConfiguration *)configuration;
 
 @end
 
@@ -106,7 +106,7 @@
 /**
  * Always returns latest configuration
  */
-- (KAAConfiguration *)getConfiguration;
+- (KAADummyConfiguration *)getConfiguration;
 
 @end
 

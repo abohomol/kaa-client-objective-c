@@ -19,8 +19,8 @@
 
 #import <Foundation/Foundation.h>
 #import "GenericKaaClient.h"
-#import "KAALog.h"
-#import "KAAConfiguration.h"
+#import "KAADummyLog.h"
+#import "KAADummyConfiguration.h"
 
 /**
  * Base interface to operate with Kaa library.
@@ -40,14 +40,14 @@
  *
  * @param record - new log record object
  */
-- (void)addLogRecord:(KAALog *)record;
+- (void)addLogRecord:(KAADummyLog *)record;
 
 /**
  * Returns latest configuration.
  *
  * @return configuration
  */
-- (KAAConfiguration *)getConfiguration;
+- (KAADummyConfiguration *)getConfiguration;
 
 @end
 

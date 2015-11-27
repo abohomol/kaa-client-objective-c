@@ -19,7 +19,7 @@
 
 #import <Foundation/Foundation.h>
 #import "GenericLogCollector.h"
-#import "KAALog.h"
+#import "KAADummyLog.h"
 
 /**
  * Interface for a log collector.
@@ -46,7 +46,7 @@
  *
  * @param record new log record object
  */
-- (void)addLogRecord:(KAALog *)record;
+- (void)addLogRecord:(KAADummyLog *)record;
 
 @end
 

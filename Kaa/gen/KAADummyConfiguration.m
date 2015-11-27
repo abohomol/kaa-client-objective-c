@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-#import "KAALog.h"
+#import "KAADummyConfiguration.h"
 
 /*
  * AUTO-GENERATED CODE
  */
 
-@implementation KAALog
+@implementation KAADummyConfiguration
 
 - (void)serialize:(avro_writer_t)writer {
 }

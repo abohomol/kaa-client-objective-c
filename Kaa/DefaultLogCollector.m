@@ -34,7 +34,7 @@
     return self;
 }
 
-- (void)addLogRecord:(KAALog *)record {
+- (void)addLogRecord:(KAADummyLog *)record {
     __weak typeof(self) weakSelf = self;
     [[self.executorContext getApiExecutor] addOperationWithBlock:^{
         @try {

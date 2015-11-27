@@ -30,7 +30,7 @@
 }
 
 - (void)notify:(NSArray *)delegates topic:(Topic *)topic data:(NSData *)notificationData {
-    KAANotification *notification = [converter fromBytes:notificationData object:[KAANotification new]];
+    KAADummyNotification *notification = [converter fromBytes:notificationData object:[KAADummyNotification new]];
     for (id<NotificationDelegate> delegate in delegates) {
         [delegate onNotification:notification withTopicId:topic.id];
     }

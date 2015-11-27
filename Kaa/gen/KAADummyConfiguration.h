@@ -19,7 +19,7 @@
 #import "AvroBased.h"
 #import "KAAUnion.h"
 
-@interface KAAProfile : AvroBased
+@interface KAADummyConfiguration : AvroBased
 
 
 @end

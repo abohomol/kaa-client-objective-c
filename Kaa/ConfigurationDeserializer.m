@@ -31,14 +31,14 @@
 }
 
 - (void)notify:(NSSet *)configurationDelegates withData:(NSData *)configurationData {
-    KAAConfiguration *configuration = [self fromBytes:configurationData];
+    KAADummyConfiguration *configuration = [self fromBytes:configurationData];
     for (id<ConfigurationDelegate> delegate in configurationDelegates) {
         [delegate onConfigurationUpdate:configuration];
     }
 }
 
-- (KAAConfiguration *)fromBytes:(NSData *)bytes {
-    return [converter fromBytes:bytes object:[KAAConfiguration new]];
+- (KAADummyConfiguration *)fromBytes:(NSData *)bytes {
+    return [converter fromBytes:bytes object:[KAADummyConfiguration new]];
 }
 
 @end

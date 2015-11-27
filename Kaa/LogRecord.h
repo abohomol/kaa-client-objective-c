@@ -15,7 +15,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "KAALog.h"
+#import "KAADummyLog.h"
 
 /**
  * This class is auto-generated. Do not change it.
@@ -30,7 +30,7 @@
  */
 @property(nonatomic,strong,readonly) NSData *data;
 
-- (instancetype)initWithRecord:(KAALog *)record;
+- (instancetype)initWithRecord:(KAADummyLog *)record;
 - (instancetype)initWithData:(NSData *)data;
 - (int64_t)getSize;
 

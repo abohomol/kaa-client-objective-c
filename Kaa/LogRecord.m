@@ -19,7 +19,7 @@
 
 @implementation LogRecord
 
-- (instancetype)initWithRecord:(KAALog *)record {
+- (instancetype)initWithRecord:(KAADummyLog *)record {
     self = [super init];
     if (self) {
         AvroBytesConverter *converter = [[AvroBytesConverter alloc] init];

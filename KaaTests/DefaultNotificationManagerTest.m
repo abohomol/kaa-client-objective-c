@@ -20,7 +20,7 @@
 #import "AvroBytesConverter.h"
 #import "EndpointGen.h"
 #import "TestsHelper.h"
-#import "KAANotification.h"
+#import "KAADummyNotification.h"
 
 @interface DefaultNotificationManagerTest : XCTestCase <NotificationTopicListDelegate>
 
@@ -217,7 +217,7 @@
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
     self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
-    KAANotification *notification = [[KAANotification alloc] init];
+    KAADummyNotification *notification = [[KAADummyNotification alloc] init];
     NSData *notificationBody = [self.converter toBytes:notification];
     
     [notificationManager topicsListUpdated:self.topicsArray];
@@ -273,7 +273,7 @@
     topic2.subscriptionType = SUBSCRIPTION_TYPE_MANDATORY_SUBSCRIPTION;
     self.topicsArray = [NSMutableArray arrayWithObjects:topic1, topic2, nil];
     
-    KAANotification *notification = [[KAANotification alloc] init];
+    KAADummyNotification *notification = [[KAADummyNotification alloc] init];
     NSData *notificationBody = [self.converter toBytes:notification];
     
     [notificationManager topicsListUpdated:self.topicsArray];

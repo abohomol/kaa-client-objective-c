@@ -15,8 +15,8 @@
  */
 
 #import "BaseKaaClient.h"
-#import "KAALog.h"
-#import "KAAConfiguration.h"
+#import "KAADummyLog.h"
+#import "KAADummyConfiguration.h"
 
 @implementation BaseKaaClient
 
@@ -24,11 +24,11 @@
     return [super initWithPlatformContext:context andDelegate:delegate];
 }
 
-- (void)addLogRecord:(KAALog *)record {
+- (void)addLogRecord:(KAADummyLog *)record {
     [self.logCollector addLogRecord:record];
 }
 
-- (KAAConfiguration *)getConfiguration {
+- (KAADummyConfiguration *)getConfiguration {
     return [self.configurationManager getConfiguration];
 }
 

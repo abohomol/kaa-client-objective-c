@@ -16,11 +16,11 @@
 
 #import <Foundation/Foundation.h>
 #import "EndpointGen.h"
-#import "KAAProfile.h"
+#import "KAADummyProfile.h"
 
 @protocol ProfileContainer
 
-- (KAAProfile *)getProfile;
+- (KAADummyProfile *)getProfile;
 
 @end
 

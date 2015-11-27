@@ -51,6 +51,9 @@
         
         [given([self.socketMock input]) willReturn:self.inputStream];
         [given([self.socketMock output]) willReturn:self.outputStream];
+        
+        [self.inputStream open];
+        [self.outputStream open];
     }
     return self;
 }

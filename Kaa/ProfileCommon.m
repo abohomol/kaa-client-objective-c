@@ -30,11 +30,11 @@
 }
 
 - (NSData *)toBytes:(id<ProfileContainer>)container {
-    KAAProfile *profile = nil;
+    KAADummyProfile *profile = nil;
     if (container) {
         profile = [container getProfile];
     } else {
-        profile = [[KAAProfile alloc] init];
+        profile = [[KAADummyProfile alloc] init];
     }
     if (profile) {
         return [converter toBytes:profile];

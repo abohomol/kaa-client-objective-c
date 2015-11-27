@@ -21,7 +21,7 @@
 
 @implementation ResyncConfigurationManager
 
-- (KAAConfiguration *)getConfiguration {
+- (KAADummyConfiguration *)getConfiguration {
     @try {
         return [self.deserializer fromBytes:[super getConfigurationData]];
     }
