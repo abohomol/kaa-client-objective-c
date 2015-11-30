@@ -17,6 +17,7 @@
 @property(nonatomic,strong) id<KaaClientState> state;
 @property(nonatomic,strong) id<ConfigurationStorage> storage;
 @property(nonatomic,strong) NSData *configurationData;
+@property(nonatomic,strong) id<ExecutorContext> executorContext;
 
 @property(strong) NSMutableSet *delegates;
 @property(strong) NSLock *delegatesLock;
@@ -27,13 +28,14 @@
 
 @implementation AbstractConfigurationManager
 
-- (instancetype)initWithClientProperties:(KaaClientProperties *)properties andState:(id<KaaClientState>)state {
+- (instancetype)initWithClientProperties:(KaaClientProperties *)properties state:(id<KaaClientState>)state andExecutorContext:(id<ExecutorContext>)context {
     self = [super init];
     if (self) {
         self.delegates = [NSMutableSet set];
         self.properties = properties;
         self.state = state;
-        _deserializer = [[ConfigurationDeserializer alloc] init];
+        _deserializer = [[ConfigurationDeserializer alloc] initWithExecutorContext:context];
+        self.executorContext = context;
     }
     return self;
 }

@@ -156,12 +156,14 @@
         EventListenersRequestBinding *bind = [self.eventListenersRequests objectForKey:[NSNumber numberWithInt:singleResponse.requestId]];
         if (bind) {
             [self.eventListenersRequests removeObjectForKey:[NSNumber numberWithInt:singleResponse.requestId]];
-            if (singleResponse.result == SYNC_RESPONSE_RESULT_TYPE_SUCCESS
-                && singleResponse.listeners.branch == KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_0) {
-                [bind.delegate onEventListenersReceived:((NSArray *)singleResponse.listeners.data)];
-            } else {
-                [bind.delegate onRequestFailed];
-            }
+            [[self.executorContext getCallbackExecutor] addOperationWithBlock:^{
+                if (singleResponse.result == SYNC_RESPONSE_RESULT_TYPE_SUCCESS
+                    && singleResponse.listeners.branch == KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_0) {
+                    [bind.delegate onEventListenersReceived:((NSArray *)singleResponse.listeners.data)];
+                } else {
+                    [bind.delegate onRequestFailed];
+                }
+            }];
         }
     }
 }

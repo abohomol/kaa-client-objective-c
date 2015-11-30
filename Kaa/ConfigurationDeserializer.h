@@ -16,6 +16,7 @@
 
 #import <Foundation/Foundation.h>
 #import "KAADummyConfiguration.h"
+#import "ExecutorContext.h"
 
 /**
  * This class deserialize binary data to configuration object.
@@ -25,6 +26,8 @@
  */
 
 @interface ConfigurationDeserializer : NSObject
+
+- (instancetype)initWithExecutorContext:(id<ExecutorContext>)context;
 
 - (void)notify:(NSSet *)configurationDelegates withData:(NSData *)configurationData;
 

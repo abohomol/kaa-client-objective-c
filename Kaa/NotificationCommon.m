@@ -19,12 +19,14 @@
 
 @implementation NotificationDeserializer {
     AvroBytesConverter *converter;
+    id<ExecutorContext> executorContext;
 }
 
-- (instancetype)init {
+- (instancetype)initWithExecutorContext:(id<ExecutorContext>)context {
     self = [super init];
     if (self) {
         converter = [[AvroBytesConverter alloc] init];
+        executorContext = context;
     }
     return self;
 }
@@ -32,7 +34,9 @@
 - (void)notify:(NSArray *)delegates topic:(Topic *)topic data:(NSData *)notificationData {
     KAADummyNotification *notification = [converter fromBytes:notificationData object:[KAADummyNotification new]];
     for (id<NotificationDelegate> delegate in delegates) {
-        [delegate onNotification:notification withTopicId:topic.id];
+        [[executorContext getCallbackExecutor] addOperationWithBlock:^{
+            [delegate onNotification:notification withTopicId:topic.id];
+        }];
     }
 }
 
