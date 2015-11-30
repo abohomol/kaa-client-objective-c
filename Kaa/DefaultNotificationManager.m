@@ -51,7 +51,7 @@
         self.optionalListeners = [NSMutableDictionary dictionary];
         self.topicsListeners = [NSMutableSet set];
         self.subscriptionInfo = [NSMutableArray array];
-        self.deserializer = [[NotificationDeserializer alloc] init];
+        self.deserializer = [[NotificationDeserializer alloc] initWithExecutorContext:context];
         
         NSArray *topicList = [state getTopics];
         if (topicList) {

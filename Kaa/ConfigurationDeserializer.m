@@ -20,12 +20,14 @@
 
 @implementation ConfigurationDeserializer {
     AvroBytesConverter *converter;
+    id<ExecutorContext> executorContext;
 }
 
-- (instancetype)init {
+- (instancetype)initWithExecutorContext:(id<ExecutorContext>)context {
     self = [super init];
     if (self) {
         converter = [[AvroBytesConverter alloc] init];
+        executorContext = context;
     }
     return self;
 }
@@ -33,7 +35,9 @@
 - (void)notify:(NSSet *)configurationDelegates withData:(NSData *)configurationData {
     KAADummyConfiguration *configuration = [self fromBytes:configurationData];
     for (id<ConfigurationDelegate> delegate in configurationDelegates) {
-        [delegate onConfigurationUpdate:configuration];
+        [[executorContext getCallbackExecutor] addOperationWithBlock:^{
+            [delegate onConfigurationUpdate:configuration];
+        }];
     }
 }
 

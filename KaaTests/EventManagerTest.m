@@ -211,6 +211,7 @@
     
     id <EventTransport> transport = mockProtocol(@protocol(EventTransport));
     id <ExecutorContext> executorContext = mockProtocol(@protocol(ExecutorContext));
+    [given([executorContext getCallbackExecutor]) willReturn:[[NSOperationQueue alloc] init]];
     id <EventManager> eventManager = [[DefaultEventManager alloc] initWith:state executorContext:executorContext eventTransport:transport];
     
     NSArray *eventFQNs = [NSArray arrayWithObject:@"eventFQN1"];
@@ -231,6 +232,8 @@
     [response addObject:response2];
     
     [eventManager eventListenersResponseReceived:response];
+    
+    [NSThread sleepForTimeInterval:1];
     [verifyCount(fetchListener, times(1)) onRequestFailed];
     [verifyCount(fetchListener, times(1)) onEventListenersReceived:anything()];
 }

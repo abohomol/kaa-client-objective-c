@@ -34,7 +34,7 @@
         self.delegates = [NSMutableSet set];
         self.properties = properties;
         self.state = state;
-        _deserializer = [[ConfigurationDeserializer alloc] init];
+        _deserializer = [[ConfigurationDeserializer alloc] initWithExecutorContext:context];
         self.executorContext = context;
     }
     return self;
@@ -77,15 +77,9 @@
             [self.storage saveConfiguration:self.configurationData];
             DDLogDebug(@"%@ Persisted configuration data from storage: %@", TAG, self.storage);
         }
-        [[self.executorContext getCallbackExecutor] addOperationWithBlock:^{
-            @try {
-                [_deserializer notify:self.delegates withData:self.configurationData];
-            }
-            @catch (NSException *exception) {
-                DDLogError(@"%@ Unable to notify all listeners: %@", TAG, exception);
-            }
-        }];
-        
+        [self.delegatesLock lock];
+        [_deserializer notify:self.delegates withData:self.configurationData];
+        [self.delegatesLock unlock];
     } else {
         DDLogWarn(@"%@ Only full resync delta is supported!", TAG);
     }

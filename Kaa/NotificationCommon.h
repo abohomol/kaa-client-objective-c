@@ -17,6 +17,7 @@
 #import <Foundation/Foundation.h>
 #import "EndpointGen.h"
 #import "KAADummyNotification.h"
+#import "ExecutorContext.h"
 
 @protocol NotificationDelegate
 
@@ -33,6 +34,8 @@
  * Implementation is auto-generated. Please modify corresponding template file.
  */
 @interface NotificationDeserializer : NSObject
+
+- (instancetype)initWithExecutorContext:(id<ExecutorContext>)context;
 
 /**
  * delegates - array of delegates to be notified <NotificationDelegate>
