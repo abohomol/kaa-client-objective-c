@@ -153,7 +153,8 @@
 - (void)eventListenersResponseReceived:(NSArray *)response {
     for (EventListenersResponse *singleResponse in response) {
         DDLogDebug(@"%@ Received event listener resolution response: %@", TAG, singleResponse);
-        EventListenersRequestBinding *bind = [self.eventListenersRequests objectForKey:[NSNumber numberWithInt:singleResponse.requestId]];
+        NSNumber *key = [NSNumber numberWithInt:singleResponse.requestId];
+        __block EventListenersRequestBinding *bind = [self.eventListenersRequests objectForKey:key];
         if (bind) {
             [self.eventListenersRequests removeObjectForKey:[NSNumber numberWithInt:singleResponse.requestId]];
             [[self.executorContext getCallbackExecutor] addOperationWithBlock:^{

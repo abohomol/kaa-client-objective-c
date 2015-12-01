@@ -91,14 +91,16 @@
             }
             request.requestId = group.blockId;
             request.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_0 andData:logs];
-            DDLogInfo(@"%@ Adding following bucket id [%li] for timeout tracking", TAG, (long)group.blockId);
+            DDLogInfo(@"%@ Adding following bucket id [%i] for timeout tracking", TAG, group.blockId);
             [self.timeoutsLock lock];
             [self.timeouts addObject:[NSNumber numberWithLong:group.blockId]];
             [self.timeoutsLock unlock];
+            
             __weak typeof(self)weakSelf = self;
+            __block LogBlock *timeoutGroup = group;
             dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)([self.strategy getTimeout] * NSEC_PER_SEC));
             dispatch_after(delay, [self.executorContext getSheduledExecutor], ^{
-                [weakSelf checkDeliveryTimeout:group.blockId];
+                [weakSelf checkDeliveryTimeout:timeoutGroup.blockId];
             });
         }
     } else {
