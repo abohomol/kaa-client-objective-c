@@ -26,6 +26,7 @@
 		393331391BD7BA72003BCC45 /* DefaultNotificationTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 393331381BD7BA72003BCC45 /* DefaultNotificationTransportTest.m */; };
 		3933313B1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */; };
 		3933313D1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */; };
+		3989F24F1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3989F24E1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m */; };
 		398CDBEB1BE0FAEE00D31E34 /* DefaultOperationTcpChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CDBEA1BE0FAEE00D31E34 /* DefaultOperationTcpChannelTest.m */; };
 		398CE8E11BE26E0000D31E34 /* avro_private.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622C1BB5BAD4009826FC /* avro_private.h */; };
 		398CE8E21BE26E0000D31E34 /* encoding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622D1BB5BAD4009826FC /* encoding.h */; };
@@ -690,6 +691,7 @@
 		393331381BD7BA72003BCC45 /* DefaultNotificationTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultNotificationTransportTest.m; sourceTree = "<group>"; };
 		3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationDataProcessorTest.m; sourceTree = "<group>"; };
 		3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationHttpChannelTest.m; sourceTree = "<group>"; };
+		3989F24E1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResyncConfigurationManagerTest.m; sourceTree = "<group>"; };
 		398CDBEA1BE0FAEE00D31E34 /* DefaultOperationTcpChannelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationTcpChannelTest.m; sourceTree = "<group>"; };
 		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
 		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
@@ -723,14 +725,14 @@
 		B803FD361B9EF52300187E61 /* TransportProtocolIdHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportProtocolIdHolder.h; sourceTree = "<group>"; };
 		B803FD371B9EF52300187E61 /* TransportProtocolIdHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportProtocolIdHolder.m; sourceTree = "<group>"; };
 		B803FD3A1B9EF65600187E61 /* RedirectionTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RedirectionTransport.h; sourceTree = "<group>"; };
-		B81161121B4BBB3D00C4E0C6 /* ConfigurationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationStorage.h; sourceTree = "<group>"; };
+		B81161121B4BBB3D00C4E0C6 /* ConfigurationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConfigurationStorage.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B81161151B4BC23A00C4E0C6 /* NotificationTopicListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationTopicListDelegate.h; sourceTree = "<group>"; };
-		B81161191B4BC5B700C4E0C6 /* LogStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogStorage.h; sourceTree = "<group>"; };
-		B811611D1B4BC75100C4E0C6 /* LogBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogBlock.h; sourceTree = "<group>"; };
-		B811611E1B4BC75100C4E0C6 /* LogBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogBlock.m; sourceTree = "<group>"; };
+		B81161191B4BC5B700C4E0C6 /* LogStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LogStorage.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B811611D1B4BC75100C4E0C6 /* LogBlock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LogBlock.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B811611E1B4BC75100C4E0C6 /* LogBlock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LogBlock.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B81161211B4BCCEC00C4E0C6 /* LogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogUploadStrategy.h; sourceTree = "<group>"; };
-		B81161231B4BCFA100C4E0C6 /* AccessPointCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessPointCommand.h; sourceTree = "<group>"; };
-		B81161251B4BCFF600C4E0C6 /* LogFailoverCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogFailoverCommand.h; sourceTree = "<group>"; };
+		B81161231B4BCFA100C4E0C6 /* AccessPointCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AccessPointCommand.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B81161251B4BCFF600C4E0C6 /* LogFailoverCommand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LogFailoverCommand.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B811612B1B4BD45200C4E0C6 /* EndpointRegistrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointRegistrationManager.h; sourceTree = "<group>"; };
 		B81935B81B15C3880053486A /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		B81935BB1B15CC7C0053486A /* EndpointKeyHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointKeyHash.h; sourceTree = "<group>"; };
@@ -746,37 +748,37 @@
 		B824A1F61B1452C50076C753 /* KaaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KaaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B824A1FC1B1452C50076C753 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B824A2081B1457CE0076C753 /* TransportCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportCommon.h; sourceTree = "<group>"; };
-		B824A2091B1457FC0076C753 /* KaaTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaTransport.h; sourceTree = "<group>"; };
+		B824A2091B1457FC0076C753 /* KaaTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KaaTransport.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B824A20E1B145A7C0076C753 /* KaaDataChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaDataChannel.h; sourceTree = "<group>"; };
 		B824A2161B1461DC0076C753 /* TransportProtocolId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportProtocolId.h; sourceTree = "<group>"; };
 		B824A2171B1461DC0076C753 /* TransportProtocolId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportProtocolId.m; sourceTree = "<group>"; };
 		B824A21E1B146A300076C753 /* KaaDataDemultiplexer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaDataDemultiplexer.h; sourceTree = "<group>"; };
 		B824A2201B14831F0076C753 /* KaaDataMultiplexer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KaaDataMultiplexer.h; sourceTree = "<group>"; };
 		B824A2211B1488830076C753 /* TransportConnectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportConnectionInfo.h; sourceTree = "<group>"; };
-		B824A2231B1489FE0076C753 /* ConnectivityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectivityChecker.h; sourceTree = "<group>"; };
-		B824A2241B1489FE0076C753 /* ConnectivityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectivityChecker.m; sourceTree = "<group>"; };
+		B824A2231B1489FE0076C753 /* ConnectivityChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConnectivityChecker.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B824A2241B1489FE0076C753 /* ConnectivityChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ConnectivityChecker.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B824A22B1B148CFA0076C753 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B824A22D1B148F1A0076C753 /* KaaChannelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaChannelManager.h; sourceTree = "<group>"; };
 		B824A2331B149F050076C753 /* KaaClientState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaClientState.h; sourceTree = "<group>"; };
 		B824AB221BE0E42500436BEA /* MessageFactoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageFactoryTest.m; sourceTree = "<group>"; };
 		B825A9A11B5664E800D35F01 /* GenericLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericLogCollector.h; sourceTree = "<group>"; };
 		B8330C3E1B38051B00D1A573 /* GenericKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericKaaClient.h; sourceTree = "<group>"; };
-		B83CCCF81B8B2B86003D4B0B /* AbstractLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractLogCollector.h; sourceTree = "<group>"; };
-		B83CCCF91B8B2B86003D4B0B /* AbstractLogCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractLogCollector.m; sourceTree = "<group>"; };
+		B83CCCF81B8B2B86003D4B0B /* AbstractLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AbstractLogCollector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B83CCCF91B8B2B86003D4B0B /* AbstractLogCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AbstractLogCollector.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B83CCCFC1B8B30A2003D4B0B /* DefaultLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultLogUploadStrategy.h; sourceTree = "<group>"; };
 		B83CCCFD1B8B30A2003D4B0B /* DefaultLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogUploadStrategy.m; sourceTree = "<group>"; };
 		B83CCD011B8B37DF003D4B0B /* MemBucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemBucket.h; sourceTree = "<group>"; };
 		B83CCD021B8B37DF003D4B0B /* MemBucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemBucket.m; sourceTree = "<group>"; };
-		B83CCD051B8B3F96003D4B0B /* DefaultLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultLogCollector.h; sourceTree = "<group>"; };
-		B83CCD061B8B3F96003D4B0B /* DefaultLogCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultLogCollector.m; sourceTree = "<group>"; };
+		B83CCD051B8B3F96003D4B0B /* DefaultLogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DefaultLogCollector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B83CCD061B8B3F96003D4B0B /* DefaultLogCollector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DefaultLogCollector.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B83CCD091B8B52CE003D4B0B /* MemLogStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MemLogStorage.h; sourceTree = "<group>"; };
 		B83CCD0A1B8B52CE003D4B0B /* MemLogStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MemLogStorage.m; sourceTree = "<group>"; };
 		B83CCD171B8CAB3B003D4B0B /* TransactionId.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TransactionId.h; path = transact/TransactionId.h; sourceTree = "<group>"; };
 		B83CCD181B8CAB3B003D4B0B /* TransactionId.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TransactionId.m; path = transact/TransactionId.m; sourceTree = "<group>"; };
 		B840CF331B172016001D0F74 /* EndpointAccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointAccessToken.h; sourceTree = "<group>"; };
 		B840CF341B172016001D0F74 /* EndpointAccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndpointAccessToken.m; sourceTree = "<group>"; };
-		B840CF381B172B75001D0F74 /* AbstractKaaTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractKaaTransport.h; sourceTree = "<group>"; };
-		B840CF391B172B75001D0F74 /* AbstractKaaTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractKaaTransport.m; sourceTree = "<group>"; };
+		B840CF381B172B75001D0F74 /* AbstractKaaTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AbstractKaaTransport.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B840CF391B172B75001D0F74 /* AbstractKaaTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AbstractKaaTransport.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B843B49C1BE67F950060519D /* TestsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestsHelper.h; sourceTree = "<group>"; };
 		B843B49D1BE67F950060519D /* TestsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestsHelper.m; sourceTree = "<group>"; };
 		B844622A1BB5BAD4009826FC /* io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = io.h; sourceTree = "<group>"; };
@@ -788,20 +790,20 @@
 		B844623A1BB5C377009826FC /* KaaLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaLogging.h; sourceTree = "<group>"; };
 		B844623B1BB5C377009826FC /* KaaLogging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaLogging.m; sourceTree = "<group>"; };
 		B84822791B8DAE78004E370B /* ProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileManager.h; sourceTree = "<group>"; };
-		B848227C1B8DAECA004E370B /* ProfileCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCommon.h; sourceTree = "<group>"; };
-		B848227D1B8DAECA004E370B /* ProfileCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCommon.m; sourceTree = "<group>"; };
+		B848227C1B8DAECA004E370B /* ProfileCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ProfileCommon.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B848227D1B8DAECA004E370B /* ProfileCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ProfileCommon.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B84822801B8DAFC0004E370B /* DefaultProfileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultProfileManager.h; sourceTree = "<group>"; };
 		B84822811B8DAFC0004E370B /* DefaultProfileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultProfileManager.m; sourceTree = "<group>"; };
 		B84822841B8DB031004E370B /* ProfileTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTransport.h; sourceTree = "<group>"; };
 		B84822861B8DB368004E370B /* NotificationProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationProcessor.h; sourceTree = "<group>"; };
 		B84822881B8DBB05004E370B /* NotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationManager.h; sourceTree = "<group>"; };
-		B848228A1B8DBB54004E370B /* NotificationCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationCommon.h; sourceTree = "<group>"; };
-		B848228B1B8DBB54004E370B /* NotificationCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationCommon.m; sourceTree = "<group>"; };
+		B848228A1B8DBB54004E370B /* NotificationCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = NotificationCommon.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B848228B1B8DBB54004E370B /* NotificationCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = NotificationCommon.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B848228E1B8DC269004E370B /* DefaultNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultNotificationManager.h; sourceTree = "<group>"; };
 		B848228F1B8DC269004E370B /* DefaultNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultNotificationManager.m; sourceTree = "<group>"; };
-		B85447E41BD51EA9000889BF /* EventFamilyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EventFamilyFactory.h; path = gen/EventFamilyFactory.h; sourceTree = "<group>"; };
-		B85447E51BD51EA9000889BF /* EventFamilyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EventFamilyFactory.m; path = gen/EventFamilyFactory.m; sourceTree = "<group>"; };
-		B856C0021B90C7B100A9F65D /* BootstrapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapManager.h; sourceTree = "<group>"; };
+		B85447E41BD51EA9000889BF /* EventFamilyFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = EventFamilyFactory.h; path = gen/EventFamilyFactory.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B85447E51BD51EA9000889BF /* EventFamilyFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = EventFamilyFactory.m; path = gen/EventFamilyFactory.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B856C0021B90C7B100A9F65D /* BootstrapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BootstrapManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B856C0041B90D4C000A9F65D /* KaaInternalChannelManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaInternalChannelManager.h; sourceTree = "<group>"; };
 		B856C0061B9337F700A9F65D /* DefaultBootstrapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultBootstrapManager.h; sourceTree = "<group>"; };
 		B856C0071B9337F700A9F65D /* DefaultBootstrapManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultBootstrapManager.m; sourceTree = "<group>"; };
@@ -811,8 +813,8 @@
 		B856EFB21B9C82CC00C065D9 /* KaaClientPropertiesState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KaaClientPropertiesState.m; sourceTree = "<group>"; };
 		B856EFB51B9D61D200C065D9 /* UUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UUID.h; sourceTree = "<group>"; };
 		B856EFB61B9D61D200C065D9 /* UUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UUID.m; sourceTree = "<group>"; };
-		B85B33C71BB04B1300B5785F /* DefaultBootstrapChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultBootstrapChannel.h; sourceTree = "<group>"; };
-		B85B33C81BB04B1300B5785F /* DefaultBootstrapChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultBootstrapChannel.m; sourceTree = "<group>"; };
+		B85B33C71BB04B1300B5785F /* DefaultBootstrapChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = DefaultBootstrapChannel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B85B33C81BB04B1300B5785F /* DefaultBootstrapChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = DefaultBootstrapChannel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B85E35641B860218008B663E /* AbstractConfigurationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractConfigurationManager.h; sourceTree = "<group>"; };
 		B85E35651B860218008B663E /* AbstractConfigurationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractConfigurationManager.m; sourceTree = "<group>"; };
 		B860B12A1BB2AB60001A89E1 /* TimeCommons.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimeCommons.m; sourceTree = "<group>"; };
@@ -826,8 +828,8 @@
 		B876298B1B8CB28C006AD5EF /* EventDelegates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventDelegates.h; sourceTree = "<group>"; };
 		B876298D1B8CB45B006AD5EF /* EndpointRegistrationProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndpointRegistrationProcessor.h; sourceTree = "<group>"; };
 		B876298F1B8CB660006AD5EF /* EventManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventManger.h; sourceTree = "<group>"; };
-		B87629911B8CC595006AD5EF /* BaseEventFamily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseEventFamily.h; sourceTree = "<group>"; };
-		B87629931B8CCD45006AD5EF /* UserVerifierConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVerifierConstants.h; sourceTree = "<group>"; };
+		B87629911B8CC595006AD5EF /* BaseEventFamily.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BaseEventFamily.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B87629931B8CCD45006AD5EF /* UserVerifierConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = UserVerifierConstants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B87629951B8CCFD5006AD5EF /* DefaultEventManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEventManager.h; sourceTree = "<group>"; };
 		B87629961B8CCFD5006AD5EF /* DefaultEventManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultEventManager.m; sourceTree = "<group>"; };
 		B87629991B8CD026006AD5EF /* EventListenersRequestBinding.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventListenersRequestBinding.h; sourceTree = "<group>"; };
@@ -863,34 +865,34 @@
 		B87FCA741BDA71F70016A721 /* KAATcpConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpConnect.m; path = kaatcp/KAATcpConnect.m; sourceTree = "<group>"; };
 		B87FCA771BDAE9D10016A721 /* KAATcpDisconnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpDisconnect.h; path = kaatcp/KAATcpDisconnect.h; sourceTree = "<group>"; };
 		B87FCA781BDAE9D10016A721 /* KAATcpDisconnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpDisconnect.m; path = kaatcp/KAATcpDisconnect.m; sourceTree = "<group>"; };
-		B87FCA7B1BDAEC3D0016A721 /* KAATcpKaaSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpKaaSync.h; path = kaatcp/KAATcpKaaSync.h; sourceTree = "<group>"; };
-		B87FCA7C1BDAEC3D0016A721 /* KAATcpKaaSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpKaaSync.m; path = kaatcp/KAATcpKaaSync.m; sourceTree = "<group>"; };
+		B87FCA7B1BDAEC3D0016A721 /* KAATcpKaaSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = KAATcpKaaSync.h; path = kaatcp/KAATcpKaaSync.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B87FCA7C1BDAEC3D0016A721 /* KAATcpKaaSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = KAATcpKaaSync.m; path = kaatcp/KAATcpKaaSync.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B87FCA7F1BDBAA4B0016A721 /* KAATcpSync.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpSync.h; path = kaatcp/KAATcpSync.h; sourceTree = "<group>"; };
-		B87FCA801BDBAA4B0016A721 /* KAATcpSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpSync.m; path = kaatcp/KAATcpSync.m; sourceTree = "<group>"; };
-		B87FCA831BDBAEE00016A721 /* KAATcpSyncResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpSyncResponse.h; path = kaatcp/KAATcpSyncResponse.h; sourceTree = "<group>"; };
-		B87FCA841BDBAEE00016A721 /* KAATcpSyncResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpSyncResponse.m; path = kaatcp/KAATcpSyncResponse.m; sourceTree = "<group>"; };
-		B87FCA871BDBB4170016A721 /* KAATcpSyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpSyncRequest.h; path = kaatcp/KAATcpSyncRequest.h; sourceTree = "<group>"; };
-		B87FCA881BDBB4170016A721 /* KAATcpSyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpSyncRequest.m; path = kaatcp/KAATcpSyncRequest.m; sourceTree = "<group>"; };
-		B87FCA8B1BDBB56E0016A721 /* KAATcpPingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpPingRequest.h; path = kaatcp/KAATcpPingRequest.h; sourceTree = "<group>"; };
-		B87FCA8C1BDBB56E0016A721 /* KAATcpPingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpPingRequest.m; path = kaatcp/KAATcpPingRequest.m; sourceTree = "<group>"; };
-		B87FCA8F1BDBB6590016A721 /* KAATcpPingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAATcpPingResponse.h; path = kaatcp/KAATcpPingResponse.h; sourceTree = "<group>"; };
+		B87FCA801BDBAA4B0016A721 /* KAATcpSync.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = KAATcpSync.m; path = kaatcp/KAATcpSync.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B87FCA831BDBAEE00016A721 /* KAATcpSyncResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = KAATcpSyncResponse.h; path = kaatcp/KAATcpSyncResponse.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B87FCA841BDBAEE00016A721 /* KAATcpSyncResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = KAATcpSyncResponse.m; path = kaatcp/KAATcpSyncResponse.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B87FCA871BDBB4170016A721 /* KAATcpSyncRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = KAATcpSyncRequest.h; path = kaatcp/KAATcpSyncRequest.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B87FCA881BDBB4170016A721 /* KAATcpSyncRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = KAATcpSyncRequest.m; path = kaatcp/KAATcpSyncRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B87FCA8B1BDBB56E0016A721 /* KAATcpPingRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = KAATcpPingRequest.h; path = kaatcp/KAATcpPingRequest.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B87FCA8C1BDBB56E0016A721 /* KAATcpPingRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; name = KAATcpPingRequest.m; path = kaatcp/KAATcpPingRequest.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B87FCA8F1BDBB6590016A721 /* KAATcpPingResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = KAATcpPingResponse.h; path = kaatcp/KAATcpPingResponse.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B87FCA901BDBB6590016A721 /* KAATcpPingResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAATcpPingResponse.m; path = kaatcp/KAATcpPingResponse.m; sourceTree = "<group>"; };
 		B87FCA941BDBB8CA0016A721 /* KAAMessageFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = KAAMessageFactory.h; path = kaatcp/KAAMessageFactory.h; sourceTree = "<group>"; };
 		B87FCA951BDBB8CA0016A721 /* KAAMessageFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = KAAMessageFactory.m; path = kaatcp/KAAMessageFactory.m; sourceTree = "<group>"; };
-		B8807C1A1BA33B0F00F78BFC /* BlockingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlockingQueue.h; sourceTree = "<group>"; };
-		B8807C1B1BA33B0F00F78BFC /* BlockingQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlockingQueue.m; sourceTree = "<group>"; };
+		B8807C1A1BA33B0F00F78BFC /* BlockingQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BlockingQueue.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B8807C1B1BA33B0F00F78BFC /* BlockingQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = BlockingQueue.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B888361E1BA0930600ACAB4F /* AbstractKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractKaaClient.h; sourceTree = "<group>"; };
 		B888361F1BA0930600ACAB4F /* AbstractKaaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractKaaClient.m; sourceTree = "<group>"; };
 		B88836241BA0981C00ACAB4F /* KaaClientStateDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaClientStateDelegate.h; sourceTree = "<group>"; };
 		B88836261BA09A5F00ACAB4F /* TransportContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportContext.h; sourceTree = "<group>"; };
 		B88836271BA09A5F00ACAB4F /* TransportContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportContext.m; sourceTree = "<group>"; };
 		B888362B1BA09B5000ACAB4F /* SchemaProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SchemaProcessor.h; sourceTree = "<group>"; };
-		B888362E1BA09C2500ACAB4F /* ConfigurationTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationTransport.h; sourceTree = "<group>"; };
+		B888362E1BA09C2500ACAB4F /* ConfigurationTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConfigurationTransport.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B88836301BA17C0100ACAB4F /* DefaultUserTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultUserTransport.h; sourceTree = "<group>"; };
 		B88836311BA17C0100ACAB4F /* DefaultUserTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultUserTransport.m; sourceTree = "<group>"; };
-		B88836341BA1F15000ACAB4F /* LogRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogRecord.h; sourceTree = "<group>"; };
-		B88836351BA1F15000ACAB4F /* LogRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogRecord.m; sourceTree = "<group>"; };
-		B88836381BA1F1FD00ACAB4F /* LogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogCollector.h; sourceTree = "<group>"; };
+		B88836341BA1F15000ACAB4F /* LogRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LogRecord.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B88836351BA1F15000ACAB4F /* LogRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = LogRecord.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B88836381BA1F1FD00ACAB4F /* LogCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LogCollector.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B88D00AF1BA87F8D002E0144 /* DefaultRedirectionTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultRedirectionTransport.h; sourceTree = "<group>"; };
 		B88D00B01BA87F8D002E0144 /* DefaultRedirectionTransport.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultRedirectionTransport.m; sourceTree = "<group>"; };
 		B88D00B31BA8835D002E0144 /* DefaultLogTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultLogTransport.h; sourceTree = "<group>"; };
@@ -918,10 +920,10 @@
 		B8A13B081BAFE93A00265729 /* DefaultOperationDataProcessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationDataProcessor.m; sourceTree = "<group>"; };
 		B8A13B0F1BB0198F00265729 /* HttpRequestCreator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestCreator.h; sourceTree = "<group>"; };
 		B8A13B101BB0198F00265729 /* HttpRequestCreator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestCreator.m; sourceTree = "<group>"; };
-		B8A13B131BB019CB00265729 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		B8A13B151BB01AD000265729 /* CommonEPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonEPConstants.h; sourceTree = "<group>"; };
-		B8A13B171BB0221B00265729 /* AbstractHttpChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractHttpChannel.h; sourceTree = "<group>"; };
-		B8A13B181BB0221B00265729 /* AbstractHttpChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractHttpChannel.m; sourceTree = "<group>"; };
+		B8A13B131BB019CB00265729 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = Constants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B8A13B151BB01AD000265729 /* CommonEPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = CommonEPConstants.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B8A13B171BB0221B00265729 /* AbstractHttpChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AbstractHttpChannel.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B8A13B181BB0221B00265729 /* AbstractHttpChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AbstractHttpChannel.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B8A8DF951B9F468B002CEF3E /* MetaDataTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetaDataTransport.h; sourceTree = "<group>"; };
 		B8A8DF971B9F4871002CEF3E /* IPTransportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IPTransportInfo.h; sourceTree = "<group>"; };
 		B8A8DF981B9F4871002CEF3E /* IPTransportInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IPTransportInfo.m; sourceTree = "<group>"; };
@@ -948,15 +950,15 @@
 		B8C8BD361B83153400D2C016 /* NSString+Commons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Commons.m"; sourceTree = "<group>"; };
 		B8C8BD391B83236400D2C016 /* GenericTransportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTransportInfo.h; sourceTree = "<group>"; };
 		B8C8BD3A1B83236400D2C016 /* GenericTransportInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericTransportInfo.m; sourceTree = "<group>"; };
-		B8D1D1081B9442940097E64A /* KeyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyUtils.h; sourceTree = "<group>"; };
-		B8D1D1091B9442940097E64A /* KeyUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyUtils.m; sourceTree = "<group>"; };
-		B8D1D10C1B945FF10097E64A /* KeyPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyPair.h; sourceTree = "<group>"; };
-		B8D1D10D1B945FF10097E64A /* KeyPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyPair.m; sourceTree = "<group>"; };
+		B8D1D1081B9442940097E64A /* KeyUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KeyUtils.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B8D1D1091B9442940097E64A /* KeyUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KeyUtils.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		B8D1D10C1B945FF10097E64A /* KeyPair.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = KeyPair.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B8D1D10D1B945FF10097E64A /* KeyPair.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = KeyPair.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B8D415AD1B8476A600B0D551 /* SHAMessageDigest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SHAMessageDigest.h; sourceTree = "<group>"; };
 		B8D415AE1B8476A600B0D551 /* SHAMessageDigest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SHAMessageDigest.m; sourceTree = "<group>"; };
 		B8D47D861B4FF8490003BAF3 /* AvroBytesConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AvroBytesConverter.h; sourceTree = "<group>"; };
 		B8D47D871B4FF8490003BAF3 /* AvroBytesConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AvroBytesConverter.m; sourceTree = "<group>"; };
-		B8D8EF401B9078FA0088F227 /* BootstrapTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BootstrapTransport.h; sourceTree = "<group>"; };
+		B8D8EF401B9078FA0088F227 /* BootstrapTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = BootstrapTransport.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B8DBE3521BB073040036058B /* DefaultOperationHttpChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultOperationHttpChannel.h; sourceTree = "<group>"; };
 		B8DBE3531BB073040036058B /* DefaultOperationHttpChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationHttpChannel.m; sourceTree = "<group>"; };
 		B8DBE3561BB138550036058B /* DefaultFailoverManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultFailoverManager.h; sourceTree = "<group>"; };
@@ -976,11 +978,11 @@
 		B8EFF1F91BC8FE8C002551A9 /* MessageEncoderDecoderTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageEncoderDecoderTests.m; sourceTree = "<group>"; };
 		B8F14E221BD8E200001D1B02 /* BaseKaaClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseKaaClient.h; sourceTree = "<group>"; };
 		B8F14E231BD8E200001D1B02 /* BaseKaaClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseKaaClient.m; sourceTree = "<group>"; };
-		B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationPersistenceManager.h; sourceTree = "<group>"; };
+		B8FBD9EB1B9E0094009A2BA3 /* ConfigurationPersistenceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = ConfigurationPersistenceManager.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		B8FBD9ED1B9E0243009A2BA3 /* SimpleConfigurationStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleConfigurationStorage.h; sourceTree = "<group>"; };
 		B8FBD9EE1B9E0243009A2BA3 /* SimpleConfigurationStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleConfigurationStorage.m; sourceTree = "<group>"; };
-		B8FBD9F21B9E02DB009A2BA3 /* AbstractHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractHttpClient.h; sourceTree = "<group>"; };
-		B8FBD9F31B9E02DB009A2BA3 /* AbstractHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractHttpClient.m; sourceTree = "<group>"; };
+		B8FBD9F21B9E02DB009A2BA3 /* AbstractHttpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AbstractHttpClient.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
+		B8FBD9F31B9E02DB009A2BA3 /* AbstractHttpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AbstractHttpClient.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		B8FBD9F61B9E35B4009A2BA3 /* KaaClientPlatformContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KaaClientPlatformContext.h; sourceTree = "<group>"; };
 		B8FC094E1B904BD2002109A4 /* UserTransport.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTransport.h; sourceTree = "<group>"; };
 		B8FC09501B904CFD002109A4 /* DefaultEndpointRegistrationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DefaultEndpointRegistrationManager.h; sourceTree = "<group>"; };
@@ -1058,6 +1060,14 @@
 				392D3ED61BD102BF007CC7DA /* EventManagerTest.m */,
 			);
 			name = event;
+			sourceTree = "<group>";
+		};
+		3989F24D1C0C625700A9EAB1 /* configuration */ = {
+			isa = PBXGroup;
+			children = (
+				3989F24E1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m */,
+			);
+			name = configuration;
 			sourceTree = "<group>";
 		};
 		39AEB2841BBA6A440045FB32 /* strategy */ = {
@@ -1271,6 +1281,7 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
+				3989F24D1C0C625700A9EAB1 /* configuration */,
 				391F25891BD4F3070031ED84 /* notification */,
 				391F25861BD4C5E20031ED84 /* bootstrap */,
 				392D3ED51BD102A1007CC7DA /* event */,
@@ -2196,6 +2207,7 @@
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391292531BDE10210013F631 /* KaaTcpMessageTest.m in Sources */,
 				39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */,
+				3989F24F1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m in Sources */,
 				391F25881BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				3933313D1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m in Sources */,
