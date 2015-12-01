@@ -99,8 +99,12 @@
         [self.btChannel connectionStateChanged:NO];
     }
     @catch (NSException *ex) {
-        DDLogError(@"%@ Failed to receive operation servers list: %@, reason: %@", TAG, ex.name, ex.reason);
-        [self.btChannel connectionStateChanged:YES];
+        if ([self.btChannel isShutdown]) {
+            DDLogError(@"%@ Failed to receive operation servers list: %@, reason: %@", TAG, ex.name, ex.reason);
+            [self.btChannel connectionStateChanged:YES];
+        } else {
+            DDLogDebug(@"%@ Failed to receive operation servers list: %@, reason: %@", TAG, ex.name, ex.reason);
+        }
     }
 }
 

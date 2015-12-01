@@ -14,6 +14,8 @@
 
 @interface AbstractHttpChannel : NSObject <KaaDataChannel>
 
+@property (nonatomic,readonly) volatile BOOL isShutdown;
+
 - (instancetype)initWithClient:(AbstractKaaClient *)client state:(id<KaaClientState>)state
                failoverManager:(id<FailoverManager>)manager;
 
