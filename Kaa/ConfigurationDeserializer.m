@@ -33,7 +33,7 @@
 }
 
 - (void)notify:(NSSet *)configurationDelegates withData:(NSData *)configurationData {
-    KAADummyConfiguration *configuration = [self fromBytes:configurationData];
+    __block KAADummyConfiguration *configuration = [self fromBytes:configurationData];
     for (id<ConfigurationDelegate> delegate in configurationDelegates) {
         [[executorContext getCallbackExecutor] addOperationWithBlock:^{
             [delegate onConfigurationUpdate:configuration];
