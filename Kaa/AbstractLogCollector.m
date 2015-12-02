@@ -30,7 +30,7 @@
 @property (nonatomic,strong) id<KaaChannelManager> channelManager;
 @property (nonatomic,strong) id<LogTransport> transport;
 @property (nonatomic,strong) id<FailoverManager> failoverManager;
-@property (nonatomic,strong) NSMutableSet *timeouts;
+@property (nonatomic,strong) NSMutableDictionary *timeouts;
 @property (nonatomic,strong) NSLock *timeoutsLock;
 @property (atomic) BOOL uploadCheckInProgress;
 @property (nonatomic,strong) NSLock *uploadCheckLock;
@@ -38,6 +38,16 @@
 
 - (void)checkDeliveryTimeout:(int32_t)bucketId;
 - (void)processUploadDecision:(LogUploadStrategyDecision)decision;
+
+@end
+
+@interface TimeoutOperation : NSOperation
+
+@property (nonatomic) int64_t timeout;
+@property (nonatomic,weak) AbstractLogCollector *logCollector;
+@property (nonatomic,strong) LogBlock *timeoutGroup;
+
+- (instancetype)initWithLogCollector:(AbstractLogCollector *)logCollector timeout:(int64_t)timeout andGroup:(LogBlock *)group;
 
 @end
 
@@ -55,7 +65,7 @@
         self.transport = transport;
         _executorContext = executorContext;
         self.failoverManager = failoverManager;
-        self.timeouts = [NSMutableSet set];
+        self.timeouts = [NSMutableDictionary dictionary];
         self.timeoutsLock = [[NSLock alloc] init];
         self.uploadCheckInProgress = NO;
         self.uploadCheckLock = [[NSLock alloc] init];
@@ -99,17 +109,15 @@
             }
             request.requestId = group.blockId;
             request.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_0 andData:logs];
-            DDLogInfo(@"%@ Adding following bucket id [%i] for timeout tracking", TAG, group.blockId);
-            [self.timeoutsLock lock];
-            [self.timeouts addObject:[NSNumber numberWithLong:group.blockId]];
-            [self.timeoutsLock unlock];
             
-            __weak typeof(self)weakSelf = self;
-            __block LogBlock *timeoutGroup = group;
-            dispatch_time_t delay = dispatch_time(DISPATCH_TIME_NOW, (int64_t)([self.strategy getTimeout] * NSEC_PER_SEC));
-            dispatch_after(delay, [self.executorContext getSheduledExecutor], ^{
-                [weakSelf checkDeliveryTimeout:timeoutGroup.blockId];
-            });
+            DDLogInfo(@"%@ Adding following bucket id [%i] for timeout tracking", TAG, group.blockId);
+            NSOperation *timeoutOperation = [[TimeoutOperation alloc] initWithLogCollector:self
+                                                                                   timeout:[self.strategy getTimeout]
+                                                                                  andGroup:group];
+
+            [self.timeoutsLock lock];
+            [self.timeouts setObject:timeoutOperation forKey:[NSNumber numberWithLong:group.blockId]];
+            [self.timeoutsLock unlock];
         }
     } else {
         DDLogWarn(@"%@ Log group is nil: log group size is too small", TAG);
@@ -134,7 +142,12 @@
                 }
                 DDLogInfo(@"%@ Removing bucket id from timeouts: %i", TAG, status.requestId);
                 [self.timeoutsLock lock];
-                [self.timeouts removeObject:[NSNumber numberWithLong:status.requestId]];
+                NSNumber *key = [NSNumber numberWithLong:status.requestId];
+                NSOperation *timeout = [self.timeouts objectForKey:key];
+                if (timeout) {
+                    [self.timeouts removeObjectForKey:key];
+                    [timeout cancel];
+                }
                 [self.timeoutsLock unlock];
             }
             if (!isAlreadyScheduled) {
@@ -145,7 +158,13 @@
 }
 
 - (void)stop {
+    DDLogDebug(@"%@ Closing storage", TAG);
     [self.storage close];
+    DDLogDebug(@"%@ Clearing timeouts map", TAG);
+    for (NSOperation *timeout in self.timeouts.allValues) {
+        [timeout cancel];
+    }
+    [self.timeouts removeAllObjects];
 }
 
 - (void)processUploadDecision:(LogUploadStrategyDecision)decision {
@@ -186,22 +205,22 @@
 }
 
 - (void)checkDeliveryTimeout:(int32_t)bucketId {
-    DDLogDebug(@"%@ Checking for a delivery timeout of the bucket with id: [%li]", TAG, (long)bucketId);
+    DDLogDebug(@"%@ Checking for a delivery timeout of the bucket with id: [%i]", TAG, bucketId);
     [self.timeoutsLock lock];
-    BOOL isTimeout = NO;
-    if ([self.timeouts containsObject:[NSNumber numberWithLong:bucketId]]) {
-        [self.timeouts removeObject:[NSNumber numberWithLong:bucketId]];
-        isTimeout = YES;
+    NSOperation *timeout = [self.timeouts objectForKey:[NSNumber numberWithLong:bucketId]];
+    if (timeout) {
+        [self.timeouts removeObjectForKey:[NSNumber numberWithLong:bucketId]];
     }
     [self.timeoutsLock unlock];
     
-    if (isTimeout) {
-        DDLogInfo(@"%@ Log delivery timeout detected for the bucket with id: [%li]", TAG, (long)bucketId);
+    if (timeout) {
+        DDLogInfo(@"%@ Log delivery timeout detected for the bucket with id: [%i]", TAG, bucketId);
         [self.storage notifyUploadFailed:bucketId];
         __weak typeof(self)weakSelf = self;
         [[self.executorContext getCallbackExecutor] addOperationWithBlock:^{
             [weakSelf.strategy onTimeout:weakSelf];
         }];
+        [timeout cancel];
     } else {
         DDLogVerbose(@"%@ No log delivery timeout for the bucket with id [%li] was detected", TAG, (long)bucketId);
     }
@@ -229,6 +248,35 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), [self.executorContext getSheduledExecutor], ^{
         [weakSelf uploadIfNeeded];
     });
+}
+
+@end
+
+@implementation TimeoutOperation
+
+- (instancetype)initWithLogCollector:(AbstractLogCollector *)logCollector timeout:(int64_t)timeout andGroup:(LogBlock *)group {
+    self = [super init];
+    if (self) {
+        self.logCollector = logCollector;
+        self.timeout = timeout;
+        self.timeoutGroup = group;
+    }
+    return self;
+}
+
+- (void)main {
+    if (self.isFinished && self.isCancelled) {
+        DDLogDebug(@"%@ Timeout check worker for block: %i was interrupted before start", TAG, [self.timeoutGroup blockId]);
+        return;
+    }
+    
+    [NSThread sleepForTimeInterval:self.timeout];
+    
+    if (!self.isFinished && !self.isCancelled) {
+        [self.logCollector checkDeliveryTimeout:[self.timeoutGroup blockId]];
+    } else {
+        DDLogDebug(@"%@ Timeout check worker for block: %i was interrupted after delay", TAG, [self.timeoutGroup blockId]);
+    }
 }
 
 @end

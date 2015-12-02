@@ -237,7 +237,9 @@ typedef enum {
             @finally {
                 self.socket = nil;
                 [self.messageFactory.framer flush];
-                self.channelState = CHANNEL_STATE_CLOSED;
+                if (self.channelState != CHANNEL_STATE_SHUTDOWN) {
+                    self.channelState = CHANNEL_STATE_CLOSED;
+                }
             }
         }
     }

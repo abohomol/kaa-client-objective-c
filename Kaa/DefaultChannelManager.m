@@ -194,12 +194,15 @@
 
 - (void)onTransportConnectionInfoUpdated:(id<TransportConnectionInfo>)newServer {
     @synchronized(self) {
+        DDLogDebug(@"%@ Transport connection info updated for server: %@", TAG, newServer);
+        
         if (self.isShutdown) {
             DDLogWarn(@"%@ Can't process server update. Channel manager is down", TAG);
             return;
         }
         
         if ([newServer serverType] == SERVER_OPERATIONS) {
+            DDLogInfo(@"%@ Adding new operations server: %@", TAG, newServer);
             [self.lastServers setObject:newServer forKey:[newServer transportId]];
         }
         
@@ -230,7 +233,6 @@
             id<TransportConnectionInfo> nextConnectionInfo = [self getNextBootstrapServer:server];
             if (nextConnectionInfo) {
                 DDLogVerbose(@"%@ Using next bootstrap server", TAG);
-//                [self onTransportConnectionInfoUpdated:nextConnectionInfo];
                 FailoverDecision *decision = [self.failoverManager onFailover:FAILOVER_STATUS_CURRENT_BOOTSTRAP_SERVER_NA];
                 switch (decision.failoverAction) {
                     case FAILOVER_ACTION_NOOP:

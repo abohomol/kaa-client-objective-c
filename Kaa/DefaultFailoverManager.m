@@ -98,11 +98,12 @@
 
 - (void)onServerFailed:(id<TransportConnectionInfo>)connectionInfo {
     @synchronized(self) {
-        DDLogVerbose(@"%@ Server %@ failed", TAG, connectionInfo);
         
         if (!connectionInfo) {
-            DDLogWarn(@"%@ Server connection info is nil, can't resolve", TAG);
+            DDLogWarn(@"%@ Server failed, but connection info is nil, can't resolve", TAG);
             return;
+        } else {
+            DDLogInfo(@"%@ Server [%i, %i] failed", TAG, [connectionInfo serverType], [connectionInfo accessPointId]);
         }
         
         long currentResolutionTime = -1;
@@ -149,10 +150,11 @@
 
 - (void)onServerChanged:(id<TransportConnectionInfo>)connectionInfo {
     @synchronized(self) {
-        DDLogVerbose(@"%@ Server %@ has changed", TAG, connectionInfo);
         if (!connectionInfo) {
-            DDLogWarn(@"%@ Server connection info is nil, can't resolve", TAG);
+            DDLogWarn(@"%@ Server has changed, but its connection info is nil, can't resolve", TAG);
             return;
+        } else {
+            DDLogVerbose(@"%@ Server [%i, %i] has changed", TAG, [connectionInfo serverType], [connectionInfo accessPointId]);
         }
         
         NSNumber *serverTypeKey = [NSNumber numberWithInt:[connectionInfo serverType]];
@@ -186,7 +188,8 @@
         NSNumber *serverTypeKey = [NSNumber numberWithInt:[connectionInfo serverType]];
         AccessPointIdResolution *pointResolution = [self.resolutionProgressMap objectForKey:serverTypeKey];
         if (!pointResolution) {
-            DDLogWarn(@"%@ Server hasn't been set yet, so a new server: %@ can't be connected", TAG, connectionInfo);
+            DDLogVerbose(@"%@ Server hasn't been set (failover resolution has happened), new server %@ can't be connected",
+                         TAG, connectionInfo);
         } else if (pointResolution.resolution
                    && pointResolution.accessPointId == [connectionInfo accessPointId]) {
             DDLogVerbose(@"%@ Cancelling fail resolution: %@", TAG, pointResolution);

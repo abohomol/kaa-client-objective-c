@@ -29,6 +29,19 @@
 #import "SimpleExecutorContext.h"
 #import "AbstractKaaClient.h"
 #import "GenericTransportInfo.h"
+#import "KAADummyProfile.h"
+
+@interface TestClientProfileContainer : NSObject <ProfileContainer>
+
+@end
+
+@implementation TestClientProfileContainer
+
+- (KAADummyProfile *)getProfile {
+    return [[KAADummyProfile alloc] init];
+}
+
+@end
 
 @interface AbstractKaaClient (WithBsManager)
 
@@ -62,18 +75,18 @@
     [super setUp];
     self.context = mockProtocol(@protocol(KaaClientPlatformContext));
     self.properties = mock([KaaClientProperties class]);
-    id<ExecutorContext> executorContext = [[SimpleExecutorContext alloc] init];
     self.delegate = mockProtocol(@protocol(KaaClientStateDelegate));
 
     [given([self.context getBase64]) willReturn:[[CommonBase64 alloc] init]];
     [given([self.context getProperties]) willReturn:self.properties];
-    [given([self.context getExecutorContext]) willReturn:executorContext];
+    [given([self.context getExecutorContext]) willReturn:[[SimpleExecutorContext alloc] init]];
     
     [given([self.properties bootstrapServers]) willReturn:[self buildDummyConnectionInfo]];
     [given([self.properties propertiesHash]) willReturn:[@"test" dataUsingEncoding:NSUTF8StringEncoding]];
     
     self.bsManagerMock = mock([DefaultBootstrapManager class]);
     self.client = [[AbstractKaaClient alloc] initWithPlatformContext:self.context delegate:self.delegate andBsManager:self.bsManagerMock];
+    [self.client setProfileContainer:[[TestClientProfileContainer alloc] init]];
 }
 
 - (void)testBasicLifeCycle {
@@ -118,7 +131,7 @@
     [self.client start];
     
     [NSThread sleepForTimeInterval:1];
-    [verifyCount(self.bsManagerMock, times(1)) receiveOperationsServerList];
+    [verifyCount(self.delegate, times(1)) onStartFailure:anything()];
 }
 
 - (void)testFailureOnStop {
@@ -148,10 +161,16 @@
 }
 
 - (void)testFailureOnResume {
-    NSException *exception = [NSException exceptionWithName:@"RuntimeException" reason:@"cause" userInfo:nil];
     [self.client start];
+    [NSThread sleepForTimeInterval:1];
+    [verifyCount(self.delegate, times(1)) onStarted];
+    
+    [self.client pause];
+    [NSThread sleepForTimeInterval:1];
+    [verifyCount(self.delegate, times(1)) onPaused];
     
     id<KaaInternalChannelManager> channelManager = mockProtocol(@protocol(KaaInternalChannelManager));
+    NSException *exception = [NSException exceptionWithName:@"RuntimeException" reason:@"cause" userInfo:nil];
     [givenVoid([channelManager resume]) willThrow:exception];
     [self.client setValue:channelManager forKey:@"channelManager"];
     [self.client resume];

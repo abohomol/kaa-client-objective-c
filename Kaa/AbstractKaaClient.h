@@ -32,6 +32,15 @@
 #import "DefaultUserTransport.h"
 #import "DefaultLogCollector.h"
 
+#define FORSE_SYNC YES
+
+typedef enum {
+    CLIENT_LIFECYCLE_STATE_CREATED,
+    CLIENT_LIFECYCLE_STATE_STARTED,
+    CLIENT_LIFECYCLE_STATE_PAUSED,
+    CLIENT_LIFECYCLE_STATE_STOPPED
+} ClientLifecycleState;
+
 /**
  * Abstract class that holds general elements of Kaa library.
  *
@@ -53,6 +62,8 @@
 
 @property (nonatomic,strong) id<KaaClientPlatformContext> context;
 @property (nonatomic,weak) id<KaaClientStateDelegate> stateDelegate;
+
+@property (nonatomic) ClientLifecycleState lifecycleState;
 
 - (instancetype)initWithPlatformContext:(id<KaaClientPlatformContext>)context
                             andDelegate:(id<KaaClientStateDelegate>)delegate;
@@ -126,5 +137,9 @@
 
 - (id<RedirectionTransport>)buildRedirectionTransport:(KaaClientProperties *)properties
                                           clientState:(id<KaaClientState>)state;
+
+- (void)checkLifecycleState:(ClientLifecycleState)expected withError:(NSString *)message;
+
+- (void)checkLifecycleStateNot:(ClientLifecycleState)expected withError:(NSString *)message;
 
 @end

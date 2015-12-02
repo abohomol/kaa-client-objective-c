@@ -38,4 +38,6 @@
  */
 - (NSData *)toBytes:(id<ProfileContainer>)container;
 
+- (BOOL)isDefault;
+
 @end

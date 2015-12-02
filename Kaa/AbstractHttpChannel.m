@@ -33,7 +33,6 @@
 @property (nonatomic,strong) volatile NSOperationQueue *executor;
 
 @property (nonatomic) volatile BOOL lastConnectionFailed;
-@property (nonatomic) volatile BOOL isShutdown;
 @property (nonatomic) volatile BOOL isPaused;
 
 @property (nonatomic,strong) AbstractHttpClient *kaaHttpClient;
@@ -188,7 +187,7 @@
 
 - (void)shutdown {
     if (!self.isShutdown) {
-        self.isShutdown = YES;
+        _isShutdown = YES;
         if (self.executor) {
             [self.executor cancelAllOperations];
         }

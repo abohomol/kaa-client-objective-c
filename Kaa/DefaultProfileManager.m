@@ -49,4 +49,8 @@
     [self.transport sync];
 }
 
+- (BOOL)isInitialized {
+    return self.container != nil || [self.serializer isDefault];
+}
+
 @end

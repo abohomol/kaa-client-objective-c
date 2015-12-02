@@ -44,4 +44,8 @@
     return nil;
 }
 
+- (BOOL)isDefault {
+    return NO;
+}
+
 @end
