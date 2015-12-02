@@ -17,6 +17,7 @@
 #ifndef KaaExceptions_h
 #define KaaExceptions_h
 
+#define KaaException                        @"KaaException"
 #define KaaSecurityException                @"KaaSecurityException"
 #define KaaChannelRuntimeException          @"KaaChannelRuntimeException"
 #define KaaBootstrapRuntimeException        @"KaaBootstrapRuntimeException"
@@ -30,5 +31,6 @@
 #define KaaTcpProtocolException             @"KaaTcpProtocolException"
 #define KaaKeyPairGenerationException       @"KaaKeyPairGenerationException"
 #define KaaUnableOpenFile                   @"KaaUnableOpenFile"
+#define KaaRuntimeException                 @"KaaRuntimeException"
 
 #endif /* KaaExceptions_h */

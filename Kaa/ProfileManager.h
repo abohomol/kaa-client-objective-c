@@ -45,6 +45,15 @@
  */
 - (void)updateProfile;
 
+/**
+ * Retrieves ready-to-use state.
+ *
+ * A user should provide a profile container in case of a non-default profile schema.
+ *
+ * @return True if ready.
+ */
+- (BOOL)isInitialized;
+
 @end
 
 #endif

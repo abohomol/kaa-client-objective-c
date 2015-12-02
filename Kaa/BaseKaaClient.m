@@ -25,10 +25,12 @@
 }
 
 - (void)addLogRecord:(KAADummyLog *)record {
+    [self checkLifecycleState:CLIENT_LIFECYCLE_STATE_STARTED withError:@"Kaa client isn't started"];
     [self.logCollector addLogRecord:record];
 }
 
 - (KAADummyConfiguration *)getConfiguration {
+    [self checkLifecycleState:CLIENT_LIFECYCLE_STATE_STARTED withError:@"Kaa client isn't started"];
     return [self.configurationManager getConfiguration];
 }
 
