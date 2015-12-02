@@ -26,7 +26,6 @@
 		393331391BD7BA72003BCC45 /* DefaultNotificationTransportTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 393331381BD7BA72003BCC45 /* DefaultNotificationTransportTest.m */; };
 		3933313B1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */; };
 		3933313D1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */; };
-		3989F24F1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3989F24E1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m */; };
 		398CDBEB1BE0FAEE00D31E34 /* DefaultOperationTcpChannelTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 398CDBEA1BE0FAEE00D31E34 /* DefaultOperationTcpChannelTest.m */; };
 		398CE8E11BE26E0000D31E34 /* avro_private.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622C1BB5BAD4009826FC /* avro_private.h */; };
 		398CE8E21BE26E0000D31E34 /* encoding.h in Copy Files */ = {isa = PBXBuildFile; fileRef = B844622D1BB5BAD4009826FC /* encoding.h */; };
@@ -691,7 +690,6 @@
 		393331381BD7BA72003BCC45 /* DefaultNotificationTransportTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultNotificationTransportTest.m; sourceTree = "<group>"; };
 		3933313A1BD7DFF6003BCC45 /* DefaultOperationDataProcessorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationDataProcessorTest.m; sourceTree = "<group>"; };
 		3933313C1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationHttpChannelTest.m; sourceTree = "<group>"; };
-		3989F24E1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResyncConfigurationManagerTest.m; sourceTree = "<group>"; };
 		398CDBEA1BE0FAEE00D31E34 /* DefaultOperationTcpChannelTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DefaultOperationTcpChannelTest.m; sourceTree = "<group>"; };
 		39AEB2701BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeriodicLogUploadStrategy.h; sourceTree = "<group>"; };
 		39AEB2711BBA6A3E0045FB32 /* PeriodicLogUploadStrategy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeriodicLogUploadStrategy.m; sourceTree = "<group>"; };
@@ -1062,14 +1060,6 @@
 			name = event;
 			sourceTree = "<group>";
 		};
-		3989F24D1C0C625700A9EAB1 /* configuration */ = {
-			isa = PBXGroup;
-			children = (
-				3989F24E1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m */,
-			);
-			name = configuration;
-			sourceTree = "<group>";
-		};
 		39AEB2841BBA6A440045FB32 /* strategy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1281,7 +1271,6 @@
 		B824A1FA1B1452C50076C753 /* KaaTests */ = {
 			isa = PBXGroup;
 			children = (
-				3989F24D1C0C625700A9EAB1 /* configuration */,
 				391F25891BD4F3070031ED84 /* notification */,
 				391F25861BD4C5E20031ED84 /* bootstrap */,
 				392D3ED51BD102A1007CC7DA /* event */,
@@ -2207,7 +2196,6 @@
 				B8C10A151BC2BBBF001A2236 /* KaaClientPropertiesTest.m in Sources */,
 				391292531BDE10210013F631 /* KaaTcpMessageTest.m in Sources */,
 				39FF8B101BCD49DF00666D1F /* AbstractHttpClientTest.m in Sources */,
-				3989F24F1C0C626C00A9EAB1 /* ResyncConfigurationManagerTest.m in Sources */,
 				391F25881BD4C5FA0031ED84 /* DefaultBootstrapManagerTest.m in Sources */,
 				391A91A31BBE604C00DBA851 /* EndPointObjectHashTest.m in Sources */,
 				3933313D1BD8FCFF003BCC45 /* DefaultOperationHttpChannelTest.m in Sources */,
