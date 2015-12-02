@@ -18,6 +18,7 @@
 #import "DefaultProfileManager.h"
 #import "ProfileTransport.h"
 #import "KAADummyProfile.h"
+#import "ProfileCommon.h"
 
 #define HC_SHORTHAND
 #import <OCHamcrest/OCHamcrest.h>
@@ -43,7 +44,22 @@
 
 @implementation DefaultProfileManagerTest
 
-- (void) testProfileManager {
+- (void)testProfileManagerIsInitialized {
+    id<ProfileTransport> transport = mockProtocol(@protocol(ProfileTransport));
+    DefaultProfileManager *manager = [[DefaultProfileManager alloc] initWith:transport];
+    
+    ProfileSerializer *serializer = [[ProfileSerializer alloc] init];
+    
+    if (serializer.isDefault) {
+        XCTAssertTrue([manager isInitialized]);
+    } else {
+        XCTAssertFalse([manager isInitialized]);
+        [manager setProfileContainer:[[TestProfileContainer alloc] init]];
+        XCTAssertTrue([manager isInitialized]);
+    }
+}
+
+- (void)testProfileManager {
     
     id <ProfileTransport> transport = mockProtocol(@protocol(ProfileTransport));
     TestProfileContainer *container = [[TestProfileContainer alloc] init];
@@ -54,7 +70,7 @@
     XCTAssertNotNil([profileManager getSerializedProfile]);
     
     [profileManager updateProfile];
-    [verify(transport) sync];
+    [verifyCount(transport, times(1)) sync];
 }
 
 @end
