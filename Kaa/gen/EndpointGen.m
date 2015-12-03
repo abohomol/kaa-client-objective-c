@@ -22,6 +22,15 @@
 @implementation TopicState
 
 
+- (instancetype)initWithTopicId:(NSString *)topicId seqNumber:(int32_t)seqNumber {
+    self = [super init];
+    if (self) {
+        self.topicId = topicId;
+        self.seqNumber = seqNumber;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.TopicState";
 }
@@ -49,6 +58,15 @@
 @implementation SubscriptionCommand
 
 
+- (instancetype)initWithTopicId:(NSString *)topicId command:(SubscriptionCommandType)command {
+    self = [super init];
+    if (self) {
+        self.topicId = topicId;
+        self.command = command;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.SubscriptionCommand";
 }
@@ -75,6 +93,16 @@
 
 @implementation UserAttachRequest
 
+
+- (instancetype)initWithUserVerifierId:(NSString *)userVerifierId userExternalId:(NSString *)userExternalId userAccessToken:(NSString *)userAccessToken {
+    self = [super init];
+    if (self) {
+        self.userVerifierId = userVerifierId;
+        self.userExternalId = userExternalId;
+        self.userAccessToken = userAccessToken;
+    }
+    return self;
+}
 
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.UserAttachRequest";
@@ -108,8 +136,18 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.errorCode = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_ERROR_CODE_OR_NULL_BRANCH_1];
-        self.errorReason = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                                        self.errorCode = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_ERROR_CODE_OR_NULL_BRANCH_1];
+                                self.errorReason = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithResult:(SyncResponseResultType)result errorCode:(KAAUnion *)errorCode errorReason:(KAAUnion *)errorReason {
+    self = [super init];
+    if (self) {
+        self.result = result;
+        self.errorCode = errorCode;
+        self.errorReason = errorReason;
     }
     return self;
 }
@@ -258,6 +296,15 @@
 @implementation UserAttachNotification
 
 
+- (instancetype)initWithUserExternalId:(NSString *)userExternalId endpointAccessToken:(NSString *)endpointAccessToken {
+    self = [super init];
+    if (self) {
+        self.userExternalId = userExternalId;
+        self.endpointAccessToken = endpointAccessToken;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.UserAttachNotification";
 }
@@ -285,6 +332,14 @@
 @implementation UserDetachNotification
 
 
+- (instancetype)initWithEndpointAccessToken:(NSString *)endpointAccessToken {
+    self = [super init];
+    if (self) {
+        self.endpointAccessToken = endpointAccessToken;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.UserDetachNotification";
 }
@@ -308,6 +363,15 @@
 
 @implementation EndpointAttachRequest
 
+
+- (instancetype)initWithRequestId:(int32_t)requestId endpointAccessToken:(NSString *)endpointAccessToken {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.endpointAccessToken = endpointAccessToken;
+    }
+    return self;
+}
 
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.EndpointAttachRequest";
@@ -338,7 +402,17 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.endpointKeyHash = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                                        self.endpointKeyHash = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                                }
+    return self;
+}
+
+- (instancetype)initWithRequestId:(int32_t)requestId endpointKeyHash:(KAAUnion *)endpointKeyHash result:(SyncResponseResultType)result {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.endpointKeyHash = endpointKeyHash;
+        self.result = result;
     }
     return self;
 }
@@ -430,6 +504,15 @@
 @implementation EndpointDetachRequest
 
 
+- (instancetype)initWithRequestId:(int32_t)requestId endpointKeyHash:(NSString *)endpointKeyHash {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.endpointKeyHash = endpointKeyHash;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.EndpointDetachRequest";
 }
@@ -456,6 +539,15 @@
 
 @implementation EndpointDetachResponse
 
+
+- (instancetype)initWithRequestId:(int32_t)requestId result:(SyncResponseResultType)result {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.result = result;
+    }
+    return self;
+}
 
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.EndpointDetachResponse";
@@ -486,8 +578,20 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-        self.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                                                                        self.source = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                                self.target = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithSeqNum:(int32_t)seqNum eventClassFQN:(NSString *)eventClassFQN eventData:(NSData *)eventData source:(KAAUnion *)source target:(KAAUnion *)target {
+    self = [super init];
+    if (self) {
+        self.seqNum = seqNum;
+        self.eventClassFQN = eventClassFQN;
+        self.eventData = eventData;
+        self.source = source;
+        self.target = target;
     }
     return self;
 }
@@ -642,6 +746,15 @@
 @implementation EventListenersRequest
 
 
+- (instancetype)initWithRequestId:(int32_t)requestId eventClassFQNs:(NSArray *)eventClassFQNs {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.eventClassFQNs = eventClassFQNs;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.EventListenersRequest";
 }
@@ -671,7 +784,17 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.listeners = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
+                                        self.listeners = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
+                                }
+    return self;
+}
+
+- (instancetype)initWithRequestId:(int32_t)requestId listeners:(KAAUnion *)listeners result:(SyncResponseResultType)result {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.listeners = listeners;
+        self.result = result;
     }
     return self;
 }
@@ -763,6 +886,7 @@
 @implementation EventSequenceNumberRequest
 
 
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.EventSequenceNumberRequest";
 }
@@ -783,6 +907,14 @@
 
 @implementation EventSequenceNumberResponse
 
+
+- (instancetype)initWithSeqNum:(int32_t)seqNum {
+    self = [super init];
+    if (self) {
+        self.seqNum = seqNum;
+    }
+    return self;
+}
 
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.EventSequenceNumberResponse";
@@ -810,8 +942,20 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.uid = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
-        self.seqNumber = [KAAUnion unionWithBranch:KAA_UNION_INT_OR_NULL_BRANCH_1];
+                                                        self.uid = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                                self.seqNumber = [KAAUnion unionWithBranch:KAA_UNION_INT_OR_NULL_BRANCH_1];
+                                }
+    return self;
+}
+
+- (instancetype)initWithTopicId:(NSString *)topicId type:(NotificationType)type uid:(KAAUnion *)uid seqNumber:(KAAUnion *)seqNumber body:(NSData *)body {
+    self = [super init];
+    if (self) {
+        self.topicId = topicId;
+        self.type = type;
+        self.uid = uid;
+        self.seqNumber = seqNumber;
+        self.body = body;
     }
     return self;
 }
@@ -966,6 +1110,16 @@
 @implementation Topic
 
 
+- (instancetype)initWithId:(NSString *)id name:(NSString *)name subscriptionType:(SubscriptionType)subscriptionType {
+    self = [super init];
+    if (self) {
+        self.id = id;
+        self.name = name;
+        self.subscriptionType = subscriptionType;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.Topic";
 }
@@ -996,6 +1150,14 @@
 @implementation LogEntry
 
 
+- (instancetype)initWithData:(NSData *)data {
+    self = [super init];
+    if (self) {
+        self.data = data;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.LogEntry";
 }
@@ -1022,9 +1184,20 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.endpointPublicKeyHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-        self.profileHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-        self.timeout = [KAAUnion unionWithBranch:KAA_UNION_LONG_OR_NULL_BRANCH_1];
+                                        self.endpointPublicKeyHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+                                self.profileHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+                                self.timeout = [KAAUnion unionWithBranch:KAA_UNION_LONG_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithSdkToken:(NSString *)sdkToken endpointPublicKeyHash:(KAAUnion *)endpointPublicKeyHash profileHash:(KAAUnion *)profileHash timeout:(KAAUnion *)timeout {
+    self = [super init];
+    if (self) {
+        self.sdkToken = sdkToken;
+        self.endpointPublicKeyHash = endpointPublicKeyHash;
+        self.profileHash = profileHash;
+        self.timeout = timeout;
     }
     return self;
 }
@@ -1235,8 +1408,18 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.endpointPublicKey = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-        self.endpointAccessToken = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                        self.endpointPublicKey = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+                                                self.endpointAccessToken = [KAAUnion unionWithBranch:KAA_UNION_STRING_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithEndpointPublicKey:(KAAUnion *)endpointPublicKey profileBody:(NSData *)profileBody endpointAccessToken:(KAAUnion *)endpointAccessToken {
+    self = [super init];
+    if (self) {
+        self.endpointPublicKey = endpointPublicKey;
+        self.profileBody = profileBody;
+        self.endpointAccessToken = endpointAccessToken;
     }
     return self;
 }
@@ -1385,6 +1568,15 @@
 @implementation ProtocolVersionPair
 
 
+- (instancetype)initWithId:(int32_t)id version:(int32_t)version {
+    self = [super init];
+    if (self) {
+        self.id = id;
+        self.version = version;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.ProtocolVersionPair";
 }
@@ -1411,6 +1603,15 @@
 
 @implementation BootstrapSyncRequest
 
+
+- (instancetype)initWithRequestId:(int32_t)requestId supportedProtocols:(NSArray *)supportedProtocols {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.supportedProtocols = supportedProtocols;
+    }
+    return self;
+}
 
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.BootstrapSyncRequest";
@@ -1442,8 +1643,18 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.configurationHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-        self.resyncOnly = [KAAUnion unionWithBranch:KAA_UNION_BOOLEAN_OR_NULL_BRANCH_1];
+                                        self.configurationHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+                                self.resyncOnly = [KAAUnion unionWithBranch:KAA_UNION_BOOLEAN_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithAppStateSeqNumber:(int32_t)appStateSeqNumber configurationHash:(KAAUnion *)configurationHash resyncOnly:(KAAUnion *)resyncOnly {
+    self = [super init];
+    if (self) {
+        self.appStateSeqNumber = appStateSeqNumber;
+        self.configurationHash = configurationHash;
+        self.resyncOnly = resyncOnly;
     }
     return self;
 }
@@ -1594,10 +1805,22 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.topicListHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-        self.topicStates = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_STATE_OR_NULL_BRANCH_1];
-        self.acceptedUnicastNotifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
-        self.subscriptionCommands = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_SUBSCRIPTION_COMMAND_OR_NULL_BRANCH_1];
+                                        self.topicListHash = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+                                self.topicStates = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_STATE_OR_NULL_BRANCH_1];
+                                self.acceptedUnicastNotifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_STRING_OR_NULL_BRANCH_1];
+                                self.subscriptionCommands = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_SUBSCRIPTION_COMMAND_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithAppStateSeqNumber:(int32_t)appStateSeqNumber topicListHash:(KAAUnion *)topicListHash topicStates:(KAAUnion *)topicStates acceptedUnicastNotifications:(KAAUnion *)acceptedUnicastNotifications subscriptionCommands:(KAAUnion *)subscriptionCommands {
+    self = [super init];
+    if (self) {
+        self.appStateSeqNumber = appStateSeqNumber;
+        self.topicListHash = topicListHash;
+        self.topicStates = topicStates;
+        self.acceptedUnicastNotifications = acceptedUnicastNotifications;
+        self.subscriptionCommands = subscriptionCommands;
     }
     return self;
 }
@@ -1870,9 +2093,19 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.userAttachRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_REQUEST_OR_NULL_BRANCH_1];
-        self.endpointAttachRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_REQUEST_OR_NULL_BRANCH_1];
-        self.endpointDetachRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_REQUEST_OR_NULL_BRANCH_1];
+                        self.userAttachRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_REQUEST_OR_NULL_BRANCH_1];
+                                self.endpointAttachRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_REQUEST_OR_NULL_BRANCH_1];
+                                self.endpointDetachRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_REQUEST_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithUserAttachRequest:(KAAUnion *)userAttachRequest endpointAttachRequests:(KAAUnion *)endpointAttachRequests endpointDetachRequests:(KAAUnion *)endpointDetachRequests {
+    self = [super init];
+    if (self) {
+        self.userAttachRequest = userAttachRequest;
+        self.endpointAttachRequests = endpointAttachRequests;
+        self.endpointDetachRequests = endpointDetachRequests;
     }
     return self;
 }
@@ -2082,9 +2315,19 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.eventSequenceNumberRequest = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_REQUEST_OR_NULL_BRANCH_1];
-        self.eventListenersRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_REQUEST_OR_NULL_BRANCH_1];
-        self.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
+                        self.eventSequenceNumberRequest = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_REQUEST_OR_NULL_BRANCH_1];
+                                self.eventListenersRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_REQUEST_OR_NULL_BRANCH_1];
+                                self.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithEventSequenceNumberRequest:(KAAUnion *)eventSequenceNumberRequest eventListenersRequests:(KAAUnion *)eventListenersRequests events:(KAAUnion *)events {
+    self = [super init];
+    if (self) {
+        self.eventSequenceNumberRequest = eventSequenceNumberRequest;
+        self.eventListenersRequests = eventListenersRequests;
+        self.events = events;
     }
     return self;
 }
@@ -2280,7 +2523,16 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_1];
+                                        self.logEntries = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithRequestId:(int32_t)requestId logEntries:(KAAUnion *)logEntries {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.logEntries = logEntries;
     }
     return self;
 }
@@ -2370,6 +2622,16 @@
 @implementation ProtocolMetaData
 
 
+- (instancetype)initWithAccessPointId:(int32_t)accessPointId protocolVersionInfo:(ProtocolVersionPair *)protocolVersionInfo connectionInfo:(NSData *)connectionInfo {
+    self = [super init];
+    if (self) {
+        self.accessPointId = accessPointId;
+        self.protocolVersionInfo = protocolVersionInfo;
+        self.connectionInfo = connectionInfo;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.ProtocolMetaData";
 }
@@ -2400,6 +2662,15 @@
 @implementation BootstrapSyncResponse
 
 
+- (instancetype)initWithRequestId:(int32_t)requestId supportedProtocols:(NSArray *)supportedProtocols {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.supportedProtocols = supportedProtocols;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.BootstrapSyncResponse";
 }
@@ -2428,6 +2699,14 @@
 @implementation ProfileSyncResponse
 
 
+- (instancetype)initWithResponseStatus:(SyncResponseStatus)responseStatus {
+    self = [super init];
+    if (self) {
+        self.responseStatus = responseStatus;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.ProfileSyncResponse";
 }
@@ -2454,8 +2733,19 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.confSchemaBody = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
-        self.confDeltaBody = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+                                                        self.confSchemaBody = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+                                self.confDeltaBody = [KAAUnion unionWithBranch:KAA_UNION_BYTES_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithAppStateSeqNumber:(int32_t)appStateSeqNumber responseStatus:(SyncResponseStatus)responseStatus confSchemaBody:(KAAUnion *)confSchemaBody confDeltaBody:(KAAUnion *)confDeltaBody {
+    self = [super init];
+    if (self) {
+        self.appStateSeqNumber = appStateSeqNumber;
+        self.responseStatus = responseStatus;
+        self.confSchemaBody = confSchemaBody;
+        self.confDeltaBody = confDeltaBody;
     }
     return self;
 }
@@ -2609,8 +2899,19 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.notifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_NOTIFICATION_OR_NULL_BRANCH_1];
-        self.availableTopics = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_OR_NULL_BRANCH_1];
+                                                        self.notifications = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_NOTIFICATION_OR_NULL_BRANCH_1];
+                                self.availableTopics = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_TOPIC_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithAppStateSeqNumber:(int32_t)appStateSeqNumber responseStatus:(SyncResponseStatus)responseStatus notifications:(KAAUnion *)notifications availableTopics:(KAAUnion *)availableTopics {
+    self = [super init];
+    if (self) {
+        self.appStateSeqNumber = appStateSeqNumber;
+        self.responseStatus = responseStatus;
+        self.notifications = notifications;
+        self.availableTopics = availableTopics;
     }
     return self;
 }
@@ -2766,11 +3067,23 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.userAttachResponse = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
-        self.userAttachNotification = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_NOTIFICATION_OR_NULL_BRANCH_1];
-        self.userDetachNotification = [KAAUnion unionWithBranch:KAA_UNION_USER_DETACH_NOTIFICATION_OR_NULL_BRANCH_1];
-        self.endpointAttachResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
-        self.endpointDetachResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_RESPONSE_OR_NULL_BRANCH_1];
+                        self.userAttachResponse = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
+                                self.userAttachNotification = [KAAUnion unionWithBranch:KAA_UNION_USER_ATTACH_NOTIFICATION_OR_NULL_BRANCH_1];
+                                self.userDetachNotification = [KAAUnion unionWithBranch:KAA_UNION_USER_DETACH_NOTIFICATION_OR_NULL_BRANCH_1];
+                                self.endpointAttachResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_ATTACH_RESPONSE_OR_NULL_BRANCH_1];
+                                self.endpointDetachResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_ENDPOINT_DETACH_RESPONSE_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithUserAttachResponse:(KAAUnion *)userAttachResponse userAttachNotification:(KAAUnion *)userAttachNotification userDetachNotification:(KAAUnion *)userDetachNotification endpointAttachResponses:(KAAUnion *)endpointAttachResponses endpointDetachResponses:(KAAUnion *)endpointDetachResponses {
+    self = [super init];
+    if (self) {
+        self.userAttachResponse = userAttachResponse;
+        self.userAttachNotification = userAttachNotification;
+        self.userDetachNotification = userDetachNotification;
+        self.endpointAttachResponses = endpointAttachResponses;
+        self.endpointDetachResponses = endpointDetachResponses;
     }
     return self;
 }
@@ -3100,9 +3413,19 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.eventSequenceNumberResponse = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_1];
-        self.eventListenersResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_RESPONSE_OR_NULL_BRANCH_1];
-        self.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
+                        self.eventSequenceNumberResponse = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_BRANCH_1];
+                                self.eventListenersResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_LISTENERS_RESPONSE_OR_NULL_BRANCH_1];
+                                self.events = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EVENT_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithEventSequenceNumberResponse:(KAAUnion *)eventSequenceNumberResponse eventListenersResponses:(KAAUnion *)eventListenersResponses events:(KAAUnion *)events {
+    self = [super init];
+    if (self) {
+        self.eventSequenceNumberResponse = eventSequenceNumberResponse;
+        self.eventListenersResponses = eventListenersResponses;
+        self.events = events;
     }
     return self;
 }
@@ -3312,7 +3635,17 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.errorCode = [KAAUnion unionWithBranch:KAA_UNION_LOG_DELIVERY_ERROR_CODE_OR_NULL_BRANCH_1];
+                                                        self.errorCode = [KAAUnion unionWithBranch:KAA_UNION_LOG_DELIVERY_ERROR_CODE_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithRequestId:(int32_t)requestId result:(SyncResponseResultType)result errorCode:(KAAUnion *)errorCode {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.result = result;
+        self.errorCode = errorCode;
     }
     return self;
 }
@@ -3406,7 +3739,15 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.deliveryStatuses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_DELIVERY_STATUS_OR_NULL_BRANCH_1];
+                        self.deliveryStatuses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_LOG_DELIVERY_STATUS_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithDeliveryStatuses:(KAAUnion *)deliveryStatuses {
+    self = [super init];
+    if (self) {
+        self.deliveryStatuses = deliveryStatuses;
     }
     return self;
 }
@@ -3493,6 +3834,14 @@
 @implementation RedirectSyncResponse
 
 
+- (instancetype)initWithAccessPointId:(int32_t)accessPointId {
+    self = [super init];
+    if (self) {
+        self.accessPointId = accessPointId;
+    }
+    return self;
+}
+
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.RedirectSyncResponse";
 }
@@ -3514,19 +3863,73 @@
 
 @end
 
+@implementation ExtensionSync
+
+
+- (instancetype)initWithExtensionId:(int32_t)extensionId payload:(NSData *)payload {
+    self = [super init];
+    if (self) {
+        self.extensionId = extensionId;
+        self.payload = payload;
+    }
+    return self;
+}
+
++ (NSString *)FQN {
+    return @"org.kaaproject.kaa.common.endpoint.gen.ExtensionSync";
+}
+
+- (void)serialize:(avro_writer_t)writer {
+    [self.utils serializeInt:[NSNumber numberWithInt:self.extensionId] to:writer];
+    [self.utils serializeBytes:self.payload to:writer];
+}
+
+- (size_t)getSize {
+    size_t recordSize = 0;
+        recordSize += [self.utils getIntSize:[NSNumber numberWithInt:self.extensionId]];
+        recordSize += [self.utils getBytesSize:self.payload];
+    return recordSize;
+}
+
+- (void)deserialize:(avro_reader_t)reader {
+    self.extensionId = [[self.utils deserializeInt:reader] intValue];
+    self.payload = [self.utils deserializeBytes:reader];
+}
+
+
+@end
+
 @implementation SyncRequest
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.syncRequestMetaData = [KAAUnion unionWithBranch:KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_1];
-        self.bootstrapSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_REQUEST_OR_NULL_BRANCH_1];
-        self.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_1];
-        self.configurationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
-        self.notificationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
-        self.userSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_1];
-        self.eventSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_1];
-        self.logSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_1];
+                                        self.syncRequestMetaData = [KAAUnion unionWithBranch:KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_BRANCH_1];
+                                self.bootstrapSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_REQUEST_OR_NULL_BRANCH_1];
+                                self.profileSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_REQUEST_OR_NULL_BRANCH_1];
+                                self.configurationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
+                                self.notificationSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_REQUEST_OR_NULL_BRANCH_1];
+                                self.userSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_REQUEST_OR_NULL_BRANCH_1];
+                                self.eventSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_REQUEST_OR_NULL_BRANCH_1];
+                                self.logSyncRequest = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_BRANCH_1];
+                                self.extensionSyncRequests = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithRequestId:(int32_t)requestId syncRequestMetaData:(KAAUnion *)syncRequestMetaData bootstrapSyncRequest:(KAAUnion *)bootstrapSyncRequest profileSyncRequest:(KAAUnion *)profileSyncRequest configurationSyncRequest:(KAAUnion *)configurationSyncRequest notificationSyncRequest:(KAAUnion *)notificationSyncRequest userSyncRequest:(KAAUnion *)userSyncRequest eventSyncRequest:(KAAUnion *)eventSyncRequest logSyncRequest:(KAAUnion *)logSyncRequest extensionSyncRequests:(KAAUnion *)extensionSyncRequests {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.syncRequestMetaData = syncRequestMetaData;
+        self.bootstrapSyncRequest = bootstrapSyncRequest;
+        self.profileSyncRequest = profileSyncRequest;
+        self.configurationSyncRequest = configurationSyncRequest;
+        self.notificationSyncRequest = notificationSyncRequest;
+        self.userSyncRequest = userSyncRequest;
+        self.eventSyncRequest = eventSyncRequest;
+        self.logSyncRequest = logSyncRequest;
+        self.extensionSyncRequests = extensionSyncRequests;
     }
     return self;
 }
@@ -3545,6 +3948,7 @@
     [self serializeUserSyncRequest:self.userSyncRequest to:writer];
     [self serializeEventSyncRequest:self.eventSyncRequest to:writer];
     [self serializeLogSyncRequest:self.logSyncRequest to:writer];
+    [self serializeExtensionSyncRequests:self.extensionSyncRequests to:writer];
 }
 
 - (size_t)getSize {
@@ -3558,6 +3962,7 @@
         recordSize += [self getUserSyncRequestSize:self.userSyncRequest];
         recordSize += [self getEventSyncRequestSize:self.eventSyncRequest];
         recordSize += [self getLogSyncRequestSize:self.logSyncRequest];
+        recordSize += [self getExtensionSyncRequestsSize:self.extensionSyncRequests];
     return recordSize;
 }
 
@@ -3571,6 +3976,7 @@
     self.userSyncRequest = [self deserializeUserSyncRequest:reader];
     self.eventSyncRequest = [self deserializeEventSyncRequest:reader];
     self.logSyncRequest = [self deserializeLogSyncRequest:reader];
+    self.extensionSyncRequests = [self deserializeExtensionSyncRequests:reader];
 }
 
 
@@ -4030,6 +4436,64 @@
     return kaaUnion;
 }
 
+- (void)serializeExtensionSyncRequests:(KAAUnion *)kaaUnion to:(avro_writer_t)writer {
+
+    if (kaaUnion) {
+        avro_binary_encoding.write_long(writer, kaaUnion.branch);
+
+        switch (kaaUnion.branch) {
+        case KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_0:
+        {
+            if (kaaUnion.data) {
+                            [self.utils serializeArray:kaaUnion.data to:writer withSelector:@selector(serializeRecord:to:) target:nil];
+                        }
+            break;
+        }
+        default:
+            break;
+        }
+    }
+}
+
+- (size_t)getExtensionSyncRequestsSize:(KAAUnion *)kaaUnion {
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
+    if (kaaUnion) {
+        switch (kaaUnion.branch) {
+        case KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_0:
+        {
+            if (kaaUnion.data) {
+                            unionSize += [self.utils getArraySize:kaaUnion.data withSelector:@selector(getSize) parameterized:NO target:nil];
+                        }
+            break;
+        }
+        default:
+            break;
+        }
+    }
+    return unionSize;
+}
+
+- (KAAUnion *)deserializeExtensionSyncRequests:(avro_reader_t)reader {
+
+    KAAUnion *kaaUnion = [[KAAUnion alloc] init];
+
+        int64_t branch;
+        avro_binary_encoding.read_long(reader, &branch);
+        kaaUnion.branch = (int)branch;
+
+        switch (kaaUnion.branch) {
+        case KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_0: {
+                Class dataClass = [ExtensionSync class];
+            kaaUnion.data = [self.utils deserializeArray:reader withSelector:@selector(deserializeRecord:as:) andParam:dataClass target:nil];
+                break;
+        }
+        default:
+            break;
+        }
+
+    return kaaUnion;
+}
+
 @end
 
 @implementation SyncResponse
@@ -4037,14 +4501,33 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        self.bootstrapSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_RESPONSE_OR_NULL_BRANCH_1];
-        self.profileSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_RESPONSE_OR_NULL_BRANCH_1];
-        self.configurationSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_1];
-        self.notificationSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_RESPONSE_OR_NULL_BRANCH_1];
-        self.userSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_RESPONSE_OR_NULL_BRANCH_1];
-        self.eventSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_RESPONSE_OR_NULL_BRANCH_1];
-        self.redirectSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_REDIRECT_SYNC_RESPONSE_OR_NULL_BRANCH_1];
-        self.logSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                                        self.bootstrapSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_BOOTSTRAP_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                self.profileSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_PROFILE_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                self.configurationSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_CONFIGURATION_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                self.notificationSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_NOTIFICATION_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                self.userSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_USER_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                self.eventSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_EVENT_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                self.redirectSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_REDIRECT_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                self.logSyncResponse = [KAAUnion unionWithBranch:KAA_UNION_LOG_SYNC_RESPONSE_OR_NULL_BRANCH_1];
+                                self.extensionSyncResponses = [KAAUnion unionWithBranch:KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_1];
+                }
+    return self;
+}
+
+- (instancetype)initWithRequestId:(int32_t)requestId status:(SyncResponseResultType)status bootstrapSyncResponse:(KAAUnion *)bootstrapSyncResponse profileSyncResponse:(KAAUnion *)profileSyncResponse configurationSyncResponse:(KAAUnion *)configurationSyncResponse notificationSyncResponse:(KAAUnion *)notificationSyncResponse userSyncResponse:(KAAUnion *)userSyncResponse eventSyncResponse:(KAAUnion *)eventSyncResponse redirectSyncResponse:(KAAUnion *)redirectSyncResponse logSyncResponse:(KAAUnion *)logSyncResponse extensionSyncResponses:(KAAUnion *)extensionSyncResponses {
+    self = [super init];
+    if (self) {
+        self.requestId = requestId;
+        self.status = status;
+        self.bootstrapSyncResponse = bootstrapSyncResponse;
+        self.profileSyncResponse = profileSyncResponse;
+        self.configurationSyncResponse = configurationSyncResponse;
+        self.notificationSyncResponse = notificationSyncResponse;
+        self.userSyncResponse = userSyncResponse;
+        self.eventSyncResponse = eventSyncResponse;
+        self.redirectSyncResponse = redirectSyncResponse;
+        self.logSyncResponse = logSyncResponse;
+        self.extensionSyncResponses = extensionSyncResponses;
     }
     return self;
 }
@@ -4064,6 +4547,7 @@
     [self serializeEventSyncResponse:self.eventSyncResponse to:writer];
     [self serializeRedirectSyncResponse:self.redirectSyncResponse to:writer];
     [self serializeLogSyncResponse:self.logSyncResponse to:writer];
+    [self serializeExtensionSyncResponses:self.extensionSyncResponses to:writer];
 }
 
 - (size_t)getSize {
@@ -4078,6 +4562,7 @@
         recordSize += [self getEventSyncResponseSize:self.eventSyncResponse];
         recordSize += [self getRedirectSyncResponseSize:self.redirectSyncResponse];
         recordSize += [self getLogSyncResponseSize:self.logSyncResponse];
+        recordSize += [self getExtensionSyncResponsesSize:self.extensionSyncResponses];
     return recordSize;
 }
 
@@ -4092,6 +4577,7 @@
     self.eventSyncResponse = [self deserializeEventSyncResponse:reader];
     self.redirectSyncResponse = [self deserializeRedirectSyncResponse:reader];
     self.logSyncResponse = [self deserializeLogSyncResponse:reader];
+    self.extensionSyncResponses = [self deserializeExtensionSyncResponses:reader];
 }
 
 
@@ -4551,10 +5037,77 @@
     return kaaUnion;
 }
 
+- (void)serializeExtensionSyncResponses:(KAAUnion *)kaaUnion to:(avro_writer_t)writer {
+
+    if (kaaUnion) {
+        avro_binary_encoding.write_long(writer, kaaUnion.branch);
+
+        switch (kaaUnion.branch) {
+        case KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_0:
+        {
+            if (kaaUnion.data) {
+                            [self.utils serializeArray:kaaUnion.data to:writer withSelector:@selector(serializeRecord:to:) target:nil];
+                        }
+            break;
+        }
+        default:
+            break;
+        }
+    }
+}
+
+- (size_t)getExtensionSyncResponsesSize:(KAAUnion *)kaaUnion {
+    size_t unionSize = [self.utils getLongSize:[NSNumber numberWithLong:kaaUnion.branch]];
+    if (kaaUnion) {
+        switch (kaaUnion.branch) {
+        case KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_0:
+        {
+            if (kaaUnion.data) {
+                            unionSize += [self.utils getArraySize:kaaUnion.data withSelector:@selector(getSize) parameterized:NO target:nil];
+                        }
+            break;
+        }
+        default:
+            break;
+        }
+    }
+    return unionSize;
+}
+
+- (KAAUnion *)deserializeExtensionSyncResponses:(avro_reader_t)reader {
+
+    KAAUnion *kaaUnion = [[KAAUnion alloc] init];
+
+        int64_t branch;
+        avro_binary_encoding.read_long(reader, &branch);
+        kaaUnion.branch = (int)branch;
+
+        switch (kaaUnion.branch) {
+        case KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_0: {
+                Class dataClass = [ExtensionSync class];
+            kaaUnion.data = [self.utils deserializeArray:reader withSelector:@selector(deserializeRecord:as:) andParam:dataClass target:nil];
+                break;
+        }
+        default:
+            break;
+        }
+
+    return kaaUnion;
+}
+
 @end
 
 @implementation TopicSubscriptionInfo
 
+
+- (instancetype)initWithTopicInfo:(Topic *)topicInfo seqNumber:(int32_t)seqNumber {
+    self = [super init];
+    if (self) {
+        self.topicInfo = topicInfo;
+        self.seqNumber = seqNumber;
+    }
+    return self;
+}
 
 + (NSString *)FQN {
     return @"org.kaaproject.kaa.common.endpoint.gen.TopicSubscriptionInfo";

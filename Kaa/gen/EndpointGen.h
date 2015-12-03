@@ -26,8 +26,10 @@
 
 @interface TopicState : AvroBased
 
-@property(nonatomic) NSString * topicId;
+@property(nonatomic,strong) NSString *topicId;
 @property(nonatomic) int32_t seqNumber;
+
+- (instancetype)initWithTopicId:(NSString *)topicId seqNumber:(int32_t)seqNumber;
 
 @end
 
@@ -86,17 +88,21 @@ typedef enum {
 
 @interface SubscriptionCommand : AvroBased
 
-@property(nonatomic) NSString * topicId;
+@property(nonatomic,strong) NSString *topicId;
 @property(nonatomic) SubscriptionCommandType command;
+
+- (instancetype)initWithTopicId:(NSString *)topicId command:(SubscriptionCommandType)command;
 
 @end
 
 
 @interface UserAttachRequest : AvroBased
 
-@property(nonatomic) NSString * userVerifierId;
-@property(nonatomic) NSString * userExternalId;
-@property(nonatomic) NSString * userAccessToken;
+@property(nonatomic,strong) NSString *userVerifierId;
+@property(nonatomic,strong) NSString *userExternalId;
+@property(nonatomic,strong) NSString *userAccessToken;
+
+- (instancetype)initWithUserVerifierId:(NSString *)userVerifierId userExternalId:(NSString *)userExternalId userAccessToken:(NSString *)userAccessToken;
 
 @end
 
@@ -104,8 +110,10 @@ typedef enum {
 @interface UserAttachResponse : AvroBased
 
 @property(nonatomic) SyncResponseResultType result;
-@property(nonatomic) KAAUnion * errorCode;
-@property(nonatomic) KAAUnion * errorReason;
+@property(nonatomic,strong) KAAUnion *errorCode;
+@property(nonatomic,strong) KAAUnion *errorReason;
+
+- (instancetype)initWithResult:(SyncResponseResultType)result errorCode:(KAAUnion *)errorCode errorReason:(KAAUnion *)errorReason;
 
 
 # ifndef KAA_UNION_USER_ATTACH_ERROR_CODE_OR_NULL_H_
@@ -130,15 +138,19 @@ typedef enum {
 
 @interface UserAttachNotification : AvroBased
 
-@property(nonatomic) NSString * userExternalId;
-@property(nonatomic) NSString * endpointAccessToken;
+@property(nonatomic,strong) NSString *userExternalId;
+@property(nonatomic,strong) NSString *endpointAccessToken;
+
+- (instancetype)initWithUserExternalId:(NSString *)userExternalId endpointAccessToken:(NSString *)endpointAccessToken;
 
 @end
 
 
 @interface UserDetachNotification : AvroBased
 
-@property(nonatomic) NSString * endpointAccessToken;
+@property(nonatomic,strong) NSString *endpointAccessToken;
+
+- (instancetype)initWithEndpointAccessToken:(NSString *)endpointAccessToken;
 
 @end
 
@@ -146,7 +158,9 @@ typedef enum {
 @interface EndpointAttachRequest : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) NSString * endpointAccessToken;
+@property(nonatomic,strong) NSString *endpointAccessToken;
+
+- (instancetype)initWithRequestId:(int32_t)requestId endpointAccessToken:(NSString *)endpointAccessToken;
 
 @end
 
@@ -154,8 +168,10 @@ typedef enum {
 @interface EndpointAttachResponse : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) KAAUnion * endpointKeyHash;
+@property(nonatomic,strong) KAAUnion *endpointKeyHash;
 @property(nonatomic) SyncResponseResultType result;
+
+- (instancetype)initWithRequestId:(int32_t)requestId endpointKeyHash:(KAAUnion *)endpointKeyHash result:(SyncResponseResultType)result;
 
 
 # ifndef KAA_UNION_STRING_OR_NULL_H_
@@ -172,7 +188,9 @@ typedef enum {
 @interface EndpointDetachRequest : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) NSString * endpointKeyHash;
+@property(nonatomic,strong) NSString *endpointKeyHash;
+
+- (instancetype)initWithRequestId:(int32_t)requestId endpointKeyHash:(NSString *)endpointKeyHash;
 
 @end
 
@@ -182,16 +200,20 @@ typedef enum {
 @property(nonatomic) int32_t requestId;
 @property(nonatomic) SyncResponseResultType result;
 
+- (instancetype)initWithRequestId:(int32_t)requestId result:(SyncResponseResultType)result;
+
 @end
 
 
 @interface Event : AvroBased
 
 @property(nonatomic) int32_t seqNum;
-@property(nonatomic) NSString * eventClassFQN;
-@property(nonatomic) NSData * eventData;
-@property(nonatomic) KAAUnion * source;
-@property(nonatomic) KAAUnion * target;
+@property(nonatomic,strong) NSString *eventClassFQN;
+@property(nonatomic,strong) NSData *eventData;
+@property(nonatomic,strong) KAAUnion *source;
+@property(nonatomic,strong) KAAUnion *target;
+
+- (instancetype)initWithSeqNum:(int32_t)seqNum eventClassFQN:(NSString *)eventClassFQN eventData:(NSData *)eventData source:(KAAUnion *)source target:(KAAUnion *)target;
 
 
 # ifndef KAA_UNION_STRING_OR_NULL_H_
@@ -217,7 +239,9 @@ typedef enum {
 @interface EventListenersRequest : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) NSArray * eventClassFQNs;
+@property(nonatomic,strong) NSArray *eventClassFQNs;
+
+- (instancetype)initWithRequestId:(int32_t)requestId eventClassFQNs:(NSArray *)eventClassFQNs;
 
 @end
 
@@ -225,8 +249,10 @@ typedef enum {
 @interface EventListenersResponse : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) KAAUnion * listeners;
+@property(nonatomic,strong) KAAUnion *listeners;
 @property(nonatomic) SyncResponseResultType result;
+
+- (instancetype)initWithRequestId:(int32_t)requestId listeners:(KAAUnion *)listeners result:(SyncResponseResultType)result;
 
 
 # ifndef KAA_UNION_ARRAY_STRING_OR_NULL_H_
@@ -243,6 +269,7 @@ typedef enum {
 @interface EventSequenceNumberRequest : AvroBased
 
 
+
 @end
 
 
@@ -250,16 +277,20 @@ typedef enum {
 
 @property(nonatomic) int32_t seqNum;
 
+- (instancetype)initWithSeqNum:(int32_t)seqNum;
+
 @end
 
 
 @interface Notification : AvroBased
 
-@property(nonatomic) NSString * topicId;
+@property(nonatomic,strong) NSString *topicId;
 @property(nonatomic) NotificationType type;
-@property(nonatomic) KAAUnion * uid;
-@property(nonatomic) KAAUnion * seqNumber;
-@property(nonatomic) NSData * body;
+@property(nonatomic,strong) KAAUnion *uid;
+@property(nonatomic,strong) KAAUnion *seqNumber;
+@property(nonatomic,strong) NSData *body;
+
+- (instancetype)initWithTopicId:(NSString *)topicId type:(NotificationType)type uid:(KAAUnion *)uid seqNumber:(KAAUnion *)seqNumber body:(NSData *)body;
 
 
 # ifndef KAA_UNION_STRING_OR_NULL_H_
@@ -284,26 +315,32 @@ typedef enum {
 
 @interface Topic : AvroBased
 
-@property(nonatomic) NSString * id;
-@property(nonatomic) NSString * name;
+@property(nonatomic,strong) NSString *id;
+@property(nonatomic,strong) NSString *name;
 @property(nonatomic) SubscriptionType subscriptionType;
+
+- (instancetype)initWithId:(NSString *)id name:(NSString *)name subscriptionType:(SubscriptionType)subscriptionType;
 
 @end
 
 
 @interface LogEntry : AvroBased
 
-@property(nonatomic) NSData * data;
+@property(nonatomic,strong) NSData *data;
+
+- (instancetype)initWithData:(NSData *)data;
 
 @end
 
 
 @interface SyncRequestMetaData : AvroBased
 
-@property(nonatomic) NSString * sdkToken;
-@property(nonatomic) KAAUnion * endpointPublicKeyHash;
-@property(nonatomic) KAAUnion * profileHash;
-@property(nonatomic) KAAUnion * timeout;
+@property(nonatomic,strong) NSString *sdkToken;
+@property(nonatomic,strong) KAAUnion *endpointPublicKeyHash;
+@property(nonatomic,strong) KAAUnion *profileHash;
+@property(nonatomic,strong) KAAUnion *timeout;
+
+- (instancetype)initWithSdkToken:(NSString *)sdkToken endpointPublicKeyHash:(KAAUnion *)endpointPublicKeyHash profileHash:(KAAUnion *)profileHash timeout:(KAAUnion *)timeout;
 
 
 # ifndef KAA_UNION_BYTES_OR_NULL_H_
@@ -337,9 +374,11 @@ typedef enum {
 
 @interface ProfileSyncRequest : AvroBased
 
-@property(nonatomic) KAAUnion * endpointPublicKey;
-@property(nonatomic) NSData * profileBody;
-@property(nonatomic) KAAUnion * endpointAccessToken;
+@property(nonatomic,strong) KAAUnion *endpointPublicKey;
+@property(nonatomic,strong) NSData *profileBody;
+@property(nonatomic,strong) KAAUnion *endpointAccessToken;
+
+- (instancetype)initWithEndpointPublicKey:(KAAUnion *)endpointPublicKey profileBody:(NSData *)profileBody endpointAccessToken:(KAAUnion *)endpointAccessToken;
 
 
 # ifndef KAA_UNION_BYTES_OR_NULL_H_
@@ -367,13 +406,17 @@ typedef enum {
 @property(nonatomic) int32_t id;
 @property(nonatomic) int32_t version;
 
+- (instancetype)initWithId:(int32_t)id version:(int32_t)version;
+
 @end
 
 
 @interface BootstrapSyncRequest : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) NSArray * supportedProtocols;
+@property(nonatomic,strong) NSArray *supportedProtocols;
+
+- (instancetype)initWithRequestId:(int32_t)requestId supportedProtocols:(NSArray *)supportedProtocols;
 
 @end
 
@@ -381,8 +424,10 @@ typedef enum {
 @interface ConfigurationSyncRequest : AvroBased
 
 @property(nonatomic) int32_t appStateSeqNumber;
-@property(nonatomic) KAAUnion * configurationHash;
-@property(nonatomic) KAAUnion * resyncOnly;
+@property(nonatomic,strong) KAAUnion *configurationHash;
+@property(nonatomic,strong) KAAUnion *resyncOnly;
+
+- (instancetype)initWithAppStateSeqNumber:(int32_t)appStateSeqNumber configurationHash:(KAAUnion *)configurationHash resyncOnly:(KAAUnion *)resyncOnly;
 
 
 # ifndef KAA_UNION_BYTES_OR_NULL_H_
@@ -408,10 +453,12 @@ typedef enum {
 @interface NotificationSyncRequest : AvroBased
 
 @property(nonatomic) int32_t appStateSeqNumber;
-@property(nonatomic) KAAUnion * topicListHash;
-@property(nonatomic) KAAUnion * topicStates;
-@property(nonatomic) KAAUnion * acceptedUnicastNotifications;
-@property(nonatomic) KAAUnion * subscriptionCommands;
+@property(nonatomic,strong) KAAUnion *topicListHash;
+@property(nonatomic,strong) KAAUnion *topicStates;
+@property(nonatomic,strong) KAAUnion *acceptedUnicastNotifications;
+@property(nonatomic,strong) KAAUnion *subscriptionCommands;
+
+- (instancetype)initWithAppStateSeqNumber:(int32_t)appStateSeqNumber topicListHash:(KAAUnion *)topicListHash topicStates:(KAAUnion *)topicStates acceptedUnicastNotifications:(KAAUnion *)acceptedUnicastNotifications subscriptionCommands:(KAAUnion *)subscriptionCommands;
 
 
 # ifndef KAA_UNION_BYTES_OR_NULL_H_
@@ -454,9 +501,11 @@ typedef enum {
 
 @interface UserSyncRequest : AvroBased
 
-@property(nonatomic) KAAUnion * userAttachRequest;
-@property(nonatomic) KAAUnion * endpointAttachRequests;
-@property(nonatomic) KAAUnion * endpointDetachRequests;
+@property(nonatomic,strong) KAAUnion *userAttachRequest;
+@property(nonatomic,strong) KAAUnion *endpointAttachRequests;
+@property(nonatomic,strong) KAAUnion *endpointDetachRequests;
+
+- (instancetype)initWithUserAttachRequest:(KAAUnion *)userAttachRequest endpointAttachRequests:(KAAUnion *)endpointAttachRequests endpointDetachRequests:(KAAUnion *)endpointDetachRequests;
 
 
 # ifndef KAA_UNION_USER_ATTACH_REQUEST_OR_NULL_H_
@@ -490,9 +539,11 @@ typedef enum {
 
 @interface EventSyncRequest : AvroBased
 
-@property(nonatomic) KAAUnion * eventSequenceNumberRequest;
-@property(nonatomic) KAAUnion * eventListenersRequests;
-@property(nonatomic) KAAUnion * events;
+@property(nonatomic,strong) KAAUnion *eventSequenceNumberRequest;
+@property(nonatomic,strong) KAAUnion *eventListenersRequests;
+@property(nonatomic,strong) KAAUnion *events;
+
+- (instancetype)initWithEventSequenceNumberRequest:(KAAUnion *)eventSequenceNumberRequest eventListenersRequests:(KAAUnion *)eventListenersRequests events:(KAAUnion *)events;
 
 
 # ifndef KAA_UNION_EVENT_SEQUENCE_NUMBER_REQUEST_OR_NULL_H_
@@ -527,7 +578,9 @@ typedef enum {
 @interface LogSyncRequest : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) KAAUnion * logEntries;
+@property(nonatomic,strong) KAAUnion *logEntries;
+
+- (instancetype)initWithRequestId:(int32_t)requestId logEntries:(KAAUnion *)logEntries;
 
 
 # ifndef KAA_UNION_ARRAY_LOG_ENTRY_OR_NULL_H_
@@ -545,7 +598,9 @@ typedef enum {
 
 @property(nonatomic) int32_t accessPointId;
 @property(nonatomic,strong) ProtocolVersionPair *protocolVersionInfo;
-@property(nonatomic) NSData * connectionInfo;
+@property(nonatomic,strong) NSData *connectionInfo;
+
+- (instancetype)initWithAccessPointId:(int32_t)accessPointId protocolVersionInfo:(ProtocolVersionPair *)protocolVersionInfo connectionInfo:(NSData *)connectionInfo;
 
 @end
 
@@ -553,7 +608,9 @@ typedef enum {
 @interface BootstrapSyncResponse : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) NSArray * supportedProtocols;
+@property(nonatomic,strong) NSArray *supportedProtocols;
+
+- (instancetype)initWithRequestId:(int32_t)requestId supportedProtocols:(NSArray *)supportedProtocols;
 
 @end
 
@@ -562,6 +619,8 @@ typedef enum {
 
 @property(nonatomic) SyncResponseStatus responseStatus;
 
+- (instancetype)initWithResponseStatus:(SyncResponseStatus)responseStatus;
+
 @end
 
 
@@ -569,8 +628,10 @@ typedef enum {
 
 @property(nonatomic) int32_t appStateSeqNumber;
 @property(nonatomic) SyncResponseStatus responseStatus;
-@property(nonatomic) KAAUnion * confSchemaBody;
-@property(nonatomic) KAAUnion * confDeltaBody;
+@property(nonatomic,strong) KAAUnion *confSchemaBody;
+@property(nonatomic,strong) KAAUnion *confDeltaBody;
+
+- (instancetype)initWithAppStateSeqNumber:(int32_t)appStateSeqNumber responseStatus:(SyncResponseStatus)responseStatus confSchemaBody:(KAAUnion *)confSchemaBody confDeltaBody:(KAAUnion *)confDeltaBody;
 
 
 # ifndef KAA_UNION_BYTES_OR_NULL_H_
@@ -597,8 +658,10 @@ typedef enum {
 
 @property(nonatomic) int32_t appStateSeqNumber;
 @property(nonatomic) SyncResponseStatus responseStatus;
-@property(nonatomic) KAAUnion * notifications;
-@property(nonatomic) KAAUnion * availableTopics;
+@property(nonatomic,strong) KAAUnion *notifications;
+@property(nonatomic,strong) KAAUnion *availableTopics;
+
+- (instancetype)initWithAppStateSeqNumber:(int32_t)appStateSeqNumber responseStatus:(SyncResponseStatus)responseStatus notifications:(KAAUnion *)notifications availableTopics:(KAAUnion *)availableTopics;
 
 
 # ifndef KAA_UNION_ARRAY_NOTIFICATION_OR_NULL_H_
@@ -623,11 +686,13 @@ typedef enum {
 
 @interface UserSyncResponse : AvroBased
 
-@property(nonatomic) KAAUnion * userAttachResponse;
-@property(nonatomic) KAAUnion * userAttachNotification;
-@property(nonatomic) KAAUnion * userDetachNotification;
-@property(nonatomic) KAAUnion * endpointAttachResponses;
-@property(nonatomic) KAAUnion * endpointDetachResponses;
+@property(nonatomic,strong) KAAUnion *userAttachResponse;
+@property(nonatomic,strong) KAAUnion *userAttachNotification;
+@property(nonatomic,strong) KAAUnion *userDetachNotification;
+@property(nonatomic,strong) KAAUnion *endpointAttachResponses;
+@property(nonatomic,strong) KAAUnion *endpointDetachResponses;
+
+- (instancetype)initWithUserAttachResponse:(KAAUnion *)userAttachResponse userAttachNotification:(KAAUnion *)userAttachNotification userDetachNotification:(KAAUnion *)userDetachNotification endpointAttachResponses:(KAAUnion *)endpointAttachResponses endpointDetachResponses:(KAAUnion *)endpointDetachResponses;
 
 
 # ifndef KAA_UNION_USER_ATTACH_RESPONSE_OR_NULL_H_
@@ -679,9 +744,11 @@ typedef enum {
 
 @interface EventSyncResponse : AvroBased
 
-@property(nonatomic) KAAUnion * eventSequenceNumberResponse;
-@property(nonatomic) KAAUnion * eventListenersResponses;
-@property(nonatomic) KAAUnion * events;
+@property(nonatomic,strong) KAAUnion *eventSequenceNumberResponse;
+@property(nonatomic,strong) KAAUnion *eventListenersResponses;
+@property(nonatomic,strong) KAAUnion *events;
+
+- (instancetype)initWithEventSequenceNumberResponse:(KAAUnion *)eventSequenceNumberResponse eventListenersResponses:(KAAUnion *)eventListenersResponses events:(KAAUnion *)events;
 
 
 # ifndef KAA_UNION_EVENT_SEQUENCE_NUMBER_RESPONSE_OR_NULL_H_
@@ -717,7 +784,9 @@ typedef enum {
 
 @property(nonatomic) int32_t requestId;
 @property(nonatomic) SyncResponseResultType result;
-@property(nonatomic) KAAUnion * errorCode;
+@property(nonatomic,strong) KAAUnion *errorCode;
+
+- (instancetype)initWithRequestId:(int32_t)requestId result:(SyncResponseResultType)result errorCode:(KAAUnion *)errorCode;
 
 
 # ifndef KAA_UNION_LOG_DELIVERY_ERROR_CODE_OR_NULL_H_
@@ -733,7 +802,9 @@ typedef enum {
 
 @interface LogSyncResponse : AvroBased
 
-@property(nonatomic) KAAUnion * deliveryStatuses;
+@property(nonatomic,strong) KAAUnion *deliveryStatuses;
+
+- (instancetype)initWithDeliveryStatuses:(KAAUnion *)deliveryStatuses;
 
 
 # ifndef KAA_UNION_ARRAY_LOG_DELIVERY_STATUS_OR_NULL_H_
@@ -751,20 +822,35 @@ typedef enum {
 
 @property(nonatomic) int32_t accessPointId;
 
+- (instancetype)initWithAccessPointId:(int32_t)accessPointId;
+
+@end
+
+
+@interface ExtensionSync : AvroBased
+
+@property(nonatomic) int32_t extensionId;
+@property(nonatomic,strong) NSData *payload;
+
+- (instancetype)initWithExtensionId:(int32_t)extensionId payload:(NSData *)payload;
+
 @end
 
 
 @interface SyncRequest : AvroBased
 
 @property(nonatomic) int32_t requestId;
-@property(nonatomic) KAAUnion * syncRequestMetaData;
-@property(nonatomic) KAAUnion * bootstrapSyncRequest;
-@property(nonatomic) KAAUnion * profileSyncRequest;
-@property(nonatomic) KAAUnion * configurationSyncRequest;
-@property(nonatomic) KAAUnion * notificationSyncRequest;
-@property(nonatomic) KAAUnion * userSyncRequest;
-@property(nonatomic) KAAUnion * eventSyncRequest;
-@property(nonatomic) KAAUnion * logSyncRequest;
+@property(nonatomic,strong) KAAUnion *syncRequestMetaData;
+@property(nonatomic,strong) KAAUnion *bootstrapSyncRequest;
+@property(nonatomic,strong) KAAUnion *profileSyncRequest;
+@property(nonatomic,strong) KAAUnion *configurationSyncRequest;
+@property(nonatomic,strong) KAAUnion *notificationSyncRequest;
+@property(nonatomic,strong) KAAUnion *userSyncRequest;
+@property(nonatomic,strong) KAAUnion *eventSyncRequest;
+@property(nonatomic,strong) KAAUnion *logSyncRequest;
+@property(nonatomic,strong) KAAUnion *extensionSyncRequests;
+
+- (instancetype)initWithRequestId:(int32_t)requestId syncRequestMetaData:(KAAUnion *)syncRequestMetaData bootstrapSyncRequest:(KAAUnion *)bootstrapSyncRequest profileSyncRequest:(KAAUnion *)profileSyncRequest configurationSyncRequest:(KAAUnion *)configurationSyncRequest notificationSyncRequest:(KAAUnion *)notificationSyncRequest userSyncRequest:(KAAUnion *)userSyncRequest eventSyncRequest:(KAAUnion *)eventSyncRequest logSyncRequest:(KAAUnion *)logSyncRequest extensionSyncRequests:(KAAUnion *)extensionSyncRequests;
 
 
 # ifndef KAA_UNION_SYNC_REQUEST_META_DATA_OR_NULL_H_
@@ -838,6 +924,15 @@ typedef enum {
 
 # endif // KAA_UNION_LOG_SYNC_REQUEST_OR_NULL_H_
 
+
+# ifndef KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_H_
+# define KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_H_
+
+# define KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_0    0
+# define KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_1    1
+
+# endif // KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_H_
+
 @end
 
 
@@ -845,14 +940,17 @@ typedef enum {
 
 @property(nonatomic) int32_t requestId;
 @property(nonatomic) SyncResponseResultType status;
-@property(nonatomic) KAAUnion * bootstrapSyncResponse;
-@property(nonatomic) KAAUnion * profileSyncResponse;
-@property(nonatomic) KAAUnion * configurationSyncResponse;
-@property(nonatomic) KAAUnion * notificationSyncResponse;
-@property(nonatomic) KAAUnion * userSyncResponse;
-@property(nonatomic) KAAUnion * eventSyncResponse;
-@property(nonatomic) KAAUnion * redirectSyncResponse;
-@property(nonatomic) KAAUnion * logSyncResponse;
+@property(nonatomic,strong) KAAUnion *bootstrapSyncResponse;
+@property(nonatomic,strong) KAAUnion *profileSyncResponse;
+@property(nonatomic,strong) KAAUnion *configurationSyncResponse;
+@property(nonatomic,strong) KAAUnion *notificationSyncResponse;
+@property(nonatomic,strong) KAAUnion *userSyncResponse;
+@property(nonatomic,strong) KAAUnion *eventSyncResponse;
+@property(nonatomic,strong) KAAUnion *redirectSyncResponse;
+@property(nonatomic,strong) KAAUnion *logSyncResponse;
+@property(nonatomic,strong) KAAUnion *extensionSyncResponses;
+
+- (instancetype)initWithRequestId:(int32_t)requestId status:(SyncResponseResultType)status bootstrapSyncResponse:(KAAUnion *)bootstrapSyncResponse profileSyncResponse:(KAAUnion *)profileSyncResponse configurationSyncResponse:(KAAUnion *)configurationSyncResponse notificationSyncResponse:(KAAUnion *)notificationSyncResponse userSyncResponse:(KAAUnion *)userSyncResponse eventSyncResponse:(KAAUnion *)eventSyncResponse redirectSyncResponse:(KAAUnion *)redirectSyncResponse logSyncResponse:(KAAUnion *)logSyncResponse extensionSyncResponses:(KAAUnion *)extensionSyncResponses;
 
 
 # ifndef KAA_UNION_BOOTSTRAP_SYNC_RESPONSE_OR_NULL_H_
@@ -926,6 +1024,15 @@ typedef enum {
 
 # endif // KAA_UNION_LOG_SYNC_RESPONSE_OR_NULL_H_
 
+
+# ifndef KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_H_
+# define KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_H_
+
+# define KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_0    0
+# define KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_BRANCH_1    1
+
+# endif // KAA_UNION_ARRAY_EXTENSION_SYNC_OR_NULL_H_
+
 @end
 
 
@@ -933,5 +1040,7 @@ typedef enum {
 
 @property(nonatomic,strong) Topic *topicInfo;
 @property(nonatomic) int32_t seqNumber;
+
+- (instancetype)initWithTopicInfo:(Topic *)topicInfo seqNumber:(int32_t)seqNumber;
 
 @end
